@@ -9,8 +9,8 @@ mermaid: true
 
 ## TL;DR
 - **문제:** 기존 `TokenType`에 고정된 Athenz 헤더 제약으로 커스텀 헤더를 사용하는 사내 환경이나 레거시 시스템과의 통합 어려움
-- **해결:** 상위 인터페이스 `AthenzTokenHeader` 도입으로 기존 `TokenType`의 하위호환 유지와 커스텀 헤더 지원 동시 확보
-- **결과:** Docker 기반 통합 테스트, negative case 검증, flaky 테스트 안정화를 거쳐 PR 머지 성공
+- **해결:** 상위 인터페이스 `AthenzTokenHeader` 도입으로 기존 `TokenType`의 하위 호환 유지와 커스텀 헤더 지원 동시 확보
+- **결과:** Docker 기반 통합 테스트, 실패 케이스 검증, 불안정한 테스트(flaky) 안정화를 거쳐 PR 머지 성공
 
 ---
 
@@ -39,7 +39,7 @@ mermaid: true
 
 두 번째 요구사항을 보고, 단순히 “헤더 이름 문자열”만 인자로 넘기는 방식은 코드가 여기저기 파편화되고 유지보수성이 떨어질 것이라 판단했습니다.
 
-그래서 더 깊이 분석했고, 여기서부터 “아 이건 설계부터 다시 잡아야겠다”로 방향을 틀었습니다. 결론은 **하위호환성은 철저히 유지하면서도 확장성 있게 가져갈 수 있는 상위 추상화(인터페이스) 도입**이었습니다.
+그래서 더 분석했고, 여기서부터 “아 이건 설계부터 다시 잡아야겠다”로 방향을 틀었습니다. 결론은 **하위 호환성은 유지하면서도 확장성 있게 가져갈 수 있는 상위 추상화(인터페이스) 도입**이었습니다.
 
 ---
 
@@ -48,7 +48,7 @@ mermaid: true
 
 그래서 구조를 근본적으로 바꾸는 방향을 택했습니다. 핵심 아이디어는 다음과 같습니다.
 
-- 기존의 고정 헤더(`TokenType`)는 새롭게 만든 상위 인터페이스(`AthenzTokenHeader`)를 구현하도록 만들어 **하위호환을 완벽히 유지**한다.
+- 기존의 고정 헤더(`TokenType`)는 새롭게 만든 상위 인터페이스(`AthenzTokenHeader`)를 구현하도록 만들어 **하위 호환을 완벽히 유지**한다.
 - 사용자 지정 헤더가 필요한 경우, 사용자가 직접 `AthenzTokenHeader`를 구현해서 주입할 수 있도록 열어둔다.
 
 ```java
@@ -110,15 +110,15 @@ classDiagram
     AthenzTokenHeader <|.. TokenType : implements
     AthenzTokenHeader <|.. CustomTokenHeader : implements
     
-    note for AthenzTokenHeader "기존 코드는 그대로 유지\n새로운 커스텀 헤더 지원 가능"
+    note for AthenzTokenHeader "기존 코드는 그대로 유지, 새로운 커스텀 헤더 지원 가능"
 ```
 
 결과적으로 “기존 사용자(기본 헤더)는 그대로 쓰고, 필요한 사용자만 커스텀 헤더를 끼울 수 있는” 구조가 되었습니다.
 
 ---
 
-### 4. 구현: Discoverability
-기능 구현 자체보다 더 중요하게 생각한 것은 **"사용자가 잘 쓸 수 있게 만드는 것(Discoverability)"**이었습니다. 새 기능을 쉽게 발견하고 자연스럽게 사용할 수 있어야 하며, 기존 API 사용자들의 마이그레이션 비용은 최소화되어야 합니다.
+### 4. 구현: 사용성 강화
+기능 구현 자체보다 더 중요하게 생각한 것은 **"사용자가 잘 쓸 수 있게 만드는 것(사용성)"**이었습니다. 새 기능을 쉽게 발견하고 자연스럽게 사용할 수 있어야 하며, 기존 API 사용자들의 코드 변경이 최소화되어야 한다고 생각했습니다.
 
 ```java
 /**
@@ -165,7 +165,7 @@ public AthenzServiceBuilder tokenHeader(AthenzTokenHeader tokenHeader) {
 ---
 
 ### 5. 테스트 전략: 인프라 의존성이 큰 모듈 테스트
-가장 까다로웠던 부분은 테스트였습니다. Athenz는 인프라 의존성이 커서 실제 조직의 인증 환경을 그대로 재현하기가 쉽지 않습니다. 다행히 Armeria에는 Testcontainers(Docker) 기반으로 ZMS/ZTS를 띄우고, 테스트용 도메인/서비스/정책까지 미리 구성해두는 스캐폴딩이 이미 있었습니다.
+가장 까다로웠던 부분은 테스트였습니다. Athenz는 인프라 의존성이 커서 실제 조직의 인증 환경을 그대로 재현하기가 쉽지 않습니다. 다행히 Armeria에는 Testcontainers(Docker) 기반으로 ZMS/ZTS를 띄우고, 테스트용 도메인/서비스/정책까지 미리 구성해두는 테스트 기반 구성이 이미 있었습니다.
 
 그래서 로컬에서 실제 Athenz 인프라를 직접 붙여보지 않더라도, "요청이 실제로 들어오고 헤더가 실제로 전달되는지"를 코드 레벨에서 검증할 수 있었습니다. 커스텀 헤더는 처음엔 어디부터 검증해야 할지 막막했는데, 단위 테스트와 통합 테스트(실제 요청 흐름 검증)로 나눠 단계적으로 확인하는 방식으로 접근했습니다.
 
@@ -272,11 +272,11 @@ sequenceDiagram
   ZTS-->>Decor: 토큰 응답
 
   Decor->>Srv: HTTP Request\n(X-Custom-Token or Authorization set)
-  Note over Srv: 헤더 캡처 후 assert용 상태에 저장
+  Note over Srv: 헤더 캡처 후 검증용 상태에 저장
   Srv-->>Decor: 200 OK
   Decor-->>Web: response
   Web-->>Test: response
-  Test->>Test: assert captured header
+  Test->>Test: captured header 검증
 ```
 
 ```java
@@ -300,13 +300,14 @@ class AthenzClientTest {
 }
 ```
 
-실제 환경과 유사한 검증을 위해 Testcontainers(Docker)를 활용한 Athenz 스캐폴드(`AthenzExtension`)를 띄웠습니다. `ServerExtension`을 통해 서버 쪽 API 경로(`/api`)를 구성하고, 클라이언트가 실제 커스텀 헤더를 담아 HTTP 요청을 보내도록 만들었습니다.
+실제 환경과 유사한 검증을 위해 Testcontainers(Docker)를 활용한 Athenz 테스트 환경(`AthenzExtension`)을 띄웠습니다. `ServerExtension`을 통해 서버 쪽 API 경로(`/api`)를 구성하고, 클라이언트가 실제 커스텀 헤더를 담아 HTTP 요청을 보내도록 만들었습니다.
 
-서버 내부 캡처 블록에서 헤더가 누락 없이 올바르게 추출되는지 `assert`하여 실제 요청 흐름에서의 정상 동작을 증명했습니다.
+서버 내부 캡처 블록에서 헤더가 누락 없이 올바르게 추출되는지 검증해 실제 요청 흐름에서의 정상 동작을 확인했습니다.
 
-“서버가 응답을 잘 준다”가 아니라 **요청에 실제로 어떤 헤더가 실려 갔는지**를 테스트에서 직접 검증했습니다.
+즉, 단순히 **서버가 정상적으로 응답하는지**만 보는 것이 아니라,
+**요청에 어떤 헤더가 실제로 포함되어 전달되었는지까지 테스트에서 직접 확인했습니다.**
 
-#### 5.3 Negative case 추가
+#### 5.3 실패 케이스 추가
 ```java
 @Test
 void unauthorizedWithUnknownHeader() {
@@ -332,7 +333,7 @@ void unauthorizedWithInvalidTokenValue() {
 
 이러한 요청들이 비즈니스 로직에 도달하기 전에 정확히 `401 UNAUTHORIZED` 상태 코드를 반환하며 실패하는 것을 확인했습니다.
 
-#### 5.4 CI에서 터진 테스트와 해결: flaky 제거
+#### 5.4 CI에서 터진 테스트와 해결: 불안정한 테스트(flaky) 제거
 ```java
 private static final AtomicReference<String> capturedHeaderName = new AtomicReference<>();
 private static final AtomicReference<String> capturedHeaderValue = new AtomicReference<>();
@@ -344,7 +345,7 @@ void setUp() {
 }
 ```
 
-헤더 캡처는 서버 스레드에서 일어나고 assert는 테스트 스레드에서 수행되기 때문에, 기존 테스트 코드의 패턴을 참고하여 스레드 안전하게 값을 공유하도록 `AtomicReference`를 사용했습니다.
+헤더 캡처는 서버 스레드에서 일어나고 검증은 테스트 스레드에서 수행되기 때문에, 기존 테스트 코드의 패턴을 참고하여 스레드 안전하게 값을 공유하도록 `AtomicReference`를 사용했습니다.
 
 이 동시성 제어 메커니즘을 다이어그램으로 표현하면:
 
@@ -391,25 +392,25 @@ sequenceDiagram
     Note over TestThread: ✅ Test Passed
 ```
 
-다만 통합 테스트를 진행하다 보니, 이 `AtomicReference` 상태가 테스트 간에 공유되면서 CI 환경에서 간헐적으로 테스트가 실패하는 현상(flaky)이 발생했습니다. 이를 해결하기 위해 JUnit의 `@BeforeEach`를 사용하여 매 테스트 시작 전에 캡처 변수들을 명시적으로 `null`로 초기화했습니다.
+다만 통합 테스트를 진행하다 보니, 이 `AtomicReference` 상태가 테스트 간에 공유되면서 CI 환경에서 간헐적으로 테스트가 실패하는 현상이 발생했습니다. 이를 해결하기 위해 JUnit의 `@BeforeEach`를 사용하여 매 테스트 시작 전에 캡처 변수들을 명시적으로 `null`로 초기화했습니다.
 
 덕분에 테스트 간 격리성(isolation)을 확보하고 불안정한 빌드 문제를 해결할 수 있었습니다.
 
 ---
 
 ### 6. 리뷰/협업: PR이 머지되기까지
-리뷰를 받으며 배운 점은 **“이 오픈소스를 실제로 쓰는 사용자의 경험(문서, API 직관성, 사이드 이펙트 제어)”**을 얼마나 세밀하게 챙겨야 하는지입니다.
+리뷰를 받으며 배운 점은 **“이 오픈소스를 실제로 쓰는 사용자의 경험(문서, API 직관성, 부작용 제어)”**을 얼마나 세밀하게 챙겨야 하는지입니다.
 
 리뷰 코멘트로 실제로 바뀐 것도 있는데, 예를 들어 `header()` 같은 모호한 이름은 `tokenHeader()`로 정리했고, deprecated API는 새 API로 포워딩해서 마이그레이션 경로를 만들었습니다.
 
-Deprecated 처리된 기존 메서드들이 만들 수 있는 사이드 이펙트를 최소화하기 위해 최신 API로 자연스럽게 연결하고, Javadoc 문서를 직접 꼼꼼히 수정하며 레거시 사용자까지 배려해야 했습니다. 메인테이너들과 지속적인 리뷰 핑퐁 끝에 PR이 merge 되었을 때 남겨진 _“Thanks @JAEKWANG97”_ 한 마디는 정말 뿌듯했습니다.
+Deprecated 처리된 기존 메서드들이 만들 수 있는 부작용을 최소화하기 위해 최신 API로 자연스럽게 연결하고, Javadoc 문서를 직접 꼼꼼히 수정하며 레거시 사용자까지 배려해야 했습니다. 메인테이너들과 지속적인 리뷰 핑퐁 끝에 PR이 merge 되었을 때 남겨진 _“Thanks @JAEKWANG97”_ 한 마디는 정말 뿌듯했습니다.
 
 ![2026-03-07-21-29-35](/assets/img/posts/2026-03-07-line-armeria-athenz-token-header-contribution/2026-03-07-21-29-35.png)
 
 ---
 
 ### 마무리: 배운 점
-이번 기여를 통해 오픈소스 생태계에서 **하위 호환성을 해치지 않으면서 확장 포인트를 설계하는 방법**을 실제 프로덕션 레벨에서 설계하고 구현할 수 있었습니다. 단순한 기능 구현을 넘어, API 네이밍과 테스트 스캐폴딩, edge case 방어까지 종합적으로 고민하는 소중한 경험이었습니다.
+이번 기여를 통해 오픈소스 생태계에서 **하위 호환성을 해치지 않으면서 확장 포인트를 설계하는 방법**을 실제 프로덕션 레벨에서 설계하고 구현할 수 있었습니다. 단순한 기능 구현을 넘어, API 네이밍과 테스트 기반 구성, 예외 케이스 방어까지 종합적으로 고민하는 소중한 경험이었습니다.
 
 전체 기여 과정을 정리하면:
 
@@ -425,15 +426,15 @@ graph TD
     G --> H[Deprecated 처리]
     
     H --> I[테스트 작성]
-    I --> J[단위 테스트: 하위호환성]
+    I --> J[단위 테스트: 하위 호환성]
     I --> K[통합 테스트: Docker]
-    I --> L[Negative case]
+    I --> L[실패 케이스]
     
     J --> M[CI 실행]
     K --> M
     L --> M
     
-    M -->|Flaky 발생| N[AtomicReference 격리]
+    M -->|불안정한 테스트 발생| N[AtomicReference 격리]
     N --> M
     M -->|Pass| O[PR 제출 #6604]
     
@@ -445,10 +446,10 @@ graph TD
 ```
 
 **배운 점:**
-- 확장성과 하위호환성의 균형을 인터페이스 설계로 해결
-- API 사용성(Discoverability)이 기능 자체만큼 중요
+- 확장성과 하위 호환성의 균형을 인터페이스 설계로 해결
+- API 사용성(발견 가능성 포함)이 기능 자체만큼 중요
 - 인프라 의존성이 큰 기능도 Docker와 Mock으로 검증 가능
-- Negative case와 flaky 테스트 처리가 실전에서 필수
+- 실패 케이스와 불안정한 테스트 처리가 실전에서 필수
 
 **관련 링크:**
 - [Issue #6422](https://github.com/line/armeria/issues/6422)
