@@ -4,6 +4,7 @@ date: 2026-03-07 00:00:00 +0900
 categories: [OpenSource]
 tags: [opensource, line, armeria, athenz, java, contribution]
 author: jaekwang
+mermaid: true
 ---
 
 ## TL;DR
@@ -12,6 +13,8 @@ author: jaekwang
 - **결과:** Docker 기반 통합 테스트, negative case 검증, flaky 테스트 안정화까지 거쳐 PR이 성공적으로 merge 됐다.
 
 ---
+
+![2026-03-07-21-27-24](/assets/img/posts/2026-03-07-line-armeria-athenz-token-header-contribution/2026-03-07-21-27-24.png)
 
 ### 1. 배경: 왜 “커스텀 헤더”가 필요했나 (#6422)
 관련 이슈(#6422)의 설명은 비교적 짧았습니다.
@@ -71,23 +74,41 @@ public interface AthenzTokenHeader {
 }
 ```
 
-```
-┌─────────────────────────┐
-│  AthenzTokenHeader      │ (interface)
-│  ─────────────────      │
-│  + name()               │
-│  + headerName()         │
-│  + authScheme()         │
-│  + isRoleToken()        │
-└───────────▲─────────────┘
-            │ implements
-    ┌───────┴─────────┐
-    │   TokenType     │ (enum)
-    │   ─────────     │
-    │ • ACCESS_TOKEN  │
-    │ • ATHENZ_ROLE   │
-    │ • YAHOO_ROLE    │
-    └─────────────────┘
+설계의 핵심은 **확장성과 하위호환성의 균형**입니다. 다이어그램으로 표현하면:
+
+```mermaid
+classDiagram
+    class AthenzTokenHeader {
+        <<interface>>
+        +name() String
+        +headerName() AsciiString
+        +authScheme() String
+        +isRoleToken() boolean
+        +ofAccessToken()$ AthenzTokenHeader
+        +ofAthenzRoleToken()$ AthenzTokenHeader
+        +ofYahooRoleToken()$ AthenzTokenHeader
+    }
+    
+    class TokenType {
+        <<enumeration>>
+        ACCESS_TOKEN
+        ATHENZ_ROLE_TOKEN
+        YAHOO_ROLE_TOKEN
+    }
+    
+    class CustomTokenHeader {
+        <<custom implementation>>
+        -String customHeaderName
+        +name() String
+        +headerName() AsciiString
+        +authScheme() String
+        +isRoleToken() boolean
+    }
+    
+    AthenzTokenHeader <|.. TokenType : implements
+    AthenzTokenHeader <|.. CustomTokenHeader : implements
+    
+    note for AthenzTokenHeader "기존 코드는 그대로 유지\n새로운 커스텀 헤더 지원 가능"
 ```
 
 결과적으로 “기존 사용자(기본 헤더)는 그대로 쓰고, 필요한 사용자만 커스텀 헤더를 끼울 수 있는” 구조가 되었습니다.
@@ -284,6 +305,8 @@ Deprecated 처리된 기존 메서드들이 만들 수 있는 사이드 이펙�
 
 ### 마무리: 배운 점 + 다음 개선 아이디어
 이번 기여를 통해 오픈소스 생태계에서 **하위 호환성을 해치지 않으면서 확장 포인트를 설계하는 방법**을 깊이 체득할 수 있었습니다. 단순한 기능 구현을 넘어, API 네이밍과 테스트 스캐폴딩, edge case 방어까지 종합적으로 고민하는 귀중한 경험이었습니다.
+
+![2026-03-07-21-29-35](/assets/img/posts/2026-03-07-line-armeria-athenz-token-header-contribution/2026-03-07-21-29-35.png)
 
 전체 기여 과정을 정리하면:
 
