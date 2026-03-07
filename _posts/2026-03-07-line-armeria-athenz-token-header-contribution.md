@@ -198,6 +198,59 @@ public enum TokenType implements AthenzTokenHeader {
 
 #### 5.2 통합 테스트: 실제 요청/헤더 흐름 검증 (Docker 기반)
 
+테스트 인프라는 JUnit Extension의 실행 순서를 활용하여 구성됩니다:
+
+```mermaid
+sequenceDiagram
+    participant JUnit as JUnit Runner
+    participant Athenz as AthenzExtension<br/>(Docker ZTS/ZMS)
+    participant Server as ServerExtension<br/>(HTTP Server)
+    participant Test as Test Methods
+    
+    Note over JUnit: 테스트 클래스 로드
+    JUnit->>Athenz: new AthenzExtension()
+    JUnit->>Server: new ServerExtension()
+    
+    Note over JUnit: @BeforeAll 실행
+    JUnit->>Athenz: before() - @Order(1)
+    activate Athenz
+    Athenz->>Athenz: Docker Compose 시작<br/>ZTS/ZMS 서버 구동 (10초)
+    Athenz->>Athenz: scaffold() - 도메인/롤/정책 설정
+    Note over Athenz: ✅ ZTS/ZMS Ready
+    deactivate Athenz
+    
+    JUnit->>Server: before() - @Order(2)
+    activate Server
+    Server->>Server: ServerBuilder.build()
+    Server->>Server: configure(sb)
+    Note over Server: sb.service("/api", handler)
+    Server->>Server: server.start().join()
+    Note over Server: Netty EventLoopGroup 시작<br/>워커 스레드 생성
+    Note over Server: ✅ HTTP Server Ready
+    deactivate Server
+    
+    loop 각 테스트 메서드
+        Note over JUnit: @BeforeEach 실행
+        JUnit->>Server: beforeEach()
+        Server->>Server: contextCaptor.clear()
+        
+        Note over JUnit: @Test 실행
+        JUnit->>Test: customHeaderIsUsedInRequest()
+        Note over Test: 테스트 로직 실행<br/>(아래 다이어그램 참조)
+        
+        Note over JUnit: @AfterEach 실행
+    end
+    
+    Note over JUnit: @AfterAll 실행
+    JUnit->>Server: after()
+    Server->>Server: server.stop()
+    Note over Server: ❌ HTTP Server Stopped
+    
+    JUnit->>Athenz: after()
+    Athenz->>Athenz: Docker 컨테이너 종료
+    Note over Athenz: ❌ ZTS/ZMS Stopped
+```
+
 테스트 아키텍처는 다음과 같이 구성되었습니다:
 
 ```mermaid
@@ -292,6 +345,51 @@ void setUp() {
 ```
 
 헤더 캡처는 서버 스레드에서 일어나고 assert는 테스트 스레드에서 수행되기 때문에, 기존 테스트 코드의 패턴을 참고하여 스레드 안전하게 값을 공유하도록 `AtomicReference`를 사용했습니다.
+
+이 동시성 제어 메커니즘을 다이어그램으로 표현하면:
+
+```mermaid
+sequenceDiagram
+    participant TestThread as 🧪 Test Thread<br/>(JUnit)
+    participant Client as WebClient<br/>+ AthenzClient
+    participant ZTS as ZTS Server<br/>(Docker)
+    participant ServerWorker as 🖥️ Server Thread<br/>(Netty Worker)
+    participant Capture as AtomicReference<br/>(공유 메모리)
+    
+    Note over TestThread: @Test 메서드 시작
+    TestThread->>TestThread: setUp() - @BeforeEach
+    TestThread->>Capture: set(null) - 초기화
+    
+    TestThread->>Client: WebClient.builder()<br/>.decorator(AthenzClient)
+    TestThread->>Client: client.get("/api")
+    Note over TestThread: BlockingWebClient이므로<br/>응답 올 때까지 대기 ⏸️
+    
+    Client->>ZTS: 토큰 요청 (TLS mTLS)
+    activate ZTS
+    ZTS-->>Client: Access Token 응답
+    deactivate ZTS
+    
+    Client->>ServerWorker: GET /api<br/>Header: X-Company-Token: eyJ...
+    activate ServerWorker
+    Note over ServerWorker: Netty 워커 스레드에서<br/>핸들러 실행
+    
+    ServerWorker->>ServerWorker: (ctx, req) -> { ... }
+    ServerWorker->>ServerWorker: req.headers().forEach()
+    ServerWorker->>Capture: capturedHeaderName.set("X-Company-Token")<br/>(volatile write)
+    ServerWorker->>Capture: capturedHeaderValue.set("eyJ...")<br/>(volatile write)
+    
+    ServerWorker-->>Client: HttpResponse.of(200 OK)
+    deactivate ServerWorker
+    
+    Client-->>TestThread: AggregatedHttpResponse
+    Note over TestThread: 블로킹 해제, 재개 ▶️
+    
+    TestThread->>Capture: capturedHeaderName.get()<br/>(volatile read)
+    Capture-->>TestThread: "X-Company-Token"
+    TestThread->>TestThread: assertThat(...).isEqualTo(...)
+    
+    Note over TestThread: ✅ Test Passed
+```
 
 다만 통합 테스트를 진행하다 보니, 이 `AtomicReference` 상태가 테스트 간에 공유되면서 CI 환경에서 간헐적으로 테스트가 실패하는 현상(flaky)이 발생했습니다. 이를 해결하기 위해 JUnit의 `@BeforeEach`를 사용하여 매 테스트 시작 전에 캡처 변수들을 명시적으로 `null`로 초기화했습니다.
 
