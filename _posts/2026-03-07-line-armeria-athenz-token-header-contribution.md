@@ -117,7 +117,7 @@ classDiagram
 
 ---
 
-### 4. 구현: API 표면을 사용자 친화적으로 다듬기
+### 4. 구현: Discoverability
 기능 구현 자체보다 더 중요하게 생각한 것은 **"사용자가 잘 쓸 수 있게 만드는 것(Discoverability)"**이었습니다. 새 기능을 쉽게 발견하고 자연스럽게 사용할 수 있어야 하며, 기존 API 사용자들의 마이그레이션 비용은 최소화되어야 합니다.
 
 ```java
@@ -164,7 +164,7 @@ public AthenzServiceBuilder tokenHeader(AthenzTokenHeader tokenHeader) {
 
 ---
 
-### 5. 테스트 전략: 인프라 의존성이 큰 기능 검증하기
+### 5. 테스트 전략: 인프라 의존성이 큰 모듈 테스트
 가장 까다로웠던 부분은 테스트였습니다. Athenz는 인프라 의존성이 커서 실제 조직의 인증 환경을 그대로 재현하기가 쉽지 않습니다. 다행히 Armeria에는 Testcontainers(Docker) 기반으로 ZMS/ZTS를 띄우고, 테스트용 도메인/서비스/정책까지 미리 구성해두는 스캐폴딩이 이미 있었습니다.
 
 그래서 로컬에서 실제 Athenz 인프라를 직접 붙여보지 않더라도, "요청이 실제로 들어오고 헤더가 실제로 전달되는지"를 코드 레벨에서 검증할 수 있었습니다. 커스텀 헤더는 처음엔 어디부터 검증해야 할지 막막했는데, 단위 테스트와 통합 테스트(실제 요청 흐름 검증)로 나눠 단계적으로 확인하는 방식으로 접근했습니다.
@@ -253,7 +253,7 @@ class AthenzClientTest {
 
 “서버가 응답을 잘 준다”가 아니라 **요청에 실제로 어떤 헤더가 실려 갔는지**를 테스트에서 직접 검증했습니다.
 
-#### 5.3 Negative case 추가: 완벽하게 실패하기
+#### 5.3 Negative case 추가
 ```java
 @Test
 void unauthorizedWithUnknownHeader() {
@@ -304,7 +304,7 @@ void setUp() {
 
 리뷰 코멘트로 실제로 바뀐 것도 있는데, 예를 들어 `header()` 같은 모호한 이름은 `tokenHeader()`로 정리했고, deprecated API는 새 API로 포워딩해서 마이그레이션 경로를 만들었습니다.
 
-Deprecated 처리된 기존 메서드들이 만들 수 있는 사이드 이펙트를 최소화하기 위해 최신 API로 자연스럽게 연결하고, Javadoc 문서를 직접 꼼꼼히 수정하며 레거시 사용자까지 배려해야 했습니다. 메인테이너들과 지속적인 리뷰 핑퐁 끝에 PR이 merge 되었을 때 남겨진 _"Thanks @JAEKWANG97"_ 한 마디는 큰 성취감으로 다가왔습니다.
+Deprecated 처리된 기존 메서드들이 만들 수 있는 사이드 이펙트를 최소화하기 위해 최신 API로 자연스럽게 연결하고, Javadoc 문서를 직접 꼼꼼히 수정하며 레거시 사용자까지 배려해야 했습니다. 메인테이너들과 지속적인 리뷰 핑퐁 끝에 PR이 merge 되었을 때 남겨진 _“Thanks @JAEKWANG97”_ 한 마디는 정말 뿌듯했습니다.
 
 ![2026-03-07-21-29-35](/assets/img/posts/2026-03-07-line-armeria-athenz-token-header-contribution/2026-03-07-21-29-35.png)
 
