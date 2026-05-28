@@ -13,6 +13,7 @@ import ShareLinks from "./_components/ShareLinks.astro";
 import BackButton from "./_components/BackButton.astro";
 import BackToTopButton from "./_components/BackToTopButton.astro";
 import AdjacentPostNav from "./_components/AdjacentPostNav.astro";
+import MermaidRenderer from "@/components/MermaidRenderer.astro";
 import config from "@/config";
 
 export async function getStaticPaths() {
@@ -68,6 +69,7 @@ const {
   timezone,
   tags,
   hideEditPost,
+  mermaid,
 } = post.data;
 
 const { Content } = await render(post);
@@ -141,6 +143,8 @@ const ogImage = ogImageUrl
     >
       <Content />
     </article>
+
+    {mermaid && <MermaidRenderer />}
 
     <hr class="my-8 border-dashed" />
 
