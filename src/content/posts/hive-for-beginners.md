@@ -2,7 +2,7 @@
 title: "Hive는 무엇일까? 파일을 테이블처럼 조회한다는 감각 이해하기"
 pubDatetime: 2026-05-24T01:10:00+09:00
 featured: false
-draft: false
+draft: true
 tags:
   - "data-engineering"
   - "hive"

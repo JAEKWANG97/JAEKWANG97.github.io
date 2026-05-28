@@ -2,7 +2,7 @@
 title: "블로그를 시작하며"
 pubDatetime: 2026-02-05T17:00:00+09:00
 featured: false
-draft: false
+draft: true
 tags:
   - "blog"
   - "github-pages"

@@ -2,7 +2,7 @@
 title: "배치 장애 복구는 무엇을 해야 하는 걸까?"
 pubDatetime: 2026-05-28T10:00:00+09:00
 featured: false
-draft: false
+draft: true
 tags:
   - "data-engineering"
   - "batch"

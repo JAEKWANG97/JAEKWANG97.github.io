@@ -2,7 +2,7 @@
 title: "Hermes Agent는 왜 단순한 챗봇이 아니라 작업 시스템처럼 느껴질까"
 pubDatetime: 2026-05-26T10:00:00+09:00
 featured: false
-draft: false
+draft: true
 tags:
   - "ai"
   - "hermes-agent"
