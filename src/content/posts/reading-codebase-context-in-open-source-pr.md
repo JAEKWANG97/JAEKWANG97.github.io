@@ -163,9 +163,37 @@ MQTT topic subscription은 Kafka partition처럼 명확하게 나눠서 각 read
 
 오픈소스 PR에서는 이 차이가 중요합니다. 구현자가 “할 수 있다”고 말하는 범위와 코드가 실제로 보장하는 범위가 맞아야 합니다. 특히 connector는 사용자가 운영 환경에서 쓰는 코드이기 때문에, 애매한 보장을 암시하는 것이 더 위험할 수 있습니다.
 
+## 코드 리뷰에서 놓쳤던 부분
+
+처음에는 제가 이 PR을 꽤 좁은 관점에서 보고 있었습니다. 옵션 이름이 Sink와 맞는지, SourceFactory가 자연스럽게 연결되는지, 단일 split으로 시작하는 판단이 무리하지 않은지, 테스트가 너무 과하게 mock 중심으로 보이지 않는지 같은 것들이었습니다.
+
+그런데 코드 리뷰를 받으면서 더 중요한 부분을 놓쳤다는 걸 알게 됐습니다.
+
+문제는 MQTT 연결이 끊겼을 때였습니다.
+
+정상 흐름에서는 구조가 단순합니다. `open()`에서 MQTT client를 연결하고 topic을 subscribe합니다. 메시지가 들어오면 callback에서 payload를 queue에 넣고, `pollNext()`가 queue에서 꺼내 `SeaTunnelRow`로 넘깁니다.
+
+그런데 broker 장애나 네트워크 문제로 연결이 끊기면 이야기가 달라집니다. 기존 구현에서는 `connectionLost()`에서 warning log만 남기고 Paho의 auto reconnect에 기대고 있었습니다. 겉으로는 그럴듯해 보였습니다. MQTT client가 알아서 재연결을 시도하니까요.
+
+하지만 리뷰어가 짚어준 핵심은 이거였습니다.
+
+> 재연결이 오래 실패하면, task는 살아 있는 것처럼 보이지만 실제로는 더 이상 데이터를 읽지 못할 수 있다.
+
+이건 단순한 예외 처리 누락이 아니었습니다. streaming source에서 가장 위험한 상태 중 하나였습니다. 실패하면 차라리 빨리 드러납니다. 그런데 task가 죽지 않고, 데이터만 조용히 멈추면 운영자는 늦게 알아차립니다.
+
+기존 구조에서는 `pollNext()`가 `receiveException`이 있을 때만 실패했습니다. 그런데 `connectionLost()`는 그 값을 설정하지 않았습니다. 그러면 reconnect가 계속 실패하더라도 queue는 비어 있고, `pollNext()`는 계속 `null`만 반환할 수 있습니다.
+
+즉, 제가 처음에 본 것은 “메시지가 잘 들어올 때의 Source”였습니다. 리뷰에서 드러난 것은 “메시지가 더 이상 들어오지 않을 때도 Source가 정직하게 실패하는가”였습니다.
+
+이 차이가 컸습니다.
+
+그래서 이후 수정에서는 disconnect 시작 시간을 기록하고, `reconnect_timeout`을 넘기면 `pollNext()`에서 명확히 실패하도록 바꿨습니다. 재연결에 성공했을 때는 topic을 다시 subscribe하고 disconnect timer를 초기화하도록 했습니다. 만약 재연결 후 resubscribe가 실패하면 그 예외도 다음 `pollNext()`에서 드러나게 했습니다.
+
+이 경험을 통해 Source connector에서는 happy path보다 failure path가 더 중요할 수 있다는 걸 느꼈습니다. 특히 streaming source는 “계속 실행된다”는 사실만으로는 충분하지 않습니다. 실제로 계속 데이터를 읽고 있는지, 읽지 못하는 상태를 어떻게 드러내는지가 중요합니다.
+
 ## 테스트에서 실제로 수정한 부분
 
-이번 점검에서 실제로 수정한 파일은 `MqttSourceTest.java` 하나였습니다.
+처음 점검에서 실제로 수정한 파일은 `MqttSourceTest.java` 하나였습니다.
 
 수정 전에는 테스트 클래스 전체에 Mockito extension이 붙어 있었습니다.
 
@@ -265,6 +293,18 @@ class MqttSourceTest {
 이렇게 보면 테스트는 단순한 방어 코드가 아닙니다. PR의 설계를 설명하는 작은 문서입니다.
 
 그래서 테스트 안에서 mock을 어디에 두는지, 어떤 assertion을 하는지도 설계 설명의 일부가 됩니다.
+
+코드 리뷰 이후에는 이 관점이 조금 더 확장됐습니다. 테스트는 정상 동작의 설명서일 뿐 아니라, 장애 상황에서 어떤 보장을 하는지 보여주는 문서이기도 했습니다.
+
+이번 리뷰를 반영하면서 추가로 중요해진 테스트는 다음과 같은 종류였습니다.
+
+- 연결이 끊겼을 때 disconnect 시작 시간이 기록되는가
+- `reconnect_timeout`을 넘기면 `pollNext()`에서 실패하는가
+- reconnect가 성공하면 topic을 다시 subscribe하는가
+- resubscribe가 실패하면 그 예외가 조용히 묻히지 않고 다음 polling 경로로 전달되는가
+- queue overflow 같은 callback-side 실패가 runtime polling 경로에서 드러나는가
+
+특히 timeout 테스트는 실제 시간을 기다리면 flaky해질 수 있습니다. 그래서 wall-clock에 의존하기보다 시간을 주입할 수 있게 만들어 deterministic하게 검증하는 쪽이 더 낫다고 봤습니다. 이 부분도 “테스트가 있다”보다 “테스트가 운영 상황의 실패 방식을 안정적으로 설명한다”에 가까웠습니다.
 
 ## 검증 결과를 남기는 이유
 
@@ -372,7 +412,7 @@ BUILD SUCCESS
 
 기여자는 그 언어를 먼저 읽어야 합니다. 그리고 그 언어 안에서 최소한의 변경으로 문제를 해결해야 합니다.
 
-이번 MQTT Source 작업은 아직 끝난 것이 아닙니다. 문서도 추가해야 하고, 더 넓은 verification도 필요합니다. 하지만 이번 점검을 통해 한 가지 방향은 더 분명해졌습니다.
+이번 MQTT Source 작업은 아직 끝난 것이 아닙니다. PR은 계속 리뷰를 거쳐야 하고, CI와 문서, e2e 같은 확인도 남아 있습니다. 하지만 이번 코드 리뷰를 통해 한 가지 방향은 더 분명해졌습니다.
 
 오픈소스 PR에서 좋은 코드는 단순히 새 기능을 추가한 코드가 아닙니다.
 
