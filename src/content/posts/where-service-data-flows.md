@@ -2,7 +2,7 @@
 title: "서비스 데이터는 어디로 흘러갈까? 데이터 파이프라인과 저장소 큰 그림"
 pubDatetime: 2026-05-20T10:00:00+09:00
 featured: false
-draft: false
+draft: true
 tags:
   - "data-engineering"
   - "data-pipeline"

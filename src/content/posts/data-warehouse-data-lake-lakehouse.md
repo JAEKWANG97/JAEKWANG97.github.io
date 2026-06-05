@@ -2,7 +2,7 @@
 title: "분석용 데이터는 어디에 저장해야 할까? Data Warehouse, Data Lake, Lakehouse 이해하기"
 pubDatetime: 2026-05-22T10:00:00+09:00
 featured: false
-draft: false
+draft: true
 tags:
   - "data-engineering"
   - "data-warehouse"
