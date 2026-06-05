@@ -1,6 +1,6 @@
 ---
 title: "데이터는 어떻게 흘러들어올까? Ingestion 이해하기"
-pubDatetime: 2026-05-24T00:20:00+09:00
+pubDatetime: 2026-05-25T10:00:00+09:00
 featured: false
 draft: false
 tags:
