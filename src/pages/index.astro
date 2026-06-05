@@ -23,6 +23,34 @@ const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
+
+const topicCards = [
+  {
+    title: "데이터 엔지니어링",
+    desc: "데이터 흐름, 파이프라인, DW/DL/Lakehouse를 구조로 정리합니다.",
+    tag: "data-engineering",
+  },
+  {
+    title: "백엔드 / CS",
+    desc: "서비스 구조, API, 보안, Java 기반 문제 해결을 기록합니다.",
+    tag: "backend",
+  },
+  {
+    title: "오픈소스 기여",
+    desc: "코드베이스를 읽고 PR을 준비하며 배운 판단 기준을 남깁니다.",
+    tag: "open-source",
+  },
+  {
+    title: "AI 활용 / 생산성",
+    desc: "AI를 사고 보조 도구와 개인 작업 시스템으로 쓰는 방법을 실험합니다.",
+    tag: "ai",
+  },
+  {
+    title: "커리어 / 회고",
+    desc: "주니어 개발자로 성장하며 쌓은 학습, 협업, 회고를 정리합니다.",
+    tag: "career",
+  },
+];
 ---
 
 <Layout>
@@ -73,6 +101,40 @@ const homePath = getRelativeLocaleUrl(locale, "");
           </div>
         )
       }
+    </section>
+
+    <section id="topics" class="border-border border-b py-10">
+      <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-accent mb-2 text-sm font-medium tracking-wide">
+            Topic Navigation
+          </p>
+          <h2 class="text-2xl font-semibold tracking-wide">주제별 보기</h2>
+        </div>
+        <a
+          href={getRelativeLocaleUrl(locale, "tags")}
+          class="text-muted-foreground hover:text-accent text-sm underline decoration-dashed underline-offset-4"
+        >
+          전체 태그 보기
+        </a>
+      </div>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          topicCards.map(topic => (
+            <li>
+              <a
+                href={getRelativeLocaleUrl(locale, `tags/${topic.tag}`)}
+                class="border-border hover:border-accent hover:bg-card block h-full rounded-xl border p-5 transition-colors"
+              >
+                <h3 class="text-lg font-semibold">{topic.title}</h3>
+                <p class="text-muted-foreground mt-3 text-sm leading-6">
+                  {topic.desc}
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     {
