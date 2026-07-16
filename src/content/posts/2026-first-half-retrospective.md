@@ -77,7 +77,7 @@ description: "SSAFY 코치 종료부터 라인게임즈 인턴 시작까지, AI 
 
 가락시장에서 손님들 트럭에 과일 상자 나르고 전동차 운전하는 일을 하게 됩니다.
 
-![8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c.jpeg](_assets/2026-first-half-retrospective/8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c.jpeg)![8F062D9E-CD47-440F-9285-0AA7C3546646_1_105_c.jpeg](_assets/2026-first-half-retrospective/8F062D9E-CD47-440F-9285-0AA7C3546646_1_105_c.jpeg)![8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c 1.jpeg](_assets/2026-first-half-retrospective/8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c 1.jpeg)
+![8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c.jpeg](_assets/2026-first-half-retrospective/8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c.jpeg)![8F062D9E-CD47-440F-9285-0AA7C3546646_1_105_c.jpeg](_assets/2026-first-half-retrospective/8F062D9E-CD47-440F-9285-0AA7C3546646_1_105_c.jpeg)![8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c-1.jpeg](_assets/2026-first-half-retrospective/8FEEDFD3-A553-4091-91EA-8F12F07B3946_4_5005_c-1.jpeg)
 
 이때 정말 힘든 하루하루였는데, 일을 하면서 가장 고민이 됐던 게 '재고 파악'이었습니다. 이걸 CCTV로 자동화하면 어떨까 생각했는데, 과일 상자가 매대 정리나 판매 때문에 계속 움직이다 보니 인식도 어렵고 무엇보다 도입 비용이 너무 비싸더라구요. 배보다 배꼽이 더 크겠다는 생각이 들었습니다. 이렇게 IT와 멀리 떨어져 있는 도메인에서는 자동화를 어떻게 현실적으로 가져가야 할지 치열하게 고민해보게 됐습니다.
 
@@ -105,8 +105,8 @@ LINE의 오픈소스인 armeria.
 
 주제는 'AI를 활용한 오픈소스 기여'였는데, 제가 가장 강조한 건 'ADR(Architecture Decision Record) 문서 관리'였습니다. AI가 코드의 맥락을 파악하게 만드는 데도 필요하고, 결국 사람이 히스토리를 파악하는 데도 문서화가 정말 핵심이라는 내용을 공유해 많은 공감을 받았습니다.
 
-![Pasted image 20260715215027.png](_assets/2026-first-half-retrospective/Pasted image 20260715215027.png)
-![Pasted image 20260715215031.png](_assets/2026-first-half-retrospective/Pasted image 20260715215031.png)
+![Pasted-image-20260715215027.png](_assets/2026-first-half-retrospective/Pasted-image-20260715215027.png)
+![Pasted-image-20260715215031.png](_assets/2026-first-half-retrospective/Pasted-image-20260715215031.png)
 
 
 
@@ -122,7 +122,7 @@ Armeria로 탄력을 받아 지속해서 기여를 하면서 아파치 재단 �
 
 여러 쇼핑몰의 상품 가격과 중고 데이터를 수집하고 비교해 주는 AI 쇼핑 서비스인 '별찌(Byeolchi)' 프로젝트도 시작하고, Hermes(상주 에이전트 워크플로)도 도입했습니다.
 
-![Pasted image 20260715234314.png](_assets/2026-first-half-retrospective/Pasted image 20260715234314.png)
+![Pasted-image-20260715234314.png](_assets/2026-first-half-retrospective/Pasted-image-20260715234314.png)
 
 특히 5~6월에 집중했던 '별찌' 프로젝트는 2인 팀으로 진행하면서 AI를 개발 파트너로 잘 써먹기 위해 '하네스형(Harness) AI 협업 체계'를 직접 고민해 본 뜻깊은 경험이었습니다. 단순히 AI에게 코드만 짜달라고 하는 게 아니라, Linear 이슈 범위, PR 템플릿, ADR(아키텍처 결정 기록), 그리고 `AGENTS.md` 파일 을 두고 AI가 규칙에 맞게 일할 수 있는 환경(하네스)을 설계했어요.
 
