@@ -89,10 +89,13 @@ Wonder 질문과 Reflect 패치
 6. [실행→평가 연계 테스트](https://github.com/Q00/ouroboros/blob/v0.50.7/tests/unit/mcp/tools/test_run_evaluate_chaining.py)
 7. [PyPI 0.50.7](https://pypi.org/project/ouroboros-ai/0.50.7/)과 [v0.50.7 릴리스](https://github.com/Q00/ouroboros/releases/tag/v0.50.7)
 8. 태그 커밋의 GitHub Actions 검사 결과
+9. 배포 후 보강 검증에 사용한 [main 커밋 `525a06a`](https://github.com/Q00/ouroboros/tree/525a06ab32895e60e6bf789926663387609052ee)
 
 PyPI에서는 `ouroboros-ai 0.50.7`, Python `>=3.12`, 2026년 8월 2일 배포를 확인했습니다. 같은 커밋의 GitHub Actions에서는 Python 3.12·3.13·3.14 테스트와 Ruff, MyPy 검사가 성공했습니다.
 
-다만 이 글을 작성한 머신은 Python 3.11이고 Ouroboros CLI가 설치돼 있지 않았습니다. 환경을 임의로 바꾸지 않기 위해 직접 설치·실행한 사용기처럼 쓰지 않았습니다. 아래 과정은 문서에 나온 사용법을 코드와 테스트로 교차 확인한 결과입니다.
+글 배포 후에는 `main` 커밋 `525a06a`에서 Interview 상태 저장, Seed 모델, 평가 모델, 1세대 lineage 생성을 다루는 공식 테스트를 별도로 실행했고 `126 passed`를 확인했습니다. 이 결과는 단계 사이의 연결을 보강하는 근거이며, `v0.50.7` 태그 전체를 로컬에서 검증했다는 뜻은 아닙니다.
+
+초안 작성 시 이 머신의 시스템 기본 Python은 3.11이었고 전역 Ouroboros CLI도 없었습니다. 환경을 임의로 바꾸지 않기 위해 Interview부터 Evolve까지 직접 실행한 사용기처럼 쓰지 않았습니다. 이후 격리 환경에서 수행한 것은 위에 밝힌 선택 테스트뿐입니다. 아래 과정은 문서에 나온 사용법을 코드와 테스트로 교차 확인한 결과입니다.
 
 ## 1. Interview: 요구사항과 코드에서 관찰한 사실을 구분한다
 
@@ -120,6 +123,8 @@ Ouroboros가 질문을 만들고, 호스트 에이전트가 코드베이스나 �
 `v0.50.7` 릴리스에는 `[from-code]`나 `[from-repo]`로 관찰한 사실이 사용자가 결정하지 않은 acceptance criterion으로 들어가지 않도록 수정한 내용이 있습니다. 릴리스 설명의 주장만 있는 것도 아닙니다. 자동 Seed 합성 코드는 인터뷰의 `SeedDraftLedger`에서 목표, 제약, non-goal, AC, 검증 계획, 실패 모드를 꺼내 Seed를 구성하며 결정 출처 통계도 메타데이터에 남깁니다.
 
 이 단계의 결과는 단순 대화 전문이 아닙니다.
+
+MCP 경로에서는 `InterviewState`를 기본적으로 `~/.ouroboros/data/interview_<interview_id>.json`에 저장합니다. `ooo seed <session-id>`는 이 JSON을 다시 읽어 요구사항을 추출합니다.
 
 - 확정된 목표
 - 아직 약하거나 충돌하는 항목
@@ -171,7 +176,7 @@ metadata:
 
 코드에서는 `Seed`, `SeedMetadata`, `AcceptanceCriterionSpec`을 `frozen=True`인 Pydantic 모델로 정의합니다. 실행 중 기존 Seed 객체를 몰래 고치는 방식이 아니라, 변경이 필요하면 새로운 Seed를 생성하는 구조입니다.
 
-Seed 파일은 일반적인 인터뷰 흐름에서 `~/.ouroboros/seeds/<seed_id>.yaml`에 저장됩니다. 이후 실행기는 파일 경로나 YAML 내용을 받아 파싱하고 검증합니다.
+여기에는 저장 경로에 관한 중요한 구분이 있습니다. MCP의 `ooo seed` 기본 경로는 **Seed YAML을 도구 응답으로 반환**하며 자동으로 파일을 만들지는 않습니다. 별도의 `SeedGenerator.save_seed()`를 호출하면 기본 경로가 `~/.ouroboros/seeds/<seed_id>.yaml`입니다. 이후 실행기는 응답에서 얻은 인라인 YAML이나 저장한 파일 경로를 받아 다시 파싱하고 검증합니다.
 
 ### Seed가 실제로 두 역할을 수행한다
 
@@ -189,7 +194,7 @@ Evaluate가 보는 것: 무엇을 만족해야 통과인가
 Seed 실행은 호스트 안에서 다음과 같은 `ooo run` 흐름으로 시작합니다.
 
 ```text
-ooo run <seed-file>
+ooo run <seed-yaml-or-file>
 ```
 
 내부적으로는 Seed를 검증한 뒤 작업을 백그라운드 실행하고 다음 식별자를 만듭니다.
@@ -229,6 +234,8 @@ executed_unverified ≠ verified
 ```text
 ooo evaluate <session-id>
 ```
+
+코드 수준의 Evaluate 입력 계약에는 실행 artifact와 AC뿐 아니라 원래의 `seed_content`도 포함될 수 있습니다. `session_id`만으로는 세션의 `seed_id`를 보강할 수는 있어도 목표·제약·AC 전체가 자동 복원되지는 않습니다. 따라서 독립 평가를 호출할 때는 원 Seed YAML을 함께 전달하는 편이 정확합니다.
 
 ### Stage 1: Mechanical
 
