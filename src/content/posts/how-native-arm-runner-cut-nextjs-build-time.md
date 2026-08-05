@@ -98,22 +98,71 @@ build-and-push:
 - uses: docker/setup-qemu-action@v3
 ```
 
-파일 복사처럼 단순한 Docker 단계에서는 이 차이가 크게 보이지 않을 수 있습니다. 하지만 `next build`는 JavaScript 실행, 번들링, 정적 페이지 생성처럼 CPU를 계속 사용하는 작업입니다. 이 구간 전체가 QEMU 에뮬레이션 위에서 실행되고 있었습니다.
+`platforms: linux/arm64`를 지정한다고 GitHub runner 자체가 ARM으로 바뀌는 것은 아닙니다. 이 값은 Buildx에 **ARM64용 이미지 파일시스템과 실행 파일을 만들라**고 알려줄 뿐입니다. 실제 빌드를 수행하는 호스트는 여전히 `ubuntu-latest`, 즉 x64였습니다.
 
-변경 전 로그에도 x64 환경이라는 흔적이 남아 있었습니다.
+### ARM64 컨테이너의 RUN은 어디서 실행될까
 
-```text
-JAVA_HOME_21_X64: .../x64
-platforms: linux/arm64
+`docker/setup-qemu-action`은 x64 호스트에 `qemu-aarch64` 같은 사용자 모드 에뮬레이터를 설치하고, ARM64 실행 파일 형식을 Linux `binfmt_misc`에 등록합니다. Docker 문서의 설명처럼 등록이 끝나면 컨테이너 안에서도 이 과정이 투명하게 동작합니다.
+
+BuildKit이 ARM64 base image를 가져온 뒤 Dockerfile을 처리한다고 해보겠습니다.
+
+```dockerfile
+FROM node:24-alpine
+COPY . .
+RUN npm run build
 ```
 
-제가 찾은 병목은 EC2의 성능이 아니라 다음 구조였습니다.
+`COPY`는 파일을 옮기는 작업이라 ARM64 프로그램을 실행하지 않습니다. 반면 `RUN`은 이미지 안의 `/bin/sh`와 Node.js를 실제로 실행합니다. 이 파일들은 ARM64 ELF 실행 파일입니다.
+
+x64 Linux 커널은 ARM64 ELF를 직접 실행할 수 없습니다. 대신 `binfmt_misc` 등록을 보고 `qemu-aarch64`에 실행을 넘깁니다. 그래서 Dockerfile에는 QEMU 명령이 보이지 않아도 다음 경로가 만들어집니다.
+
+```text
+Dockerfile의 RUN npm run build
+  → ARM64 /bin/sh 실행
+  → ARM64 Node.js 실행
+  → x64 커널이 binfmt_misc 규칙 확인
+  → qemu-aarch64가 ARM64 명령을 x64에서 실행
+```
+
+QEMU 사용자 모드는 ARM 운영체제 전체를 띄우는 가상 머신이 아닙니다. ARM64 사용자 프로그램의 CPU 명령을 호스트에서 실행할 수 있게 변환하고, 프로그램이 파일·메모리·스레드를 요청하면 guest system call을 x64 호스트의 system call로 연결합니다. 이때 필요한 경우 endian과 32/64비트 인자 크기도 조정합니다.
+
+CPU 명령 변환에는 QEMU의 TCG(Tiny Code Generator)가 쓰입니다. 처음 만난 guest code를 작은 Translation Block 단위로 호스트 명령 집합에 맞게 바꾸고, 변환된 block을 재사용합니다.
+
+```text
+ARM64 instruction block
+  → QEMU TCG의 중간 표현
+  → x64 instruction block
+  → 호스트 CPU에서 실행
+```
+
+한번 번역한 block을 재사용하더라도 native 실행과 같아지는 것은 아닙니다. 새 code path의 번역, translation block 사이의 제어 이동, guest CPU 상태 관리, system call 중개가 계속 필요합니다. 실제 프로그램이 실행되는 동안 QEMU가 이 경계에 계속 개입합니다. 따라서 QEMU 설치 step 자체는 변경 전 workflow에서 5초밖에 걸리지 않았지만, 그 뒤의 `next build`는 188.3초가 걸렸습니다. 병목은 **QEMU를 설치하는 시간**이 아니라 **QEMU 위에서 빌드 프로그램을 실행하는 시간**이었습니다.
+
+### 왜 Next.js 빌드에서 차이가 크게 벌어졌을까
+
+변경 전 로그에는 Next.js 16.3.0과 Turbopack이 표시됩니다. Turbopack은 JavaScript와 TypeScript를 처리하는 Rust 기반 번들러입니다. `next build`에서는 소스 해석과 변환, client/server bundle 생성, route 분석, 정적 페이지 생성 같은 작업이 이어집니다.
+
+파일을 내려받거나 이미지를 push하는 작업은 네트워크 대기 비중이 큽니다. 반면 이 빌드 구간은 Node.js와 Turbopack이 CPU 명령을 계속 실행합니다. ARM64 명령을 x64에서 변환하는 비용이 작업 전체에 누적되기 좋은 구간입니다. Docker 공식 문서도 QEMU 에뮬레이션은 compilation이나 compression처럼 compute-heavy한 작업에서 native build보다 훨씬 느릴 수 있다고 경고합니다.
+
+로그에는 이 원인을 좁힐 수 있는 세 개의 숫자가 있었습니다.
+
+| 실행 위치            | 아키텍처 경로                     | `npm run build` |
+| -------------------- | --------------------------------- | --------------: |
+| `verify` job         | x64에서 x64 Node.js 실행          |            13초 |
+| 변경 전 Docker build | x64에서 QEMU로 ARM64 Node.js 실행 |         188.3초 |
+| 변경 후 Docker build | ARM64에서 ARM64 Node.js 실행      |          13.7초 |
+
+첫 번째 값은 GitHub Actions step 단위 시간이고, 나머지 두 값은 Docker layer 로그라 완전히 같은 측정은 아닙니다. 그래도 애플리케이션 빌드가 원래부터 3분짜리였던 것은 아니라는 단서는 됩니다. native x64와 native ARM에서는 모두 13초대였고, 아키텍처가 교차한 QEMU 경로에서만 188.3초가 걸렸습니다.
+
+제가 찾은 병목은 EC2의 성능이 아니라 다음 실행 경로였습니다.
 
 ```text
 x64 GitHub runner
-  └─ QEMU로 ARM64 명령 에뮬레이션
-       └─ Docker 안에서 next build 실행
+  └─ binfmt_misc가 ARM64 실행 파일 감지
+       └─ qemu-aarch64가 명령과 system call을 중개
+            └─ Node.js와 Turbopack이 next build 수행
 ```
+
+native ARM runner로 바꾸면 `platforms: linux/arm64` 설정은 그대로지만 실행 경로가 달라집니다. ARM64 커널이 ARM64 Node.js와 Turbopack을 직접 실행하므로 `binfmt_misc → qemu-aarch64` 우회가 사라집니다.
 
 ---
 
@@ -300,4 +349,8 @@ platforms: linux/arm64 # ARM64
 - [변경 전 QEMU 배포 로그](https://github.com/JAEKWANG97/dropship-shop/actions/runs/31017383652)
 - [변경 후 native ARM 배포 로그](https://github.com/JAEKWANG97/dropship-shop/actions/runs/31021928941)
 - [현재 배포 workflow](https://github.com/JAEKWANG97/dropship-shop/blob/main/.github/workflows/deploy.yml)
+- [Docker multi-platform builds](https://docs.docker.com/build/building/multi-platform/) — QEMU, `binfmt_misc`, native node 비교
+- [QEMU User space emulator](https://www.qemu.org/docs/master/user/main.html) — system call translation
+- [QEMU TCG Translator Internals](https://www.qemu.org/docs/master/devel/tcg.html) — Translation Block과 동적 명령 변환
+- [Next.js Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) — Rust 기반 번들러 구조
 - [GitHub-hosted runners reference](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
