@@ -104,6 +104,10 @@ build-and-push:
 
 `platforms: linux/arm64`를 지정한다고 GitHub runner 자체가 ARM으로 바뀌는 것은 아닙니다. 이 값은 Buildx에 **ARM64용 이미지 파일시스템과 실행 파일을 만들라**고 알려줄 뿐입니다. 실제 빌드를 수행하는 호스트는 여전히 `ubuntu-latest`, 즉 x64였습니다.
 
+![x64 runner에서 QEMU를 거쳐 ARM64 Next.js 빌드를 실행한 변경 전 구조와 ARM64 runner에서 직접 실행한 변경 후 구조](_assets/how-native-arm-runner-cut-nextjs-build-time/qemu-execution-path.svg)
+
+_변경 전에는 x64 호스트와 ARM64 빌드 대상 사이를 QEMU가 중개했고, 변경 후에는 같은 ARM64 아키텍처에서 직접 실행했습니다._
+
 ### ARM64 컨테이너의 RUN은 어디서 실행될까
 
 `docker/setup-qemu-action`은 x64 호스트에 `qemu-aarch64` 같은 사용자 모드 에뮬레이터를 설치하고, ARM64 실행 파일 형식을 Linux `binfmt_misc`에 등록합니다. Docker 문서의 설명처럼 등록이 끝나면 컨테이너 안에서도 이 과정이 투명하게 동작합니다.
@@ -156,10 +160,6 @@ ARM64 instruction block
 | 변경 후 Docker build | ARM64에서 ARM64 Node.js 실행      |          13.7초 |
 
 첫 번째 값은 GitHub Actions step 단위 시간이고, 나머지 두 값은 Docker layer 로그라 완전히 같은 측정은 아닙니다. 그래도 애플리케이션 빌드가 원래부터 3분짜리였던 것은 아니라는 단서는 됩니다. native x64와 native ARM에서는 모두 13초대였고, 아키텍처가 교차한 QEMU 경로에서만 188.3초가 걸렸습니다.
-
-![x64 runner에서 QEMU를 거쳐 ARM64 Next.js 빌드를 실행한 변경 전 구조와 ARM64 runner에서 직접 실행한 변경 후 구조](_assets/how-native-arm-runner-cut-nextjs-build-time/qemu-execution-path.svg)
-
-_이미지와 Dockerfile은 그대로 두고, `binfmt_misc → qemu-aarch64 → TCG` 우회만 제거했습니다._
 
 native ARM runner로 바꾸면 `platforms: linux/arm64` 설정은 그대로지만 실행 경로가 달라집니다. ARM64 커널이 ARM64 Node.js와 Turbopack을 직접 실행하므로 `binfmt_misc → qemu-aarch64` 우회가 사라집니다.
 
