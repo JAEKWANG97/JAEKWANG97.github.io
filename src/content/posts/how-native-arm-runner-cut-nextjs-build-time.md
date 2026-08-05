@@ -36,6 +36,10 @@ description: "운영 중인 쇼핑몰의 배포 로그에서 QEMU 병목을 찾�
 → 실제 운영 배포로 전후 비교하기
 ```
 
+![전체 배포에서 Docker layer까지 로그를 따라가 병목을 좁히고 native ARM runner로 검증한 과정](_assets/how-native-arm-runner-cut-nextjs-build-time/log-to-bottleneck.svg)
+
+_전체 배포를 한꺼번에 보지 않고 job, step, Docker layer 순서로 범위를 좁혔습니다._
+
 ---
 
 ## 먼저 전체 배포 시간을 단계별로 나눠봤다
@@ -153,14 +157,9 @@ ARM64 instruction block
 
 첫 번째 값은 GitHub Actions step 단위 시간이고, 나머지 두 값은 Docker layer 로그라 완전히 같은 측정은 아닙니다. 그래도 애플리케이션 빌드가 원래부터 3분짜리였던 것은 아니라는 단서는 됩니다. native x64와 native ARM에서는 모두 13초대였고, 아키텍처가 교차한 QEMU 경로에서만 188.3초가 걸렸습니다.
 
-제가 찾은 병목은 EC2의 성능이 아니라 다음 실행 경로였습니다.
+![x64 runner에서 QEMU를 거쳐 ARM64 Next.js 빌드를 실행한 변경 전 구조와 ARM64 runner에서 직접 실행한 변경 후 구조](_assets/how-native-arm-runner-cut-nextjs-build-time/qemu-execution-path.svg)
 
-```text
-x64 GitHub runner
-  └─ binfmt_misc가 ARM64 실행 파일 감지
-       └─ qemu-aarch64가 명령과 system call을 중개
-            └─ Node.js와 Turbopack이 next build 수행
-```
+_이미지와 Dockerfile은 그대로 두고, `binfmt_misc → qemu-aarch64 → TCG` 우회만 제거했습니다._
 
 native ARM runner로 바꾸면 `platforms: linux/arm64` 설정은 그대로지만 실행 경로가 달라집니다. ARM64 커널이 ARM64 Node.js와 Turbopack을 직접 실행하므로 `binfmt_misc → qemu-aarch64` 우회가 사라집니다.
 

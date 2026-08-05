@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">로그에서 병목을 한 줄까지 좁힌 과정</title>
+  <desc id="desc">전체 배포 9분 38초에서 build-and-push, Web Docker 이미지, npm run build 순서로 병목을 좁히고 workflow 두 줄을 바꿔 13.7초로 줄인 과정.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#16a34a"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; fill: #0f172a; }
+      .title { font-size: 52px; font-weight: 800; }
+      .subtitle { font-size: 26px; fill: #475569; }
+      .step { font-size: 24px; font-weight: 700; fill: #64748b; }
+      .label { font-size: 29px; font-weight: 800; }
+      .time { font-size: 42px; font-weight: 900; }
+      .small { font-size: 23px; fill: #475569; }
+      .code { font-family: "Google Sans Code", "Noto Sans Mono CJK KR", monospace; font-size: 25px; }
+      .removed { fill: #fca5a5; }
+      .added { fill: #86efac; }
+      .result { font-size: 58px; font-weight: 900; }
+      .takeaway { font-size: 26px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <text x="90" y="78" class="title">감이 아니라 로그로: 병목을 한 줄까지 좁혔다</text>
+  <text x="90" y="120" class="subtitle">전체 시간을 한꺼번에 보지 않고 job → step → Docker layer 순서로 범위를 줄였다</text>
+
+  <!-- primary flow arrows below nodes -->
+  <path d="M360 355 L445 355" stroke="#64748b" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M760 355 L845 355" stroke="#64748b" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M1160 355 L1245 355" stroke="#64748b" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M1390 480 C1390 535 1040 555 720 580" stroke="#2563eb" stroke-width="6" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M1010 690 L1080 690" stroke="#16a34a" stroke-width="6" fill="none" marker-end="url(#arrow-green)"/>
+
+  <text x="205" y="208" text-anchor="middle" class="step">1 · RUN</text>
+  <rect x="70" y="230" width="290" height="250" rx="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="215" y="285" text-anchor="middle" class="label">전체 배포</text>
+  <text x="215" y="350" text-anchor="middle" class="time" fill="#334155">9분 38초</text>
+  <text x="215" y="404" text-anchor="middle" class="small">verify → build → deploy</text>
+  <text x="215" y="435" text-anchor="middle" class="small">병목 위치는 아직 모름</text>
+
+  <text x="605" y="208" text-anchor="middle" class="step">2 · JOB</text>
+  <rect x="470" y="230" width="290" height="250" rx="26" fill="#eff6ff" stroke="#93c5fd" stroke-width="3" filter="url(#shadow)"/>
+  <text x="615" y="285" text-anchor="middle" class="label">build-and-push</text>
+  <text x="615" y="350" text-anchor="middle" class="time" fill="#1d4ed8">5분 11초</text>
+  <text x="615" y="404" text-anchor="middle" class="small">세 job 중 최장 구간</text>
+  <text x="615" y="435" text-anchor="middle" class="small">Docker step 확인</text>
+
+  <text x="1005" y="208" text-anchor="middle" class="step">3 · STEP</text>
+  <rect x="870" y="230" width="290" height="250" rx="26" fill="#fff7ed" stroke="#fdba74" stroke-width="3" filter="url(#shadow)"/>
+  <text x="1015" y="285" text-anchor="middle" class="label">Web Docker image</text>
+  <text x="1015" y="350" text-anchor="middle" class="time" fill="#c2410c">3분 41초</text>
+  <text x="1015" y="404" text-anchor="middle" class="small">API image보다 느림</text>
+  <text x="1015" y="435" text-anchor="middle" class="small">layer 로그 확인</text>
+
+  <text x="1405" y="208" text-anchor="middle" class="step">4 · LAYER</text>
+  <rect x="1270" y="230" width="270" height="250" rx="26" fill="#fef2f2" stroke="#f87171" stroke-width="4" filter="url(#shadow)"/>
+  <text x="1405" y="285" text-anchor="middle" class="label">RUN npm run build</text>
+  <text x="1405" y="350" text-anchor="middle" class="time" fill="#dc2626">188.3초</text>
+  <text x="1405" y="404" text-anchor="middle" class="code">next build</text>
+  <text x="1405" y="435" text-anchor="middle" class="small">병목을 한 줄로 특정</text>
+
+  <rect x="250" y="580" width="760" height="220" rx="28" fill="#ffffff" stroke="#93c5fd" stroke-width="3" filter="url(#shadow)"/>
+  <text x="300" y="630" class="label" fill="#1d4ed8">가장 작은 변경</text>
+  <rect x="300" y="660" width="660" height="95" rx="14" fill="#0f172a"/>
+  <text x="630" y="698" text-anchor="middle" class="code removed">- ubuntu-latest + QEMU</text>
+  <text x="630" y="735" text-anchor="middle" class="code added">+ ubuntu-24.04-arm · native ARM</text>
+
+  <rect x="1080" y="580" width="410" height="220" rx="28" fill="#f0fdf4" stroke="#4ade80" stroke-width="4" filter="url(#shadow)"/>
+  <text x="1285" y="635" text-anchor="middle" class="label" fill="#166534">같은 layer 재측정</text>
+  <text x="1285" y="710" text-anchor="middle" class="result" fill="#16a34a">13.7초</text>
+  <text x="1285" y="757" text-anchor="middle" class="small">92.7% 단축</text>
+
+  <text x="800" y="860" text-anchor="middle" class="takeaway" fill="#334155">큰 구조를 바꾸기 전에, 가장 느린 로그 한 줄을 설명하는 변수만 바꿨다</text>
+</svg>
