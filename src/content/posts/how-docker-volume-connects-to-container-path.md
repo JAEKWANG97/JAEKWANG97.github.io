@@ -8,7 +8,7 @@ tags:
   - "volume"
   - "aws"
   - "devops"
-description: "-v ${CONTAINER_NAME}-runtime:/var/lib/app 한 줄이 셸 변수 치환을 거쳐 Docker named volume을 만들고, 컨테이너 안의 경로와 연결되는 과정을 쉽게 풀어봅니다."
+description: "-v ${CONTAINER_NAME}-runtime:/var/lib/app 한 줄이 Docker named volume을 만들고, 컨테이너 안의 경로와 연결되는 과정을 쉽게 풀어봅니다."
 ---
 
 > 이 글은 실제 배포 설정에서 궁금했던 내용을 바탕으로 작성했으며, 프로젝트명과 경로는 일반화했습니다.
@@ -21,12 +21,7 @@ description: "-v ${CONTAINER_NAME}-runtime:/var/lib/app 한 줄이 셸 변수 �
 -v ${CONTAINER_NAME}-runtime:/var/lib/app
 ```
 
-짧은 한 줄인데 처음에는 여러 가지가 한꺼번에 헷갈렸습니다.
-
-- `${CONTAINER_NAME}`은 Docker가 알아서 채우는 값일까?
-- `-runtime`은 Docker의 특별한 문법일까?
-- 콜론 앞과 뒤는 각각 무엇을 뜻할까?
-- 컨테이너를 지웠는데 SQLite 파일은 왜 남아 있을까?
+짧은 한 줄이지만 실제 동작을 떠올리기는 쉽지 않았습니다. 콜론 앞의 이름은 EC2에서 어떤 저장공간이 되고, 오른쪽 경로와는 어떻게 연결될까요? 컨테이너를 지웠는데 SQLite 파일이 남는 이유도 궁금했습니다.
 
 결론부터 말하면 이 한 줄은 이렇게 읽을 수 있습니다.
 
@@ -85,38 +80,9 @@ Docker Volume 이름           컨테이너 내부 경로
 
 둘 다 경로처럼 보일 수 있지만, 왼쪽의 `app-staging-runtime`은 호스트 경로가 아니라 **named volume의 이름**입니다.
 
-## 1단계: 셸이 환경변수를 글자로 바꾼다
+## 1단계: Docker가 실제로 받는 명령부터 보기
 
-`${CONTAINER_NAME}`은 Docker 문법이 아닙니다. Docker가 명령을 받기 전에 셸이 환경변수를 치환합니다.
-
-staging 배포에서 다음 값이 설정되어 있다고 해보겠습니다.
-
-```bash
-CONTAINER_NAME=app-staging
-```
-
-그러면 셸은 다음 표현을
-
-```bash
-${CONTAINER_NAME}-runtime
-```
-
-이 문자열로 바꿉니다.
-
-```text
-app-staging-runtime
-```
-
-여기서 `-runtime`은 Docker 예약어가 아닙니다. 저장공간의 용도를 알아보기 쉽게 사람이 붙인 이름일 뿐입니다.
-
-```text
-app-staging + -runtime
-= app-staging-runtime
-```
-
-## 2단계: Docker는 치환이 끝난 명령을 받는다
-
-셸의 변수 치환이 끝나면 Docker가 실제로 받는 명령은 다음과 비슷합니다.
+staging에서는 `CONTAINER_NAME=app-staging`이므로, 셸의 변수 치환이 끝난 뒤 Docker는 다음 명령을 받습니다. 여기서 `-runtime`은 Docker 예약어가 아니라 저장공간의 용도를 나타내려고 붙인 이름입니다.
 
 ```bash
 docker run \
@@ -146,7 +112,7 @@ docker run \
 
 다만 `my-storage`라는 이름만 보고 어느 컨테이너의 데이터인지 알아보기 어렵습니다. `${CONTAINER_NAME}-runtime`은 Docker의 기능이 아니라 **사람이 관계를 추적하기 쉽게 정한 이름 규칙**입니다.
 
-## 3단계: Docker가 Volume을 만들거나 재사용한다
+## 2단계: Docker가 Volume을 만들거나 재사용한다
 
 Docker는 `app-staging-runtime`이라는 이름의 Volume을 찾습니다.
 
@@ -171,7 +137,7 @@ docker volume inspect app-staging-runtime
 
 결과의 `Mountpoint`가 Docker 호스트에서 해당 Volume이 연결된 위치입니다. 이 영역은 Docker가 관리하므로 애플리케이션이 호스트 경로를 직접 알 필요는 없습니다.
 
-## 4단계: Volume이 컨테이너 안의 경로로 보인다
+## 3단계: Volume이 컨테이너 안의 경로로 보인다
 
 Docker는 방금 찾거나 만든 Volume을 컨테이너 안의 `/var/lib/app`에 마운트합니다.
 
