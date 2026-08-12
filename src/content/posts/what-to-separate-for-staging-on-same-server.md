@@ -3,7 +3,7 @@ title: "같은 서버에 staging을 추가할 때 정말 분리해야 하는 것
 pubDatetime: 2026-08-11T21:32:15+09:00
 modDatetime: 2026-08-13T00:25:00+09:00
 featured: false
-draft: false
+draft: true
 tags:
   - "docker"
   - "ci-cd"
