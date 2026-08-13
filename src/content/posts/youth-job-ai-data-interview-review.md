@@ -3,6 +3,7 @@ title: "미래청년일자리 AI·개발·데이터 면접 후기: 실제 질문
 pubDatetime: 2026-06-17T20:41:13+09:00
 featured: false
 draft: false
+category: "internship"
 tags:
   - "interview"
   - "career"

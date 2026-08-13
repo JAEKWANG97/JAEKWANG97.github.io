@@ -3,6 +3,7 @@ title: "Codex를 그냥 쓰지 말고 작은 작업 루프로 쓰기"
 pubDatetime: 2026-06-25T12:20:00+09:00
 featured: false
 draft: false
+category: "project"
 tags:
   - "ai"
   - "codex"
@@ -11,6 +12,7 @@ tags:
   - "developer-workflow"
 description: "Codex를 단순히 코드 작성 도구로 쓰는 대신, 테스트 재현, 최소 수정, 재검증, 중단 조건을 가진 작은 작업 루프로 사용하는 방법을 정리했습니다."
 ---
+
 ## 들어가며
 
 AI 코딩 도구를 쓰다 보면 처음에는 자꾸 이렇게 말하게 됩니다.
@@ -279,12 +281,14 @@ loop-run-log.md
 # Agent Instructions
 
 ## Project rules
+
 - Do not change public API without approval.
 - Do not add dependencies without approval.
 - Prefer minimal diffs.
 - Run tests before reporting success.
 
 ## Test commands
+
 - Unit tests: npm test
 - Lint: npm run lint
 - Typecheck: npm run typecheck
@@ -296,11 +300,13 @@ loop-run-log.md
 # Loop Policy
 
 ## Allowed loops
+
 - Daily Triage: report-only
 - Failing Test Fix: max 3 attempts
 - PR Babysitter: report-only unless approved
 
 ## Stop conditions
+
 - Same error repeats 3 times
 - Dependency change required
 - DB migration required
@@ -308,6 +314,7 @@ loop-run-log.md
 - More than 5 files need changes
 
 ## Human approval required
+
 - package.json changes
 - schema changes
 - deployment
@@ -320,14 +327,17 @@ loop-run-log.md
 # Agent State
 
 ## Current focus
+
 - Auth failing test investigation
 
 ## Last attempts
+
 - test_auth_signup failed due to missing validation branch
 - Attempted fix in src/auth/signup.ts
 - Still failing on duplicate email case
 
 ## Human inbox
+
 - Need decision: should duplicate email return 400 or 409?
 ```
 

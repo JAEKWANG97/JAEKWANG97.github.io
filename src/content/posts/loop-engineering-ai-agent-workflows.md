@@ -3,6 +3,7 @@ title: "AI에게 일을 맡긴다는 건 프롬프트가 아니라 루프를 설
 pubDatetime: 2026-06-25T12:00:00+09:00
 featured: false
 draft: false
+category: "project"
 tags:
   - "ai"
   - "ai-agent"
@@ -11,6 +12,7 @@ tags:
   - "hermes"
 description: "Loop Engineering이라는 말을 프롬프트 유행어가 아니라 AI에게 일을 맡길 때 필요한 목표, 검증, 반복, 중단 조건의 설계 방식으로 정리했습니다."
 ---
+
 ## 들어가며
 
 요즘 AI 도구를 쓰다 보면 이런 말을 자주 보게 됩니다.

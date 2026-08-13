@@ -3,6 +3,7 @@ title: "Harness Engineering: AI가 일할 수 있는 실행 환경 설계하기"
 pubDatetime: 2026-05-29T21:52:10+09:00
 featured: false
 draft: false
+category: "project"
 mermaid: true
 tags:
   - "ai"

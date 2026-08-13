@@ -4,6 +4,7 @@ export default {
   nav: {
     home: "홈",
     posts: "글",
+    categories: "카테고리",
     tags: "태그",
     about: "소개",
     archives: "아카이브",

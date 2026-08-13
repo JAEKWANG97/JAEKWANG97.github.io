@@ -3,6 +3,7 @@ title: "개발을 시작하게 된 이야기"
 pubDatetime: 2026-06-18T15:06:36+09:00
 featured: false
 draft: false
+category: "internship"
 tags:
   - "retrospective"
   - "career"
@@ -73,17 +74,17 @@ description: "졸업작품, 데이터 수업, 데이콘, SSAFY를 거치며 처�
 
 지금 와서 모든 과정을 정확히 기억하진 못하지만, 여러 모델을 써보고, 데이터 전처리도 바꿔보고, 원핫인코딩도 해보고, 이것저것 많이 시도했던 기억이 납니다.
 
-| 모델/도구 | 사용 기록 |
-|---|---:|
-| AutoGluon TabularPredictor | 여러 번 |
-| H2O AutoML | 1번 |
-| LightGBM / LGBM | 여러 번 |
-| CatBoost | 2번 |
-| XGBoost | 1번 |
-| GBM | 1번 |
-| RandomForest | 1번 |
-| Baseline | 1번 |
-| Sample submission | 1번 |
+| 모델/도구                  | 사용 기록 |
+| -------------------------- | --------: |
+| AutoGluon TabularPredictor |   여러 번 |
+| H2O AutoML                 |       1번 |
+| LightGBM / LGBM            |   여러 번 |
+| CatBoost                   |       2번 |
+| XGBoost                    |       1번 |
+| GBM                        |       1번 |
+| RandomForest               |       1번 |
+| Baseline                   |       1번 |
+| Sample submission          |       1번 |
 
 결국 가장 좋은 점수를 냈던 건 AutoGluon이었던 것 같습니다. 데이터 전처리부터 모델 선택, 앙상블까지 자동으로 해주는 도구라고 이해했는데, 당시에는 그 자체가 꽤 신기했습니다.
 

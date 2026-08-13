@@ -15,6 +15,12 @@ const posts = defineCollection({
       title: z.string(),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
+      category: z.enum([
+        "project",
+        "problem-solving",
+        "internship",
+        "open-source",
+      ]),
       tags: z.array(z.string()).default(["others"]),
       ogImage: image().or(z.string()).optional(),
       description: z.string(),

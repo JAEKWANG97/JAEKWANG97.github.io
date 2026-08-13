@@ -3,6 +3,7 @@ title: "검색에 필요한 DISPLAY_API_KEY는 왜 공개되어 있을까?"
 pubDatetime: 2026-06-02T14:00:00+09:00
 featured: false
 draft: false
+category: "project"
 tags:
   - "backend"
   - "api"

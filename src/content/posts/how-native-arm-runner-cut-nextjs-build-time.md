@@ -3,6 +3,7 @@ title: "QEMU로 3분 걸리던 Next.js 빌드를 어떻게 14초로 줄였을까
 pubDatetime: 2026-08-06T01:01:00+09:00
 featured: false
 draft: false
+category: "problem-solving"
 tags:
   - "devops"
   - "github-actions"

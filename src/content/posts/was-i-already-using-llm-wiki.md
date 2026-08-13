@@ -3,6 +3,7 @@ title: "LLM Wiki에서 무엇을 배웠고, 옵시디언에 어떻게 적용할�
 pubDatetime: 2026-08-05T00:10:00+09:00
 featured: false
 draft: false
+category: "project"
 tags:
   - "ai"
   - "llm"

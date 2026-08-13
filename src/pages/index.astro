@@ -7,45 +7,23 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
-import Card from "@/components/Card.astro";
+import EditorialPost from "@/components/EditorialPost.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
+import { CATEGORIES, getCategoryPosts } from "@/utils/categories";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
-const { socials, posts: postsConfig } = config;
-
+const { socials } = config;
 const locale = Astro.currentLocale ?? config.site.lang;
 const t = useTranslations(locale);
-
-const posts = await getCollection("posts");
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const sortedPosts = getSortedPosts(await getCollection("posts"));
+const leadPost = sortedPosts[0];
 const homePath = getRelativeLocaleUrl(locale, "");
-
-const topicCards = [
-  {
-    title: "백엔드 / CS",
-    desc: "서비스 구조, API, 보안, Java 기반 문제 해결을 기록합니다.",
-    tag: "backend",
-  },
-  {
-    title: "오픈소스 기여",
-    desc: "코드베이스를 읽고 PR을 준비하며 배운 판단 기준을 남깁니다.",
-    tag: "open-source",
-  },
-  {
-    title: "AI 활용 / 생산성",
-    desc: "AI를 사고 보조 도구와 개인 작업 시스템으로 쓰는 방법을 실험합니다.",
-    tag: "ai",
-  },
-  {
-    title: "커리어 / 회고",
-    desc: "주니어 개발자로 성장하며 쌓은 학습, 협업, 회고를 정리합니다.",
-    tag: "career",
-  },
-];
+const categorySections = CATEGORIES.map(category => ({
+  ...category,
+  posts: getCategoryPosts(sortedPosts, category.slug).slice(0, 3),
+})).filter(category => category.posts.length > 0);
 ---
 
 <Layout>
@@ -56,14 +34,18 @@ const topicCards = [
     data-home-path={homePath}
     class="app-layout"
   >
-    <section id="hero" class="border-border border-b pt-8 pb-8">
+    <section id="hero" class="border-border border-b pt-8 pb-10">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <p class="text-accent mb-3 text-sm font-medium tracking-wide">
-            Backend · AI · Open Source
+          <p
+            class="text-accent mb-3 text-xs font-semibold tracking-[0.22em] uppercase"
+          >
+            Work in progress · Issue 01
           </p>
-          <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
-            JAEKWANG97
+          <h1
+            class="max-w-2xl text-3xl leading-tight font-bold tracking-tight text-balance sm:text-5xl"
+          >
+            만들고, 막히고, 다시 이해한 것들
           </h1>
         </div>
         <a
@@ -81,10 +63,10 @@ const topicCards = [
           <span class="sr-only">RSS Feed</span>
         </a>
       </div>
-
       <p class="mt-5 max-w-2xl leading-7 text-pretty">
-        백엔드와 AI를 공부하고 오픈소스에 기여하며 배운 내용을 기록합니다. 문제를
-        해결하면서 이해한 구조와 CS 개념, 시행착오를 차근차근 정리합니다.
+        결과보다 그 결과에 도달한 과정을 기록합니다. 프로젝트를 만들며 내린
+        선택, 문제를 좁혀간 근거, 인턴으로 배운 일하는 방식, 오픈소스에서 읽은
+        코드의 문맥을 한곳에 모았습니다.
       </p>
       {
         socials.length > 0 && (
@@ -98,81 +80,83 @@ const topicCards = [
       }
     </section>
 
-    <section id="topics" class="border-border border-b py-10">
-      <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p class="text-accent mb-2 text-sm font-medium tracking-wide">
-            Topic Navigation
-          </p>
-          <h2 class="text-2xl font-semibold tracking-wide">주제별 보기</h2>
-        </div>
-        <a
-          href={getRelativeLocaleUrl(locale, "tags")}
-          class="text-muted-foreground hover:text-accent text-sm underline decoration-dashed underline-offset-4"
-        >
-          전체 태그 보기
-        </a>
-      </div>
-      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          topicCards.map(topic => (
-            <li>
-              <a
-                href={getRelativeLocaleUrl(locale, `tags/${topic.tag}`)}
-                class="border-border hover:border-accent hover:bg-card block h-full rounded-xl border p-5 transition-colors"
-              >
-                <h3 class="text-lg font-semibold">{topic.title}</h3>
-                <p class="text-muted-foreground mt-3 text-sm leading-6">
-                  {topic.desc}
+    {
+      leadPost && (
+        <section class="border-border border-b py-10">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <p class="text-accent text-xs font-semibold tracking-[0.2em] uppercase">
+                Editor's pick
+              </p>
+              <h2 class="mt-2 text-xl font-semibold">이번에 주목할 글</h2>
+            </div>
+            <span class="text-muted-foreground hidden text-xs tracking-[0.15em] uppercase sm:block">
+              JAEKWANG97 JOURNAL
+            </span>
+          </div>
+          <EditorialPost post={leadPost} prominent coverLabel="FEATURE" />
+        </section>
+      )
+    }
+
+    <section id="categories" class="py-4">
+      {
+        categorySections.map((category, index) => (
+          <section class="border-border border-b py-10 last:border-b-0">
+            <header class="mb-7 grid gap-3 sm:grid-cols-[8rem_1fr_auto] sm:items-end">
+              <p class="text-accent text-xs font-semibold tracking-[0.2em] uppercase">
+                {String(index + 1).padStart(2, "0")} · {category.eyebrow}
+              </p>
+              <div>
+                <h2 class="text-2xl font-semibold tracking-tight">
+                  {category.name}
+                </h2>
+                <p class="text-muted-foreground mt-2 max-w-xl text-sm leading-6">
+                  {category.description}
                 </p>
+              </div>
+              <a
+                href={getRelativeLocaleUrl(
+                  locale,
+                  `categories/${category.slug}`
+                )}
+                class="text-accent text-sm font-medium underline decoration-dashed underline-offset-4"
+              >
+                모두 보기 →
               </a>
-            </li>
-          ))
-        }
-      </ul>
+            </header>
+
+            <div class="grid gap-8 lg:grid-cols-[1.35fr_1fr]">
+              {category.posts[0] && (
+                <EditorialPost
+                  post={category.posts[0]}
+                  prominent
+                  showCover={false}
+                  coverLabel={category.eyebrow}
+                />
+              )}
+              <div class="border-border divide-border divide-y border-t lg:border-t-0">
+                {category.posts.slice(1).map(post => (
+                  <div class="py-5 first:pt-0 lg:first:pt-0">
+                    <EditorialPost post={post} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))
+      }
     </section>
 
-    {
-      featuredPosts.length > 0 && (
-        <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-border border-b": recentPosts.length > 0 },
-          ]}
-        >
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t.home.featured}
-          </h2>
-          <ul>
-            {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">
-            {t.home.recentPosts}
-          </h2>
-          <ul>
-            {recentPosts.slice(0, postsConfig.perIndex).map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    <div class="my-8 text-center">
-      <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
-        {t.home.allPosts}
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
+    <div class="my-10 flex flex-wrap justify-center gap-4 text-center">
+      <LinkButton href={getRelativeLocaleUrl(locale, "categories")}>
+        카테고리 둘러보기 <IconArrowRight
+          class="inline-block rtl:-rotate-180"
+        />
       </LinkButton>
+      <LinkButton href={getRelativeLocaleUrl(locale, "posts")}
+        >전체 글 보기</LinkButton
+      >
     </div>
   </main>
   <Footer />

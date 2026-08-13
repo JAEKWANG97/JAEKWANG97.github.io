@@ -3,6 +3,7 @@ title: "AI를 사고 발판으로 쓰기 위해 작업 방식을 바꿨다"
 pubDatetime: 2026-05-27T10:00:00+09:00
 featured: false
 draft: false
+category: "project"
 tags:
   - "ai"
   - "learning"

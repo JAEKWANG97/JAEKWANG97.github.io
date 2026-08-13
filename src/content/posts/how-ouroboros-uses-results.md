@@ -3,6 +3,7 @@ title: "Ouroboros는 AI 코딩을 어떻게 명세·평가 루프로 바꿀까?"
 pubDatetime: 2026-08-03T11:22:54+09:00
 featured: false
 draft: false
+category: "project"
 tags:
   - "ai"
   - "ai-agent"

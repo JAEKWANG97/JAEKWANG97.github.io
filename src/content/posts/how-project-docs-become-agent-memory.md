@@ -3,6 +3,7 @@ title: "AI 에이전트가 프로젝트의 결정을 잊지 않게 하려면?"
 pubDatetime: 2026-08-03T10:02:30+09:00
 featured: false
 draft: false
+category: "project"
 tags:
   - "ai"
   - "agents"
