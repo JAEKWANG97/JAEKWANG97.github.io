@@ -1,0 +1,91 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+
+const concepts = [
+  [
+    "01",
+    "AstroPaper Plus",
+    "현재 테마의 장점을 거의 그대로 두고 카테고리 탐색만 자연스럽게 더합니다.",
+    "original-plus",
+  ],
+  [
+    "02",
+    "조용한 에디토리얼",
+    "큰 한국어 제목과 여백, 얇은 구분선만으로 차분한 잡지 느낌을 냅니다.",
+    "quiet-editorial",
+  ],
+  [
+    "03",
+    "개발자 인덱스",
+    "글을 빠르게 훑는 데 집중한 밀도 높은 목록형 아카이브입니다.",
+    "developer-index",
+  ],
+  [
+    "04",
+    "소프트 카드",
+    "과하지 않은 카드와 색면으로 카테고리의 차이를 부드럽게 보여줍니다.",
+    "soft-cards",
+  ],
+  [
+    "05",
+    "작업 노트",
+    "프로젝트와 문제 해결 과정을 시간순 작업 기록처럼 보여줍니다.",
+    "work-notes",
+  ],
+  [
+    "06",
+    "케이스 스터디",
+    "대표 경험을 포트폴리오 사례처럼 전면에 두고 판단과 결과를 강조합니다.",
+    "case-study",
+  ],
+  [
+    "07",
+    "한국어 에세이",
+    "세리프 제목과 긴 호흡의 소개로 개인적인 기록의 온도를 살립니다.",
+    "korean-essay",
+  ],
+] as const;
+---
+
+<Layout title={`홈 디자인 시안 | ${config.site.title}`}>
+  <Header />
+  <main id="main-content" class="app-layout pb-12">
+    <header class="border-border border-b pt-8 pb-9">
+      <p class="text-accent text-sm font-medium">HOME REDESIGN STUDY</p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+        블로그 홈 디자인 시안 7가지
+      </h1>
+      <p class="text-muted-foreground mt-4 max-w-2xl leading-7">
+        모두 실제 글과 카테고리를 사용했습니다. 기존 홈은 건드리지 않았으니 각
+        시안을 비교한 뒤 번호만 골라주세요.
+      </p>
+    </header>
+    <ol class="grid gap-4 py-8 sm:grid-cols-2">
+      {
+        concepts.map(([number, title, description, slug]) => (
+          <li>
+            <a
+              href={`/designs/${slug}/`}
+              class="border-border hover:border-accent group block h-full rounded-xl border p-6 transition-colors"
+            >
+              <span class="text-accent text-sm font-semibold">{number}</span>
+              <h2 class="group-hover:text-accent mt-5 text-xl font-semibold transition-colors">
+                {title}
+              </h2>
+              <p class="text-muted-foreground mt-3 text-sm leading-6">
+                {description}
+              </p>
+              <span class="mt-6 inline-block text-sm font-medium">
+                시안 보기 →
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+  <Footer />
+</Layout>
