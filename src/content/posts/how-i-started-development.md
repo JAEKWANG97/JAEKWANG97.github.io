@@ -3,7 +3,6 @@ title: "개발을 시작하게 된 이야기"
 pubDatetime: 2026-06-18T15:06:36+09:00
 featured: false
 draft: false
-category: "internship"
 tags:
   - "retrospective"
   - "career"

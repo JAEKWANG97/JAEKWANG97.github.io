@@ -3,7 +3,6 @@ title: "[OpenSource] LINE Armeria에 커스텀 Athenz 토큰 헤더 지원 기�
 pubDatetime: 2026-03-07T00:00:00+09:00
 featured: false
 draft: false
-category: "open-source"
 tags:
   - "open-source"
   - "line"

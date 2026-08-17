@@ -3,7 +3,6 @@ title: "옵시디언에서 LLM Wiki를 실제로 어떻게 만들까?"
 pubDatetime: 2026-08-05T09:16:00+09:00
 featured: false
 draft: false
-category: "project"
 tags:
   - "ai"
   - "llm"

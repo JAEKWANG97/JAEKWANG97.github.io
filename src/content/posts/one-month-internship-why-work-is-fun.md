@@ -4,7 +4,6 @@ pubDatetime: 2026-08-12T01:15:06+09:00
 modDatetime: 2026-08-13T09:00:04+09:00
 featured: false
 draft: false
-category: "internship"
 tags:
   - "internship"
   - "automation"

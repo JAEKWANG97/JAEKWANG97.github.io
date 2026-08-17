@@ -3,7 +3,6 @@ title: "2026년 상반기 회고"
 pubDatetime: 2026-07-15T23:46:31+09:00
 featured: false
 draft: false
-category: "internship"
 tags:
   - "retrospective"
   - "career"

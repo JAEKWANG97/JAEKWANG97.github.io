@@ -3,7 +3,6 @@ title: "AI 시대의 취준생은 무엇으로 차별화해야 할까"
 pubDatetime: 2026-05-20T12:00:00+09:00
 featured: false
 draft: false
-category: "project"
 tags:
   - "ai"
   - "productivity"

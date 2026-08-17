@@ -3,7 +3,6 @@ title: "AI 코딩 중간에 요구사항이 모호해지면 어떻게 해야 할
 pubDatetime: 2026-08-03T13:52:48+09:00
 featured: false
 draft: false
-category: "problem-solving"
 tags:
   - "ai"
   - "ai-agent"

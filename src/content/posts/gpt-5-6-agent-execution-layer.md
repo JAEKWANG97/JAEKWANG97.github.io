@@ -3,7 +3,6 @@ title: "GPT-5.6은 더 똑똑한 챗봇이 아니라 에이전트 실행 계층�
 pubDatetime: 2026-07-10T23:30:00+09:00
 featured: false
 draft: false
-category: "project"
 tags:
   - "ai"
   - "llm"

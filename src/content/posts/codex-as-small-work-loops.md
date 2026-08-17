@@ -3,7 +3,6 @@ title: "Codex를 그냥 쓰지 말고 작은 작업 루프로 쓰기"
 pubDatetime: 2026-06-25T12:20:00+09:00
 featured: false
 draft: false
-category: "project"
 tags:
   - "ai"
   - "codex"

@@ -3,7 +3,6 @@ title: "AI가 코드를 다 만든다면, 나는 어디까지 이해해야 할�
 pubDatetime: 2026-08-10T09:24:39+09:00
 featured: false
 draft: false
-category: "problem-solving"
 tags:
   - "ai"
   - "software-engineering"

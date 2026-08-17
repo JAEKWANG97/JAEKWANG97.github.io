@@ -3,7 +3,6 @@ title: "오픈소스 PR에서 기존 코드의 문맥을 읽는다는 것 - SeaT
 pubDatetime: 2026-05-21T10:00:00+09:00
 featured: false
 draft: false
-category: "open-source"
 tags:
   - "open-source"
   - "apache-seatunnel"

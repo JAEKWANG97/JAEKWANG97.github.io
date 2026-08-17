@@ -3,7 +3,6 @@ title: "AI에게 일을 맡긴다는 건 프롬프트가 아니라 루프를 설
 pubDatetime: 2026-06-25T12:00:00+09:00
 featured: false
 draft: false
-category: "project"
 tags:
   - "ai"
   - "ai-agent"
