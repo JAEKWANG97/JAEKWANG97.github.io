@@ -1,32 +1,45 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Breadcrumb from "@/components/Breadcrumb.astro";
-import Main from "@/components/Main.astro";
-import Footer from "@/components/Footer.astro";
-import Tag from "@/components/Tag.astro";
-import { getUniqueTags } from "@/utils/getUniqueTags";
-import { useTranslations } from "@/i18n";
-import config from "@/config";
+import Layout from '~/layouts/PageLayout.astro';
+import { fetchPosts } from '~/utils/blog';
+import { getPermalink } from '~/utils/permalinks';
 
-const posts = await getCollection("posts", ({ data }) => !data.draft);
-const tags = getUniqueTags(posts);
+const posts = await fetchPosts();
+const counts = new Map<string, { title: string; count: number }>();
+for (const post of posts) {
+  for (const tag of post.tags ?? []) {
+    const current = counts.get(tag.slug);
+    counts.set(tag.slug, { title: tag.title, count: (current?.count ?? 0) + 1 });
+  }
+}
+const tags = [...counts.entries()].sort((a, b) => b[1].count - a[1].count || a[1].title.localeCompare(b[1].title));
 
-const locale = Astro.currentLocale ?? config.site.lang;
-const t = useTranslations(locale);
+const metadata = {
+  title: '태그',
+  description: '태그별로 글을 탐색합니다.',
+};
 ---
 
-<Layout title={`${t.pages.tagsTitle} | ${config.site.title}`}>
-  <Header />
-
-  <Breadcrumb />
-
-  <Main pageTitle={t.pages.tagsTitle} pageDesc={t.pages.tagsDesc}>
-    <ul class="flex flex-wrap gap-6">
-      {tags.map(({ tag, tagName }) => <Tag {tag} {tagName} />)}
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-4xl px-6 py-12 sm:py-16 lg:py-20">
+    <header class="mb-10">
+      <p class="text-secondary mb-2 font-bold tracking-wide uppercase">Tags</p>
+      <h1 class="font-heading text-4xl font-bold tracking-tight sm:text-5xl">태그</h1>
+      <p class="text-muted mt-4">관심 있는 주제의 글을 모아볼 수 있습니다.</p>
+    </header>
+    <ul class="flex flex-wrap gap-3">
+      {
+        tags.map(([slug, tag]) => (
+          <li>
+            <a
+              class="hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-300 inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 transition-colors dark:border-slate-700"
+              href={getPermalink(slug, 'tag')}
+            >
+              <span>#{tag.title}</span>
+              <span class="text-muted text-sm">{tag.count}</span>
+            </a>
+          </li>
+        ))
+      }
     </ul>
-  </Main>
-
-  <Footer />
+  </section>
 </Layout>

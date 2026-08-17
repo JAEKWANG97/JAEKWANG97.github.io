@@ -1,16 +1,6 @@
-# Ignore everything
-/*
-
-# Except these files & folders
-!/src
-!/public
-!/.github
-!tsconfig.json
-!astro.config.ts
-!package.json
-!.prettierrc
-!eslint.config.js
-!README.md
-
-# Ignore MDX files
-*.mdx
+dist
+node_modules
+.github
+.changeset
+src/data/post/**
+public/googlef8443e4276001465.html

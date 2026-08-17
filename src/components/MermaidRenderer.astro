@@ -1,30 +1,26 @@
 <script>
   async function renderMermaidBlocks() {
     const mermaidBlocks = Array.from(
-      document.querySelectorAll(
-        'pre[data-language="mermaid"] > code, pre > code.language-mermaid'
-      )
+      document.querySelectorAll('pre[data-language="mermaid"] > code, pre > code.language-mermaid')
     );
 
     if (mermaidBlocks.length === 0) return;
 
-    const { default: mermaid } = await import("mermaid");
+    const { default: mermaid } = await import('mermaid');
     mermaid.initialize({
       startOnLoad: false,
-      securityLevel: "strict",
-      theme: document.documentElement.classList.contains("dark")
-        ? "dark"
-        : "base",
+      securityLevel: 'strict',
+      theme: document.documentElement.classList.contains('dark') ? 'dark' : 'base',
     });
 
     for (const [index, block] of mermaidBlocks.entries()) {
       const source = block.textContent?.trim();
       const pre = block.parentElement;
-      if (!source || !pre || pre.dataset.mermaidRendered === "true") continue;
+      if (!source || !pre || pre.dataset.mermaidRendered === 'true') continue;
 
-      const container = document.createElement("div");
-      container.className = "mermaid-diagram";
-      container.setAttribute("aria-label", "Mermaid diagram");
+      const container = document.createElement('div');
+      container.className = 'mermaid-diagram';
+      container.setAttribute('aria-label', 'Mermaid diagram');
 
       try {
         const id = `mermaid-${index}-${Math.random().toString(36).slice(2)}`;
@@ -32,21 +28,21 @@
         container.innerHTML = svg;
         pre.replaceWith(container);
       } catch {
-        pre.dataset.mermaidRendered = "true";
-        pre.classList.add("mermaid-error");
+        pre.dataset.mermaidRendered = 'true';
+        pre.classList.add('mermaid-error');
       }
     }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
       renderMermaidBlocks();
     });
   } else {
     renderMermaidBlocks();
   }
 
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener('astro:page-load', () => {
     renderMermaidBlocks();
   });
 </script>

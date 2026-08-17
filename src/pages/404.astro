@@ -1,35 +1,24 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import LinkButton from "@/components/LinkButton.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { useTranslations } from "@/i18n";
-import config from "@/config";
+import Layout from '~/layouts/Layout.astro';
+import { getHomePermalink } from '~/utils/permalinks';
 
-const locale = Astro.currentLocale ?? config.site.lang;
-const t = useTranslations(locale);
+const title = `페이지를 찾을 수 없습니다`;
 ---
 
-<Layout title={`${t.notFound.title} | ${config.site.title}`}>
-  <Header />
-
-  <main
-    id="main-content"
-    class="app-layout flex flex-1 items-center justify-center"
-  >
-    <div class="mb-14 flex flex-col items-center justify-center">
-      <h1 class="text-accent text-9xl font-bold">404</h1>
-      <span aria-hidden="true"> ¯\_(ツ)_/¯ </span>
-      <p class="mt-4 text-2xl sm:text-3xl">{t.notFound.message}</p>
-      <LinkButton
-        href={getRelativeLocaleUrl(locale, "")}
-        class="my-6 text-lg underline decoration-dashed underline-offset-8"
-      >
-        {t.notFound.goHome}
-      </LinkButton>
+<Layout metadata={{ title }}>
+  <section class="flex items-center h-full p-16">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+      <div class="max-w-md text-center">
+        <h2 class="mb-8 font-bold text-9xl">
+          <span class="sr-only">오류</span>
+          <span class="text-primary">404</span>
+        </h2>
+        <p class="text-3xl font-semibold md:text-3xl">페이지를 찾을 수 없습니다.</p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
+          주소가 올바른지 확인하거나 홈에서 다른 글을 살펴보세요.
+        </p>
+        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">홈으로 돌아가기</a>
+      </div>
     </div>
-  </main>
-
-  <Footer />
+  </section>
 </Layout>

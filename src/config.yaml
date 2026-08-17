@@ -1,0 +1,69 @@
+site:
+  name: JAEKWANG97
+  site: 'https://jaekwang97.github.io'
+  base: '/'
+  trailingSlash: true
+
+  googleSiteVerificationId: null
+
+metadata:
+  title:
+    default: JAEKWANG97
+    template: '%s | JAEKWANG97'
+  description: '백엔드와 데이터 엔지니어링을 공부하며 배운 것들을 정리하는 기술 블로그입니다.'
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: JAEKWANG97
+    images:
+      - url: '/default-og.jpg'
+        width: 1200
+        height: 630
+    type: website
+  twitter:
+    cardType: summary_large_image
+
+i18n:
+  language: ko
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: true
+    postsPerPage: 6
+
+    post:
+      isEnabled: true
+      permalink: '/posts/%slug%'
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'posts'
+      robots:
+        index: true
+
+    category:
+      isEnabled: false
+      pathname: 'category'
+      robots:
+        index: false
+
+    tag:
+      isEnabled: true
+      pathname: 'tags'
+      robots:
+        index: true
+
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null
+
+ui:
+  theme: 'system'

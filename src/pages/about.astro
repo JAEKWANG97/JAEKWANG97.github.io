@@ -1,36 +1,23 @@
 ---
-import { getEntry, render } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Breadcrumb from "@/components/Breadcrumb.astro";
-import Main from "@/components/Main.astro";
-import Footer from "@/components/Footer.astro";
-import config from "@/config";
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
 
-const about = await getEntry("pages", "about");
-
-if (!about) {
-  throw new Error(
-    "Missing content entry: `about.md` or `about.mdx` in `src/content/pages/`"
-  );
-}
-
-const { Content } = await render(about);
+const metadata = {
+  title: '소개',
+  description: 'JAEKWANG97 기술 블로그와 작성자 소개',
+};
 ---
 
-<Layout
-  title={`${about.data.title} | ${config.site.title}`}
-  description={about.data.description}
-  ogImage={about.data.ogImage}
-  canonicalURL={about.data.canonicalURL}
->
-  <Header />
-
-  <Breadcrumb />
-
-  <Main pageTitle={about.data.title} class="app-prose">
-    <Content />
-  </Main>
-
-  <Footer />
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="ABOUT"
+    title="배운 것을 근거와 함께 기록합니다"
+    subtitle="백엔드와 데이터 엔지니어링을 공부하며 Java·Spring, 데이터 파이프라인, AI 에이전트, 오픈소스 기여 경험을 쌓고 있습니다. 결과만 나열하기보다 문제를 좁힌 과정과 기술적 판단을 남깁니다."
+    callToAction={{
+      text: 'GitHub에서 보기',
+      href: 'https://github.com/jaekwang97',
+      target: '_blank',
+      icon: 'tabler:brand-github',
+    }}
+  />
 </Layout>

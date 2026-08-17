@@ -1,85 +1,133 @@
-import {
-  defineConfig,
-  envField,
-  fontProviders,
-  svgoOptimizer,
-} from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
-import {
-  transformerNotationDiff,
-  transformerNotationHighlight,
-  transformerNotationWordHighlight,
-} from "@shikijs/transformers";
-import { transformerFileName } from "./src/utils/transformers/fileName";
-import config from "./astro-paper.config";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import { defineConfig, fontProviders } from 'astro/config';
+
+import { unified } from '@astrojs/markdown-remark';
+
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
+import mdx from '@astrojs/mdx';
+import partytown from '@astrojs/partytown';
+import icon from 'astro-icon';
+import compress from 'astro-compress';
+import type { AstroIntegration } from 'astro';
+
+import astrowind from './vendor/integration';
+
+import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const hasExternalScripts = false;
+const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
+  hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: config.site.url,
-  integrations: [
-    mdx(),
-    sitemap({
-      filter: page =>
-        config.features?.showArchives !== false || !page.endsWith("/archives/"),
-    }),
-  ],
-  i18n: {
-    locales: ["ko"],
-    defaultLocale: "ko",
-    routing: {
-      prefixDefaultLocale: false,
-    },
+  output: 'static',
+
+  // Prefetch links as they enter the viewport for snappier navigations
+  // (works together with <ClientRouter />, which enables prefetch by default).
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport',
   },
-  markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
-    shikiConfig: {
-      themes: { light: "min-light", dark: "night-owl" },
-      defaultColor: false,
-      wrap: false,
-      transformers: [
-        transformerFileName({ style: "v2", hideDot: false }),
-        transformerNotationHighlight(),
-        transformerNotationWordHighlight(),
-        transformerNotationDiff({ matchAlgorithm: "v3" }),
-      ],
-    },
-  },
-  vite: {
-    plugins: [tailwindcss()],
-  },
+
+  // Native Fonts API: self-hosts + subsets + preloads Inter and generates
+  // metric-adjusted fallbacks. Injected via <Font /> in Layout.astro and
+  // consumed through the `--font-inter` CSS variable in CustomStyles.astro.
   fonts: [
     {
-      name: "Google Sans Code",
-      cssVariable: "--font-google-sans-code",
-      provider: fontProviders.google(),
-      fallbacks: ["monospace"],
-      weights: [300, 400, 500, 600, 700],
-      styles: ["normal", "italic"],
-      formats: ["woff", "ttf"],
-    },
-    {
-      name: "Noto Sans KR",
-      cssVariable: "--font-noto-sans-kr",
-      provider: fontProviders.google(),
-      fallbacks: ["sans-serif"],
-      weights: [400, 700],
-      styles: ["normal"],
-      formats: ["ttf"],
+      provider: fontProviders.fontsource(),
+      name: 'Inter',
+      cssVariable: '--font-inter',
+      weights: ['100 900'],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['sans-serif'],
     },
   ],
-  env: {
-    schema: {
-      PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
-        access: "public",
-        context: "client",
-        optional: true,
-      }),
-    },
+
+  integrations: [
+    sitemap(),
+    mdx(),
+    icon({
+      include: {
+        tabler: ['*'],
+        'flat-color-icons': [
+          'template',
+          'gallery',
+          'approval',
+          'document',
+          'advertising',
+          'currency-exchange',
+          'voice-presentation',
+          'business-contact',
+          'database',
+        ],
+      },
+    }),
+
+    ...whenExternalScripts(() =>
+      partytown({
+        config: { forward: ['dataLayer.push'] },
+      })
+    ),
+
+    compress({
+      // csso off on purpose: its parser doesn't understand the media range
+      // syntax Tailwind v4 emits for breakpoints (`@media (width>=48rem)`) and
+      // silently drops every one of those blocks — the site then renders as if
+      // all `md:`/`lg:` classes were missing. lightningcss parses it correctly.
+      CSS: { csso: false, lightningcss: { minify: true } },
+      HTML: {
+        'html-minifier-terser': {
+          removeAttributeQuotes: false,
+        },
+      },
+      Image: false,
+      JavaScript: true,
+      SVG: false,
+      Logger: 1,
+    }),
+
+    astrowind({
+      config: './src/config.yaml',
+    }),
+  ],
+
+  image: {
+    // Astro's default Sharp service handles local images.
+    //
+    // Most remote CDN images (Unsplash, Cloudinary, Imgix…) are routed by
+    // src/components/common/Image.astro through `unpic`, which rewrites the
+    // URL with CDN-side query parameters and serves it straight from the
+    // provider — Astro never downloads it, so they don't need to be listed.
+    //
+    // `domains` only matters for remote URLs that fall through to Astro's
+    // native <Image /> (i.e. providers Unpic can't detect, like Pixabay).
+    // Listed entries are authorized to be processed by Sharp.
+    domains: ['cdn.pixabay.com'],
+
+    // Emit responsive styles for the native <Image layout=…> used by
+    // src/components/common/Image.astro (local images). Utility classes on
+    // each usage still win, since these styles use low-specificity selectors.
+    responsiveStyles: true,
   },
-  experimental: {
-    svgOptimizer: svgoOptimizer(),
+
+  markdown: {
+    processor: unified({
+      remarkPlugins: [readingTimeRemarkPlugin],
+      rehypePlugins: [responsiveTablesRehypePlugin],
+    }),
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, './src'),
+      },
+    },
   },
 });
