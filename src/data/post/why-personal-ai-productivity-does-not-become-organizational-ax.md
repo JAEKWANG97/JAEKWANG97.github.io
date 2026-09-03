@@ -2,6 +2,7 @@
 title: "개인의 AI 생산성은 왜 조직의 AX로 이어지지 않을까?"
 publishDate: 2026-09-03T23:50:00+09:00
 draft: false
+mermaid: true
 tags:
   - "ax"
   - "ai-native"
@@ -47,9 +48,14 @@ _개인의 속도가 조직의 능력이 되려면 효능, 확산, 지속 가능
 
 기존 조직에 챗봇과 에이전트를 몇 개 추가하는 것으로는 부족합니다. AI가 업무의 실제 일부를 수행하면서 사람의 역할, 책임, 협업, 검증 방식이 달라져야 합니다.
 
-![Legacy Team이 AI 도구 지급 이후 기존 프로세스에 머물거나 역할과 책임이 바뀐 AI Native Team으로 전환되는 분기](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/01-legacy-to-ai-native.svg)
-
-_도구를 지급한 뒤 업무 방식과 책임 구조가 실제로 바뀌는지가 AX의 분기점입니다._
+```mermaid
+flowchart LR
+    L[Legacy Team] --> T[AI 도구 지급]
+    T --> P{업무 방식이 바뀌었는가?}
+    P -->|아니오| A[기존 프로세스 + AI 기능]
+    P -->|예| N[AI Native Team]
+    N --> R[역할·책임·평가·협업 방식 변화]
+```
 
 따라서 다음은 서로 다릅니다.
 
@@ -100,9 +106,16 @@ AX는 기술 설치 프로젝트보다 조직 변화에 가깝습니다. 모델�
 - 불필요한 에이전트를 누가 폐기하는가?
 - 장애가 나면 이전 방식으로 돌아갈 수 있는가?
 
-![효능 증명에서 조직 확산과 현업 운영을 거쳐 지속 가능한 AX에 도달하는 성공 경로와 단계별 실패](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/02-effect-spread-sustain.svg)
+```mermaid
+flowchart LR
+    E[효능 증명] --> S[조직 확산]
+    S --> M[현업 운영·개선]
+    M --> AX[지속 가능한 AX]
 
-_AX는 되는가, 퍼지는가, 지속 가능한가라는 세 질문을 모두 통과해야 합니다._
+    E -. 실패 .-> P1[데모에 머묾]
+    S -. 실패 .-> P2[특정 개인에게 종속]
+    M -. 실패 .-> P3[운영 부채로 남음]
+```
 
 이 중 하나라도 빠지면 AX라고 부르기 어렵습니다.
 
@@ -123,9 +136,14 @@ _AX는 되는가, 퍼지는가, 지속 가능한가라는 세 질문을 모두 �
 
 AI Native한 방식은 업무 전체 사이클에 AI를 동반시키되 결과를 만든 사람이 끝까지 책임지는 것입니다.
 
-![목표 정의부터 AI 초안, 검토, 사람의 검증, 완성, 결과 책임까지 이어지는 전체 업무 사이클](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/03-end-to-end-ai-work.svg)
-
-_AI Native 업무는 초안 생성이 아니라 완성과 책임까지 이어지는 전체 사이클입니다._
+```mermaid
+flowchart LR
+    G[목표 정의] --> A1[AI와 초안 생성]
+    A1 --> A2[AI와 검토·수정]
+    A2 --> V[사람의 사실·품질 검증]
+    V --> F[완성·전달]
+    F --> R[결과 책임]
+```
 
 AI를 사용했다는 사실보다 다음이 중요합니다.
 
@@ -143,9 +161,17 @@ AI를 많이 사용하는 문화가 아니라 AI 결과를 끝까지 책임지�
 
 사람이 한 작업을 붙잡고 AI의 모든 출력을 기다리는 방식보다 여러 실행을 병렬로 맡기고, 사람은 방향과 검토와 예외 처리에 집중하는 방식입니다.
 
-![한 사람이 자료 조사, 데이터 정리, 구현, 테스트 에이전트를 병렬로 지휘하고 결과를 판단해 통합하는 구조](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/04-human-agent-orchestration.svg)
-
-_멀티태스킹의 핵심은 많은 에이전트가 아니라 조정 가능한 병렬 작업 구조입니다._
+```mermaid
+flowchart TB
+    H[사람] --> A1[에이전트: 자료 조사]
+    H --> A2[에이전트: 데이터 정리]
+    H --> A3[에이전트: 구현]
+    H --> A4[에이전트: 테스트]
+    A1 --> J[사람의 판단·통합]
+    A2 --> J
+    A3 --> J
+    A4 --> J
+```
 
 하지만 에이전트를 여러 개 띄운다고 멀티태스킹이 되는 것은 아닙니다.
 
@@ -184,9 +210,15 @@ AI를 잘 쓰는 개발자 한 명이 문화를 바꾸는 것이 아닙니다. �
 - 보고를 받은 사람은 어떤 결정을 내리는가?
 - 그 결정이 다음 실행으로 어떻게 이어지는가?
 
-![실제 업무 관찰, 문제 후보, 가설, 빠른 결과물, 현업 확인을 반복하는 문제 발견 루프](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/05-problem-discovery-loop.svg)
-
-_말로 받은 첫 요구를 고정하지 않고 작동하는 결과물로 문제 정의를 갱신합니다._
+```mermaid
+flowchart LR
+    O[실제 업무 관찰] --> P[문제 후보]
+    P --> H[가설 설정]
+    H --> D[빠른 결과물 생성]
+    D --> U[현업 확인]
+    U --> R[문제 정의 수정]
+    R --> H
+```
 
 완벽한 요구사항 문서를 기다리기보다 에이전트로 결과물을 빠르게 만들어 보여주고, 현업의 반응으로 문제 정의를 수정하는 속도전이 중요하다는 관점입니다.
 
@@ -242,9 +274,32 @@ _말로 받은 첫 요구를 고정하지 않고 작동하는 결과물로 문�
 
 강의에서는 이를 “에이전트를 만들지 말고, 에이전트가 일하게 하라”는 문장으로 정리했습니다.
 
-![업무별 전용 에이전트와 지식베이스가 난립하는 구조를 범용 에이전트와 공통 컨텍스트, 도구, 권한, 평가 구조로 바꾸는 비교](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/06-build-vs-power-agent.svg)
+```mermaid
+flowchart TB
+    subgraph Before[업무마다 전용 에이전트 구축]
+      A1[에이전트 A]
+      A2[에이전트 B]
+      A3[에이전트 C]
+      K1[지식베이스 A]
+      K2[지식베이스 B]
+      K3[지식베이스 C]
+      A1 --> K1
+      A2 --> K2
+      A3 --> K3
+    end
 
-_에이전트의 개수를 늘리기보다 범용 에이전트가 일할 실행 환경을 강화합니다._
+    subgraph After[범용 에이전트가 필요한 컨텍스트와 도구 사용]
+      G[범용 에이전트]
+      C[공통 컨텍스트]
+      T[도구·API]
+      P[권한 정책]
+      E[평가·로그]
+      G --> C
+      G --> T
+      G --> P
+      G --> E
+    end
+```
 
 핵심 질문은 “새로운 에이전트를 무엇으로 만들까?”가 아닙니다.
 
@@ -283,9 +338,17 @@ _에이전트의 개수를 늘리기보다 범용 에이전트가 일할 실행 
 
 강의에서는 두 트랙을 병렬로 운영하는 관점을 제시했습니다.
 
-![최소 지식으로 에이전트를 투입하고 실행에서 발견된 충돌, 예외, 수정 기록을 정제해 검증된 지식으로 되돌리는 순환](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/07-knowledge-flywheel.svg)
+```mermaid
+flowchart LR
+    K0[업무 시작에 필요한 최소 지식] --> A[에이전트 실제 투입]
+    A --> F[부족한 정보·충돌·예외 발견]
+    F --> C[정제·보완]
+    C --> K1[검증된 지식]
+    K1 --> A
 
-_지식베이스와 에이전트 실행은 선후 관계가 아니라 함께 성장하는 순환입니다._
+    A --> L[입력·수정·승인 기록]
+    L --> C
+```
 
 에이전트가 업무를 수행하는 동안 사람이 제공한 입력에는 다음 정보가 담깁니다.
 
@@ -316,9 +379,17 @@ _지식베이스와 에이전트 실행은 선후 관계가 아니라 함께 성
 
 Foundation Capital은 컨텍스트 그래프를 조직이 실제로 의사결정하는 방식에 대한 제도적 기억으로 설명합니다. 기존 시스템은 최종 가격, 승인된 할인, 에스컬레이션된 티켓 같은 결과는 저장하지만 어떤 예외와 선례가 적용됐고 누가 왜 승인했는지는 놓치기 쉽습니다. 이 빠진 기록을 decision trace라고 부르고, 이를 시스템과 시간에 걸쳐 연결한 검색 가능한 지도를 context graph로 설명합니다.[1]
 
-![문제 상태, 근거, 규칙, 예외, 결정, 승인자, 실행, 결과와 피드백을 연결한 컨텍스트 그래프](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/08-context-graph-decision-trace.svg)
-
-_결과뿐 아니라 왜, 누가, 어떤 근거와 예외로 결정했는지를 연결합니다._
+```mermaid
+flowchart TB
+    P[문제·업무 상태] --> E[사용한 근거]
+    E --> R[적용한 규칙]
+    R --> X[허용한 예외]
+    X --> D[결정]
+    D --> A[실행]
+    A --> O[결과]
+    D --> U[승인자·역할]
+    O --> F[후속 피드백]
+```
 
 지식베이스와 컨텍스트 그래프는 질문이 다릅니다.
 
@@ -368,9 +439,13 @@ RAG가 컨텍스트 그래프의 정보를 찾아 에이전트에 제공할 수�
 
 PoC가 끝난 뒤에도 서비스, 계정, 권한, 비용, 지식베이스가 남습니다.
 
-![PoC 에이전트가 소유자, 평가, 권한의 유무에 따라 운영 개선 또는 운영 부채와 위험으로 갈라지는 분기](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/09-poc-operation-or-debt.svg)
-
-_소유자·평가·권한이 없는 PoC는 운영이 아니라 부채가 됩니다._
+```mermaid
+flowchart LR
+    P[PoC 에이전트] --> O{소유자·평가·권한이 있는가?}
+    O -->|예| M[운영·개선]
+    O -->|아니오| D[운영 부채]
+    D --> R[비용·보안·품질 위험]
+```
 
 이 운영 문제를 보리스 체르니(Boris Cherny)가 제안한 다섯 역할로 보면, 전사 AX에는 Builder뿐 아니라 Maintainer와 Sweeper가 필요합니다.[2]
 
@@ -385,9 +460,17 @@ AI First는 구성원이 기존 습관으로 돌아가지 않고 AI를 실제 �
 
 반대로 검증과 책임 없이 “무조건 AI부터”만 강조하면 워크슬롭이 생깁니다.
 
-![작성자가 AI 초안을 충분히 검토하지 않고 동료에게 넘겨 맥락 복원과 재작성 비용을 전가하는 워크슬롭 시퀀스](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/10-ai-first-workslop.svg)
+```mermaid
+sequenceDiagram
+    participant A as 작성자
+    participant AI as AI
+    participant B as 동료
 
-_작성자의 절약된 시간이 동료의 검토 비용으로 이동하면 조직 생산성은 오르지 않습니다._
+    A->>AI: 빠르게 결과물 생성
+    AI-->>A: 맥락과 근거가 부족한 초안
+    A->>B: 충분히 검토하지 않고 전달
+    B->>B: 맥락 복원·사실 확인·재작성
+```
 
 개인의 작성 시간은 줄었지만 조직 전체의 검토 시간은 늘어날 수 있습니다.
 
@@ -441,9 +524,13 @@ AX를 바텀업으로만 추진하면 실무 속도와 조직 의사결정 속�
 
 강의에서는 범위는 좁게 잡되 수직적인 흐름을 관통하는 Vertical Narrow Workflow를 제시했습니다.
 
-![실행 조직의 반복 업무에서 결과 보고, 리더 의사결정, 후속 실행 지시가 다시 실행으로 이어지는 수직 업무 흐름](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/11-vertical-narrow-workflow.svg)
-
-_범위는 좁게 잡되 실행부터 의사결정과 후속 행동까지 끝까지 연결합니다._
+```mermaid
+flowchart TB
+    E[실행 조직의 반복 업무] --> R[결과·근거 보고]
+    R --> D[리더 의사결정]
+    D --> N[후속 실행 지시]
+    N --> E
+```
 
 예를 들어 전사 영업 전체를 바꾸려 하기보다 하나의 좁은 승인 업무를 선택합니다. 그 안에서는 데이터 수집부터 보고, 의사결정, 후속 실행까지 연결합니다.
 
@@ -470,9 +557,15 @@ FDE는 현업에 깊이 들어가 문제와 해법을 함께 찾는 역할입니
 - 현업 반응을 보고 문제 정의를 바꿉니다.
 - 구현·배포·정착까지 이어갑니다.
 
-![FDE가 현장에 투입되어 업무 관찰, 문제 가설, 작동하는 결과물, 현업 확인을 반복하고 운영권을 넘기는 흐름](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/12-fde-icebreaker-loop.svg)
-
-_FDE는 첫 경로를 열지만 최종 운영권은 현업에 넘겨야 합니다._
+```mermaid
+flowchart LR
+    F[FDE 현장 투입] --> O[업무 관찰]
+    O --> H[문제 가설]
+    H --> P[작동하는 결과물]
+    P --> C[현업 확인]
+    C --> R[문제·해법 수정]
+    R --> H
+```
 
 강의에서는 FDE를 쇄빙선으로 표현했습니다. 단단하게 굳은 프로세스와 기술·문화 장벽을 먼저 깨고 AX가 들어갈 첫 경로를 만드는 역할입니다.
 
@@ -571,9 +664,18 @@ _다섯 역할은 승진 순서가 아니라 제품 단계마다 필요한 기�
 
 그렇다고 보안 요구를 낙관적으로 보면 안 됩니다. 로컬 모델을 사용해도 입력 로그를 외부 관측 서비스로 보내면 회사 데이터가 나갈 수 있습니다. 모델 위치뿐 아니라 전체 데이터 흐름을 봐야 합니다.
 
-![회사 데이터가 에이전트에서 모델, 도구, 로그로 흐르며 배포 위치, 권한 승인, 마스킹과 보존 정책으로 통제되는 구조](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/13-agent-security-dataflow.svg)
+```mermaid
+flowchart LR
+    D[회사 데이터] --> A[에이전트]
+    A --> M[모델]
+    A --> T[도구]
+    A --> L[로그·트레이스]
+    T --> S[업무 시스템]
 
-_보안은 모델 하나가 아니라 데이터·도구·권한·로그의 전체 흐름을 통제하는 문제입니다._
+    M --> P[배포 위치·보존 정책]
+    T --> Q[권한·승인]
+    L --> R[마스킹·접근·보존 기간]
+```
 
 보안은 한 번의 승인 문서가 아니라 데이터, 권한, 실행, 로그를 잇는 아키텍처입니다.
 
@@ -617,9 +719,17 @@ Builder뿐 아니라 Maintainer와 Sweeper를 둡니다.
 
 외부 FDE와 중앙 AX팀이 빠져도 업무가 돌아가야 합니다.
 
-![좁은 업무 선택부터 관찰, 최소 기반, 에이전트 투입, 사람 검증, 컨텍스트 증류, 운영, 수직 확장, 현업 이관까지의 전사 AX 로드맵](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/14-enterprise-ax-roadmap.svg)
-
-_전사 AX는 좁은 업무에서 시작해 현업이 스스로 운영하는 상태에서 완성됩니다._
+```mermaid
+flowchart TB
+    W[좁은 실제 업무 선택] --> O[업무 관찰]
+    O --> B[최소 데이터·도구·권한]
+    B --> P[에이전트 실전 투입]
+    P --> H[사람 검증·책임]
+    H --> K[컨텍스트 증류]
+    K --> M[운영·평가·폐기]
+    M --> V[수직 업무 흐름 확장]
+    V --> T[현업에 운영권 이전]
+```
 
 ## 무엇을 측정해야 할까
 
