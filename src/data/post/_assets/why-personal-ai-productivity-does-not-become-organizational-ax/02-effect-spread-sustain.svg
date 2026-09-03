@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">AX는 세 단계가 모두 이어져야 한다</title>
+<desc id="desc">효능을 증명하고, 조직에 퍼뜨리고, 현업이 운영할 수 있어야 지속 가능한 AX가 된다</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+  <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>
+  <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#64748b" opacity="0.09"/></pattern>
+  <filter id="shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.13"/></filter>
+  <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#059669"/></marker>
+  <marker id="arrowMuted" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#94a3b8"/></marker>
+  <marker id="arrowRed" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#ef4444"/></marker>
+  <style>
+    text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; }
+    .eyebrow { font-size: 17px; font-weight: 900; letter-spacing: 2.7px; fill: #a5b4fc; }
+    .title { font-size: 43px; font-weight: 900; fill: #f8fafc; }
+    .subtitle { font-size: 21px; font-weight: 550; fill: #cbd5e1; }
+    .nodeTitle { font-size: 24px; font-weight: 850; fill: #0f172a; }
+    .nodeSub { font-size: 17px; font-weight: 600; fill: #64748b; }
+    .number { font-size: 17px; font-weight: 900; fill: #ffffff; }
+    .badge { font-size: 13px; font-weight: 900; letter-spacing: 0.8px; fill: #ffffff; }
+    .edge { font-size: 17px; font-weight: 800; fill: #475569; }
+    .section { font-size: 22px; font-weight: 900; fill: #334155; }
+    .foot { font-size: 18px; font-weight: 700; fill: #475569; }
+  </style>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<path d="M36 36H1564V218H36Z" fill="url(#head)"/>
+<text x="88" y="92" class="eyebrow">ORGANIZATIONAL AI TRANSFORMATION</text>
+<text x="88" y="151" class="title">AX는 세 단계가 모두 이어져야 한다</text>
+<text x="88" y="194" class="subtitle">성공 경로와 각 단계에서 멈췄을 때 남는 실패를 함께 본다</text>
+<path d="M365 390L455 390" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M730 390L820 390" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M1095 390L1185 390" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="90" y="300" width="275" height="180" rx="24" fill="#fff" stroke="#2563eb" stroke-width="2"/><rect x="90" y="300" width="275" height="8" rx="4" fill="#2563eb"/><circle cx="125" cy="338" r="20" fill="#2563eb"/><text x="125" y="344" class="number" text-anchor="middle">01</text><text class="nodeTitle" text-anchor="middle"><tspan x="227.5" y="387.0">효능 증명</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="227.5" y="448.0">실제 문제를 해결</tspan></text></g>
+<g filter="url(#shadow)"><rect x="455" y="300" width="275" height="180" rx="24" fill="#fff" stroke="#2563eb" stroke-width="2"/><rect x="455" y="300" width="275" height="8" rx="4" fill="#2563eb"/><circle cx="490" cy="338" r="20" fill="#2563eb"/><text x="490" y="344" class="number" text-anchor="middle">02</text><text class="nodeTitle" text-anchor="middle"><tspan x="592.5" y="387.0">조직 확산</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="592.5" y="448.0">다른 사람과 부서가 재사용</tspan></text></g>
+<g filter="url(#shadow)"><rect x="820" y="300" width="275" height="180" rx="24" fill="#fff" stroke="#2563eb" stroke-width="2"/><rect x="820" y="300" width="275" height="8" rx="4" fill="#2563eb"/><circle cx="855" cy="338" r="20" fill="#2563eb"/><text x="855" y="344" class="number" text-anchor="middle">03</text><text class="nodeTitle" text-anchor="middle"><tspan x="957.5" y="387.0">현업 운영·개선</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="957.5" y="448.0">스스로 유지·갱신</tspan></text></g>
+<g filter="url(#shadow)"><rect x="1185" y="300" width="275" height="180" rx="24" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><rect x="1185" y="300" width="275" height="8" rx="4" fill="#059669"/><circle cx="1220" cy="338" r="20" fill="#059669"/><text x="1220" y="344" class="number" text-anchor="middle">04</text><text class="nodeTitle" text-anchor="middle"><tspan x="1322.5" y="387.0">지속 가능한 AX</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1322.5" y="448.0">특정 개인 없이 지속</tspan></text></g>
+<path d="M227 480L227 620" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 10" marker-end="url(#arrowRed)"/>
+<g filter="url(#shadow)"><rect x="115" y="620" width="225" height="105" rx="24" fill="#fff1f2" stroke="#dc2626" stroke-width="2"/><rect x="115" y="620" width="225" height="8" rx="4" fill="#dc2626"/><text class="nodeTitle" text-anchor="middle"><tspan x="227.5" y="672.5">데모에 머묾</tspan></text></g>
+<path d="M592 480L592 620" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 10" marker-end="url(#arrowRed)"/>
+<g filter="url(#shadow)"><rect x="480" y="620" width="225" height="105" rx="24" fill="#fff1f2" stroke="#dc2626" stroke-width="2"/><rect x="480" y="620" width="225" height="8" rx="4" fill="#dc2626"/><text class="nodeTitle" text-anchor="middle"><tspan x="592.5" y="672.5">특정 개인에게 종속</tspan></text></g>
+<path d="M957 480L957 620" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 10" marker-end="url(#arrowRed)"/>
+<g filter="url(#shadow)"><rect x="845" y="620" width="225" height="105" rx="24" fill="#fff1f2" stroke="#dc2626" stroke-width="2"/><rect x="845" y="620" width="225" height="8" rx="4" fill="#dc2626"/><text class="nodeTitle" text-anchor="middle"><tspan x="957.5" y="672.5">운영 부채로 남음</tspan></text></g>
+<text x="800" y="854" class="foot" text-anchor="middle">되는가 → 퍼지는가 → 지속 가능한가</text>
+</svg>

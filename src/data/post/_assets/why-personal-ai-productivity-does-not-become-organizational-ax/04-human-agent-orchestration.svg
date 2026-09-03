@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">사람은 여러 실행을 지휘하고 결과를 통합한다</title>
+<desc id="desc">에이전트의 병렬 실행이 생산성이 되려면 진행 상태·의존성·결과 형식이 통제돼야 한다</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+  <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>
+  <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#64748b" opacity="0.09"/></pattern>
+  <filter id="shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.13"/></filter>
+  <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#0ea5e9"/></marker>
+  <marker id="arrowMuted" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#94a3b8"/></marker>
+  <marker id="arrowRed" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#ef4444"/></marker>
+  <style>
+    text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; }
+    .eyebrow { font-size: 17px; font-weight: 900; letter-spacing: 2.7px; fill: #a5b4fc; }
+    .title { font-size: 43px; font-weight: 900; fill: #f8fafc; }
+    .subtitle { font-size: 21px; font-weight: 550; fill: #cbd5e1; }
+    .nodeTitle { font-size: 24px; font-weight: 850; fill: #0f172a; }
+    .nodeSub { font-size: 17px; font-weight: 600; fill: #64748b; }
+    .number { font-size: 17px; font-weight: 900; fill: #ffffff; }
+    .badge { font-size: 13px; font-weight: 900; letter-spacing: 0.8px; fill: #ffffff; }
+    .edge { font-size: 17px; font-weight: 800; fill: #475569; }
+    .section { font-size: 22px; font-weight: 900; fill: #334155; }
+    .foot { font-size: 18px; font-weight: 700; fill: #475569; }
+  </style>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<path d="M36 36H1564V218H36Z" fill="url(#head)"/>
+<text x="88" y="92" class="eyebrow">ORGANIZATIONAL AI TRANSFORMATION</text>
+<text x="88" y="151" class="title">사람은 여러 실행을 지휘하고 결과를 통합한다</text>
+<text x="88" y="194" class="subtitle">멀티태스킹의 핵심은 에이전트 수가 아니라 조정 가능한 작업 구조다</text>
+<path d="M370 495C465 495 485 315 590 315" fill="none" stroke="#0ea5e9" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M880 315C985 315 1005 495 1110 495" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M370 495C465 495 485 435 590 435" fill="none" stroke="#0ea5e9" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M880 435C985 435 1005 495 1110 495" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M370 495C465 495 485 555 590 555" fill="none" stroke="#0ea5e9" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M880 555C985 555 1005 495 1110 495" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M370 495C465 495 485 675 590 675" fill="none" stroke="#0ea5e9" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M880 675C985 675 1005 495 1110 495" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="95" y="390" width="275" height="210" rx="24" fill="#fffbeb" stroke="#d97706" stroke-width="2"/><rect x="95" y="390" width="275" height="8" rx="4" fill="#d97706"/><rect x="111" y="409" width="68" height="36" rx="18" fill="#d97706"/><text x="145.0" y="433" class="badge" text-anchor="middle">HUMAN</text><text class="nodeTitle" text-anchor="middle"><tspan x="232.5" y="477.0">사람</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="232.5" y="568.0">목표·우선순위·예외 판단</tspan></text></g>
+<g filter="url(#shadow)"><rect x="590" y="255" width="290" height="120" rx="24" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/><rect x="590" y="255" width="290" height="8" rx="4" fill="#0ea5e9"/><circle cx="625" cy="293" r="20" fill="#0ea5e9"/><text x="625" y="299" class="number" text-anchor="middle">A1</text><text class="nodeTitle" text-anchor="middle"><tspan x="735.0" y="342.0">에이전트 · 자료 조사</tspan></text></g>
+<g filter="url(#shadow)"><rect x="590" y="375" width="290" height="120" rx="24" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/><rect x="590" y="375" width="290" height="8" rx="4" fill="#0ea5e9"/><circle cx="625" cy="413" r="20" fill="#0ea5e9"/><text x="625" y="419" class="number" text-anchor="middle">A2</text><text class="nodeTitle" text-anchor="middle"><tspan x="735.0" y="462.0">에이전트 · 데이터 정리</tspan></text></g>
+<g filter="url(#shadow)"><rect x="590" y="495" width="290" height="120" rx="24" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/><rect x="590" y="495" width="290" height="8" rx="4" fill="#0ea5e9"/><circle cx="625" cy="533" r="20" fill="#0ea5e9"/><text x="625" y="539" class="number" text-anchor="middle">A3</text><text class="nodeTitle" text-anchor="middle"><tspan x="735.0" y="582.0">에이전트 · 구현</tspan></text></g>
+<g filter="url(#shadow)"><rect x="590" y="615" width="290" height="120" rx="24" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/><rect x="590" y="615" width="290" height="8" rx="4" fill="#0ea5e9"/><circle cx="625" cy="653" r="20" fill="#0ea5e9"/><text x="625" y="659" class="number" text-anchor="middle">A4</text><text class="nodeTitle" text-anchor="middle"><tspan x="735.0" y="702.0">에이전트 · 테스트</tspan></text></g>
+<g filter="url(#shadow)"><rect x="1110" y="390" width="380" height="210" rx="24" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><rect x="1110" y="390" width="380" height="8" rx="4" fill="#059669"/><rect x="1126" y="409" width="78" height="36" rx="18" fill="#059669"/><text x="1165.0" y="433" class="badge" text-anchor="middle">RESULT</text><text class="nodeTitle" text-anchor="middle"><tspan x="1300.0" y="477.0">판단과 통합</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1300.0" y="568.0">근거 비교 · 충돌 해소 · 최종 책임</tspan></text></g>
+<text x="800" y="854" class="foot" text-anchor="middle">병렬 실행의 끝에는 반드시 사람의 평가와 통합이 있다</text>
+</svg>

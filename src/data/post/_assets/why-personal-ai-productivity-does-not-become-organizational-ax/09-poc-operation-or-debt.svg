@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">PoC의 다음 단계는 운영이거나 부채다</title>
+<desc id="desc">소유자·평가·권한이 있으면 운영과 개선으로, 없으면 비용·보안·품질 위험으로 갈라진다</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+  <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>
+  <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#64748b" opacity="0.09"/></pattern>
+  <filter id="shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.13"/></filter>
+  <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#d97706"/></marker>
+  <marker id="arrowMuted" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#94a3b8"/></marker>
+  <marker id="arrowRed" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#ef4444"/></marker>
+  <style>
+    text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; }
+    .eyebrow { font-size: 17px; font-weight: 900; letter-spacing: 2.7px; fill: #a5b4fc; }
+    .title { font-size: 43px; font-weight: 900; fill: #f8fafc; }
+    .subtitle { font-size: 21px; font-weight: 550; fill: #cbd5e1; }
+    .nodeTitle { font-size: 24px; font-weight: 850; fill: #0f172a; }
+    .nodeSub { font-size: 17px; font-weight: 600; fill: #64748b; }
+    .number { font-size: 17px; font-weight: 900; fill: #ffffff; }
+    .badge { font-size: 13px; font-weight: 900; letter-spacing: 0.8px; fill: #ffffff; }
+    .edge { font-size: 17px; font-weight: 800; fill: #475569; }
+    .section { font-size: 22px; font-weight: 900; fill: #334155; }
+    .foot { font-size: 18px; font-weight: 700; fill: #475569; }
+  </style>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<path d="M36 36H1564V218H36Z" fill="url(#head)"/>
+<text x="88" y="92" class="eyebrow">ORGANIZATIONAL AI TRANSFORMATION</text>
+<text x="88" y="151" class="title">PoC의 다음 단계는 운영이거나 부채다</text>
+<text x="88" y="194" class="subtitle">배포보다 먼저 누가 책임지고 언제 중단할지를 정한다</text>
+<path d="M330 500L575 500" fill="none" stroke="#d97706" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M825 500C910 500 930 365 1050 365" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M825 500C910 500 930 640 1050 640" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+<path d="M1305 640L1430 640" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+<g filter="url(#shadow)"><rect x="80" y="405" width="250" height="190" rx="24" fill="#ffffff" stroke="#0ea5e9" stroke-width="2"/><rect x="80" y="405" width="250" height="8" rx="4" fill="#0ea5e9"/><rect x="96" y="424" width="68" height="36" rx="18" fill="#0ea5e9"/><text x="130.0" y="448" class="badge" text-anchor="middle">START</text><text class="nodeTitle" text-anchor="middle"><tspan x="205.0" y="492.0">PoC 에이전트</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="205.0" y="563.0">작동하는 데모</tspan></text></g>
+<g filter="url(#shadow)"><rect x="575" y="390" width="250" height="220" rx="24" fill="#fffbeb" stroke="#d97706" stroke-width="2"/><rect x="575" y="390" width="250" height="8" rx="4" fill="#d97706"/><rect x="591" y="409" width="64" height="36" rx="18" fill="#d97706"/><text x="623.0" y="433" class="badge" text-anchor="middle">GATE</text><text class="nodeTitle" text-anchor="middle"><tspan x="700.0" y="477.0">운영 조건</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="700.0" y="578.0">소유자 · 평가 · 최소 권한</tspan></text></g>
+<g filter="url(#shadow)"><rect x="1050" y="285" width="300" height="160" rx="24" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><rect x="1050" y="285" width="300" height="8" rx="4" fill="#059669"/><rect x="1066" y="304" width="64" height="36" rx="18" fill="#059669"/><text x="1098.0" y="328" class="badge" text-anchor="middle">YES</text><text class="nodeTitle" text-anchor="middle"><tspan x="1200.0" y="372.0">운영·개선</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1200.0" y="413.0">관측 · 갱신 · 책임</tspan></text></g>
+<g filter="url(#shadow)"><rect x="1050" y="560" width="300" height="160" rx="24" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/><rect x="1050" y="560" width="300" height="8" rx="4" fill="#dc2626"/><circle cx="1085" cy="598" r="20" fill="#dc2626"/><text x="1085" y="604" class="number" text-anchor="middle">NO</text><text class="nodeTitle" text-anchor="middle"><tspan x="1200.0" y="647.0">운영 부채</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1200.0" y="688.0">방치된 서비스·계정·지식</tspan></text></g>
+<g filter="url(#shadow)"><rect x="1430" y="570" width="130" height="140" rx="24" fill="#fff1f2" stroke="#dc2626" stroke-width="2"/><rect x="1430" y="570" width="130" height="8" rx="4" fill="#dc2626"/><text class="nodeTitle" text-anchor="middle"><tspan x="1495.0" y="611.0">비용</tspan><tspan x="1495.0" y="640.0">보안</tspan><tspan x="1495.0" y="669.0">품질 위험</tspan></text></g>
+<rect x="887" y="362" width="86" height="31" rx="15" fill="#fff"/><text x="930" y="384" text-anchor="middle" class="edge" fill="#059669">있음</text>
+<rect x="887" y="608" width="86" height="31" rx="15" fill="#fff"/><text x="930" y="630" text-anchor="middle" class="edge" fill="#dc2626">없음</text>
+<text x="800" y="854" class="foot" text-anchor="middle">만드는 속도만 측정하면 운영 부채도 성과로 집계된다</text>
+</svg>

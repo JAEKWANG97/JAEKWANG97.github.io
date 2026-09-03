@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">AI First가 워크슬롭이 되는 순간</title>
+<desc id="desc">작성자의 절약된 시간이 동료의 맥락 복원·사실 확인·재작성 비용으로 이동할 수 있다</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+  <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>
+  <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#64748b" opacity="0.09"/></pattern>
+  <filter id="shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.13"/></filter>
+  <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#dc2626"/></marker>
+  <marker id="arrowMuted" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#94a3b8"/></marker>
+  <marker id="arrowRed" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#ef4444"/></marker>
+  <style>
+    text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; }
+    .eyebrow { font-size: 17px; font-weight: 900; letter-spacing: 2.7px; fill: #a5b4fc; }
+    .title { font-size: 43px; font-weight: 900; fill: #f8fafc; }
+    .subtitle { font-size: 21px; font-weight: 550; fill: #cbd5e1; }
+    .nodeTitle { font-size: 24px; font-weight: 850; fill: #0f172a; }
+    .nodeSub { font-size: 17px; font-weight: 600; fill: #64748b; }
+    .number { font-size: 17px; font-weight: 900; fill: #ffffff; }
+    .badge { font-size: 13px; font-weight: 900; letter-spacing: 0.8px; fill: #ffffff; }
+    .edge { font-size: 17px; font-weight: 800; fill: #475569; }
+    .section { font-size: 22px; font-weight: 900; fill: #334155; }
+    .foot { font-size: 18px; font-weight: 700; fill: #475569; }
+  </style>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<path d="M36 36H1564V218H36Z" fill="url(#head)"/>
+<text x="88" y="92" class="eyebrow">ORGANIZATIONAL AI TRANSFORMATION</text>
+<text x="88" y="151" class="title">AI First가 워크슬롭이 되는 순간</text>
+<text x="88" y="194" class="subtitle">검증 상태를 공개하지 않으면 개인 생산성이 조직 비용으로 전환된다</text>
+<g filter="url(#shadow)"><rect x="125" y="270" width="250" height="95" rx="24" fill="#fff" stroke="#2563eb" stroke-width="2"/><rect x="125" y="270" width="250" height="8" rx="4" fill="#2563eb"/><text class="nodeTitle" text-anchor="middle"><tspan x="250.0" y="317.5">작성자</tspan></text></g>
+<path d="M250 365V735" stroke="#2563eb" stroke-width="3" stroke-dasharray="8 10" opacity="0.55"/>
+<g filter="url(#shadow)"><rect x="675" y="270" width="250" height="95" rx="24" fill="#fff" stroke="#7c3aed" stroke-width="2"/><rect x="675" y="270" width="250" height="8" rx="4" fill="#7c3aed"/><text class="nodeTitle" text-anchor="middle"><tspan x="800.0" y="317.5">AI</tspan></text></g>
+<path d="M800 365V735" stroke="#7c3aed" stroke-width="3" stroke-dasharray="8 10" opacity="0.55"/>
+<g filter="url(#shadow)"><rect x="1225" y="270" width="250" height="95" rx="24" fill="#fff" stroke="#d97706" stroke-width="2"/><rect x="1225" y="270" width="250" height="8" rx="4" fill="#d97706"/><text class="nodeTitle" text-anchor="middle"><tspan x="1350.0" y="317.5">동료</tspan></text></g>
+<path d="M1350 365V735" stroke="#d97706" stroke-width="3" stroke-dasharray="8 10" opacity="0.55"/>
+<path d="M250 420L800 420" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="482.0" y="382" width="86" height="31" rx="15" fill="#fff"/><text x="525.0" y="404" text-anchor="middle" class="edge" fill="#2563eb">빠르게 결과물 생성</text>
+<path d="M800 505L250 505" fill="none" stroke="#7c3aed" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowMuted)"/>
+<rect x="482.0" y="467" width="86" height="31" rx="15" fill="#fff"/><text x="525.0" y="489" text-anchor="middle" class="edge" fill="#7c3aed">맥락·근거가 부족한 초안</text>
+<path d="M250 590L1350 590" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowRed)"/>
+<rect x="757.0" y="552" width="86" height="31" rx="15" fill="#fff"/><text x="800.0" y="574" text-anchor="middle" class="edge" fill="#dc2626">충분한 검토 없이 전달</text>
+<path d="M1350 660C1485 660 1485 745 1350 745" fill="none" stroke="#d97706" stroke-width="5" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="1090" y="635" width="230" height="115" rx="24" fill="#fffbeb" stroke="#d97706" stroke-width="2"/><rect x="1090" y="635" width="230" height="8" rx="4" fill="#d97706"/><text class="nodeTitle" text-anchor="middle"><tspan x="1205.0" y="678.5">맥락 복원</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1205.0" y="718.0">사실 확인 · 재작성</tspan></text></g>
+<text x="800" y="854" class="foot" text-anchor="middle">AI 사용 범위와 사람이 확인한 범위를 함께 전달해야 한다</text>
+</svg>

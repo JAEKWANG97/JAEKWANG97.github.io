@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">보안은 모델이 아니라 전체 데이터 흐름의 문제다</title>
+<desc id="desc">회사 데이터가 에이전트·모델·도구·로그를 지나는 모든 경로에 별도의 통제가 필요하다</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+  <linearGradient id="head" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>
+  <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#64748b" opacity="0.09"/></pattern>
+  <filter id="shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.13"/></filter>
+  <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#dc2626"/></marker>
+  <marker id="arrowMuted" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#94a3b8"/></marker>
+  <marker id="arrowRed" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto"><path d="M0 0L13 6.5L0 13Z" fill="#ef4444"/></marker>
+  <style>
+    text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; }
+    .eyebrow { font-size: 17px; font-weight: 900; letter-spacing: 2.7px; fill: #a5b4fc; }
+    .title { font-size: 43px; font-weight: 900; fill: #f8fafc; }
+    .subtitle { font-size: 21px; font-weight: 550; fill: #cbd5e1; }
+    .nodeTitle { font-size: 24px; font-weight: 850; fill: #0f172a; }
+    .nodeSub { font-size: 17px; font-weight: 600; fill: #64748b; }
+    .number { font-size: 17px; font-weight: 900; fill: #ffffff; }
+    .badge { font-size: 13px; font-weight: 900; letter-spacing: 0.8px; fill: #ffffff; }
+    .edge { font-size: 17px; font-weight: 800; fill: #475569; }
+    .section { font-size: 22px; font-weight: 900; fill: #334155; }
+    .foot { font-size: 18px; font-weight: 700; fill: #475569; }
+  </style>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<path d="M36 36H1564V218H36Z" fill="url(#head)"/>
+<text x="88" y="92" class="eyebrow">ORGANIZATIONAL AI TRANSFORMATION</text>
+<text x="88" y="151" class="title">보안은 모델이 아니라 전체 데이터 흐름의 문제다</text>
+<text x="88" y="194" class="subtitle">로컬 모델을 써도 로그가 외부로 나가면 데이터는 외부로 전송된다</text>
+<g filter="url(#shadow)"><rect x="70" y="410" width="250" height="190" rx="24" fill="#ffffff" stroke="#475569" stroke-width="2"/><rect x="70" y="410" width="250" height="8" rx="4" fill="#475569"/><rect x="86" y="429" width="64" height="36" rx="18" fill="#475569"/><text x="118.0" y="453" class="badge" text-anchor="middle">DATA</text><text class="nodeTitle" text-anchor="middle"><tspan x="195.0" y="497.0">회사 데이터</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="195.0" y="568.0">기밀 · 개인정보 · 업무 기록</tspan></text></g>
+<path d="M320 505L525 505" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="525" y="390" width="270" height="230" rx="24" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/><rect x="525" y="390" width="270" height="8" rx="4" fill="#7c3aed"/><rect x="541" y="409" width="64" height="36" rx="18" fill="#7c3aed"/><text x="573.0" y="433" class="badge" text-anchor="middle">CORE</text><text class="nodeTitle" text-anchor="middle"><tspan x="660.0" y="477.0">에이전트</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="660.0" y="588.0">상황 판단 · 도구 선택</tspan></text></g>
+<path d="M795 505C890 505 900 350 1000 350" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="1000" y="285" width="360" height="130" rx="24" fill="#fff" stroke="#2563eb" stroke-width="2"/><rect x="1000" y="285" width="360" height="8" rx="4" fill="#2563eb"/><text class="nodeTitle" text-anchor="middle"><tspan x="1180.0" y="336.0">모델</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1180.0" y="383.0">배포 위치 · 보존 정책</tspan></text></g>
+<path d="M795 505C890 505 900 550 1000 550" fill="none" stroke="#d97706" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="1000" y="485" width="360" height="130" rx="24" fill="#fff" stroke="#d97706" stroke-width="2"/><rect x="1000" y="485" width="360" height="8" rx="4" fill="#d97706"/><text class="nodeTitle" text-anchor="middle"><tspan x="1180.0" y="536.0">도구 · API</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1180.0" y="583.0">최소 권한 · 승인</tspan></text></g>
+<path d="M795 505C890 505 900 750 1000 750" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="1000" y="685" width="360" height="130" rx="24" fill="#fff" stroke="#059669" stroke-width="2"/><rect x="1000" y="685" width="360" height="8" rx="4" fill="#059669"/><text class="nodeTitle" text-anchor="middle"><tspan x="1180.0" y="736.0">로그 · 트레이스</tspan></text><text class="nodeSub" text-anchor="middle"><tspan x="1180.0" y="783.0">마스킹 · 접근 · 보존 기간</tspan></text></g>
+<path d="M1360 550L1450 550" fill="none" stroke="#d97706" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="1450" y="470" width="120" height="160" rx="24" fill="#fffbeb" stroke="#d97706" stroke-width="2"/><rect x="1450" y="470" width="120" height="8" rx="4" fill="#d97706"/><text class="nodeTitle" text-anchor="middle"><tspan x="1510.0" y="535.5">업무</tspan><tspan x="1510.0" y="564.5">시스템</tspan></text></g>
+<text x="800" y="854" class="foot" text-anchor="middle">데이터·권한·실행·관측을 하나의 보안 아키텍처로 본다</text>
+</svg>
