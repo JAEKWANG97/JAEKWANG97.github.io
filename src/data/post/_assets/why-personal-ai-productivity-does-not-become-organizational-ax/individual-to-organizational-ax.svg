@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">개인의 AI 생산성이 조직의 AX가 되는 세 단계</title>
+  <desc id="desc">혼자 여러 AI 작업을 처리하는 개인의 생산성이 효능 증명, 조직 확산, 지속 가능한 운영이라는 세 관문을 지나 조직 전체의 AI Native 업무 체계로 연결되는 모습.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.55" stop-color="#101b35"/>
+      <stop offset="1" stop-color="#162044"/>
+    </linearGradient>
+    <radialGradient id="leftGlow" cx="0.2" cy="0.52" r="0.43">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rightGlow" cx="0.83" cy="0.5" r="0.48">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bridge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="person" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#94a3b8"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#020617" flood-opacity="0.45"/>
+    </filter>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.08"/>
+    </pattern>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+      <path d="M0 0L14 7L0 14Z" fill="#34d399"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; }
+      .eyebrow { font-size: 20px; font-weight: 800; letter-spacing: 3px; fill: #7dd3fc; }
+      .headline { font-size: 54px; font-weight: 900; fill: #f8fafc; }
+      .sub { font-size: 24px; font-weight: 500; fill: #a8b4ca; }
+      .sideTitle { font-size: 27px; font-weight: 850; fill: #f8fafc; }
+      .sideSub { font-size: 20px; fill: #a8b4ca; }
+      .gateNo { font-size: 17px; font-weight: 900; letter-spacing: 2px; }
+      .gateTitle { font-size: 25px; font-weight: 900; fill: #f8fafc; }
+      .gateSub { font-size: 17px; font-weight: 600; fill: #a8b4ca; }
+      .tiny { font-size: 15px; font-weight: 700; fill: #cbd5e1; }
+      .result { font-size: 20px; font-weight: 800; fill: #6ee7b7; letter-spacing: 1px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#leftGlow)"/>
+  <rect width="1600" height="900" fill="url(#rightGlow)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <text x="88" y="86" class="eyebrow">FROM PERSONAL SPEED TO ORGANIZATIONAL CHANGE</text>
+  <text x="88" y="151" class="headline">빨라진 한 사람만으로는 조직이 바뀌지 않는다</text>
+  <text x="88" y="198" class="sub">개인의 효능이 세 관문을 지나 운영 가능한 업무 체계가 될 때 AX가 시작된다</text>
+
+  <!-- Bridge and directional line behind all nodes -->
+  <path d="M430 570 C555 570 575 430 690 430 S830 570 930 570 S1080 430 1200 430" fill="none" stroke="url(#bridge)" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+  <path d="M1235 430H1372" fill="none" stroke="#34d399" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <!-- Individual station -->
+  <g filter="url(#softShadow)">
+    <rect x="78" y="285" width="350" height="430" rx="38" fill="#0b1830" stroke="#38bdf8" stroke-opacity="0.48" stroke-width="2"/>
+    <rect x="104" y="314" width="298" height="92" rx="20" fill="#0f2744"/>
+    <circle cx="137" cy="348" r="10" fill="#38bdf8"/>
+    <rect x="161" y="338" width="168" height="12" rx="6" fill="#7dd3fc" opacity="0.78"/>
+    <rect x="161" y="362" width="111" height="9" rx="5" fill="#64748b"/>
+
+    <circle cx="253" cy="492" r="46" fill="url(#person)"/>
+    <path d="M177 625C182 560 211 528 253 528C296 528 327 560 332 625Z" fill="#e2e8f0"/>
+    <path d="M196 605H311L331 654H176Z" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <rect x="218" y="623" width="71" height="7" rx="4" fill="#38bdf8" opacity="0.7"/>
+
+    <!-- orbiting agent tasks -->
+    <path d="M164 464C125 451 118 418 138 392" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5 7" opacity="0.6"/>
+    <path d="M342 486C389 466 393 433 372 407" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5 7" opacity="0.6"/>
+    <circle cx="128" cy="381" r="24" fill="#123457" stroke="#7dd3fc"/>
+    <path d="M118 381H138M128 371V391" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="376" cy="394" r="24" fill="#123457" stroke="#7dd3fc"/>
+    <path d="M365 394L373 402L388 384" fill="none" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="253" y="754" text-anchor="middle" class="sideTitle">개인의 AI 생산성</text>
+  <text x="253" y="787" text-anchor="middle" class="sideSub">빠른 실행 · 병렬 작업 · 개인 노하우</text>
+
+  <!-- Gates -->
+  <g filter="url(#softShadow)">
+    <rect x="487" y="354" width="204" height="218" rx="31" fill="#111b38" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="529" cy="397" r="22" fill="#38bdf8" opacity="0.18"/>
+    <text x="529" y="404" text-anchor="middle" class="gateNo" fill="#7dd3fc">01</text>
+    <text x="514" y="458" class="gateTitle">되는가</text>
+    <text x="514" y="493" class="gateSub">실제 문제 해결</text>
+    <text x="514" y="522" class="gateSub">검증 가능한 결과</text>
+    <rect x="514" y="542" width="95" height="5" rx="3" fill="#38bdf8"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="718" y="465" width="204" height="218" rx="31" fill="#171b3e" stroke="#a78bfa" stroke-width="2"/>
+    <circle cx="760" cy="508" r="22" fill="#a78bfa" opacity="0.2"/>
+    <text x="760" y="515" text-anchor="middle" class="gateNo" fill="#c4b5fd">02</text>
+    <text x="745" y="569" class="gateTitle">퍼지는가</text>
+    <text x="745" y="604" class="gateSub">팀과 부서가 재사용</text>
+    <text x="745" y="633" class="gateSub">공통 흐름으로 확산</text>
+    <rect x="745" y="653" width="95" height="5" rx="3" fill="#a78bfa"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="949" y="354" width="228" height="218" rx="31" fill="#102739" stroke="#34d399" stroke-width="2"/>
+    <circle cx="991" cy="397" r="22" fill="#34d399" opacity="0.18"/>
+    <text x="991" y="404" text-anchor="middle" class="gateNo" fill="#6ee7b7">03</text>
+    <text x="976" y="458" class="gateTitle">지속 가능한가</text>
+    <text x="976" y="493" class="gateSub">현업이 직접 운영</text>
+    <text x="976" y="522" class="gateSub">개선·통합·폐기</text>
+    <rect x="976" y="542" width="112" height="5" rx="3" fill="#34d399"/>
+  </g>
+
+  <!-- Organizational system -->
+  <g filter="url(#softShadow)">
+    <rect x="1215" y="285" width="307" height="430" rx="38" fill="#0d2530" stroke="#34d399" stroke-opacity="0.62" stroke-width="2"/>
+    <circle cx="1368" cy="468" r="94" fill="#0c3340" stroke="#34d399" stroke-width="2" stroke-dasharray="5 8"/>
+    <circle cx="1368" cy="468" r="39" fill="#34d399" opacity="0.2"/>
+    <path d="M1350 468L1363 481L1387 451" fill="none" stroke="#6ee7b7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- connected team nodes -->
+    <g fill="#133b46" stroke="#6ee7b7" stroke-width="2">
+      <circle cx="1288" cy="375" r="30"/><circle cx="1450" cy="375" r="30"/>
+      <circle cx="1276" cy="568" r="30"/><circle cx="1460" cy="568" r="30"/>
+    </g>
+    <g stroke="#34d399" stroke-width="3" opacity="0.72">
+      <path d="M1309 397L1335 431"/><path d="M1427 398L1401 432"/>
+      <path d="M1300 550L1334 510"/><path d="M1437 550L1402 510"/>
+    </g>
+    <g fill="#d1fae5">
+      <circle cx="1288" cy="369" r="8"/><path d="M1274 389C1276 378 1281 375 1288 375C1296 375 1301 380 1302 389Z"/>
+      <circle cx="1450" cy="369" r="8"/><path d="M1436 389C1438 378 1443 375 1450 375C1458 375 1463 380 1464 389Z"/>
+      <circle cx="1276" cy="562" r="8"/><path d="M1262 582C1264 571 1269 568 1276 568C1284 568 1289 573 1290 582Z"/>
+      <circle cx="1460" cy="562" r="8"/><path d="M1446 582C1448 571 1453 568 1460 568C1468 568 1473 573 1474 582Z"/>
+    </g>
+    <rect x="1260" y="631" width="217" height="43" rx="21" fill="#34d399" opacity="0.15" stroke="#34d399"/>
+    <text x="1368" y="659" text-anchor="middle" class="result">AI NATIVE TEAM</text>
+  </g>
+  <text x="1368" y="754" text-anchor="middle" class="sideTitle">조직의 AX</text>
+  <text x="1368" y="787" text-anchor="middle" class="sideSub">공통 컨텍스트 · 책임 · 운영 체계</text>
+
+  <text x="800" y="854" text-anchor="middle" class="tiny">개인의 속도를 조직의 능력으로 바꾸는 것은 모델이 아니라 업무·책임·운영의 연결이다</text>
+</svg>

@@ -38,6 +38,10 @@ AI를 잘 쓰는 사람 한 명이 있다고 조직문화가 바뀌지는 않습
 
 강의자의 주장과 공개적으로 검증된 업계 표준은 구분해 읽을 필요가 있습니다. 이 글은 강의에서 제시된 문제의식과 운영 관점을 정리한 학습 기록입니다.
 
+![개인의 AI 생산성이 효능 증명, 조직 확산, 지속 가능한 운영을 거쳐 조직의 AX로 이어지는 과정](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/individual-to-organizational-ax.svg)
+
+_개인의 속도가 조직의 능력이 되려면 효능, 확산, 지속 가능성이라는 세 관문을 지나야 합니다._
+
 ## AX는 에이전트를 만드는 일이 아니었다
 
 강의에서는 AX를 Legacy Team이 AI Native Team으로 바뀌는 과정으로 설명했습니다.
@@ -603,22 +607,9 @@ Maintainer
 → 성숙한 시스템을 안전하고 안정적이며 빠르고 효율적으로 확장
 ```
 
-```mermaid
-flowchart TB
-    N[새롭고 PMF 이전] --> P[Prototyper]
-    N --> B[Builder]
-    N --> S[Sweeper]
+![보리스 체르니가 제안한 다섯 역할과 제품 성숙도별 팀 구성](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/boris-cherny-five-archetypes.svg)
 
-    F[PMF를 찾고 성장 중] --> B
-    F --> S
-    F --> G[Grower]
-    F -. 일부 .-> M[Maintainer]
-
-    R[강한 PMF를 확보] --> S
-    R --> G
-    R --> M
-    R -. 일부 .-> B
-```
+_다섯 역할은 승진 순서가 아니라 제품 단계마다 필요한 기여 방식의 조합입니다._
 
 한 사람이 반드시 하나의 역할에만 속하는 것은 아닙니다. 체르니는 많은 사람이 두 역할, 때로는 세 역할에 걸쳐 있으며 이 원형들이 엔지니어·디자이너·PM·데이터 과학자 같은 직무에 고정되지 않는다고 설명했습니다.[2]
 
