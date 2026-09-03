@@ -443,7 +443,7 @@ flowchart LR
     D --> R[비용·보안·품질 위험]
 ```
 
-전사 AX에는 Builder뿐 아니라 Maintainer와 Sweeper가 필요합니다.
+이 운영 문제를 보리스 체르니(Boris Cherny)가 제안한 다섯 역할로 보면, 전사 AX에는 Builder뿐 아니라 Maintainer와 Sweeper가 필요합니다.[2]
 
 - Maintainer는 품질, 권한, 비용, 컨텍스트, 장애를 관리합니다.
 - Sweeper는 중복된 기능을 통합하고 필요 없는 에이전트를 폐기합니다.
@@ -579,37 +579,60 @@ FDE의 성공은 고객이나 현업이 계속 의존하는 상태가 아닙니�
 
 궁극적으로는 FDE가 필요 없어져야 합니다.
 
-## AI Native 팀에서는 역할의 흐름도 달라진다
+## AI Native 팀에서는 역할을 나누는 기준도 달라진다
 
-강의에서는 기존 직무 구분보다 AI 제품과 업무 흐름의 생애주기에 따른 역할을 제시했습니다.
+이 다섯 역할은 강연자가 새로 만든 구분이 아닙니다. Claude Code를 만든 보리스 체르니가 Claude Code 팀을 관찰하며 제안한 다섯 가지 원형(archetype)이고, 강의에서는 이를 AI Native 팀의 역할 변화와 연결해 소개했습니다.[2]
+
+체르니의 핵심 관찰은 엔지니어링·제품·디자인·데이터 사이의 경계가 흐려지면서 미래의 역할이 기존 직무명보다 제품에 기여하는 방식에 가까워질 수 있다는 것입니다.
 
 ```text
 Prototyper
-→ 가능성을 빠르게 확인
+→ 새로운 아이디어를 많이 만들고 가능성을 빠르게 확인
+→ 대부분은 실제 출시까지 이어지지 않을 수 있음
 
 Builder
-→ 실제로 동작하는 흐름 구축
-
-Grower
-→ 더 많은 사용자와 업무로 확장
+→ 프로토타입과 아이디어를 프로덕션 수준의 제품·인프라로 전환
 
 Sweeper
-→ 불필요한 기능과 중복 제거
+→ UI와 코드·시스템을 단순화하고, 불필요한 기능을 걷어내며 성능 최적화
+
+Grower
+→ 이미 만들어진 제품을 반복 개선해 Product-Market Fit을 강화
 
 Maintainer
-→ 품질·권한·비용·지식·장애 관리
+→ 성숙한 시스템을 안전하고 안정적이며 빠르고 효율적으로 확장
 ```
 
 ```mermaid
-flowchart LR
-    P[Prototyper] --> B[Builder]
-    B --> G[Grower]
-    G --> M[Maintainer]
-    M --> S[Sweeper]
-    S --> P
+flowchart TB
+    N[새롭고 PMF 이전] --> P[Prototyper]
+    N --> B[Builder]
+    N --> S[Sweeper]
+
+    F[PMF를 찾고 성장 중] --> B
+    F --> S
+    F --> G[Grower]
+    F -. 일부 .-> M[Maintainer]
+
+    R[강한 PMF를 확보] --> S
+    R --> G
+    R --> M
+    R -. 일부 .-> B
 ```
 
-현재 AI 업계는 만드는 일에 많은 관심을 뒀지만, 엔터프라이즈에서는 유지보수와 폐기가 더 중요해지고 있다는 관점입니다.
+한 사람이 반드시 하나의 역할에만 속하는 것은 아닙니다. 체르니는 많은 사람이 두 역할, 때로는 세 역할에 걸쳐 있으며 이 원형들이 엔지니어·디자이너·PM·데이터 과학자 같은 직무에 고정되지 않는다고 설명했습니다.[2]
+
+필요한 역할의 조합은 제품의 성숙도에 따라 달라집니다.[2]
+
+| 제품 단계 | 필요한 역할 조합 |
+| --- | --- |
+| 새롭고 PMF 이전 | Prototyper + Builder + Sweeper |
+| 성장 중이며 PMF를 찾음 | Builder + Sweeper + Grower, 일부 Maintainer |
+| 강한 PMF를 확보함 | Sweeper + Grower + Maintainer, 일부 Builder |
+
+즉 다섯 역할은 모든 사람이 차례로 거쳐야 하는 승진 단계가 아닙니다. 제품 상태에 따라 팀이 갖춰야 할 서로 다른 기여 방식입니다.
+
+강의에서는 현재 AI 업계가 만드는 일에 많은 관심을 뒀지만, 엔터프라이즈에서는 유지보수와 폐기가 더 중요해지고 있다는 관점으로 이 구분을 확장했습니다.
 
 시니어와 주니어의 역할도 다르게 볼 수 있습니다.
 
@@ -807,4 +830,5 @@ AX 성과
 
 ## Sources
 
-[1] [Foundation Capital, The case for context graphs](https://foundationcapital.com/ideas/the-case-for-context-graphs)
+[1] https://foundationcapital.com/ideas/the-case-for-context-graphs — Foundation Capital, The case for context graphs
+[2] https://www.threads.com/@boris_cherny/post/DaJgVFVj2PB/as-engineering-product-design-ds-etc-melt-into-a-new-kind-of-role-i-was — Boris Cherny, Five archetypes on the Claude Code team
