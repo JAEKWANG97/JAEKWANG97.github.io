@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">효능 증명, 조직 확산, 지속 가능한 운영</title>
+  <desc id="desc">AX가 실제 문제 해결에서 조직 확산을 거쳐 현업의 지속 가능한 운영으로 이어지는 세 단계와, 각 단계에서 멈췄을 때 남는 한계를 보여준다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#2f2f2b"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; fill: #242421; }
+      .kicker { font-size: 18px; font-weight: 800; letter-spacing: 2px; fill: #c15f3c; }
+      .title { font-size: 32px; font-weight: 800; }
+      .body { font-size: 20px; font-weight: 600; fill: #5d5c57; }
+      .number { font-size: 18px; font-weight: 800; fill: #c15f3c; }
+      .fail { font-size: 18px; font-weight: 700; fill: #8c5142; }
+      .foot { font-size: 19px; font-weight: 700; fill: #5d5c57; }
+    </style>
+  </defs>
+
+  <rect width="960" height="620" rx="28" fill="#faf9f5"/>
+  <text x="56" y="58" class="kicker">AX / THREE GATES</text>
+  <text x="56" y="104" class="title">개인의 효능이 조직의 능력이 되기까지</text>
+
+  <!-- connectors behind cards -->
+  <path d="M304 262H365" stroke="#2f2f2b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M594 262H655" stroke="#2f2f2b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M180 366V430" stroke="#c98b78" stroke-width="2" stroke-dasharray="6 7"/>
+  <path d="M470 366V430" stroke="#c98b78" stroke-width="2" stroke-dasharray="6 7"/>
+  <path d="M760 366V430" stroke="#c98b78" stroke-width="2" stroke-dasharray="6 7"/>
+
+  <g>
+    <rect x="56" y="158" width="248" height="208" rx="18" fill="#ffffff" stroke="#d8d5cd" stroke-width="2"/>
+    <text x="82" y="198" class="number">01</text>
+    <text x="82" y="248" class="title">되는가</text>
+    <text x="82" y="292" class="body">실제 문제를 해결하고</text>
+    <text x="82" y="324" class="body">결과를 검증할 수 있는가</text>
+  </g>
+
+  <g>
+    <rect x="346" y="158" width="248" height="208" rx="18" fill="#ffffff" stroke="#d8d5cd" stroke-width="2"/>
+    <text x="372" y="198" class="number">02</text>
+    <text x="372" y="248" class="title">퍼지는가</text>
+    <text x="372" y="292" class="body">개인의 요령을 넘어</text>
+    <text x="372" y="324" class="body">팀과 부서가 재사용하는가</text>
+  </g>
+
+  <g>
+    <rect x="636" y="158" width="268" height="208" rx="18" fill="#fff4ed" stroke="#d97757" stroke-width="2"/>
+    <text x="662" y="198" class="number">03</text>
+    <text x="662" y="248" class="title">지속 가능한가</text>
+    <text x="662" y="292" class="body">특정 개인이 빠져도</text>
+    <text x="662" y="324" class="body">현업이 운영·개선하는가</text>
+  </g>
+
+  <g>
+    <rect x="74" y="430" width="212" height="62" rx="31" fill="#f3ebe7"/>
+    <text x="180" y="469" text-anchor="middle" class="fail">데모에 머묾</text>
+    <rect x="364" y="430" width="212" height="62" rx="31" fill="#f3ebe7"/>
+    <text x="470" y="469" text-anchor="middle" class="fail">특정 개인에게 종속</text>
+    <rect x="654" y="430" width="212" height="62" rx="31" fill="#f3ebe7"/>
+    <text x="760" y="469" text-anchor="middle" class="fail">운영 부채로 남음</text>
+  </g>
+
+  <line x1="56" y1="538" x2="904" y2="538" stroke="#d8d5cd" stroke-width="2"/>
+  <text x="480" y="579" text-anchor="middle" class="foot">세 질문 중 하나라도 끊기면 조직의 AX까지 이어지지 않는다</text>
+</svg>

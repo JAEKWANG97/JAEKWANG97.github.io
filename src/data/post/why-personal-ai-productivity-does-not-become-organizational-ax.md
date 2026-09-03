@@ -106,16 +106,9 @@ AX는 기술 설치 프로젝트보다 조직 변화에 가깝습니다. 모델�
 - 불필요한 에이전트를 누가 폐기하는가?
 - 장애가 나면 이전 방식으로 돌아갈 수 있는가?
 
-```mermaid
-flowchart LR
-    E[효능 증명] --> S[조직 확산]
-    S --> M[현업 운영·개선]
-    M --> AX[지속 가능한 AX]
+![효능 증명에서 조직 확산과 현업 운영을 거쳐 지속 가능한 AX에 도달하는 세 관문](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/core-ax-three-gates.svg)
 
-    E -. 실패 .-> P1[데모에 머묾]
-    S -. 실패 .-> P2[특정 개인에게 종속]
-    M -. 실패 .-> P3[운영 부채로 남음]
-```
+_세 질문 중 하나라도 끊기면 개인의 AI 효능이 조직의 AX까지 이어지지 않습니다._
 
 이 중 하나라도 빠지면 AX라고 부르기 어렵습니다.
 
@@ -274,32 +267,9 @@ flowchart LR
 
 강의에서는 이를 “에이전트를 만들지 말고, 에이전트가 일하게 하라”는 문장으로 정리했습니다.
 
-```mermaid
-flowchart TB
-    subgraph Before[업무마다 전용 에이전트 구축]
-      A1[에이전트 A]
-      A2[에이전트 B]
-      A3[에이전트 C]
-      K1[지식베이스 A]
-      K2[지식베이스 B]
-      K3[지식베이스 C]
-      A1 --> K1
-      A2 --> K2
-      A3 --> K3
-    end
+![업무마다 전용 에이전트를 만드는 구조와 범용 에이전트에 컨텍스트·도구·권한·평가를 연결하는 구조의 비교](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/core-build-vs-power-agent.svg)
 
-    subgraph After[범용 에이전트가 필요한 컨텍스트와 도구 사용]
-      G[범용 에이전트]
-      C[공통 컨텍스트]
-      T[도구·API]
-      P[권한 정책]
-      E[평가·로그]
-      G --> C
-      G --> T
-      G --> P
-      G --> E
-    end
-```
+_에이전트의 개수를 늘리기보다 범용 에이전트가 안전하게 일할 조건을 연결합니다._
 
 핵심 질문은 “새로운 에이전트를 무엇으로 만들까?”가 아닙니다.
 
@@ -379,17 +349,9 @@ flowchart LR
 
 Foundation Capital은 컨텍스트 그래프를 조직이 실제로 의사결정하는 방식에 대한 제도적 기억으로 설명합니다. 기존 시스템은 최종 가격, 승인된 할인, 에스컬레이션된 티켓 같은 결과는 저장하지만 어떤 예외와 선례가 적용됐고 누가 왜 승인했는지는 놓치기 쉽습니다. 이 빠진 기록을 decision trace라고 부르고, 이를 시스템과 시간에 걸쳐 연결한 검색 가능한 지도를 context graph로 설명합니다.[1]
 
-```mermaid
-flowchart TB
-    P[문제·업무 상태] --> E[사용한 근거]
-    E --> R[적용한 규칙]
-    R --> X[허용한 예외]
-    X --> D[결정]
-    D --> A[실행]
-    A --> O[결과]
-    D --> U[승인자·역할]
-    O --> F[후속 피드백]
-```
+![업무 상태에서 근거·규칙·예외·결정·승인·실행·결과·후속 피드백까지 연결하는 Decision Trace](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/core-context-graph-trace.svg)
+
+_최종 결과만 저장하지 않고 판단이 만들어진 경로를 조직의 실행 기억으로 남깁니다._
 
 지식베이스와 컨텍스트 그래프는 질문이 다릅니다.
 
@@ -719,17 +681,9 @@ Builder뿐 아니라 Maintainer와 Sweeper를 둡니다.
 
 외부 FDE와 중앙 AX팀이 빠져도 업무가 돌아가야 합니다.
 
-```mermaid
-flowchart TB
-    W[좁은 실제 업무 선택] --> O[업무 관찰]
-    O --> B[최소 데이터·도구·권한]
-    B --> P[에이전트 실전 투입]
-    P --> H[사람 검증·책임]
-    H --> K[컨텍스트 증류]
-    K --> M[운영·평가·폐기]
-    M --> V[수직 업무 흐름 확장]
-    V --> T[현업에 운영권 이전]
-```
+![좁은 업무 선택부터 관찰·에이전트 투입·사람 검증·컨텍스트 증류·운영·수직 확장·현업 이관까지의 AX 로드맵](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/core-enterprise-ax-roadmap.svg)
+
+_전사 AX의 완료 조건은 에이전트 배포가 아니라 현업이 스스로 운영·개선하는 상태입니다._
 
 ## 무엇을 측정해야 할까
 

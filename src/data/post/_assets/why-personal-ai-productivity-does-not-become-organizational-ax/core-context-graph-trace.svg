@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">컨텍스트 그래프의 Decision Trace</title>
+  <desc id="desc">문제와 업무 상태에서 사용한 근거, 적용 규칙과 예외, 결정과 승인자, 실행과 결과, 후속 피드백까지 연결하여 조직의 실행 기억으로 만드는 흐름.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#56544f"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#d97757"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans CJK KR", "Pretendard", sans-serif; fill: #242421; }
+      .label { font-size: 18px; font-weight: 800; letter-spacing: 1.8px; fill: #c15f3c; }
+      .node { font-size: 22px; font-weight: 780; }
+      .small { font-size: 17px; font-weight: 650; fill: #66635d; }
+      .decision { font-size: 27px; font-weight: 850; fill: #fff; }
+      .foot { font-size: 19px; font-weight: 700; fill: #5d5c57; }
+    </style>
+  </defs>
+
+  <rect width="960" height="720" rx="28" fill="#faf9f5"/>
+  <text x="54" y="56" class="label">DECISION TRACE</text>
+
+  <!-- primary trace -->
+  <path d="M202 190H300" stroke="#56544f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M422 190H520" stroke="#56544f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M642 190H740" stroke="#56544f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M801 246V334" stroke="#d97757" stroke-width="3" fill="none" marker-end="url(#arrowOrange)"/>
+  <path d="M740 395H640" stroke="#56544f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M518 395H420" stroke="#56544f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M298 395H200" stroke="#56544f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M139 451V535" stroke="#56544f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- feedback loop behind nodes -->
+  <path d="M214 582H760C840 582 866 522 866 457V190" stroke="#d97757" stroke-width="2.5" stroke-dasharray="7 8" fill="none" marker-end="url(#arrowOrange)"/>
+  <text x="530" y="612" text-anchor="middle" class="small">다음 판단에 재사용</text>
+
+  <g>
+    <rect x="76" y="134" width="126" height="112" rx="16" fill="#fff" stroke="#cbc7be" stroke-width="2"/>
+    <text x="139" y="181" text-anchor="middle" class="node">업무 상태</text>
+    <text x="139" y="215" text-anchor="middle" class="small">무슨 상황인가</text>
+
+    <rect x="296" y="134" width="126" height="112" rx="16" fill="#fff" stroke="#cbc7be" stroke-width="2"/>
+    <text x="359" y="181" text-anchor="middle" class="node">근거</text>
+    <text x="359" y="215" text-anchor="middle" class="small">무엇을 봤나</text>
+
+    <rect x="516" y="134" width="126" height="112" rx="16" fill="#fff" stroke="#cbc7be" stroke-width="2"/>
+    <text x="579" y="181" text-anchor="middle" class="node">규칙</text>
+    <text x="579" y="215" text-anchor="middle" class="small">무엇을 적용했나</text>
+
+    <rect x="736" y="134" width="130" height="112" rx="16" fill="#fff4ed" stroke="#d97757" stroke-width="2"/>
+    <text x="801" y="181" text-anchor="middle" class="node">예외</text>
+    <text x="801" y="215" text-anchor="middle" class="small">왜 달랐나</text>
+  </g>
+
+  <rect x="736" y="334" width="130" height="122" rx="20" fill="#d97757"/>
+  <text x="801" y="405" text-anchor="middle" class="decision">결정</text>
+
+  <g>
+    <rect x="516" y="339" width="126" height="112" rx="16" fill="#fff" stroke="#cbc7be" stroke-width="2"/>
+    <text x="579" y="386" text-anchor="middle" class="node">승인</text>
+    <text x="579" y="420" text-anchor="middle" class="small">누가 책임지나</text>
+
+    <rect x="296" y="339" width="126" height="112" rx="16" fill="#fff" stroke="#cbc7be" stroke-width="2"/>
+    <text x="359" y="386" text-anchor="middle" class="node">실행</text>
+    <text x="359" y="420" text-anchor="middle" class="small">무엇을 했나</text>
+
+    <rect x="76" y="339" width="126" height="112" rx="16" fill="#fff" stroke="#cbc7be" stroke-width="2"/>
+    <text x="139" y="386" text-anchor="middle" class="node">결과</text>
+    <text x="139" y="420" text-anchor="middle" class="small">무엇이 변했나</text>
+
+    <rect x="64" y="535" width="150" height="94" rx="47" fill="#fff" stroke="#d97757" stroke-width="2"/>
+    <text x="139" y="574" text-anchor="middle" class="node">후속 피드백</text>
+    <text x="139" y="604" text-anchor="middle" class="small">성공·실패·수정</text>
+  </g>
+
+  <line x1="54" y1="665" x2="906" y2="665" stroke="#d8d5cd" stroke-width="2"/>
+  <text x="480" y="700" text-anchor="middle" class="foot">최종 상태가 아니라 판단이 만들어진 경로를 조직의 기억으로 남긴다</text>
+</svg>
