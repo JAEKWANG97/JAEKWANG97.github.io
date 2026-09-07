@@ -1,3 +1,13 @@
 ---
-return Astro.redirect('/posts/', 301);
+import Layout from '~/layouts/PageLayout.astro';
+import PostSearch from '~/components/blog/PostSearch.astro';
+const metadata = { title: '글 검색', robots: { index: false, follow: true } };
 ---
+
+<Layout metadata={metadata}>
+  <section class="px-6 py-12 sm:py-16 mx-auto max-w-4xl">
+    <h1 class="text-3xl font-bold mb-8">글 검색</h1>
+    <PostSearch />
+    <p class="mt-8 text-sm"><a class="underline" href="/labs/webmcp/">WebMCP 검색 실험 보기</a></p>
+  </section>
+</Layout>
