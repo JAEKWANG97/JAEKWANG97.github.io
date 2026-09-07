@@ -1,0 +1,421 @@
+---
+import { fetchPosts } from '~/utils/blog';
+import { getPermalink } from '~/utils/permalinks';
+
+interface Props {
+  demo?: boolean;
+}
+const { demo = false } = Astro.props;
+const posts = (await fetchPosts())
+  .filter((post) => post.publishDate.valueOf() <= Date.now())
+  .map((post) => ({
+    title: post.title,
+    excerpt: post.excerpt || '',
+    tags: post.tags?.map((tag) => tag.title) || [],
+    url: getPermalink(post.permalink, 'post'),
+    date: post.publishDate.toISOString(),
+  }));
+---
+
+<div class:list={['search-layout', { 'with-demo': demo }]} data-post-search>
+  <section class="search-pane" aria-labelledby="search-title">
+    <p class="eyebrow">{demo ? '01 / 같은 검색 화면' : 'BLOG SEARCH'}</p>
+    <h2 id="search-title">어떤 글을 찾으시나요?</h2>
+    <p class="hint">공개 글 {posts.length}개의 제목·소개·태그를 검색합니다.</p>
+    <form data-search-form role="search">
+      <label for="post-query">검색어</label>
+      <div class="search-controls">
+        <input
+          id="post-query"
+          name="query"
+          type="search"
+          placeholder="예: WebMCP, AI, 데이터"
+          maxlength="100"
+          required
+          disabled
+        />
+        <button type="submit" disabled>검색</button>
+      </div>
+    </form>
+    <p class="result-status" data-search-status role="status" aria-live="polite">
+      JavaScript가 준비되면 검색할 수 있습니다.
+    </p>
+    <div class="result-list" data-search-results>
+      {
+        posts.slice(0, 5).map((post) => (
+          <article class="search-result">
+            <>
+              <h3>
+                <a href={post.url}>{post.title}</a>
+              </h3>
+              <p>{post.excerpt}</p>
+              <span>{post.tags.join(' · ')}</span>
+            </>
+          </article>
+        ))
+      }
+    </div>
+    <noscript><p>검색에는 JavaScript가 필요합니다. <a href="/posts/">전체 글 목록</a>을 이용해주세요.</p></noscript>
+  </section>
+  {
+    demo && (
+      <aside class="tool-pane" aria-labelledby="tool-title">
+        <p class="eyebrow">02 / 브라우저 도구 호출</p>
+        <h2 id="tool-title">WebMCP Inspector</h2>
+        <p class="hint">수동 도구 호출 실험 · LLM 연결 없음</p>
+        <p class="native-status" data-native-status role="status">
+          브라우저 API 확인 중
+        </p>
+        <button class="secondary" type="button" data-discover disabled>
+          등록된 도구 확인
+        </button>
+        <pre data-tool-schema aria-label="발견한 도구">
+          아직 도구를 확인하지 않았습니다.
+        </pre>
+        <form data-tool-form>
+          <label for="tool-query">도구에 전달할 검색어</label>
+          <input id="tool-query" name="query" value="WebMCP" maxlength="100" required />
+          <button type="submit" disabled>
+            search_posts 호출
+          </button>
+        </form>
+        <p class="trace" data-tool-trace role="status">
+          발견 → 호출 → 결과 반환
+        </p>
+        <pre data-tool-output aria-label="도구 반환값">
+          도구 실행 후 반환값이 표시됩니다.
+        </pre>
+        <p class="footnote">
+          이 패널은 브라우저의 네이티브 API로 도구를 직접 호출합니다. AI 응답이나 모의 API를 사용하지 않습니다.
+        </p>
+      </aside>
+    )
+  }
+  <script
+    is:inline
+    type="application/json"
+    data-search-index
+    set:html={JSON.stringify(posts).replace(/</g, '\\u003c')}
+  />
+</div>
+
+<script>
+  import { searchPosts, validateSearchInput, type SearchPost } from '~/utils/post-search';
+
+  type Tool = { name: string; description: string; inputSchema: unknown };
+  type ModelContext = {
+    registerTool: (
+      tool: Tool & { annotations: { readOnlyHint: boolean }; execute: (input: unknown) => Promise<string> },
+      options: { signal: AbortSignal }
+    ) => Promise<void>;
+    getTools: () => Promise<Tool[]>;
+    executeTool: (tool: Tool, input: string) => Promise<string | null>;
+  };
+
+  let dispose: (() => void) | undefined;
+  // ClientRouter keeps the document alive: remove the old registration before swapping pages.
+  document.addEventListener('astro:before-swap', () => {
+    dispose?.();
+    dispose = undefined;
+  });
+  document.addEventListener('astro:page-load', setupSearch);
+  void setupSearch();
+
+  async function setupSearch() {
+    const root = document.querySelector<HTMLElement>('[data-post-search]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const form = root.querySelector<HTMLFormElement>('[data-search-form]')!;
+    const query = root.querySelector<HTMLInputElement>('#post-query')!;
+    const status = root.querySelector<HTMLElement>('[data-search-status]')!;
+    const results = root.querySelector<HTMLElement>('[data-search-results]')!;
+    const posts: SearchPost[] = JSON.parse(root.querySelector('[data-search-index]')!.textContent || '[]');
+    const nativeStatus = root.querySelector<HTMLElement>('[data-native-status]');
+    const trace = root.querySelector<HTMLElement>('[data-tool-trace]');
+    const output = root.querySelector<HTMLElement>('[data-tool-output]');
+    const discover = root.querySelector<HTMLButtonElement>('[data-discover]');
+    const toolForm = root.querySelector<HTMLFormElement>('[data-tool-form]');
+
+    function runSearch(input: unknown, origin: '검색 폼' | 'WebMCP') {
+      const validated = validateSearchInput(input);
+      const response = searchPosts(posts, validated);
+      query.value = response.query;
+      results.replaceChildren();
+      for (const post of response.results) {
+        const card = document.createElement('article');
+        card.className = 'search-result';
+        const heading = document.createElement('h3');
+        const link = document.createElement('a');
+        link.href = post.url;
+        link.textContent = post.title;
+        const description = document.createElement('p');
+        description.textContent = post.excerpt;
+        const tags = document.createElement('span');
+        tags.textContent = post.tags.join(' · ');
+        heading.append(link);
+        card.append(heading, description, tags);
+        results.append(card);
+      }
+      status.textContent = response.total
+        ? `“${response.query}” · ${response.total}개 중 ${response.results.length}개 표시 · ${origin}`
+        : `“${response.query}”에 맞는 글이 없습니다. 다른 검색어를 입력해주세요.`;
+      if (origin === 'WebMCP' && trace) trace.textContent = '도구 실행 → 공통 검색 로직 → 화면 갱신 → 결과 반환';
+      return response;
+    }
+
+    form.querySelectorAll<HTMLInputElement | HTMLButtonElement>('input, button').forEach((el) => (el.disabled = false));
+    status.textContent = '최근 글 5개입니다. 검색어를 입력해보세요.';
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      try {
+        runSearch({ query: query.value }, '검색 폼');
+      } catch (error) {
+        status.textContent = error instanceof Error ? error.message : '검색하지 못했습니다.';
+      }
+    });
+
+    const context = (document as Document & { modelContext?: ModelContext }).modelContext;
+    if (!context?.registerTool) {
+      if (nativeStatus) nativeStatus.textContent = '네이티브 WebMCP 미지원 · 일반 검색은 이용할 수 있습니다.';
+      return;
+    }
+    let active = true;
+    const controller = new AbortController();
+    dispose = () => {
+      active = false;
+      controller.abort();
+    };
+    const registration = Promise.resolve().then(() =>
+      context.registerTool(
+        {
+          name: 'search_posts',
+          description:
+            'Search public posts on JAEKWANG97’s blog by keywords in titles, excerpts and tags. Use concise keywords, not a full sentence. Returns matching titles, excerpts, tags and URLs; also updates the visible search results. Does not modify any posts.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              query: {
+                type: 'string',
+                minLength: 1,
+                maxLength: 100,
+                description: 'Search keywords, for example WebMCP or AI',
+              },
+              limit: { type: 'integer', minimum: 1, maximum: 10, default: 5 },
+            },
+            required: ['query'],
+            additionalProperties: false,
+          },
+          annotations: { readOnlyHint: true },
+          execute: async (input) => {
+            if (!active) throw new Error('검색 페이지를 벗어났습니다.');
+            return JSON.stringify(runSearch(input, 'WebMCP'));
+          },
+        },
+        { signal: controller.signal }
+      )
+    );
+    try {
+      await registration;
+      if (!active) return;
+      if (nativeStatus) nativeStatus.textContent = '네이티브 WebMCP · search_posts 등록 완료';
+    } catch (error) {
+      if (nativeStatus)
+        nativeStatus.textContent = `도구 등록 실패 · ${error instanceof Error ? error.message : 'API 오류'}`;
+      return;
+    }
+    if (!discover || !toolForm || !output || !trace) return;
+    if (!context.getTools || !context.executeTool) {
+      nativeStatus!.textContent += ' · 이 버전은 Inspector 호출 API를 지원하지 않습니다.';
+      return;
+    }
+    discover.disabled = false;
+    discover.addEventListener('click', async () => {
+      try {
+        const tool = (await context.getTools()).find((item) => item.name === 'search_posts');
+        if (!tool) throw new Error('등록된 검색 도구를 찾지 못했습니다.');
+        root.querySelector('[data-tool-schema]')!.textContent = JSON.stringify(
+          {
+            name: tool.name,
+            inputSchema: typeof tool.inputSchema === 'string' ? JSON.parse(tool.inputSchema) : tool.inputSchema,
+          },
+          null,
+          2
+        );
+        toolForm.querySelector<HTMLButtonElement>('button')!.disabled = false;
+        trace.textContent = 'getTools() → search_posts 발견';
+      } catch (error) {
+        trace.textContent = `도구 발견 실패: ${error instanceof Error ? error.message : 'API 오류'}`;
+      }
+    });
+    toolForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = toolForm.querySelector<HTMLButtonElement>('button')!;
+      button.disabled = true;
+      try {
+        const input = validateSearchInput({ query: root.querySelector<HTMLInputElement>('#tool-query')!.value });
+        const tool = (await context.getTools()).find((item) => item.name === 'search_posts');
+        if (!tool) throw new Error('검색 도구를 다시 확인해주세요.');
+        trace.textContent = `executeTool(search_posts, ${JSON.stringify(input)})`;
+        const returned = await context.executeTool(tool, JSON.stringify(input));
+        output.textContent =
+          returned === null ? '페이지가 이동했습니다.' : JSON.stringify(JSON.parse(returned), null, 2);
+      } catch (error) {
+        output.textContent = `호출 실패: ${error instanceof Error ? error.message : 'API 오류'}`;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style is:global>
+  [data-post-search] {
+    display: grid;
+    gap: 2rem;
+  }
+  [data-post-search] h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  [data-post-search] .eyebrow {
+    color: #0e7490;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  [data-post-search] .hint,
+  [data-post-search] .footnote {
+    color: var(--aw-color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+  [data-post-search] form {
+    margin-top: 1.5rem;
+  }
+  [data-post-search] label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  [data-post-search] .search-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+  [data-post-search] input {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    border: 1px solid #94a3b8;
+    border-radius: 0.65rem;
+    padding: 0.75rem;
+    background: transparent;
+  }
+  [data-post-search] button {
+    min-height: 48px;
+    border-radius: 0.65rem;
+    background: #0e7490;
+    color: white;
+    padding: 0.7rem 1.1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  [data-post-search] button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  [data-post-search] :is(input, button, a):focus-visible {
+    outline: 3px solid #22d3ee;
+    outline-offset: 3px;
+  }
+  [data-post-search] .result-status {
+    margin: 1.25rem 0 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  [data-post-search] .search-result {
+    padding: 1.15rem 0;
+    border-bottom: 1px solid #94a3b840;
+    overflow-wrap: anywhere;
+  }
+  [data-post-search] .search-result h3 {
+    font-weight: 650;
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+  [data-post-search] .search-result p {
+    color: var(--aw-color-text-muted);
+    margin-top: 0.4rem;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+  [data-post-search] .search-result span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #0e7490;
+  }
+  [data-post-search] .tool-pane {
+    min-width: 0;
+    border: 1px solid #94a3b840;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    background: #94a3b809;
+    align-self: start;
+  }
+  [data-post-search] .search-pane {
+    min-width: 0;
+  }
+  [data-post-search] .native-status {
+    font-size: 0.8rem;
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid #0e749050;
+  }
+  [data-post-search] .secondary {
+    background: transparent;
+    border: 1px solid #0e7490;
+    color: #0e7490;
+    width: 100%;
+  }
+  [data-post-search] pre {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 1rem;
+    border-radius: 0.65rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-height: 160px;
+    overflow-y: auto;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin: 0.8rem 0;
+  }
+  [data-post-search] [data-tool-form] button {
+    width: 100%;
+    margin-top: 0.7rem;
+  }
+  [data-post-search] .trace {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    overflow-wrap: anywhere;
+  }
+  [data-post-search] .footnote {
+    font-size: 0.75rem;
+  }
+  .dark [data-post-search] .eyebrow,
+  .dark [data-post-search] .search-result span,
+  .dark [data-post-search] .secondary {
+    color: #67e8f9;
+  }
+  @media (min-width: 900px) {
+    [data-post-search].with-demo {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    }
+  }
+</style>

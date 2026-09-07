@@ -3,6 +3,7 @@ import { getAsset, getBlogPermalink, getPermalink } from './utils/permalinks';
 export const headerData = {
   links: [
     { text: '글', href: getBlogPermalink() },
+    { text: '검색', href: getPermalink('/search') },
     { text: '태그', href: getPermalink('/tags') },
     { text: '소개', href: getPermalink('/about') },
   ],
