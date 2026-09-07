@@ -49,7 +49,7 @@ WebMCP는 웹페이지가 AI 에이전트에 구조화된 도구를 제공하도
 
 이때 바뀌는 것은 웹사이트의 소스 코드가 아니라 사용자가 보고 있는 페이지의 검색 조건과 결과입니다. Claude Code가 HTML이나 React 파일을 수정해 개발 서버 화면을 바꾸는 일반적인 코딩 작업과는 다른 경로입니다.
 
-또한 WebMCP가 화면을 자동으로 다시 그려주는 것은 아닙니다. 사이트가 등록한 검색 함수가 기존 애플리케이션 상태와 UI 갱신 로직에 연결돼 있어야 합니다. 뒤의 코드 예제는 이 중 도구 등록과 결과 반환을 설명하며, 그림 전체를 구현한 완성된 연동 예제는 아닙니다.
+또한 WebMCP가 화면을 자동으로 다시 그려주는 것은 아닙니다. 사이트가 등록한 검색 함수가 기존 애플리케이션 상태와 UI 갱신 로직에 연결돼 있어야 합니다.
 
 ## WebMCP는 웹페이지가 제공하는 도구 인터페이스다
 
@@ -177,76 +177,7 @@ WebMCP 도구는 열린 페이지의 수명에 묶입니다. 사용자가 사이
 
 SPA에서도 화면과 권한이 바뀌면 도구 목록을 함께 관리해야 합니다. 상품 상세 화면을 벗어났는데 이전 상품의 구매 도구가 남아 있지 않도록 하는 식입니다. 현재 명령형 API는 `AbortSignal`을 통한 등록 해제와 도구 목록 변경을 알리는 `toolchange` 이벤트를 안내합니다.[2]
 
-## 구현 방식 1: JavaScript로 도구를 등록한다
-
-명령형 API는 동적인 상태 조작이나 기존 함수와의 연결에 적합합니다.[2] 다음 예시는 외부 서버 없이 작은 상품 목록을 검색합니다. 데이터는 설명을 위해 만든 가상 데이터입니다.
-
-**2026년 9월 1일 갱신된 Chrome 문서의 `document.modelContext` 형태를 기준으로 작성했습니다.** 초기 예제의 `navigator.modelContext`를 현재 코드에 그대로 옮기기보다 대상 브라우저와 문서 버전을 확인해야 합니다.[2]
-
-```javascript
-const products = [
-  { id: "keyboard-a", name: "무선 키보드 A", price: 59000 },
-  { id: "keyboard-b", name: "무선 키보드 B", price: 39000 },
-];
-
-function searchProducts({ query, sort }) {
-  if (typeof query !== "string" || query.trim() === "") {
-    throw new Error("검색어가 필요합니다.");
-  }
-  if (sort !== "price_asc" && sort !== "price_desc") {
-    throw new Error("지원하지 않는 정렬 조건입니다.");
-  }
-
-  const results = products.filter((p) => p.name.includes(query.trim()));
-  return results.sort((a, b) =>
-    sort === "price_asc" ? a.price - b.price : b.price - a.price,
-  );
-}
-
-if ("modelContext" in document) {
-  const lifecycle = new AbortController();
-
-  await document.modelContext.registerTool(
-    {
-      name: "search_products",
-      description: "상품을 검색하고 가격순으로 정렬합니다. 구매하지 않습니다.",
-      inputSchema: {
-        type: "object",
-        properties: {
-          query: { type: "string", description: "상품 검색어" },
-          sort: { type: "string", enum: ["price_asc", "price_desc"] },
-        },
-        required: ["query", "sort"],
-      },
-      annotations: { readOnlyHint: true },
-      execute: async (input) => JSON.stringify(searchProducts(input)),
-    },
-    { signal: lifecycle.signal },
-  );
-
-  // SPA 컴포넌트 정리 시 lifecycle.abort()로 등록을 해제할 수 있습니다.
-}
-```
-
-이 예제는 검색 결과를 반환하는 부분에 집중했습니다. 실제 사이트에서는 사람이 쓰는 검색 UI와 도구가 같은 `searchProducts` 로직을 사용하도록 구성하고, UI 갱신도 공통 경로에서 처리하는 편이 좋습니다.
-
-지원 환경의 같은 문서에서 도구를 수동으로 확인할 때는 다음 형태를 사용할 수 있습니다.[2]
-
-```javascript
-const tools = await document.modelContext.getTools();
-const tool = tools.find((item) => item.name === "search_products");
-if (!tool) throw new Error("검색 도구가 등록되지 않았습니다.");
-
-const result = await document.modelContext.executeTool(
-  tool,
-  JSON.stringify({ query: "무선 키보드", sort: "price_asc" }),
-);
-console.log(result);
-```
-
-이 코드에는 LLM 호출이 없습니다. 도구의 등록·발견·수동 실행과 자연어를 해석하는 에이전트를 분리해서 볼 수 있습니다. 위 수동 호출을 모델의 도구 선택 결과와 연결하는 부분은 브라우저나 에이전트 클라이언트의 역할입니다.
-
-## 구현 방식 2: HTML 폼을 도구로 선언한다
+## HTML 폼도 도구가 될 수 있다
 
 기존 폼이 있다면 JavaScript로 스키마를 다시 쓰는 대신 선언형 API를 사용할 수 있습니다. `<form>`에 `toolname`과 `tooldescription`을 넣으면 브라우저가 폼과 필드를 구조화된 도구 표현으로 변환합니다.[3]
 
