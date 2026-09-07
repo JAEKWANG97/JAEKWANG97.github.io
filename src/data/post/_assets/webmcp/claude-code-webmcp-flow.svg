@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1070" viewBox="0 0 960 1070" role="img" aria-labelledby="title desc">
+<title id="title">Claude Code의 명령이 웹 화면에 반영되는 WebMCP 연결 예시</title><desc id="desc">사용자가 무선 키보드를 낮은 가격순으로 보여달라고 요청하면 Claude Code가 브라우저 연결 계층을 통해 검색 도구를 호출한다. 페이지의 검색 로직이 결과 목록을 바꾸고 결과를 반환한다. 실제 화면 캡처가 아닌 구성 예시다.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10" fill="none" stroke="#ac5638" stroke-width="1.8"/></marker></defs>
+<rect width="960" height="1070" fill="#f8f6f0"/>
+<g font-family="Noto Sans CJK KR, sans-serif" fill="#242b32">
+<text x="48" y="58" font-size="18" fill="#ac5638">WEBMCP · 사용자에서 화면까지</text>
+<text x="48" y="103" font-size="32" font-weight="700">명령 하나가 웹 화면을 바꾸기까지</text>
+<text x="48" y="138" font-size="18" fill="#58616a">Claude Code와 브라우저를 연결한 구성 예시 · 실제 제품 화면이 아닙니다</text>
+<rect x="48" y="174" width="864" height="95" rx="14" fill="#e9e4d9"/>
+<text x="72" y="209" font-size="17" fill="#58616a">사용자 → Claude Code</text>
+<text x="72" y="245" font-size="25" font-weight="600">“무선 키보드를 찾아서 낮은 가격순으로 보여줘.”</text>
+<path d="M480 280V307" stroke="#ac5638" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="321" width="864" height="175" rx="14" fill="#252e37"/>
+<text x="72" y="358" font-size="21" fill="#fff">Claude Code · 도구 선택</text>
+<text x="72" y="398" font-size="22" font-family="monospace" fill="#f0b799">search_products</text>
+<text x="72" y="437" font-size="20" fill="#fff">query: “무선 키보드”</text>
+<text x="72" y="472" font-size="20" fill="#fff">sort: “price_asc”</text>
+<path d="M480 506V535" stroke="#ac5638" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="548" width="864" height="96" rx="12" fill="#fff" stroke="#ac5638" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="72" y="585" font-size="22" font-weight="600">브라우저 연결 계층 · 별도 연동 필요</text>
+<text x="72" y="619" font-size="18" fill="#58616a">도구 정보를 전달하고, 호출을 페이지의 WebMCP 실행 함수에 연결</text>
+<path d="M480 654V682" stroke="#ac5638" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="696" width="864" height="260" rx="14" fill="#fff" stroke="#d6d9d9"/>
+<path d="M48 746H912" stroke="#d6d9d9"/>
+<text x="72" y="729" font-size="19">웹페이지 · 기존 검색 로직 실행 + UI 갱신</text>
+<text x="72" y="780" font-size="17" fill="#58616a">실행 전</text>
+<text x="527" y="780" font-size="17" fill="#ac5638">실행 후 · 낮은 가격순</text>
+<rect x="72" y="797" width="328" height="56" rx="8" fill="#f0f1ef"/>
+<rect x="72" y="866" width="328" height="56" rx="8" fill="#f0f1ef"/>
+<text x="89" y="831" font-size="19">키보드 A</text><text x="382" y="831" font-size="19" text-anchor="end">59,000원</text>
+<text x="89" y="900" font-size="19">키보드 B</text><text x="382" y="900" font-size="19" text-anchor="end">39,000원</text>
+<path d="M428 860H496" stroke="#ac5638" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="527" y="797" width="359" height="56" rx="8" fill="#f7e7db"/>
+<rect x="527" y="866" width="359" height="56" rx="8" fill="#f7e7db"/>
+<text x="544" y="831" font-size="19">키보드 B</text><text x="868" y="831" font-size="19" text-anchor="end">39,000원</text>
+<text x="544" y="900" font-size="19">키보드 A</text><text x="868" y="900" font-size="19" text-anchor="end">59,000원</text>
+<text x="48" y="997" font-size="19" fill="#58616a">페이지의 실제 검색 결과 → 연결 계층 → Claude Code의 완료 응답</text>
+<text x="48" y="1035" font-size="17" fill="#58616a">사이트의 도구 등록과 UI 갱신 구현이 필요합니다. 소스 코드를 수정하는 흐름은 아닙니다.</text>
+</g></svg>
