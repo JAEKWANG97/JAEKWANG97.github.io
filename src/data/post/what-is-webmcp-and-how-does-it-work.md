@@ -367,8 +367,12 @@ HTML 폼을 활용하면 기존 화면을 유지한 채 도구를 선언할 수 
 
 ## Sources
 
-[1] https://developer.chrome.com/docs/ai/webmcp
-[2] https://developer.chrome.com/docs/ai/webmcp/imperative-api
-[3] https://developer.chrome.com/docs/ai/webmcp/declarative-api
-[4] https://developer.chrome.com/docs/ai/webmcp/compare-mcp
-[5] https://developer.chrome.com/docs/ai/webmcp/secure-tools
+[1] [WebMCP 개요](https://developer.chrome.com/docs/ai/webmcp)
+
+[2] [JavaScript 명령형 API](https://developer.chrome.com/docs/ai/webmcp/imperative-api)
+
+[3] [HTML 선언형 API](https://developer.chrome.com/docs/ai/webmcp/declarative-api)
+
+[4] [WebMCP와 MCP 비교](https://developer.chrome.com/docs/ai/webmcp/compare-mcp)
+
+[5] [WebMCP 도구 보안](https://developer.chrome.com/docs/ai/webmcp/secure-tools)
