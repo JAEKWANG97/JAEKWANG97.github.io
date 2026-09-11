@@ -776,4 +776,4 @@ AX 성과
 ## Sources
 
 [1] https://foundationcapital.com/ideas/the-case-for-context-graphs — Foundation Capital, The case for context graphs
-[2] https://www.threads.com/@boris_cherny/post/DaJgVFVj2PB/as-engineering-product-design-ds-etc-melt-into-a-new-kind-of-role-i-was — Boris Cherny, Five archetypes on the Claude Code team
+[2] [Boris Cherny, Five archetypes on the Claude Code team](https://www.threads.com/@boris_cherny/post/DaJgVFVj2PB/as-engineering-product-design-ds-etc-melt-into-a-new-kind-of-role-i-was)
