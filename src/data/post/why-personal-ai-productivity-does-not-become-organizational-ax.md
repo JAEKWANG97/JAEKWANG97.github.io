@@ -2,7 +2,6 @@
 title: "개인의 AI 생산성은 왜 조직의 AX로 이어지지 않을까?"
 publishDate: 2026-09-03T23:50:00+09:00
 draft: false
-mermaid: true
 tags:
   - "ax"
   - "ai-native"
@@ -48,14 +47,7 @@ _개인의 속도가 조직의 능력이 되려면 효능, 확산, 지속 가능
 
 기존 조직에 챗봇과 에이전트를 몇 개 추가하는 것으로는 부족합니다. AI가 업무의 실제 일부를 수행하면서 사람의 역할, 책임, 협업, 검증 방식이 달라져야 합니다.
 
-```mermaid
-flowchart LR
-    L[Legacy Team] --> T[AI 도구 지급]
-    T --> P{업무 방식이 바뀌었는가?}
-    P -->|아니오| A[기존 프로세스 + AI 기능]
-    P -->|예| N[AI Native Team]
-    N --> R[역할·책임·평가·협업 방식 변화]
-```
+![도구 도입과 조직 변화는 다르다](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/legacy-to-native.svg)
 
 따라서 다음은 서로 다릅니다.
 
@@ -129,14 +121,7 @@ _세 질문 중 하나라도 끊기면 개인의 AI 효능이 조직의 AX까지
 
 AI Native한 방식은 업무 전체 사이클에 AI를 동반시키되 결과를 만든 사람이 끝까지 책임지는 것입니다.
 
-```mermaid
-flowchart LR
-    G[목표 정의] --> A1[AI와 초안 생성]
-    A1 --> A2[AI와 검토·수정]
-    A2 --> V[사람의 사실·품질 검증]
-    V --> F[완성·전달]
-    F --> R[결과 책임]
-```
+![초안부터 결과 책임까지](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/responsible-ai-cycle.svg)
 
 AI를 사용했다는 사실보다 다음이 중요합니다.
 
@@ -154,17 +139,7 @@ AI를 많이 사용하는 문화가 아니라 AI 결과를 끝까지 책임지�
 
 사람이 한 작업을 붙잡고 AI의 모든 출력을 기다리는 방식보다 여러 실행을 병렬로 맡기고, 사람은 방향과 검토와 예외 처리에 집중하는 방식입니다.
 
-```mermaid
-flowchart TB
-    H[사람] --> A1[에이전트: 자료 조사]
-    H --> A2[에이전트: 데이터 정리]
-    H --> A3[에이전트: 구현]
-    H --> A4[에이전트: 테스트]
-    A1 --> J[사람의 판단·통합]
-    A2 --> J
-    A3 --> J
-    A4 --> J
-```
+![병렬 실행, 사람의 판단으로 통합](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/parallel-agent-work.svg)
 
 하지만 에이전트를 여러 개 띄운다고 멀티태스킹이 되는 것은 아닙니다.
 
@@ -203,15 +178,7 @@ AI를 잘 쓰는 개발자 한 명이 문화를 바꾸는 것이 아닙니다. �
 - 보고를 받은 사람은 어떤 결정을 내리는가?
 - 그 결정이 다음 실행으로 어떻게 이어지는가?
 
-```mermaid
-flowchart LR
-    O[실제 업무 관찰] --> P[문제 후보]
-    P --> H[가설 설정]
-    H --> D[빠른 결과물 생성]
-    D --> U[현업 확인]
-    U --> R[문제 정의 수정]
-    R --> H
-```
+![결과물로 문제 정의를 갱신한다](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/problem-discovery-loop.svg)
 
 완벽한 요구사항 문서를 기다리기보다 에이전트로 결과물을 빠르게 만들어 보여주고, 현업의 반응으로 문제 정의를 수정하는 속도전이 중요하다는 관점입니다.
 
@@ -308,17 +275,7 @@ _에이전트의 개수를 늘리기보다 범용 에이전트가 안전하게 �
 
 강의에서는 두 트랙을 병렬로 운영하는 관점을 제시했습니다.
 
-```mermaid
-flowchart LR
-    K0[업무 시작에 필요한 최소 지식] --> A[에이전트 실제 투입]
-    A --> F[부족한 정보·충돌·예외 발견]
-    F --> C[정제·보완]
-    C --> K1[검증된 지식]
-    K1 --> A
-
-    A --> L[입력·수정·승인 기록]
-    L --> C
-```
+![실행하면서 지식을 보완한다](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/living-knowledge-loop.svg)
 
 에이전트가 업무를 수행하는 동안 사람이 제공한 입력에는 다음 정보가 담깁니다.
 
@@ -401,13 +358,7 @@ RAG가 컨텍스트 그래프의 정보를 찾아 에이전트에 제공할 수�
 
 PoC가 끝난 뒤에도 서비스, 계정, 권한, 비용, 지식베이스가 남습니다.
 
-```mermaid
-flowchart LR
-    P[PoC 에이전트] --> O{소유자·평가·권한이 있는가?}
-    O -->|예| M[운영·개선]
-    O -->|아니오| D[운영 부채]
-    D --> R[비용·보안·품질 위험]
-```
+![운영 조건이 없으면 부채가 된다](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/agent-ownership-gate.svg)
 
 이 운영 문제를 보리스 체르니(Boris Cherny)가 제안한 다섯 역할로 보면, 전사 AX에는 Builder뿐 아니라 Maintainer와 Sweeper가 필요합니다.[2]
 
@@ -422,17 +373,7 @@ AI First는 구성원이 기존 습관으로 돌아가지 않고 AI를 실제 �
 
 반대로 검증과 책임 없이 “무조건 AI부터”만 강조하면 워크슬롭이 생깁니다.
 
-```mermaid
-sequenceDiagram
-    participant A as 작성자
-    participant AI as AI
-    participant B as 동료
-
-    A->>AI: 빠르게 결과물 생성
-    AI-->>A: 맥락과 근거가 부족한 초안
-    A->>B: 충분히 검토하지 않고 전달
-    B->>B: 맥락 복원·사실 확인·재작성
-```
+![검토하지 않은 초안의 비용](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/workslop-handoff.svg)
 
 개인의 작성 시간은 줄었지만 조직 전체의 검토 시간은 늘어날 수 있습니다.
 
@@ -486,13 +427,7 @@ AX를 바텀업으로만 추진하면 실무 속도와 조직 의사결정 속�
 
 강의에서는 범위는 좁게 잡되 수직적인 흐름을 관통하는 Vertical Narrow Workflow를 제시했습니다.
 
-```mermaid
-flowchart TB
-    E[실행 조직의 반복 업무] --> R[결과·근거 보고]
-    R --> D[리더 의사결정]
-    D --> N[후속 실행 지시]
-    N --> E
-```
+![좁은 업무를 끝까지 연결한다](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/vertical-workflow-loop.svg)
 
 예를 들어 전사 영업 전체를 바꾸려 하기보다 하나의 좁은 승인 업무를 선택합니다. 그 안에서는 데이터 수집부터 보고, 의사결정, 후속 실행까지 연결합니다.
 
@@ -519,15 +454,7 @@ FDE는 현업에 깊이 들어가 문제와 해법을 함께 찾는 역할입니
 - 현업 반응을 보고 문제 정의를 바꿉니다.
 - 구현·배포·정착까지 이어갑니다.
 
-```mermaid
-flowchart LR
-    F[FDE 현장 투입] --> O[업무 관찰]
-    O --> H[문제 가설]
-    H --> P[작동하는 결과물]
-    P --> C[현업 확인]
-    C --> R[문제·해법 수정]
-    R --> H
-```
+![FDE는 현장에서 가설을 검증한다](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/fde-discovery-loop.svg)
 
 강의에서는 FDE를 쇄빙선으로 표현했습니다. 단단하게 굳은 프로세스와 기술·문화 장벽을 먼저 깨고 AX가 들어갈 첫 경로를 만드는 역할입니다.
 
@@ -626,18 +553,7 @@ _다섯 역할은 승진 순서가 아니라 제품 단계마다 필요한 기�
 
 그렇다고 보안 요구를 낙관적으로 보면 안 됩니다. 로컬 모델을 사용해도 입력 로그를 외부 관측 서비스로 보내면 회사 데이터가 나갈 수 있습니다. 모델 위치뿐 아니라 전체 데이터 흐름을 봐야 합니다.
 
-```mermaid
-flowchart LR
-    D[회사 데이터] --> A[에이전트]
-    A --> M[모델]
-    A --> T[도구]
-    A --> L[로그·트레이스]
-    T --> S[업무 시스템]
-
-    M --> P[배포 위치·보존 정책]
-    T --> Q[권한·승인]
-    L --> R[마스킹·접근·보존 기간]
-```
+![모델 밖의 데이터 흐름도 본다](_assets/why-personal-ai-productivity-does-not-become-organizational-ax/security-data-flow.svg)
 
 보안은 한 번의 승인 문서가 아니라 데이터, 권한, 실행, 로그를 잇는 아키텍처입니다.
 
