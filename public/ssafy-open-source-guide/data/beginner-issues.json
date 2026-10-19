@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-19T18:47:54.165454+00:00",
+  "checked_at": "2026-10-19T22:41:12.431307+00:00",
   "draft": false,
   "projects_surveyed": 245,
   "issues": [
@@ -200,6 +200,174 @@
       "ownership_note": "담당자와 맡겠다는 댓글이 없습니다. 이 작업을 구현하는 PR은 확인되지 않았습니다.",
       "related_pr_urls": [],
       "checked_at": "2026-10-19T18:47:15.122345+00:00"
+    },
+    {
+      "id": "hibernate--hibernate-reactive-1804",
+      "repo": "hibernate/hibernate-reactive",
+      "project": "Hibernate Reactive",
+      "project_description": "Java에서 데이터베이스 작업을 비동기로 처리하는 ORM 라이브러리.",
+      "issue_number": 1804,
+      "issue_url": "https://github.com/hibernate/hibernate-reactive/issues/1804",
+      "title": "배치 처리의 INSERT·UPDATE 정렬 옵션 문서 보완",
+      "summary": "성능 안내에 hibernate.order_inserts와 hibernate.order_updates를 추가합니다. 기존 배치 크기 설정과 함께 쓰는 방법을 짧은 예제로 설명합니다.",
+      "category": "backend",
+      "secondary_categories": [
+        "data"
+      ],
+      "language": "AsciiDoc",
+      "kind": "문서 보완",
+      "preparation": "Hibernate 배치 처리·AsciiDoc·Gradle Wrapper와 JDK.",
+      "why_manageable": "추가할 두 설정이 명확하고, 이를 검사하는 기존 테스트도 있습니다. 라이브러리 동작을 바꾸지 않는 문서 수정입니다.",
+      "suggested_test": "./gradlew :documentation:renderReferenceDocumentation",
+      "verification_note": "정렬 옵션을 켜고 끌 때의 예제를 기존 테스트와 대조하고, 생성된 HTML에서 설정 이름과 링크를 확인합니다.",
+      "files": [
+        {
+          "label": "성능·배치 처리 안내",
+          "url": "https://github.com/hibernate/hibernate-reactive/blob/616e62cb5edb6cf61aa776ede2576b95da5bba9d/documentation/src/main/asciidoc/reference/_tuning-performance.adoc"
+        },
+        {
+          "label": "정렬 옵션의 기존 테스트",
+          "url": "https://github.com/hibernate/hibernate-reactive/blob/616e62cb5edb6cf61aa776ede2576b95da5bba9d/hibernate-reactive-core/src/test/java/org/hibernate/reactive/OrderQueriesTestBase.java"
+        },
+        {
+          "label": "문서 빌드 작업",
+          "url": "https://github.com/hibernate/hibernate-reactive/blob/616e62cb5edb6cf61aa776ede2576b95da5bba9d/documentation/build.gradle"
+        }
+      ],
+      "proposal_role": "유지보수자가 요청한 문서 보완",
+      "role_evidence": "https://github.com/hibernate/hibernate-reactive/pull/4253",
+      "contribution_url": "https://github.com/hibernate/hibernate-reactive/blob/616e62cb5edb6cf61aa776ede2576b95da5bba9d/CONTRIBUTING.md",
+      "ownership_note": "담당자와 맡겠다는 댓글이 없습니다. 이 문서 작업의 구현 PR도 확인되지 않았습니다.",
+      "checked_at": "2026-10-19T22:39:43.692156+00:00"
+    },
+    {
+      "id": "keycloak--keycloak-40370",
+      "repo": "keycloak/keycloak",
+      "project": "Keycloak",
+      "project_description": "로그인·사용자·접근 권한을 관리하는 인증 서버.",
+      "issue_number": 40370,
+      "issue_url": "https://github.com/keycloak/keycloak/issues/40370",
+      "title": "관리 화면에서 캐시를 지우는 방법 문서화",
+      "summary": "관리 UI의 캐시 삭제 메뉴와 네 버튼을 설명합니다. 필요한 권한과 모든 realm에 미치는 영향도 함께 적습니다.",
+      "category": "security",
+      "secondary_categories": [
+        "backend"
+      ],
+      "language": "AsciiDoc",
+      "kind": "문서 보완",
+      "preparation": "Keycloak 관리 UI 사용 경험·AsciiDoc·Maven Wrapper·JDK. 화면은 운영 서버가 아닌 로컬 개발 서버에서 확인합니다.",
+      "why_manageable": "삭제 기능은 이미 있고, 메뉴와 도움말을 담은 소스도 공개돼 있습니다. 서버 코드를 바꾸지 않고 설명서를 보완하는 작업입니다.",
+      "suggested_test": "./mvnw clean install -pl docs/documentation/server_admin -Pdocumentation",
+      "verification_note": "기존 버튼만 문서화합니다. 새 캐시 삭제 기능은 만들지 않습니다. 메뉴의 master realm·manage-realm 조건과 캐시 삭제 영향을 도움말과 맞춥니다.",
+      "files": [
+        {
+          "label": "현재 관리 설명서",
+          "url": "https://github.com/keycloak/keycloak/blob/7c62788efa63ebe99531f29de41ba9c7bf753c5c/docs/documentation/server_admin/topics/admin-console.adoc"
+        },
+        {
+          "label": "메뉴가 표시되는 권한 조건",
+          "url": "https://github.com/keycloak/keycloak/blob/7c62788efa63ebe99531f29de41ba9c7bf753c5c/js/apps/admin-ui/src/PageHeader.tsx"
+        },
+        {
+          "label": "현재 네 가지 삭제 버튼",
+          "url": "https://github.com/keycloak/keycloak/blob/7c62788efa63ebe99531f29de41ba9c7bf753c5c/js/apps/admin-ui/src/PageHeaderClearCachesModal.tsx"
+        },
+        {
+          "label": "캐시 삭제 도움말",
+          "url": "https://github.com/keycloak/keycloak/blob/7c62788efa63ebe99531f29de41ba9c7bf753c5c/js/apps/admin-ui/maven-resources/theme/keycloak.v2/admin/messages/messages_en.properties"
+        }
+      ],
+      "proposal_role": "유지보수자가 요청한 문서 보완",
+      "role_evidence": "https://github.com/keycloak/keycloak/pull/53960",
+      "contribution_url": "https://github.com/keycloak/keycloak/blob/7c62788efa63ebe99531f29de41ba9c7bf753c5c/docs/documentation/internal_resources/contributing.adoc",
+      "ownership_note": "담당자와 맡겠다는 댓글이 없습니다. 이 문서 작업의 구현 PR도 확인되지 않았습니다.",
+      "related_pr_note": "UI 교체 PR #52514는 별도 작업입니다. 이 추천은 현재 관리 UI의 기존 삭제 기능을 설명하는 범위입니다.",
+      "related_pr_urls": [
+        "https://github.com/keycloak/keycloak/pull/52514"
+      ],
+      "checked_at": "2026-10-19T22:39:43.692156+00:00"
+    },
+    {
+      "id": "apache--pulsar-21638",
+      "repo": "apache/pulsar",
+      "project": "Apache Pulsar",
+      "project_description": "서비스 사이의 메시지를 전달하고 저장하는 분산 메시징 플랫폼.",
+      "issue_number": 21638,
+      "issue_url": "https://github.com/apache/pulsar/issues/21638",
+      "title": "Pulsar Proxy와 외부 SNI 프록시의 설명 구분하기",
+      "summary": "문서 앞부분에서 Pulsar Proxy와 외부 SNI 프록시를 혼동하게 하는 설명을 고칩니다. 뒤의 ATS 연결 예제와 설명이 서로 맞도록 정리합니다.",
+      "category": "data",
+      "secondary_categories": [
+        "cloud"
+      ],
+      "language": "Markdown",
+      "kind": "문서 보완",
+      "preparation": "Markdown·TLS/SNI 기본 개념, Node 24·Yarn 3.5. 수정 PR은 apache/pulsar-site에 보냅니다.",
+      "why_manageable": "유지보수자가 혼란스러운 두 문단을 짚었습니다. 문서 저장소에서 설명만 고치는 범위로 시작할 수 있습니다.",
+      "suggested_test": "./preview.sh",
+      "verification_note": "지원 중인 버전 문서에도 같은 설명을 반영하고, PR 설명에 로컬 미리보기 캡처를 첨부합니다.",
+      "files": [
+        {
+          "label": "SNI 라우팅 안내의 앞부분",
+          "url": "https://github.com/apache/pulsar-site/blob/d5e68308d33efa1a8fce8c88874fce36cff00387/docs/concepts-proxy-sni-routing.md"
+        },
+        {
+          "label": "문서 수정 위치·버전 안내",
+          "url": "https://github.com/apache/pulsar-site/blob/d5e68308d33efa1a8fce8c88874fce36cff00387/contribute/document-contribution.md"
+        },
+        {
+          "label": "로컬 미리보기 방법",
+          "url": "https://github.com/apache/pulsar-site/blob/d5e68308d33efa1a8fce8c88874fce36cff00387/contribute/document-preview.md"
+        }
+      ],
+      "proposal_role": "유지보수자가 요청한 문서 보완",
+      "role_evidence": "https://github.com/apache/pulsar/pull/26963",
+      "contribution_url": "https://github.com/apache/pulsar-site/blob/d5e68308d33efa1a8fce8c88874fce36cff00387/contribute/document-intro.md",
+      "ownership_note": "담당자와 맡겠다는 댓글이 없습니다. 이 문서 작업의 구현 PR도 확인되지 않았습니다.",
+      "checked_at": "2026-10-19T22:39:43.692156+00:00"
+    },
+    {
+      "id": "cilium--cilium-13706",
+      "repo": "cilium/cilium",
+      "project": "Cilium",
+      "project_description": "쿠버네티스의 네트워크 연결과 접근 제어를 담당하는 도구.",
+      "issue_number": 13706,
+      "issue_url": "https://github.com/cilium/cilium/issues/13706",
+      "title": "kube-proxy 없는 클러스터의 기본 점검 안내 추가",
+      "summary": "일반 문제 해결 문서에 kube-proxy 대체 기능의 기본 점검 항목을 추가합니다. 상태 출력·커널 요건·기존 상세 안내를 찾을 수 있게 연결합니다.",
+      "category": "cloud",
+      "secondary_categories": [
+        "security"
+      ],
+      "language": "reStructuredText",
+      "kind": "문서 보완",
+      "preparation": "Kubernetes Service·Cilium 사용 경험, reStructuredText·Docker. 명령 출력은 로컬 실습 클러스터에서 확인합니다.",
+      "why_manageable": "유지보수자가 상태 확인과 커널 버전을 시작점으로 제시했습니다. 네트워크 동작을 바꾸지 않고 기존 문서와 연결하는 작업입니다.",
+      "suggested_test": "make test-docs",
+      "verification_note": "옛 이슈의 커널 버전을 그대로 복사하지 말고 현재 지원 요건과 맞춥니다. 상태 출력에서 무엇을 확인할지 설명하고 상세 점검 문서로 연결합니다.",
+      "files": [
+        {
+          "label": "일반 문제 해결 문서",
+          "url": "https://github.com/cilium/cilium/blob/835550fbe4b38d837f59d999bccb0a8cc432fc8d/Documentation/operations/troubleshooting.rst"
+        },
+        {
+          "label": "현재 kube-proxy 대체 기능 안내",
+          "url": "https://github.com/cilium/cilium/blob/835550fbe4b38d837f59d999bccb0a8cc432fc8d/Documentation/network/kubernetes/kubeproxy-free.rst"
+        },
+        {
+          "label": "문서 미리보기·검사 방법",
+          "url": "https://github.com/cilium/cilium/blob/835550fbe4b38d837f59d999bccb0a8cc432fc8d/Documentation/contributing/docs/docstest.rst"
+        }
+      ],
+      "proposal_role": "유지보수자가 요청한 문서 보완",
+      "role_evidence": "https://github.com/cilium/cilium/pull/48587",
+      "contribution_url": "https://github.com/cilium/cilium/blob/835550fbe4b38d837f59d999bccb0a8cc432fc8d/Documentation/contributing/docs/index.rst",
+      "ownership_note": "담당자와 맡겠다는 댓글이 없습니다. 이 문서 작업의 구현 PR도 확인되지 않았습니다.",
+      "related_pr_note": "연결된 CLI PR #1023은 연결성 테스트를 구현한 작업입니다. 이 일반 문제 해결 문서 보완은 포함하지 않습니다.",
+      "related_pr_urls": [
+        "https://github.com/cilium/cilium-cli/pull/1023"
+      ],
+      "checked_at": "2026-10-19T22:39:43.692156+00:00"
     }
   ]
 }
