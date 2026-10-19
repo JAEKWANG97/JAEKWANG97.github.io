@@ -106,3 +106,12 @@
 .project-activity p { font-size: 13px; }
 .project-activity ul { padding-left: 20px; }
 .project-activity li { margin: 10px 0; overflow-wrap: anywhere; }
+
+.activity-pending { color: var(--muted); background: #f4f3f7; border-color: #dcd9e3; }
+.capture-shortcut { margin: 0 0 20px; }
+.capture-showcase .flow-evidence { margin-top: 30px; }
+#capture-evidence .capture-frame { overflow: hidden; }
+#capture-evidence .capture { width: 100%; min-width: 0; max-width: 100%; height: auto; }
+@media (max-width: 760px) {
+  #capture-evidence .capture-frame + figcaption::before { content: "이미지를 누르면 원본을 볼 수 있습니다."; }
+}
