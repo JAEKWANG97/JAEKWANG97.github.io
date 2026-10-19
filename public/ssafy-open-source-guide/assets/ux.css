@@ -94,3 +94,15 @@
 @media print {
   .ux-search, .search-options, .cohort-tabs { display: none; }
 }
+
+.project-tabs-panel:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.project-tabs-panel .project-list { padding-left: 0; list-style: none; }
+.project-tabs-panel .result-count { margin: 14px 0 8px; }
+.project-tabs-panel .activity-legend { font-size: 12px; margin-bottom: 18px; }
+.project .project-description { color: var(--ink); font-size: 15px; line-height: 1.8; margin: 8px 0 12px; }
+.activity-badge { display: inline-block; color: #23563b; background: #edf7ef; border: 1px solid #c3dccb; padding: 1px 7px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+.project-activity { margin-top: 12px; color: var(--muted); font-size: 13px; }
+.project-activity > summary { cursor: pointer; width: fit-content; padding: 6px 0; }
+.project-activity p { font-size: 13px; }
+.project-activity ul { padding-left: 20px; }
+.project-activity li { margin: 10px 0; overflow-wrap: anywhere; }

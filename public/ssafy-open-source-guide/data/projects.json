@@ -78,7 +78,59 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "자동 설정과 실행 환경을 제공해 Spring 애플리케이션 구성을 돕는 프레임워크.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:23:22.800544+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/spring-projects/spring-boot/pull/52246",
+            "title": "Improve uber jar performance by looking up classes and resources directly in nested jars",
+            "merged_at": "2026-10-17T07:26:02Z",
+            "feedback": {
+              "url": "https://github.com/spring-projects/spring-boot/pull/52246#issuecomment-6231229310",
+              "date": "2026-10-17T07:30:17Z"
+            }
+          },
+          {
+            "url": "https://github.com/spring-projects/spring-boot/pull/50886",
+            "title": "Micrometer registries pin the application context",
+            "merged_at": "2026-07-28T08:17:54Z",
+            "feedback": {
+              "url": "https://github.com/spring-projects/spring-boot/pull/50886#issuecomment-5091233069",
+              "date": "2026-07-27T12:22:46Z"
+            }
+          },
+          {
+            "url": "https://github.com/spring-projects/spring-boot/pull/52284",
+            "title": "JarUrlClassLoader rejects valid class names since #52271",
+            "merged_at": "2026-10-18T22:25:27Z",
+            "feedback": {
+              "url": "https://github.com/spring-projects/spring-boot/pull/52284#issuecomment-6255927783",
+              "date": "2026-10-18T22:26:46Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "spring-projects--spring-security",
@@ -97,7 +149,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Spring 애플리케이션의 인증·권한 검사와 웹 보안을 처리하는 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:23:29.943178+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "spring-projects--spring-data-jpa",
@@ -116,7 +175,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "저장소 인터페이스를 통해 JPA 기반 데이터 접근 코드 작성을 돕는 Spring 모듈.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:23:36.547439+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "django--django",
@@ -137,7 +203,59 @@
       "archived": false,
       "code_label": "공식 코드·PR 검토",
       "guide_url": "https://code.djangoproject.com/",
-      "guide_label": "Trac 이슈 추적"
+      "guide_label": "Trac 이슈 추적",
+      "description": "ORM·인증·관리 화면 등을 제공하는 Python 웹 프레임워크.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:23:42.411121+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/django/django/pull/21975",
+            "title": "Fixed #37344 -- Enabled FETCH_PEERS batching for instances loaded by select_related.",
+            "merged_at": "2026-09-18T14:27:35Z",
+            "feedback": {
+              "url": "https://github.com/django/django/pull/21975#discussion_r4046976920",
+              "date": "2026-09-18T13:06:15Z"
+            }
+          },
+          {
+            "url": "https://github.com/django/django/pull/21775",
+            "title": "Fixed #37274 -- Allowed transforms in order_by() after alias().",
+            "merged_at": "2026-08-17T17:21:54Z",
+            "feedback": {
+              "url": "https://github.com/django/django/pull/21775#pullrequestreview-4950326594",
+              "date": "2026-08-17T09:43:59Z"
+            }
+          },
+          {
+            "url": "https://github.com/django/django/pull/22109",
+            "title": "Fixed #37409 -- Removed ambiguous \"Overview\" link text from the docs home page.",
+            "merged_at": "2026-10-15T01:10:15Z",
+            "feedback": {
+              "url": "https://github.com/django/django/pull/22109#pullrequestreview-5460672869",
+              "date": "2026-10-08T18:13:18Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "fastapi--fastapi",
@@ -157,7 +275,14 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Python 타입 선언을 활용해 HTTP API와 API 문서를 만드는 웹 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:23:52.593130+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "pydantic--pydantic",
@@ -176,7 +301,14 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Python 타입 선언을 바탕으로 입력 데이터를 검증하고 변환하는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:00.033255+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "react--react",
@@ -196,7 +328,14 @@
       "language": "JavaScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "컴포넌트를 조합해 사용자 인터페이스를 만드는 JavaScript 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:09.262289+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "vuejs--core",
@@ -216,7 +355,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "반응형 데이터와 컴포넌트로 웹 인터페이스를 만드는 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:16.080949+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "vitejs--vite",
@@ -235,7 +381,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "웹 프런트엔드의 개발 서버와 배포용 빌드를 제공하는 도구.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:25.789207+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "axios--axios",
@@ -254,7 +407,14 @@
       "language": "JavaScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "브라우저와 Node.js에서 HTTP 요청·응답을 처리하는 클라이언트 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:32.359357+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "pmndrs--zustand",
@@ -273,7 +433,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "작은 API로 애플리케이션의 공유 상태를 관리하는 JavaScript 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:41.592299+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "tanstack--query",
@@ -293,7 +460,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "서버 데이터의 비동기 조회·캐시·동기화를 관리하는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:48.429332+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "react-hook-form--react-hook-form",
@@ -312,7 +486,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "React 폼의 입력값과 검증 상태를 관리하는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:24:59.075245+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "colinhacks--zod",
@@ -331,7 +512,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "스키마로 입력을 검증하고 타입을 추론하는 TypeScript 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:25:06.309397+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "pytorch--pytorch",
@@ -350,7 +538,14 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "텐서 연산과 자동 미분으로 딥러닝 모델의 학습·추론을 지원하는 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:25:15.317197+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "huggingface--transformers",
@@ -370,7 +565,59 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "사전 학습 모델을 불러와 학습·추론에 사용할 수 있게 돕는 라이브러리.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:25:22.413628+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/huggingface/transformers/pull/48847",
+            "title": "Align special tokens on the text config",
+            "merged_at": "2026-09-18T16:20:44Z",
+            "feedback": {
+              "url": "https://github.com/huggingface/transformers/pull/48847#issuecomment-5755742676",
+              "date": "2026-09-21T05:16:55Z"
+            }
+          },
+          {
+            "url": "https://github.com/huggingface/transformers/pull/45822",
+            "title": "Document how to avoid the Metaspace prefix after added tokens",
+            "merged_at": "2026-10-19T04:55:02Z",
+            "feedback": {
+              "url": "https://github.com/huggingface/transformers/pull/45822#discussion_r4289525973",
+              "date": "2026-10-16T00:07:09Z"
+            }
+          },
+          {
+            "url": "https://github.com/huggingface/transformers/pull/48760",
+            "title": "Add test for causal only variant of some encoder-decoder models",
+            "merged_at": "2026-09-16T09:50:15Z",
+            "feedback": {
+              "url": "https://github.com/huggingface/transformers/pull/48760#pullrequestreview-5211741167",
+              "date": "2026-09-15T14:57:49Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "numpy--numpy",
@@ -389,7 +636,59 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "다차원 배열과 수치 연산을 제공하는 Python 라이브러리.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:25:30.893831+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/numpy/numpy/pull/32620",
+            "title": "BUG: Fix segfault in seterr() on self-referencing object array (gh-32…",
+            "merged_at": "2026-09-14T22:04:50Z",
+            "feedback": {
+              "url": "https://github.com/numpy/numpy/pull/32620#discussion_r4008770555",
+              "date": "2026-09-14T19:28:07Z"
+            }
+          },
+          {
+            "url": "https://github.com/numpy/numpy/pull/32831",
+            "title": "MAINT: Update GitHub release procedure.",
+            "merged_at": "2026-10-12T04:19:34Z",
+            "feedback": {
+              "url": "https://github.com/numpy/numpy/pull/32831#discussion_r4149819862",
+              "date": "2026-09-30T22:10:06Z"
+            }
+          },
+          {
+            "url": "https://github.com/numpy/numpy/pull/32125",
+            "title": "BUG: Ensure errno from strtold_l is preserved on Darwin/iOS",
+            "merged_at": "2026-07-28T22:00:56Z",
+            "feedback": {
+              "url": "https://github.com/numpy/numpy/pull/32125#pullrequestreview-4798831980",
+              "date": "2026-07-28T15:14:21Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "lysine-dev--okhttp",
@@ -408,7 +707,14 @@
       "language": "Kotlin",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Java·Kotlin 애플리케이션의 HTTP 통신을 처리하는 클라이언트 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:25:40.486649+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "lysine-dev--retrofit",
@@ -427,7 +733,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "인터페이스와 어노테이션으로 HTTP API 호출을 정의하는 Java·Kotlin 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:25:47.574024+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "kotlin--kotlinx.coroutines",
@@ -446,7 +759,59 @@
       "language": "Kotlin",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "코루틴과 Flow로 Kotlin의 비동기 작업과 데이터 흐름을 다루는 라이브러리.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:25:52.874990+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/Kotlin/kotlinx.coroutines/pull/4744",
+            "title": "Optimize `CoroutineContext.foldCopies` and `newCoroutineContext`",
+            "merged_at": "2026-09-16T09:05:34Z",
+            "feedback": {
+              "url": "https://github.com/Kotlin/kotlinx.coroutines/pull/4744#discussion_r4009272206",
+              "date": "2026-09-14T20:25:37Z"
+            }
+          },
+          {
+            "url": "https://github.com/Kotlin/kotlinx.coroutines/pull/4750",
+            "title": "Properly hand-off tasks from the local queue during the termination s…",
+            "merged_at": "2026-09-14T18:21:16Z",
+            "feedback": {
+              "url": "https://github.com/Kotlin/kotlinx.coroutines/pull/4750#discussion_r4007760629",
+              "date": "2026-09-14T17:25:04Z"
+            }
+          },
+          {
+            "url": "https://github.com/Kotlin/kotlinx.coroutines/pull/4767",
+            "title": "Optimize `SafeCollector` context check for matching contexts",
+            "merged_at": "2026-10-05T10:29:10Z",
+            "feedback": {
+              "url": "https://github.com/Kotlin/kotlinx.coroutines/pull/4767#pullrequestreview-5394269581",
+              "date": "2026-10-02T16:33:21Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "coil-kt--coil",
@@ -466,7 +831,14 @@
       "language": "Kotlin",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Kotlin·Compose 앱에서 이미지를 불러오고 캐시하는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:02.527857+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "androidx--androidx",
@@ -486,7 +858,14 @@
       "archived": false,
       "code_label": "GitHub 동기화본",
       "guide_url": "https://android.googlesource.com/platform/frameworks/support",
-      "guide_label": "AOSP 원본"
+      "guide_label": "AOSP 원본",
+      "description": "Android 앱 개발에 쓰는 UI·수명주기 등 Jetpack 라이브러리의 모음.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:08.271838+00:00",
+        "evidence": [],
+        "reason": "official_venue_requires_review"
+      }
     },
     {
       "id": "livekit--client-sdk-js",
@@ -505,7 +884,59 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "웹·JavaScript 앱에서 실시간 음성·영상과 데이터를 주고받는 클라이언트 SDK.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:26:08.272721+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/livekit/client-sdk-js/pull/2046",
+            "title": "chore: initial state machine plumbing",
+            "merged_at": "2026-08-20T14:47:03Z",
+            "feedback": {
+              "url": "https://github.com/livekit/client-sdk-js/pull/2046#discussion_r3814466860",
+              "date": "2026-08-19T15:40:03Z"
+            }
+          },
+          {
+            "url": "https://github.com/livekit/client-sdk-js/pull/2085",
+            "title": "feat: add disableIceLite connect option",
+            "merged_at": "2026-09-08T19:50:55Z",
+            "feedback": {
+              "url": "https://github.com/livekit/client-sdk-js/pull/2085#issuecomment-5542917104",
+              "date": "2026-09-04T15:41:53Z"
+            }
+          },
+          {
+            "url": "https://github.com/livekit/client-sdk-js/pull/2124",
+            "title": "fix: add proportional jitter to default reconnect delays",
+            "merged_at": "2026-10-14T22:03:54Z",
+            "feedback": {
+              "url": "https://github.com/livekit/client-sdk-js/pull/2124#pullrequestreview-5450598761",
+              "date": "2026-10-08T02:13:53Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 7
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 7
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 7
+          }
+        ]
+      }
     },
     {
       "id": "phaserjs--phaser",
@@ -524,7 +955,14 @@
       "language": "JavaScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "브라우저에서 2D 게임을 만드는 JavaScript 게임 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:17.076923+00:00",
+        "evidence": [],
+        "reason": "excluded_or_hold"
+      }
     },
     {
       "id": "pixijs--pixijs",
@@ -543,7 +981,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "웹에서 2D 그래픽과 애니메이션을 그리는 렌더링 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:17.077837+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "oxc-project--oxc",
@@ -562,7 +1007,14 @@
       "language": "Rust",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "JavaScript·TypeScript 코드를 분석·검사하는 Rust 기반 도구 모음.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:23.319636+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "vitest-dev--vitest",
@@ -582,7 +1034,59 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Vite 개발 환경과 연계해 JavaScript·TypeScript 테스트를 실행하는 도구.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:26:31.737886+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/vitest-dev/vitest/pull/10780",
+            "title": "feat(browser): introduce experimental `pointer` API",
+            "merged_at": "2026-10-19T08:47:08Z",
+            "feedback": {
+              "url": "https://github.com/vitest-dev/vitest/pull/10780#discussion_r4186608424",
+              "date": "2026-10-05T17:01:22Z"
+            }
+          },
+          {
+            "url": "https://github.com/vitest-dev/vitest/pull/11295",
+            "title": "fix(jsdom): fix `Request` with `Blob` body on jsdom 28+",
+            "merged_at": "2026-09-17T08:26:36Z",
+            "feedback": {
+              "url": "https://github.com/vitest-dev/vitest/pull/11295#issuecomment-5710681916",
+              "date": "2026-09-17T07:29:25Z"
+            }
+          },
+          {
+            "url": "https://github.com/vitest-dev/vitest/pull/11100",
+            "title": "fix(expect): fix `toMatchObject` with asymmetric matchers",
+            "merged_at": "2026-09-18T01:38:45Z",
+            "feedback": {
+              "url": "https://github.com/vitest-dev/vitest/pull/11100#pullrequestreview-5208604808",
+              "date": "2026-09-15T10:20:27Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "testcontainers--testcontainers-java",
@@ -602,7 +1106,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Java 테스트에서 Docker 컨테이너로 DB 등 외부 서비스 환경을 구성하는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:38.787596+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "pgvector--pgvector",
@@ -621,7 +1132,14 @@
       "language": "C",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "PostgreSQL에 벡터 저장과 유사도 검색 기능을 추가하는 확장 모듈.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:45.823424+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "postgres--postgres",
@@ -641,7 +1159,14 @@
       "archived": false,
       "code_label": "GitHub 코드 미러",
       "guide_url": "https://www.postgresql.org/developer/",
-      "guide_label": "공식 개발 안내"
+      "guide_label": "공식 개발 안내",
+      "description": "SQL 질의·트랜잭션·데이터 저장을 처리하는 관계형 데이터베이스 서버.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:52.383509+00:00",
+        "evidence": [],
+        "reason": "official_venue_requires_review"
+      }
     },
     {
       "id": "docker--compose",
@@ -660,7 +1185,14 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "여러 컨테이너로 구성된 애플리케이션을 설정 파일로 정의하고 실행하는 도구.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:52.384820+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "redis--redis",
@@ -679,7 +1211,59 @@
       "language": "C",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "캐시·세션·메시징 등에 사용하는 메모리 기반 데이터 저장소.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:36:05.682229+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/redis/redis/pull/15556",
+            "title": "Add tls-groups to control TLS named groups",
+            "merged_at": "2026-08-20T14:45:16Z",
+            "feedback": {
+              "url": "https://github.com/redis/redis/pull/15556#discussion_r3809368573",
+              "date": "2026-08-19T01:27:45Z"
+            }
+          },
+          {
+            "url": "https://github.com/redis/redis/pull/15649",
+            "title": "RED-211767 - Add BLESS — protect keys from eviction",
+            "merged_at": "2026-09-15T07:03:07Z",
+            "feedback": {
+              "url": "https://github.com/redis/redis/pull/15649#issuecomment-5568420047",
+              "date": "2026-09-07T09:21:15Z"
+            }
+          },
+          {
+            "url": "https://github.com/redis/redis/pull/15970",
+            "title": "Fix BITOP performance regression by looking up each source key only once",
+            "merged_at": "2026-10-16T09:16:21Z",
+            "feedback": {
+              "url": "https://github.com/redis/redis/pull/15970#discussion_r4288172973",
+              "date": "2026-10-15T20:54:04Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "facebookexperimental--recoil",
@@ -698,7 +1282,14 @@
       "language": "JavaScript",
       "archived": true,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "React 컴포넌트가 공유하는 상태와 파생 상태를 관리하는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:36:14.829444+00:00",
+        "evidence": [],
+        "reason": "excluded_or_hold"
+      }
     },
     {
       "id": "querydsl--querydsl",
@@ -717,7 +1308,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Java 코드에서 타입을 검사하며 DB 질의를 작성하도록 돕는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:36:14.830144+00:00",
+        "evidence": [],
+        "reason": "excluded_or_hold"
+      }
     },
     {
       "id": "gradle--gradle",
@@ -736,7 +1334,14 @@
       "language": "Groovy",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "의존성 관리와 코드 빌드·테스트 작업을 자동화하는 빌드 도구.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:36:14.830451+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "pgjdbc--pgjdbc",
@@ -755,7 +1360,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Java 애플리케이션이 JDBC로 PostgreSQL과 통신하도록 연결하는 드라이버.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:36:23.712405+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "sveltejs--svelte",
@@ -774,7 +1386,14 @@
       "language": "JavaScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "컴포넌트를 실행 코드로 컴파일해 웹 인터페이스를 만드는 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:36:31.494812+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "storybookjs--storybook",
@@ -793,7 +1412,59 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "UI 컴포넌트를 앱과 분리해 개발·문서화·테스트하는 도구.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:36:41.376307+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/storybookjs/storybook/pull/35589",
+            "title": "NextJS: Normalize trailing slash in the next/link mock",
+            "merged_at": "2026-07-28T08:14:04Z",
+            "feedback": {
+              "url": "https://github.com/storybookjs/storybook/pull/35589#issuecomment-5101336288",
+              "date": "2026-07-28T07:41:08Z"
+            }
+          },
+          {
+            "url": "https://github.com/storybookjs/storybook/pull/36270",
+            "title": "Addon Vitest: Support Vitest 5 browser tests",
+            "merged_at": "2026-09-11T07:56:48Z",
+            "feedback": {
+              "url": "https://github.com/storybookjs/storybook/pull/36270#issuecomment-5630745915",
+              "date": "2026-09-11T07:03:08Z"
+            }
+          },
+          {
+            "url": "https://github.com/storybookjs/storybook/pull/36760",
+            "title": "Skills: Rename stories to ui-workflow, add component-docs, triggered from AGENTS.md",
+            "merged_at": "2026-10-16T15:33:56Z",
+            "feedback": {
+              "url": "https://github.com/storybookjs/storybook/pull/36760#discussion_r4285159371",
+              "date": "2026-10-15T15:46:26Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 6
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 7
+          }
+        ]
+      }
     },
     {
       "id": "open-telemetry--opentelemetry-demo",
@@ -812,7 +1483,59 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "분산 서비스의 추적·메트릭·로그 수집을 살펴보는 관측성 예제 애플리케이션.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:36:52.670640+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/open-telemetry/opentelemetry-demo/pull/3808",
+            "title": "feat(chatbot): report status to OpAMP server",
+            "merged_at": "2026-08-20T20:56:39Z",
+            "feedback": {
+              "url": "https://github.com/open-telemetry/opentelemetry-demo/pull/3808#issuecomment-5262861821",
+              "date": "2026-08-12T05:44:59Z"
+            }
+          },
+          {
+            "url": "https://github.com/open-telemetry/opentelemetry-demo/pull/3934",
+            "title": "Add AI/LLM incident scenario (aiSlowResponse, aiRunawayAgent)",
+            "merged_at": "2026-09-16T23:18:26Z",
+            "feedback": {
+              "url": "https://github.com/open-telemetry/opentelemetry-demo/pull/3934#pullrequestreview-5149917464",
+              "date": "2026-09-09T04:56:48Z"
+            }
+          },
+          {
+            "url": "https://github.com/open-telemetry/opentelemetry-demo/pull/3756",
+            "title": "Add metrics instrumentation for agent, mcp, and chatbot services",
+            "merged_at": "2026-10-15T14:57:04Z",
+            "feedback": {
+              "url": "https://github.com/open-telemetry/opentelemetry-demo/pull/3756#issuecomment-6052062871",
+              "date": "2026-10-08T04:13:52Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "argoproj--argo-cd",
@@ -831,7 +1554,59 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Git에 선언한 설정을 Kubernetes 배포 상태와 동기화하는 GitOps 도구.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:37:01.681287+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/argoproj/argo-cd/pull/28904",
+            "title": "fix(repository): resolve untyped helm source type in UpdateRevisionForPaths",
+            "merged_at": "2026-07-30T07:40:07Z",
+            "feedback": {
+              "url": "https://github.com/argoproj/argo-cd/pull/28904#issuecomment-5170832351",
+              "date": "2026-08-03T19:30:37Z"
+            }
+          },
+          {
+            "url": "https://github.com/argoproj/argo-cd/pull/26121",
+            "title": "feat: add oci generator for applicationsets",
+            "merged_at": "2026-09-09T06:07:24Z",
+            "feedback": {
+              "url": "https://github.com/argoproj/argo-cd/pull/26121#issuecomment-5966433602",
+              "date": "2026-10-03T06:39:31Z"
+            }
+          },
+          {
+            "url": "https://github.com/argoproj/argo-cd/pull/29842",
+            "title": "feat: add exit error abstraction for better unit testability of cli commands (#29533)",
+            "merged_at": "2026-10-18T17:59:56Z",
+            "feedback": {
+              "url": "https://github.com/argoproj/argo-cd/pull/29842#discussion_r4263631825",
+              "date": "2026-10-13T20:24:44Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 7
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 7
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 7
+          }
+        ]
+      }
     },
     {
       "id": "open-telemetry--opentelemetry-collector-contrib",
@@ -850,7 +1625,59 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "OpenTelemetry Collector에 수집·변환·전송 기능을 추가하는 확장 모음.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:37:12.689037+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/50892",
+            "title": "fix: [processor/signingprocessor] scalar type collision",
+            "merged_at": "2026-09-15T18:01:20Z",
+            "feedback": {
+              "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/50892#issuecomment-5630723142",
+              "date": "2026-09-11T07:00:50Z"
+            }
+          },
+          {
+            "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/51865",
+            "title": "[receiver/kafka] Make max_decompress_batch_bytes configurable",
+            "merged_at": "2026-10-19T07:28:26Z",
+            "feedback": {
+              "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/51865#discussion_r4288832303",
+              "date": "2026-10-15T22:16:48Z"
+            }
+          },
+          {
+            "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/48017",
+            "title": "feat(connector): rename grafanacloud to grafana_cloud",
+            "merged_at": "2026-09-18T06:43:54Z",
+            "feedback": {
+              "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/48017#pullrequestreview-4798917797",
+              "date": "2026-07-28T15:20:42Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "open-telemetry--opentelemetry-collector",
@@ -869,7 +1696,14 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "추적·메트릭·로그를 받아 처리한 뒤 다른 시스템으로 전송하는 서비스.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:37:23.716550+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "prometheus--prometheus",
@@ -888,7 +1722,59 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "메트릭을 수집·저장하고 질의·알림에 활용하는 모니터링 시스템.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:37:32.433136+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/prometheus/prometheus/pull/19384",
+            "title": "ui: show effective scrape pool configuration",
+            "merged_at": "2026-08-20T15:33:17Z",
+            "feedback": {
+              "url": "https://github.com/prometheus/prometheus/pull/19384#issuecomment-5332184997",
+              "date": "2026-08-18T18:09:47Z"
+            }
+          },
+          {
+            "url": "https://github.com/prometheus/prometheus/pull/19339",
+            "title": "tsdb: make panic lock-release test OS agnostic",
+            "merged_at": "2026-08-13T08:02:43Z",
+            "feedback": {
+              "url": "https://github.com/prometheus/prometheus/pull/19339#discussion_r3765159580",
+              "date": "2026-08-12T09:25:22Z"
+            }
+          },
+          {
+            "url": "https://github.com/prometheus/prometheus/pull/20024",
+            "title": "fix(PromQL): never skip histogram buckets for ==, !=, changes(), count_values()",
+            "merged_at": "2026-10-16T07:51:08Z",
+            "feedback": {
+              "url": "https://github.com/prometheus/prometheus/pull/20024#pullrequestreview-5544577526",
+              "date": "2026-10-16T07:50:06Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "opentofu--opentofu",
@@ -907,7 +1793,59 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "인프라 구성을 코드로 정의하고 생성·변경·관리하는 IaC 도구.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:37:40.562627+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/opentofu/opentofu/pull/4396",
+            "title": "fix: tofu plan command no longer prints iterative warnings for multiple resources",
+            "merged_at": "2026-09-07T08:56:10Z",
+            "feedback": {
+              "url": "https://github.com/opentofu/opentofu/pull/4396#discussion_r3923150276",
+              "date": "2026-09-03T09:36:24Z"
+            }
+          },
+          {
+            "url": "https://github.com/opentofu/opentofu/pull/4722",
+            "title": "Re-define plan mode destroy as refresh + destroy orphans",
+            "merged_at": "2026-10-15T22:31:38Z",
+            "feedback": {
+              "url": "https://github.com/opentofu/opentofu/pull/4722#pullrequestreview-5540120728",
+              "date": "2026-10-15T21:24:11Z"
+            }
+          },
+          {
+            "url": "https://github.com/opentofu/opentofu/pull/4436",
+            "title": "rfc: Silently ignore `provider_meta` blocks",
+            "merged_at": "2026-08-17T17:16:27Z",
+            "feedback": {
+              "url": "https://github.com/opentofu/opentofu/pull/4436#issuecomment-5190951656",
+              "date": "2026-08-05T11:06:25Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "hashicorp--terraform",
@@ -926,7 +1864,14 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "인프라 구성을 코드로 정의하고 생성·변경·관리하는 IaC 도구.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:32:06.996754+00:00",
+        "evidence": [],
+        "reason": "excluded_or_hold"
+      }
     },
     {
       "id": "nestjs--nest",
@@ -945,7 +1890,59 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "모듈과 의존성 주입을 활용해 Node.js 서버를 만드는 프레임워크.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:31:59.153454+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/nestjs/nest/pull/17493",
+            "title": "fix(express,fastify): apply falsy status codes in `reply()`",
+            "merged_at": "2026-08-17T18:33:40Z",
+            "feedback": {
+              "url": "https://github.com/nestjs/nest/pull/17493#issuecomment-5311488914",
+              "date": "2026-08-17T03:39:24Z"
+            }
+          },
+          {
+            "url": "https://github.com/nestjs/nest/pull/17786",
+            "title": "fix(microservices): fail pending rmq requests on client close",
+            "merged_at": "2026-09-18T07:39:25Z",
+            "feedback": {
+              "url": "https://github.com/nestjs/nest/pull/17786#pullrequestreview-5237385480",
+              "date": "2026-09-17T14:47:33Z"
+            }
+          },
+          {
+            "url": "https://github.com/nestjs/nest/pull/18186",
+            "title": "fix(core): detect cycles in request-scoped forward references",
+            "merged_at": "2026-10-19T08:05:13Z",
+            "feedback": {
+              "url": "https://github.com/nestjs/nest/pull/18186#pullrequestreview-5563488148",
+              "date": "2026-10-18T14:47:28Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "line--armeria",
@@ -964,7 +1961,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "비동기 HTTP·RPC 서버와 클라이언트를 만드는 Java 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:31:47.348842+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "pytest-dev--pytest",
@@ -983,7 +1987,14 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "fixture와 매개변수화 등을 제공하는 Python 테스트 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:31:36.930370+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "tng--archunit",
@@ -1002,7 +2013,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Java 코드의 의존성과 패키지 구조가 설계 규칙을 따르는지 검사하는 테스트 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:31:31.110586+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "astral-sh--ruff",
@@ -1021,7 +2039,59 @@
       "language": "Rust",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Python 코드의 린트 검사와 포맷 정리를 수행하는 Rust 기반 도구.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:31:20.167543+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/astral-sh/ruff/pull/28706",
+            "title": "[ty] Reject class-scoped type variables in __init__ receivers",
+            "merged_at": "2026-09-18T23:43:29Z",
+            "feedback": {
+              "url": "https://github.com/astral-sh/ruff/pull/28706#discussion_r4050836801",
+              "date": "2026-09-18T21:31:55Z"
+            }
+          },
+          {
+            "url": "https://github.com/astral-sh/ruff/pull/27313",
+            "title": "[`isort`] Exclude pragma comments from line length calculation (`I001`)",
+            "merged_at": "2026-09-02T15:35:53Z",
+            "feedback": {
+              "url": "https://github.com/astral-sh/ruff/pull/27313#discussion_r3692566349",
+              "date": "2026-07-31T18:31:10Z"
+            }
+          },
+          {
+            "url": "https://github.com/astral-sh/ruff/pull/29396",
+            "title": "[ty] Preserve bound receivers for strict signature checks",
+            "merged_at": "2026-10-19T01:59:04Z",
+            "feedback": {
+              "url": "https://github.com/astral-sh/ruff/pull/29396#discussion_r4288331942",
+              "date": "2026-10-15T21:12:41Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 7
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "neovim--neovim",
@@ -1040,7 +2110,59 @@
       "language": "Vim Script",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Vim에서 발전한 확장 가능한 텍스트·코드 편집기.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:31:12.557643+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/neovim/neovim/pull/41036",
+            "title": "docs(health): avoid spurious warnings for dynamic filetypes",
+            "merged_at": "2026-07-29T13:03:54Z",
+            "feedback": {
+              "url": "https://github.com/neovim/neovim/pull/41036#issuecomment-5115919204",
+              "date": "2026-07-29T09:39:52Z"
+            }
+          },
+          {
+            "url": "https://github.com/neovim/neovim/pull/41115",
+            "title": "fix(highlight): make Ignore hidden by default",
+            "merged_at": "2026-08-04T17:43:22Z",
+            "feedback": {
+              "url": "https://github.com/neovim/neovim/pull/41115#issuecomment-5182250213",
+              "date": "2026-08-04T17:07:50Z"
+            }
+          },
+          {
+            "url": "https://github.com/neovim/neovim/pull/42421",
+            "title": "fix(tty): decode terminfo numeric escapes as octal",
+            "merged_at": "2026-10-18T23:21:11Z",
+            "feedback": {
+              "url": "https://github.com/neovim/neovim/pull/42421#discussion_r4308378316",
+              "date": "2026-10-18T19:19:42Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "flutter--flutter",
@@ -1059,7 +2181,14 @@
       "language": "Dart",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Dart로 모바일·웹·데스크톱 인터페이스를 만드는 크로스플랫폼 UI 도구 모음.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:31:03.212588+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "expo--expo",
@@ -1078,7 +2207,14 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "React Native 앱의 개발·빌드·배포를 돕는 도구와 SDK 모음.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:30:52.911225+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "react--react-native",
@@ -1097,7 +2233,14 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "React로 Android·iOS 등의 네이티브 앱을 개발하는 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:30:46.614467+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "mrdoob--three.js",
@@ -1116,7 +2259,59 @@
       "language": "JavaScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "웹에서 3D 장면·카메라·재질 등을 구성하고 렌더링하는 JavaScript 라이브러리.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:30:39.079657+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/mrdoob/three.js/pull/33950",
+            "title": "Gaussian Splat renderer / loader using TSL for WebGPU/WebGL + glTF import",
+            "merged_at": "2026-08-08T09:39:27Z",
+            "feedback": {
+              "url": "https://github.com/mrdoob/three.js/pull/33950#issuecomment-5225219869",
+              "date": "2026-08-08T07:56:00Z"
+            }
+          },
+          {
+            "url": "https://github.com/mrdoob/three.js/pull/34585",
+            "title": "PMREMGenerator: Replace the CubeUV atlas with cube render targets.",
+            "merged_at": "2026-09-18T11:49:09Z",
+            "feedback": {
+              "url": "https://github.com/mrdoob/three.js/pull/34585#discussion_r4048519344",
+              "date": "2026-09-18T16:15:22Z"
+            }
+          },
+          {
+            "url": "https://github.com/mrdoob/three.js/pull/35073",
+            "title": "GTAONode: Fix view direction for orthographic cameras.",
+            "merged_at": "2026-10-18T09:09:27Z",
+            "feedback": {
+              "url": "https://github.com/mrdoob/three.js/pull/35073#issuecomment-6247916114",
+              "date": "2026-10-18T08:53:09Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "godotengine--godot",
@@ -1135,7 +2330,59 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "2D·3D 게임의 제작과 실행을 지원하는 게임 엔진.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:30:27.916003+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/godotengine/godot/pull/122051",
+            "title": "Fix various raytracing issues.",
+            "merged_at": "2026-08-04T16:52:30Z",
+            "feedback": {
+              "url": "https://github.com/godotengine/godot/pull/122051#pullrequestreview-4845882635",
+              "date": "2026-08-03T15:35:33Z"
+            }
+          },
+          {
+            "url": "https://github.com/godotengine/godot/pull/122578",
+            "title": "Fix engine crash when node is missing a name field in a tscn file and has a type",
+            "merged_at": "2026-08-19T22:21:38Z",
+            "feedback": {
+              "url": "https://github.com/godotengine/godot/pull/122578#discussion_r3814956742",
+              "date": "2026-08-19T16:44:14Z"
+            }
+          },
+          {
+            "url": "https://github.com/godotengine/godot/pull/122494",
+            "title": "Fix bug in insertion of lightmap caches into unwrap_cache",
+            "merged_at": "2026-10-16T16:38:11Z",
+            "feedback": {
+              "url": "https://github.com/godotengine/godot/pull/122494#pullrequestreview-5511905894",
+              "date": "2026-10-14T01:12:55Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "bevyengine--bevy",
@@ -1154,7 +2401,59 @@
       "language": "Rust",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "Rust와 엔티티·컴포넌트 구조를 사용하는 데이터 중심 게임 엔진.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:30:18.471958+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/bevyengine/bevy/pull/25770",
+            "title": "Create generic RON format saving and loading for both reflected data and strongly-typed data.",
+            "merged_at": "2026-09-18T01:36:01Z",
+            "feedback": {
+              "url": "https://github.com/bevyengine/bevy/pull/25770#discussion_r4032640512",
+              "date": "2026-09-17T02:49:30Z"
+            }
+          },
+          {
+            "url": "https://github.com/bevyengine/bevy/pull/25823",
+            "title": "Add component inspection to bevy_dev_tools",
+            "merged_at": "2026-09-18T20:37:22Z",
+            "feedback": {
+              "url": "https://github.com/bevyengine/bevy/pull/25823#pullrequestreview-5250117441",
+              "date": "2026-09-18T16:26:59Z"
+            }
+          },
+          {
+            "url": "https://github.com/bevyengine/bevy/pull/26164",
+            "title": "Add bevy_annotations with well-known reflection annotations",
+            "merged_at": "2026-10-16T00:38:04Z",
+            "feedback": {
+              "url": "https://github.com/bevyengine/bevy/pull/26164#discussion_r4289376685",
+              "date": "2026-10-15T23:41:31Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "babylonjs--babylon.js",
@@ -1173,7 +2472,31 @@
       "language": "TypeScript",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "웹에서 3D 그래픽과 상호작용 장면을 만드는 렌더링·게임 엔진.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:30:08.113387+00:00",
+        "evidence": [],
+        "reason": "시험 스냅샷 자동 안내가 근거에 섞여 있어 지속적인 사람 검토의 증거로 사용하지 않음.",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "scikit-learn--scikit-learn",
@@ -1192,7 +2515,59 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "분류·회귀·군집화 등 머신러닝 알고리즘을 제공하는 Python 라이브러리.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:29:57.135634+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/scikit-learn/scikit-learn/pull/34614",
+            "title": "MNT Ignore DepecationWarning for sparse_matrix removal in scipy",
+            "merged_at": "2026-07-31T14:46:07Z",
+            "feedback": {
+              "url": "https://github.com/scikit-learn/scikit-learn/pull/34614#discussion_r3689630716",
+              "date": "2026-07-31T10:02:02Z"
+            }
+          },
+          {
+            "url": "https://github.com/scikit-learn/scikit-learn/pull/32761",
+            "title": "Quantile transformer sample weight",
+            "merged_at": "2026-09-17T17:17:26Z",
+            "feedback": {
+              "url": "https://github.com/scikit-learn/scikit-learn/pull/32761#discussion_r4005216157",
+              "date": "2026-09-14T12:39:25Z"
+            }
+          },
+          {
+            "url": "https://github.com/scikit-learn/scikit-learn/pull/34997",
+            "title": "DOC Fix MultiTaskLassoCV alphas default in docstring",
+            "merged_at": "2026-10-18T16:03:45Z",
+            "feedback": {
+              "url": "https://github.com/scikit-learn/scikit-learn/pull/34997#pullrequestreview-5260132115",
+              "date": "2026-09-20T08:58:59Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 3
+          }
+        ]
+      }
     },
     {
       "id": "deepset-ai--haystack",
@@ -1211,7 +2586,14 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "검색·문서 처리·LLM을 연결해 RAG 파이프라인을 구성하는 프레임워크.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:29:48.265954+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "opencv--opencv",
@@ -1230,7 +2612,31 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "영상·이미지 처리와 컴퓨터 비전 알고리즘을 제공하는 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:29:38.043528+00:00",
+        "evidence": [],
+        "reason": "시험 출력 위주의 표본은 자동 상태 보고와 사람의 실질 검토를 더 구분해야 함.",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "vllm-project--vllm",
@@ -1249,7 +2655,59 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "대규모 언어 모델의 추론과 API 제공을 위한 실행 엔진.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:29:29.066409+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/vllm-project/vllm/pull/51632",
+            "title": "[ROCm] [Bugfix] Fix Triton fused shared expert alignment",
+            "merged_at": "2026-08-19T16:14:53Z",
+            "feedback": {
+              "url": "https://github.com/vllm-project/vllm/pull/51632#pullrequestreview-4939296674",
+              "date": "2026-08-14T16:33:55Z"
+            }
+          },
+          {
+            "url": "https://github.com/vllm-project/vllm/pull/53515",
+            "title": "BugFix(PCP): use persistent input buffers for PIECEWISE CUDA graphs",
+            "merged_at": "2026-08-26T05:58:13Z",
+            "feedback": {
+              "url": "https://github.com/vllm-project/vllm/pull/53515#discussion_r3856919387",
+              "date": "2026-08-25T20:13:03Z"
+            }
+          },
+          {
+            "url": "https://github.com/vllm-project/vllm/pull/51488",
+            "title": "[Core] Reject new requests while generation is paused",
+            "merged_at": "2026-10-19T06:26:14Z",
+            "feedback": {
+              "url": "https://github.com/vllm-project/vllm/pull/51488#discussion_r4300595872",
+              "date": "2026-10-17T00:57:10Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "duckdb--duckdb",
@@ -1268,7 +2726,59 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "애플리케이션 안에서 SQL로 데이터 분석을 수행하는 임베디드 DB.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:29:22.112615+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/duckdb/duckdb/pull/23570",
+            "title": "`Index` lifetime refactor",
+            "merged_at": "2026-08-28T14:25:14Z",
+            "feedback": {
+              "url": "https://github.com/duckdb/duckdb/pull/23570#discussion_r3872931910",
+              "date": "2026-08-27T14:55:20Z"
+            }
+          },
+          {
+            "url": "https://github.com/duckdb/duckdb/pull/27389",
+            "title": "Keep legacy function call marker when serializing for v2.0.0 storage",
+            "merged_at": "2026-10-19T08:26:59Z",
+            "feedback": {
+              "url": "https://github.com/duckdb/duckdb/pull/27389#discussion_r4294951707",
+              "date": "2026-10-16T13:04:56Z"
+            }
+          },
+          {
+            "url": "https://github.com/duckdb/duckdb/pull/27367",
+            "title": "[Parquet] Add BYTE_STREAM_SPLIT support for FIXED_LEN_BYTE_ARRAY",
+            "merged_at": "2026-10-19T08:06:38Z",
+            "feedback": {
+              "url": "https://github.com/duckdb/duckdb/pull/27367#issuecomment-6214400157",
+              "date": "2026-10-16T11:21:56Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "pola-rs--polars",
@@ -1287,7 +2797,14 @@
       "language": "Rust",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "표 형태 데이터를 변환·집계하는 DataFrame 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:29:14.400563+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "apache--airflow",
@@ -1306,7 +2823,59 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "작업 간 의존성을 정의하고 실행 일정을 관리하는 워크플로 시스템.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:29:05.897197+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/apache/airflow/pull/70088",
+            "title": "Add Databricks SQL warehouse lifecycle operators",
+            "merged_at": "2026-08-17T17:38:02Z",
+            "feedback": {
+              "url": "https://github.com/apache/airflow/pull/70088#pullrequestreview-4911926242",
+              "date": "2026-08-12T00:28:11Z"
+            }
+          },
+          {
+            "url": "https://github.com/apache/airflow/pull/69740",
+            "title": "Kafka: Return consumed message results on request",
+            "merged_at": "2026-08-12T17:41:38Z",
+            "feedback": {
+              "url": "https://github.com/apache/airflow/pull/69740#pullrequestreview-4919400958",
+              "date": "2026-08-12T17:40:24Z"
+            }
+          },
+          {
+            "url": "https://github.com/apache/airflow/pull/74775",
+            "title": "Centralize EKS kubeconfig and credential setup in EksHook",
+            "merged_at": "2026-10-19T05:33:33Z",
+            "feedback": {
+              "url": "https://github.com/apache/airflow/pull/74775#discussion_r4300034966",
+              "date": "2026-10-16T22:50:57Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 5
+          }
+        ]
+      }
     },
     {
       "id": "apache--seatunnel",
@@ -1325,7 +2894,31 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "서로 다른 저장소 사이에서 데이터를 읽고 변환·전송하는 데이터 통합 엔진.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:28:54.501981+00:00",
+        "evidence": [],
+        "reason": "일반적인 커뮤니티 초대 안내를 구체적인 코드 검토 근거로 사용하지 않음.",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "apache--gravitino",
@@ -1344,7 +2937,14 @@
       "language": "Java",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "데이터·메타데이터와 접근 정보를 통합 관리하는 카탈로그 시스템.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:28:46.497700+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "zaproxy--zap-extensions",
@@ -1363,7 +2963,14 @@
       "language": "HTML",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "웹 보안 검사 도구 ZAP에 탐지·연동 기능을 추가하는 애드온 모음.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:28:39.845204+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "mitmproxy--mitmproxy",
@@ -1382,7 +2989,59 @@
       "language": "Python",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "개발용 HTTP·HTTPS 프록시로 요청·응답을 살펴보고 변경하는 도구.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:28:32.968433+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/mitmproxy/mitmproxy/pull/8358",
+            "title": "mitmweb: make flow table columns resizable",
+            "merged_at": "2026-10-13T18:07:57Z",
+            "feedback": {
+              "url": "https://github.com/mitmproxy/mitmproxy/pull/8358#pullrequestreview-5329656647",
+              "date": "2026-09-27T09:08:26Z"
+            }
+          },
+          {
+            "url": "https://github.com/mitmproxy/mitmproxy/pull/8344",
+            "title": "fix: replace deprecated pyparsing API aliases with snake_case equivalents",
+            "merged_at": "2026-08-08T06:07:53Z",
+            "feedback": {
+              "url": "https://github.com/mitmproxy/mitmproxy/pull/8344#pullrequestreview-4876572291",
+              "date": "2026-08-06T16:05:52Z"
+            }
+          },
+          {
+            "url": "https://github.com/mitmproxy/mitmproxy/pull/8405",
+            "title": "fix: normalize CRLF in CSS and XML/HTML prettifiers",
+            "merged_at": "2026-08-25T23:39:26Z",
+            "feedback": {
+              "url": "https://github.com/mitmproxy/mitmproxy/pull/8405#issuecomment-5418012400",
+              "date": "2026-08-25T22:57:06Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 4
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "aquasecurity--trivy",
@@ -1401,7 +3060,59 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "컨테이너·의존성·인프라 설정의 취약점과 잘못된 구성을 검사하는 도구.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:28:21.967576+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/aquasecurity/trivy/pull/11078",
+            "title": "fix(misconf): unmark cty values outside the evaluation context",
+            "merged_at": "2026-08-13T18:54:39Z",
+            "feedback": {
+              "url": "https://github.com/aquasecurity/trivy/pull/11078#pullrequestreview-4926162018",
+              "date": "2026-08-13T10:51:15Z"
+            }
+          },
+          {
+            "url": "https://github.com/aquasecurity/trivy/pull/10996",
+            "title": "fix: avoid panics on malformed dependency files and version-less Amazon Linux release",
+            "merged_at": "2026-09-17T06:51:57Z",
+            "feedback": {
+              "url": "https://github.com/aquasecurity/trivy/pull/10996#pullrequestreview-4873961663",
+              "date": "2026-08-06T11:21:05Z"
+            }
+          },
+          {
+            "url": "https://github.com/aquasecurity/trivy/pull/11049",
+            "title": "refactor(terraform): return a struct from module resolvers",
+            "merged_at": "2026-10-16T12:48:58Z",
+            "feedback": {
+              "url": "https://github.com/aquasecurity/trivy/pull/11049#discussion_r4256489710",
+              "date": "2026-10-13T08:40:38Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 6
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "semgrep--semgrep",
@@ -1420,7 +3131,14 @@
       "language": "C",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "코드 패턴 규칙으로 보안 문제와 코딩 규칙 위반을 찾는 정적 분석 도구.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:28:14.421628+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "curl--curl",
@@ -1439,7 +3157,14 @@
       "language": "C",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "여러 네트워크 프로토콜로 데이터를 전송하는 명령줄 도구와 라이브러리.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:28:08.133452+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "valkey-io--valkey",
@@ -1458,7 +3183,59 @@
       "language": "C",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "캐시·세션·메시징용으로 사용하는 메모리 기반 키-값 데이터 저장소.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:27:55.832583+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/valkey-io/valkey/pull/4206",
+            "title": "ZSET B+ Tree PR 3: Replace skiplist with FB+ Tree implementation",
+            "merged_at": "2026-08-06T17:31:47Z",
+            "feedback": {
+              "url": "https://github.com/valkey-io/valkey/pull/4206#discussion_r3709402772",
+              "date": "2026-08-04T04:15:45Z"
+            }
+          },
+          {
+            "url": "https://github.com/valkey-io/valkey/pull/4440",
+            "title": "Skip IO-thread write-done client re-lookup unless update_state sync-invokes handlers",
+            "merged_at": "2026-08-18T08:20:53Z",
+            "feedback": {
+              "url": "https://github.com/valkey-io/valkey/pull/4440#issuecomment-5323137591",
+              "date": "2026-08-18T03:18:43Z"
+            }
+          },
+          {
+            "url": "https://github.com/valkey-io/valkey/pull/4849",
+            "title": "Use `--fair-sched=try` when running valgrind tests",
+            "merged_at": "2026-10-14T17:54:43Z",
+            "feedback": {
+              "url": "https://github.com/valkey-io/valkey/pull/4849#issuecomment-6094001582",
+              "date": "2026-10-10T05:00:02Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 7
+          }
+        ]
+      }
     },
     {
       "id": "envoyproxy--envoy",
@@ -1477,7 +3254,14 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "서비스 간 통신과 외부 요청을 처리하는 네트워크·HTTP 프록시.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:27:48.181474+00:00",
+        "evidence": [],
+        "reason": "insufficient_sample"
+      }
     },
     {
       "id": "cilium--cilium",
@@ -1496,7 +3280,59 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "eBPF로 Kubernetes 등의 네트워킹·보안·관측 기능을 제공하는 시스템.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:27:40.058343+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/cilium/cilium/pull/47882",
+            "title": "operator: prevent CNPs with nodeSelector from silently enforcing nothing",
+            "merged_at": "2026-08-26T22:59:46Z",
+            "feedback": {
+              "url": "https://github.com/cilium/cilium/pull/47882#issuecomment-6168968277",
+              "date": "2026-10-14T13:02:16Z"
+            }
+          },
+          {
+            "url": "https://github.com/cilium/cilium/pull/49356",
+            "title": "cli: connectivity: lrp: test skipRedirectFromBackend=false on IPv6 with per-packet LB",
+            "merged_at": "2026-10-19T05:21:41Z",
+            "feedback": {
+              "url": "https://github.com/cilium/cilium/pull/49356#issuecomment-6186055028",
+              "date": "2026-10-15T06:34:26Z"
+            }
+          },
+          {
+            "url": "https://github.com/cilium/cilium/pull/47205",
+            "title": "images/scripts: Validate Envoy image vars against sed injection",
+            "merged_at": "2026-08-03T20:47:23Z",
+            "feedback": {
+              "url": "https://github.com/cilium/cilium/pull/47205#issuecomment-5171535093",
+              "date": "2026-08-03T20:47:11Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 3
+          }
+        ]
+      }
     },
     {
       "id": "esphome--esphome",
@@ -1515,7 +3351,14 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "설정 파일로 IoT 장치용 펌웨어를 구성하고 생성하는 도구.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:27:30.058328+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "zephyrproject-rtos--zephyr",
@@ -1534,7 +3377,59 @@
       "language": "C",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "자원이 제한된 임베디드 장치용 실시간 운영체제.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:27:20.684939+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/zephyrproject-rtos/zephyr/pull/112986",
+            "title": "drivers: sdhc: fix R2 response order in intel_emmc_host and sam_hsmci",
+            "merged_at": "2026-08-09T21:43:12Z",
+            "feedback": {
+              "url": "https://github.com/zephyrproject-rtos/zephyr/pull/112986#issuecomment-6089093580",
+              "date": "2026-10-09T20:54:49Z"
+            }
+          },
+          {
+            "url": "https://github.com/zephyrproject-rtos/zephyr/pull/117839",
+            "title": "boards: silabs: add SiWx917Y Explorer Kit (BRD2708A)",
+            "merged_at": "2026-09-02T18:16:55Z",
+            "feedback": {
+              "url": "https://github.com/zephyrproject-rtos/zephyr/pull/117839#discussion_r3896001422",
+              "date": "2026-08-31T15:42:12Z"
+            }
+          },
+          {
+            "url": "https://github.com/zephyrproject-rtos/zephyr/pull/115108",
+            "title": "drivers: serial: mcux_lpuart: fix single-wire implementation",
+            "merged_at": "2026-10-15T12:07:29Z",
+            "feedback": {
+              "url": "https://github.com/zephyrproject-rtos/zephyr/pull/115108#discussion_r4269574281",
+              "date": "2026-10-14T10:23:05Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "riot-os--riot",
@@ -1553,7 +3448,59 @@
       "language": "C",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "저전력 IoT 장치와 마이크로컨트롤러용 운영체제.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:27:09.208000+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/RIOT-OS/RIOT/pull/22502",
+            "title": "sys/nanocoap: fix potential oob read in coap_find_uri_query",
+            "merged_at": "2026-07-22T22:28:59Z",
+            "feedback": {
+              "url": "https://github.com/RIOT-OS/RIOT/pull/22502#discussion_r3631014844",
+              "date": "2026-07-22T14:21:28Z"
+            }
+          },
+          {
+            "url": "https://github.com/RIOT-OS/RIOT/pull/22533",
+            "title": "net/ieee802154: Ensure frame is big enough for sec header",
+            "merged_at": "2026-07-31T14:30:25Z",
+            "feedback": {
+              "url": "https://github.com/RIOT-OS/RIOT/pull/22533#discussion_r3689976435",
+              "date": "2026-07-31T11:04:22Z"
+            }
+          },
+          {
+            "url": "https://github.com/RIOT-OS/RIOT/pull/22909",
+            "title": "sys/picolibc_syscalls_default: just use off_t",
+            "merged_at": "2026-10-16T23:28:38Z",
+            "feedback": {
+              "url": "https://github.com/RIOT-OS/RIOT/pull/22909#issuecomment-6218184870",
+              "date": "2026-10-16T14:54:29Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     },
     {
       "id": "arduino--arduino-cli",
@@ -1572,7 +3519,14 @@
       "language": "Go",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "명령줄에서 보드·라이브러리를 관리하고 Arduino 코드를 빌드·업로드하는 도구.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:59.647050+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "ros-navigation--navigation2",
@@ -1591,7 +3545,31 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "ROS 2 기반 이동 로봇의 경로 계획과 장애물 회피 등을 처리하는 내비게이션 시스템.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:51.393282+00:00",
+        "evidence": [],
+        "reason": "선정 표본의 모델 제안 인용·백포트 안내 대신 독립적인 기술 검토 표본을 추가로 확인할 필요가 있음.",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 3
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 4
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 5
+          }
+        ]
+      }
     },
     {
       "id": "gazebosim--gz-sim",
@@ -1610,7 +3588,14 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "로봇·센서·물리 환경을 가상 공간에서 시험하는 시뮬레이터.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:43.649210+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "moveit--moveit2",
@@ -1629,7 +3614,14 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "ROS 2 기반 로봇의 동작 계획·충돌 검사·제어 연계를 지원하는 소프트웨어.",
+      "activity": {
+        "status": "needs_review",
+        "checked_at": "2026-10-19T09:26:33.514198+00:00",
+        "evidence": [],
+        "reason": "provisionally_verified"
+      }
     },
     {
       "id": "px4--px4-autopilot",
@@ -1648,7 +3640,59 @@
       "language": "C++",
       "archived": false,
       "code_label": "공식 코드",
-      "guide_url": null
+      "guide_url": null,
+      "description": "드론 등의 자세 제어·항법·자동 비행을 담당하는 비행 제어 소프트웨어.",
+      "activity": {
+        "status": "sustained_verified",
+        "checked_at": "2026-10-19T09:26:25.800853+00:00",
+        "evidence": [
+          {
+            "url": "https://github.com/PX4/PX4-Autopilot/pull/27733",
+            "title": "fix(motion_planning): stop auto setpoint drifting past an unreached waypoint",
+            "merged_at": "2026-08-28T14:27:52Z",
+            "feedback": {
+              "url": "https://github.com/PX4/PX4-Autopilot/pull/27733#pullrequestreview-5052014561",
+              "date": "2026-08-28T14:27:01Z"
+            }
+          },
+          {
+            "url": "https://github.com/PX4/PX4-Autopilot/pull/29301",
+            "title": "fix(qmc5883p): scale for the +-2 G range is 15000 LSB/G",
+            "merged_at": "2026-10-19T02:08:18Z",
+            "feedback": {
+              "url": "https://github.com/PX4/PX4-Autopilot/pull/29301#issuecomment-6258122873",
+              "date": "2026-10-19T02:07:47Z"
+            }
+          },
+          {
+            "url": "https://github.com/PX4/PX4-Autopilot/pull/28819",
+            "title": "refactor(uavcan): simplify node_info device tracking and map VertiQ ESC failures by node",
+            "merged_at": "2026-10-19T07:24:24Z",
+            "feedback": {
+              "url": "https://github.com/PX4/PX4-Autopilot/pull/28819#pullrequestreview-5292677836",
+              "date": "2026-09-23T14:55:35Z"
+            }
+          }
+        ],
+        "reason": "repeated substantive non-self feedback and acceptance across multiple windows; final full-body checks exclude automated review labels",
+        "windows": [
+          {
+            "start": "2026-07-22",
+            "end": "2026-08-20",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-08-21",
+            "end": "2026-09-19",
+            "sampled_human_merged": 8
+          },
+          {
+            "start": "2026-09-20",
+            "end": "2026-10-19",
+            "sampled_human_merged": 8
+          }
+        ]
+      }
     }
   ]
 }

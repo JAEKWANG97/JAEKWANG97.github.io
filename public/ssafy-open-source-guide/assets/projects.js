@@ -5,63 +5,70 @@
   const source = document.querySelector('#project-source');
   const count = document.querySelector('#project-count');
   const empty = document.querySelector('#project-empty');
-  const groups = [...document.querySelectorAll('[data-project-group]')];
-  if (!form || !search || !source || !count || !empty) return;
-
+  const tablist = document.querySelector('.project-tabs');
+  const panel = document.querySelector('#project-panel');
+  if (!form || !search || !source || !count || !empty || !tablist || !panel) return;
+  const tabs = [...tablist.querySelectorAll('[role=tab]')];
+  const rows = [...panel.querySelectorAll('.project')];
+  const heading = document.querySelector('#groups-title');
+  const reset = form.querySelector('[type=reset]');
   const normalize = (value) => value.normalize('NFKC').toLocaleLowerCase('ko');
-  const rows = groups.flatMap((group) => [...group.querySelectorAll('.project')]);
-  const originalOpen = new Map(groups.map((group) => [group, group.open]));
-  let wasFiltering = false;
   const params = new URLSearchParams(window.location.search);
+  let category = tabs.some((tab) => tab.dataset.category === params.get('category')) ? params.get('category') : 'all';
   search.value = params.get('q') || '';
-  const initialSource = params.get('source');
-  if (['usage', 'survey'].includes(initialSource)) {
-    source.value = initialSource;
-    const options = source.closest('details');
-    if (options) options.open = true;
+  if (['usage', 'survey'].includes(params.get('source'))) {
+    source.value = params.get('source');
+    source.closest('details').open = true;
   }
-
   function update() {
+    const active = tabs.find((tab) => tab.dataset.category === category);
     const terms = normalize(search.value.trim()).split(/\s+/u).filter(Boolean);
-    const filtering = terms.length > 0 || source.value !== 'all';
-    if (filtering && !wasFiltering) {
-      groups.forEach((group) => originalOpen.set(group, group.open));
-    }
-    let active = 0;
+    let matches = 0;
     let held = 0;
+    tabs.forEach((tab) => {
+      tab.setAttribute('aria-selected', String(tab === active));
+      tab.tabIndex = tab === active ? 0 : -1;
+    });
+    panel.setAttribute('aria-labelledby', active.id);
+    heading.textContent = category === 'all' ? '전체 프로젝트' : active.textContent;
     rows.forEach((row) => {
-      const haystack = normalize(row.dataset.search || '');
-      const matchesText = terms.every((term) => haystack.includes(term));
-      const sources = (row.dataset.sources || '').split(' ');
-      const matchesSource = source.value === 'all' || sources.includes(source.value);
-      const visible = matchesText && matchesSource;
-      row.hidden = !visible;
-      if (visible) {
-        if (row.dataset.state === 'candidate') active += 1;
-        else held += 1;
+      const matchesCategory = category === 'all' || row.dataset.category === category;
+      const matchesText = terms.every((term) => normalize(row.dataset.search).includes(term));
+      const matchesSource = source.value === 'all' || row.dataset.sources.split(' ').includes(source.value);
+      row.hidden = !(matchesCategory && matchesText && matchesSource);
+      if (!row.hidden) {
+        matches += 1;
+        if (row.dataset.state !== 'candidate') held += 1;
       }
     });
-    groups.forEach((group) => {
-      const matches = [...group.querySelectorAll('.project')].filter((row) => !row.hidden);
-      group.hidden = matches.length === 0;
-      const badge = group.querySelector('.group-count');
-      if (badge) badge.textContent = String(matches.length);
-      if (filtering) group.open = matches.length > 0;
-      else if (wasFiltering) group.open = originalOpen.get(group) || false;
-    });
-    count.textContent = filtering ? `검색 결과 ${active + held}개${held ? ` · 보류·제외 ${held}개 포함` : ''}` : `${rows.length}개 조사 대상`;
-    form.querySelector('[type=reset]').hidden = !filtering;
-    empty.hidden = active + held !== 0;
-    wasFiltering = filtering;
+    count.textContent = `${matches}개 조사 대상${held ? ` · 보류·제외 ${held}개 포함` : ''}`;
+    empty.hidden = matches !== 0;
+    reset.hidden = !terms.length && source.value === 'all';
   }
-
+  function activate(tab, focus) {
+    category = tab.dataset.category;
+    update();
+    if (focus) tab.focus({ preventScroll: true });
+    tab.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activate(tab, false));
+    tab.addEventListener('keydown', (event) => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      activate(tabs[next], true);
+    });
+  });
   form.hidden = false;
+  tablist.hidden = false;
   form.addEventListener('submit', (event) => event.preventDefault());
+  form.addEventListener('reset', () => window.setTimeout(update, 0));
   search.addEventListener('input', update);
   source.addEventListener('change', update);
-  form.addEventListener('reset', () => {
-    // Reset happens after this event's default action, including on file: URLs.
-    window.setTimeout(update, 0);
-  });
   update();
 })();
