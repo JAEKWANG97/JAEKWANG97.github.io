@@ -39,7 +39,7 @@
       const url = new URL(location.href);
       if (category === 'all') url.searchParams.delete('category'); else url.searchParams.set('category', category);
       if (search.value.trim()) url.searchParams.set('q', search.value.trim()); else url.searchParams.delete('q');
-      try { history.replaceState(null, '', url); } catch (_) { /* Filtering also works for local files. */ }
+      try { history.replaceState(null, '', url); } catch { /* Filtering also works for local files. */ }
     }
   }
   function activate(tab, focus = false) {

@@ -4,3 +4,5 @@ node_modules
 .changeset
 src/data/post/**
 public/googlef8443e4276001465.html
+# Hand-maintained static guide pages intentionally keep compact formatting.
+public/ssafy-open-source-guide/**
