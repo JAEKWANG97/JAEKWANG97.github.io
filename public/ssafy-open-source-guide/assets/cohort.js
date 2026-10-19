@@ -39,7 +39,7 @@
       row.hidden = !(inCategory && terms.every((term) => normalize(row.dataset.search).includes(term)));
       if (!row.hidden) matches += 1;
     });
-    label.textContent = category === 'all' ? '전체 제출 대상' : `${active.textContent} 제출 대상`;
+    label.textContent = category === 'all' ? '확인한 기여 기록' : `${active.textContent} 기여 기록`;
     total.textContent = `${categoryTotal}개 저장소`;
     count.hidden = terms.length === 0;
     count.textContent = `검색 결과 ${matches}개 저장소`;

@@ -41,7 +41,7 @@
         if (row.dataset.state !== 'candidate') held += 1;
       }
     });
-    count.textContent = `${matches}개 조사 대상${held ? ` · 보류·제외 ${held}개 포함` : ''}`;
+    count.textContent = `${matches}개 프로젝트${held ? ` · 보류·제외 ${held}개 포함` : ''}`;
     empty.hidden = matches !== 0;
     reset.hidden = !terms.length && source.value === 'all';
   }
