@@ -57,6 +57,40 @@
   .site-sidebar { padding-left: 18px; padding-right: 18px; }
   .sidebar-menu > summary { right: 18px; }
 }
+.cohort-tabs {
+  display: flex;
+  gap: 4px;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scroll-padding-inline: 8px;
+  border-bottom: 1px solid var(--line);
+  margin: 0 0 24px;
+  padding: 0 0 4px;
+}
+.cohort-tabs [role=tab] {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--muted);
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.cohort-tabs [aria-selected=true] {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+.cohort-tabs [role=tab]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -4px;
+}
+.cohort-panel:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
 @media print {
-  .ux-search, .search-options { display: none; }
+  .ux-search, .search-options, .cohort-tabs { display: none; }
 }
