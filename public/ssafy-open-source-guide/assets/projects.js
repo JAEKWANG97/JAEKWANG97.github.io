@@ -45,7 +45,7 @@
       if (filtering) group.open = matches.length > 0;
       else if (wasFiltering) group.open = originalOpen.get(group) || false;
     });
-    count.textContent = `탐색 후보 ${active}개 · 보류·제외 ${held}개${filtering ? '가 조건에 맞습니다.' : '. 분야를 펼쳐서 읽을 수 있습니다.'}`;
+    count.textContent = `탐색 후보 ${active}개 · 보류·제외 ${held}개${filtering ? '가 조건에 맞습니다.' : '. 분야별 세부 항목을 확인할 수 있습니다.'}`;
     empty.hidden = active + held !== 0;
     wasFiltering = filtering;
   }
