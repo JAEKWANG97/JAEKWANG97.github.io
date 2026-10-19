@@ -1,0 +1,1654 @@
+{
+  "as_of": "2026-10-19",
+  "scope": "프로젝트 탐색 자료. 개별 이슈의 현재 가용성·초보 난도는 보증하지 않음.",
+  "counts": {
+    "usage": 36,
+    "survey": 56,
+    "overlap": 9,
+    "unique": 83,
+    "candidate": 79,
+    "hold": 2,
+    "excluded": 2
+  },
+  "groups": [
+    {
+      "id": "web",
+      "name": "웹 프런트엔드"
+    },
+    {
+      "id": "backend",
+      "name": "백엔드"
+    },
+    {
+      "id": "mobile",
+      "name": "모바일"
+    },
+    {
+      "id": "ai",
+      "name": "AI·ML"
+    },
+    {
+      "id": "data",
+      "name": "데이터·DB"
+    },
+    {
+      "id": "cloud",
+      "name": "클라우드·DevOps"
+    },
+    {
+      "id": "security",
+      "name": "보안"
+    },
+    {
+      "id": "systems",
+      "name": "시스템·네트워크"
+    },
+    {
+      "id": "embedded",
+      "name": "임베디드·IoT"
+    },
+    {
+      "id": "robotics",
+      "name": "로봇·자율 시스템"
+    },
+    {
+      "id": "graphics",
+      "name": "게임·그래픽"
+    },
+    {
+      "id": "tools",
+      "name": "개발 도구·테스트"
+    }
+  ],
+  "projects": [
+    {
+      "id": "spring-projects--spring-boot",
+      "name": "Spring Boot",
+      "repo": "spring-projects/spring-boot",
+      "url": "https://github.com/spring-projects/spring-boot",
+      "group": "backend",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/backend/build.gradle",
+      "case_url": "https://github.com/spring-projects/spring-boot/pull/52285",
+      "state": "candidate",
+      "what": "설정·자동 구성·시작 과정의 좁은 동작과 대응 테스트를 살펴봅니다.",
+      "check": "애플리케이션 개발 경험과 프레임워크 초기화 구조에 대한 이해는 구분합니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "spring-projects--spring-security",
+      "name": "Spring Security",
+      "repo": "spring-projects/spring-security",
+      "url": "https://github.com/spring-projects/spring-security",
+      "group": "security",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/backend/build.gradle",
+      "case_url": "https://github.com/spring-projects/spring-security/pull/18499",
+      "state": "candidate",
+      "what": "인증·인가 설정과 요청 처리의 경계 조건을 살펴봅니다.",
+      "check": "보안 영향과 호환성을 확인하고, 큰 기능은 먼저 범위를 논의합니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "spring-projects--spring-data-jpa",
+      "name": "Spring Data JPA",
+      "repo": "spring-projects/spring-data-jpa",
+      "url": "https://github.com/spring-projects/spring-data-jpa",
+      "group": "backend",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/backend/build.gradle",
+      "case_url": "https://github.com/spring-projects/spring-data-jpa/pull/4336",
+      "state": "candidate",
+      "what": "저장소 쿼리의 파싱·결과 처리와 회귀 테스트를 살펴봅니다.",
+      "check": "GitHub의 Merged 표시만으로 반영 여부를 판단하지 않습니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "django--django",
+      "name": "Django",
+      "repo": "django/django",
+      "url": "https://github.com/django/django",
+      "group": "backend",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/umaicode/TIL/blob/6875c549703d7f6abc403e55f8b9c979d41b0ff6/250929/requirements.txt",
+      "case_url": "https://github.com/django/django/pull/22141",
+      "state": "candidate",
+      "what": "URL·입력 검증·ORM에서 이미 사용한 동작과 테스트를 연결합니다.",
+      "check": "이슈는 Trac에서 추적하고 코드는 GitHub에서 검토합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드·PR 검토",
+      "guide_url": "https://code.djangoproject.com/",
+      "guide_label": "Trac 이슈 추적"
+    },
+    {
+      "id": "fastapi--fastapi",
+      "name": "FastAPI",
+      "repo": "fastapi/fastapi",
+      "url": "https://github.com/fastapi/fastapi",
+      "group": "backend",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/ai/requirements.txt",
+      "case_url": "https://github.com/fastapi/fastapi/pull/10147",
+      "state": "candidate",
+      "what": "입력 검증·의존성·HTTP 동작의 작은 재현을 살펴봅니다.",
+      "check": "신규 기여자의 사전 논의와 PR 접수 조건을 공식 안내에서 먼저 확인합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pydantic--pydantic",
+      "name": "Pydantic",
+      "repo": "pydantic/pydantic",
+      "url": "https://github.com/pydantic/pydantic",
+      "group": "backend",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/crawler/requirements.txt",
+      "case_url": "https://github.com/pydantic/pydantic/pull/13989",
+      "state": "candidate",
+      "what": "모델 검증·직렬화·복사 동작의 경계 조건을 살펴봅니다.",
+      "check": "Python API와 별도 검증 엔진의 책임을 구분합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "react--react",
+      "name": "React",
+      "repo": "react/react",
+      "url": "https://github.com/react/react",
+      "group": "web",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/frontend/package.json",
+      "case_url": "https://github.com/react/react/pull/37757",
+      "state": "candidate",
+      "what": "DOM 동작·개발 도구·테스트에서 범위를 좁힙니다.",
+      "check": "화면을 만든 경험만으로 reconciler·compiler 내부가 익숙해지는 것은 아닙니다.",
+      "language": "JavaScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "vuejs--core",
+      "name": "Vue",
+      "repo": "vuejs/core",
+      "url": "https://github.com/vuejs/core",
+      "group": "web",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/umaicode/TIL/blob/6875c549703d7f6abc403e55f8b9c979d41b0ff6/251202/package.json",
+      "case_url": "https://github.com/vuejs/core/pull/15906",
+      "state": "candidate",
+      "what": "DOM·반응성·컴포넌트 처리 중 사용한 기능의 테스트를 살펴봅니다.",
+      "check": "런타임·컴파일러·타입 테스트의 검증 범위를 구분합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "vitejs--vite",
+      "name": "Vite",
+      "repo": "vitejs/vite",
+      "url": "https://github.com/vitejs/vite",
+      "group": "tools",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/frontend/package.json",
+      "case_url": "https://github.com/vitejs/vite/pull/23746",
+      "state": "candidate",
+      "what": "개발 서버·설정·변환 과정의 재현 가능한 동작을 살펴봅니다.",
+      "check": "사용한 버전과 현재 기여 브랜치의 내부 구현이 다를 수 있습니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "axios--axios",
+      "name": "Axios",
+      "repo": "axios/axios",
+      "url": "https://github.com/axios/axios",
+      "group": "web",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/frontend/package.json",
+      "case_url": "https://github.com/axios/axios/pull/11216",
+      "state": "candidate",
+      "what": "헤더·오류·취소 등 HTTP 클라이언트 동작과 테스트를 살펴봅니다.",
+      "check": "런타임 동작과 TypeScript 선언이 같은 계약을 표현하는지 확인합니다.",
+      "language": "JavaScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pmndrs--zustand",
+      "name": "Zustand",
+      "repo": "pmndrs/zustand",
+      "url": "https://github.com/pmndrs/zustand",
+      "group": "web",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/frontend/package.json",
+      "case_url": "https://github.com/pmndrs/zustand/pull/3569",
+      "state": "candidate",
+      "what": "상태 초기화·구독·문서와 실제 동작의 차이를 살펴봅니다.",
+      "check": "작은 저장소도 비동기 동작과 타입 호환성 검토가 필요합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "tanstack--query",
+      "name": "TanStack Query",
+      "repo": "TanStack/query",
+      "url": "https://github.com/TanStack/query",
+      "group": "web",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/frontend/package.json",
+      "case_url": "https://github.com/TanStack/query/pull/11360",
+      "state": "candidate",
+      "what": "캐시·재시도·구독 동작을 작은 회귀 테스트로 살펴봅니다.",
+      "check": "공통 코어와 React·Solid 등 각 어댑터의 변경 범위를 구분합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "react-hook-form--react-hook-form",
+      "name": "React Hook Form",
+      "repo": "react-hook-form/react-hook-form",
+      "url": "https://github.com/react-hook-form/react-hook-form",
+      "group": "web",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/frontend/package.json",
+      "case_url": "https://github.com/react-hook-form/react-hook-form/pull/13898",
+      "state": "candidate",
+      "what": "폼 상태·초기화·옵션 변경의 경계 조건을 살펴봅니다.",
+      "check": "React 상태 변화와 공개 타입의 호환성을 함께 확인합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "colinhacks--zod",
+      "name": "Zod",
+      "repo": "colinhacks/zod",
+      "url": "https://github.com/colinhacks/zod",
+      "group": "web",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/frontend/package.json",
+      "case_url": "https://github.com/colinhacks/zod/pull/6652",
+      "state": "candidate",
+      "what": "입력 파싱·크기 제한·오류 결과를 작은 값으로 재현합니다.",
+      "check": "사용한 메이저 버전과 수정 대상 버전을 맞춥니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pytorch--pytorch",
+      "name": "PyTorch",
+      "repo": "pytorch/pytorch",
+      "url": "https://github.com/pytorch/pytorch",
+      "group": "ai",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/ai/requirements.txt",
+      "case_url": "https://github.com/pytorch/pytorch/pull/200860",
+      "state": "candidate",
+      "what": "텐서 입력·오류·문서 등 검증 가능한 한 경로를 살펴봅니다.",
+      "check": "Python API 사용과 C++·CUDA·컴파일러 내부 개발은 다릅니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "huggingface--transformers",
+      "name": "Transformers",
+      "repo": "huggingface/transformers",
+      "url": "https://github.com/huggingface/transformers",
+      "group": "ai",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/ai/requirements.txt",
+      "case_url": "https://github.com/huggingface/transformers/pull/49657",
+      "state": "candidate",
+      "what": "토크나이저·프로세서·모델 입출력의 좁은 경계를 살펴봅니다.",
+      "check": "모델별 환경과 장비, 신규 기여자의 접수 조건을 확인합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "numpy--numpy",
+      "name": "NumPy",
+      "repo": "numpy/numpy",
+      "url": "https://github.com/numpy/numpy",
+      "group": "data",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/StackOut-K1m/Jango-Yebo/blob/3c0668e1b986e52d098c663ec8e3b6382bc50f50/ai/pyproject.toml",
+      "case_url": "https://github.com/numpy/numpy/pull/32892",
+      "state": "candidate",
+      "what": "배열의 형상·타입·경계값과 문서의 API 계약을 살펴봅니다.",
+      "check": "Python 사용 경험과 C·C++ 수치 구현의 지식은 구분합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "lysine-dev--okhttp",
+      "name": "OkHttp",
+      "repo": "lysine-dev/okhttp",
+      "url": "https://github.com/lysine-dev/okhttp",
+      "group": "mobile",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/sehyeon262/DaengDong/blob/f965ec6d8c29dcbfb57ae36ebf32e43ebe0eec4a/frontend/gradle/libs.versions.toml",
+      "case_url": "https://github.com/lysine-dev/okhttp/pull/9775",
+      "state": "candidate",
+      "what": "요청·프록시·연결 실패의 작은 재현과 테스트를 살펴봅니다.",
+      "check": "네트워크·TLS 변경은 플랫폼별 검증 부담이 커질 수 있습니다.",
+      "language": "Kotlin",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "lysine-dev--retrofit",
+      "name": "Retrofit",
+      "repo": "lysine-dev/retrofit",
+      "url": "https://github.com/lysine-dev/retrofit",
+      "group": "mobile",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/sehyeon262/DaengDong/blob/f965ec6d8c29dcbfb57ae36ebf32e43ebe0eec4a/frontend/gradle/libs.versions.toml",
+      "case_url": "https://github.com/lysine-dev/retrofit/pull/4595",
+      "state": "candidate",
+      "what": "HTTP 선언·변환기·오류 처리의 동작과 테스트를 살펴봅니다.",
+      "check": "Java·Kotlin 상호운용과 플랫폼 호환성을 확인합니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "kotlin--kotlinx.coroutines",
+      "name": "kotlinx.coroutines",
+      "repo": "Kotlin/kotlinx.coroutines",
+      "url": "https://github.com/Kotlin/kotlinx.coroutines",
+      "group": "mobile",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/jang961111-hash/daily_log/blob/7af7f4a8a67068af9291af62d706895e2274249b/apps/mobile/app/build.gradle.kts",
+      "case_url": "https://github.com/Kotlin/kotlinx.coroutines/pull/4625",
+      "state": "candidate",
+      "what": "취소·흐름·비동기 경계의 기존 테스트를 살펴봅니다.",
+      "check": "Android 사용 경험과 Kotlin/JS·Native API 구현은 다를 수 있습니다.",
+      "language": "Kotlin",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "coil-kt--coil",
+      "name": "Coil",
+      "repo": "coil-kt/coil",
+      "url": "https://github.com/coil-kt/coil",
+      "group": "mobile",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/sehyeon262/DaengDong/blob/f965ec6d8c29dcbfb57ae36ebf32e43ebe0eec4a/frontend/gradle/libs.versions.toml",
+      "case_url": "https://github.com/coil-kt/coil/pull/3597",
+      "state": "candidate",
+      "what": "이미지 요청·캐시·Compose 상태와 대응 테스트를 살펴봅니다.",
+      "check": "JVM·Android·Apple 검증을 구분하고, 성능 주장은 측정 근거를 남깁니다.",
+      "language": "Kotlin",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "androidx--androidx",
+      "name": "AndroidX",
+      "repo": "androidx/androidx",
+      "url": "https://github.com/androidx/androidx",
+      "group": "mobile",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/jang961111-hash/daily_log/blob/7af7f4a8a67068af9291af62d706895e2274249b/apps/mobile/app/build.gradle.kts",
+      "case_url": "https://android-review.googlesource.com/c/platform/frameworks/support/+/4371266",
+      "state": "candidate",
+      "what": "Compose·Room·Lifecycle 등 실제 사용한 라이브러리로 범위를 좁힙니다.",
+      "check": "주 원본과 검토 경로는 AOSP/Gerrit입니다. 일부 라이브러리는 GitHub 기여도 실험적으로 받습니다.",
+      "language": "Kotlin",
+      "archived": false,
+      "code_label": "GitHub 동기화본",
+      "guide_url": "https://android.googlesource.com/platform/frameworks/support",
+      "guide_label": "AOSP 원본"
+    },
+    {
+      "id": "livekit--client-sdk-js",
+      "name": "LiveKit JS SDK",
+      "repo": "livekit/client-sdk-js",
+      "url": "https://github.com/livekit/client-sdk-js",
+      "group": "web",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/frontend/package.json",
+      "case_url": "https://github.com/livekit/client-sdk-js/pull/2124",
+      "state": "candidate",
+      "what": "재접속·트랙·이벤트 등 브라우저 SDK의 경계를 살펴봅니다.",
+      "check": "JS SDK와 Go 서버 본체·관리형 서비스는 별도 대상입니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "phaserjs--phaser",
+      "name": "Phaser",
+      "repo": "phaserjs/phaser",
+      "url": "https://github.com/phaserjs/phaser",
+      "group": "graphics",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/sehyeon262/WISH/blob/7a847e295090230bea122c02cf0137f1c1e09523/frontend/apps/game/package.json",
+      "case_url": null,
+      "state": "hold",
+      "what": "브라우저 게임의 장면·입력·타입 처리에서 재현을 찾습니다.",
+      "check": "이번 자료만으로 최근 변경 수용 경로를 충분히 확인하지 못해 보류했습니다.",
+      "language": "JavaScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pixijs--pixijs",
+      "name": "PixiJS",
+      "repo": "pixijs/pixijs",
+      "url": "https://github.com/pixijs/pixijs",
+      "group": "graphics",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/frontend/package.json",
+      "case_url": "https://github.com/pixijs/pixijs/pull/12288",
+      "state": "candidate",
+      "what": "리소스 수명·로더·렌더링 상태의 작은 테스트를 살펴봅니다.",
+      "check": "CPU 단위 테스트와 브라우저·GPU 검증을 구분합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "oxc-project--oxc",
+      "name": "Oxc / oxlint",
+      "repo": "oxc-project/oxc",
+      "url": "https://github.com/oxc-project/oxc",
+      "group": "tools",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/frontend/package.json",
+      "case_url": "https://github.com/oxc-project/oxc/pull/25027",
+      "state": "candidate",
+      "what": "사용한 lint 규칙의 오탐과 대응 fixture를 살펴봅니다.",
+      "check": "개발 도구로 사용하는 언어는 JS/TS이지만 본체는 Rust입니다.",
+      "language": "Rust",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "vitest-dev--vitest",
+      "name": "Vitest",
+      "repo": "vitest-dev/vitest",
+      "url": "https://github.com/vitest-dev/vitest",
+      "group": "tools",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/frontend/package.json",
+      "case_url": "https://github.com/vitest-dev/vitest/pull/11407",
+      "state": "candidate",
+      "what": "리포터·오류 출력·작은 테스트 동작을 살펴봅니다.",
+      "check": "최초 기여자의 승인 이슈 등 현재 PR 접수 조건을 먼저 확인합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "testcontainers--testcontainers-java",
+      "name": "Testcontainers Java",
+      "repo": "testcontainers/testcontainers-java",
+      "url": "https://github.com/testcontainers/testcontainers-java",
+      "group": "tools",
+      "sources": [
+        "usage",
+        "survey"
+      ],
+      "use_evidence": "https://github.com/StackOut-K1m/Jango-Yebo/blob/3c0668e1b986e52d098c663ec8e3b6382bc50f50/backend/build.gradle",
+      "case_url": "https://github.com/testcontainers/testcontainers-java/pull/12069",
+      "state": "candidate",
+      "what": "이미 사용한 컨테이너 모듈이나 준비 상태 검사부터 살펴봅니다.",
+      "check": "Docker·이미지·네트워크 비용과 단위·통합 테스트를 구분합니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pgvector--pgvector",
+      "name": "pgvector",
+      "repo": "pgvector/pgvector",
+      "url": "https://github.com/pgvector/pgvector",
+      "group": "data",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/docker-compose.yml",
+      "case_url": "https://github.com/pgvector/pgvector/pull/1008",
+      "state": "candidate",
+      "what": "벡터 타입·인덱스의 작은 SQL 재현과 테스트를 살펴봅니다.",
+      "check": "확장을 사용한 경험과 C 구현·인덱스 내부 지식은 다릅니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "postgres--postgres",
+      "name": "PostgreSQL",
+      "repo": "postgres/postgres",
+      "url": "https://github.com/postgres/postgres",
+      "group": "data",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/StackOut-K1m/Jango-Yebo/blob/3c0668e1b986e52d098c663ec8e3b6382bc50f50/infra/compose.yml",
+      "case_url": "https://commitfest.postgresql.org/patch/7240/",
+      "state": "candidate",
+      "what": "SQL로 기대 결과를 설명할 수 있는 한 동작부터 살펴봅니다.",
+      "check": "GitHub는 PR을 받지 않는 미러입니다. 공식 메일·CommitFest 경로를 확인합니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "GitHub 코드 미러",
+      "guide_url": "https://www.postgresql.org/developer/",
+      "guide_label": "공식 개발 안내"
+    },
+    {
+      "id": "docker--compose",
+      "name": "Docker Compose",
+      "repo": "docker/compose",
+      "url": "https://github.com/docker/compose",
+      "group": "cloud",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/backend/compose.yml",
+      "case_url": "https://github.com/docker/compose/pull/14354",
+      "state": "candidate",
+      "what": "사용한 Compose 설정과 CLI 동작의 경계를 살펴봅니다.",
+      "check": "YAML을 작성한 경험과 Go로 구현된 도구 내부를 개발하는 것은 다릅니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "redis--redis",
+      "name": "Redis",
+      "repo": "redis/redis",
+      "url": "https://github.com/redis/redis",
+      "group": "data",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/backend/compose.yml",
+      "case_url": "https://github.com/redis/redis/pull/15989",
+      "state": "candidate",
+      "what": "명령·만료·오류 시 부작용을 작은 서버 테스트로 살펴봅니다.",
+      "check": "사용 버전과 기여 대상 코드의 라이선스 조건을 구분합니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "facebookexperimental--recoil",
+      "name": "Recoil",
+      "repo": "facebookexperimental/Recoil",
+      "url": "https://github.com/facebookexperimental/Recoil",
+      "group": "web",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/nowgnas/AGORA/blob/799bf0244b9e40020bc8d195e89d3bf85bb96975/client/package.json",
+      "case_url": null,
+      "state": "excluded",
+      "what": "과거 교육생 프로젝트에서 사용한 근거는 확인했습니다.",
+      "check": "공식 저장소가 아카이브되어 현재 기여 후보에서는 제외했습니다.",
+      "language": "JavaScript",
+      "archived": true,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "querydsl--querydsl",
+      "name": "Querydsl",
+      "repo": "querydsl/querydsl",
+      "url": "https://github.com/querydsl/querydsl",
+      "group": "backend",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/nowgnas/AGORA/blob/799bf0244b9e40020bc8d195e89d3bf85bb96975/server/build.gradle",
+      "case_url": null,
+      "state": "hold",
+      "what": "타입 안전 쿼리를 사용한 교육생 프로젝트의 선언을 확인했습니다.",
+      "check": "원본의 최근 활동과 수용 경로가 부족해 보류했습니다. 다른 fork로 자동 대체하지 않습니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "gradle--gradle",
+      "name": "Gradle",
+      "repo": "gradle/gradle",
+      "url": "https://github.com/gradle/gradle",
+      "group": "tools",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/yanghaemi/Camon/blob/d5e70f04c9b834b12a8440bb8a2228ac96f7b840/backend/build.gradle",
+      "case_url": "https://github.com/gradle/gradle/pull/39440",
+      "state": "candidate",
+      "what": "빌드 설정·오류 메시지·작업 실행의 한 경로를 살펴봅니다.",
+      "check": "DSL 사용과 Gradle 내부 모델·실행 순서의 이해를 구분합니다.",
+      "language": "Groovy",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pgjdbc--pgjdbc",
+      "name": "PostgreSQL JDBC Driver",
+      "repo": "pgjdbc/pgjdbc",
+      "url": "https://github.com/pgjdbc/pgjdbc",
+      "group": "data",
+      "sources": [
+        "usage"
+      ],
+      "use_evidence": "https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/backend/build.gradle",
+      "case_url": "https://github.com/pgjdbc/pgjdbc/pull/4473",
+      "state": "candidate",
+      "what": "연결·타입 변환·오류 보고 등 Java 드라이버의 경계를 살펴봅니다.",
+      "check": "org.postgresql:postgresql은 PostgreSQL 서버가 아니라 별도 JDBC 드라이버입니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "sveltejs--svelte",
+      "name": "Svelte",
+      "repo": "sveltejs/svelte",
+      "url": "https://github.com/sveltejs/svelte",
+      "group": "web",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "컴파일러 진단·접근성·런타임 sample 테스트를 살펴봅니다.",
+      "check": "컴파일러와 런타임을 구분하고 새 문법·큰 API 설계는 별도 논의합니다.",
+      "language": "JavaScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "storybookjs--storybook",
+      "name": "Storybook",
+      "repo": "storybookjs/storybook",
+      "url": "https://github.com/storybookjs/storybook",
+      "group": "web",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "UI 상태·접근성·addon의 실제 story를 살펴봅니다.",
+      "check": "작은 화면 변경도 브라우저·sandbox·여러 프레임워크 검증이 필요할 수 있습니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "open-telemetry--opentelemetry-demo",
+      "name": "OpenTelemetry Demo",
+      "repo": "open-telemetry/opentelemetry-demo",
+      "url": "https://github.com/open-telemetry/opentelemetry-demo",
+      "group": "cloud",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "한 서비스의 기능·계측·오류 경로를 살펴봅니다.",
+      "check": "여러 컨테이너의 자원 비용과 서비스 간 계약을 확인합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "argoproj--argo-cd",
+      "name": "Argo CD",
+      "repo": "argoproj/argo-cd",
+      "url": "https://github.com/argoproj/argo-cd",
+      "group": "cloud",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "UI·CLI·설정 검증 등 범위가 좁은 동작을 살펴봅니다.",
+      "check": "Go·Kubernetes·GitOps 환경을 준비하고 운영 클러스터는 사용하지 않습니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "open-telemetry--opentelemetry-collector-contrib",
+      "name": "Collector Contrib",
+      "repo": "open-telemetry/opentelemetry-collector-contrib",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib",
+      "group": "cloud",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "receiver·exporter 등 한 컴포넌트의 입력·인코딩을 살펴봅니다.",
+      "check": "Collector 코어와 별도 저장소이며 컴포넌트마다 담당자와 외부 서비스가 다릅니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "open-telemetry--opentelemetry-collector",
+      "name": "OTel Collector",
+      "repo": "open-telemetry/opentelemetry-collector",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector",
+      "group": "cloud",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "설정·파이프라인·수명주기 중 한 경로를 살펴봅니다.",
+      "check": "중첩 Go 모듈과 데이터 손실·메모리·종료 시 동작을 함께 확인합니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "prometheus--prometheus",
+      "name": "Prometheus",
+      "repo": "prometheus/prometheus",
+      "url": "https://github.com/prometheus/prometheus",
+      "group": "cloud",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "설정·파서·입력 검증의 작은 fixture를 살펴봅니다.",
+      "check": "쿼리·저장소 성능 변경은 별도 검증이 필요한 심화 범위입니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "opentofu--opentofu",
+      "name": "OpenTofu",
+      "repo": "opentofu/opentofu",
+      "url": "https://github.com/opentofu/opentofu",
+      "group": "cloud",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "합의된 CLI·설정 처리의 작은 동작을 살펴봅니다.",
+      "check": "공식 작업 수락·배정 조건과 state·클라우드 비용 영향을 확인합니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "hashicorp--terraform",
+      "name": "Terraform",
+      "repo": "hashicorp/terraform",
+      "url": "https://github.com/hashicorp/terraform",
+      "group": "cloud",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "excluded",
+      "what": "IaC 도구의 라이선스를 비교하는 자료로만 남겼습니다.",
+      "check": "조사 자료의 현행 소스는 BSL 1.1이므로 OSI 오픈소스 후보 목록에서는 제외했습니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "nestjs--nest",
+      "name": "NestJS",
+      "repo": "nestjs/nest",
+      "url": "https://github.com/nestjs/nest",
+      "group": "backend",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "pipe·utility·HTTP 어댑터의 작은 동작을 살펴봅니다.",
+      "check": "TypeScript 사용과 DI·RxJS·요청 수명주기 내부의 이해를 구분합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "line--armeria",
+      "name": "Armeria",
+      "repo": "line/armeria",
+      "url": "https://github.com/line/armeria",
+      "group": "backend",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "HTTP·클라이언트·서버 처리 중 한 서비스와 테스트를 살펴봅니다.",
+      "check": "Java 비동기·Netty·자원 수명에 대한 이해가 필요한 범위를 구분합니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pytest-dev--pytest",
+      "name": "pytest",
+      "repo": "pytest-dev/pytest",
+      "url": "https://github.com/pytest-dev/pytest",
+      "group": "tools",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "설정·경고·출력·좁은 테스트 도구 API를 살펴봅니다.",
+      "check": "fixture·plugin hook 전체로 영향이 넓어지는지 확인합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "tng--archunit",
+      "name": "ArchUnit",
+      "repo": "TNG/ArchUnit",
+      "url": "https://github.com/TNG/ArchUnit",
+      "group": "tools",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "아키텍처 규칙 하나의 의미와 위반 결과를 테스트로 살펴봅니다.",
+      "check": "Java 사용과 바이트코드·ASM·공개 규칙 API의 이해를 구분합니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "astral-sh--ruff",
+      "name": "Ruff",
+      "repo": "astral-sh/ruff",
+      "url": "https://github.com/astral-sh/ruff",
+      "group": "tools",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "lint 규칙 하나의 오탐·자동 수정 안전성과 snapshot을 살펴봅니다.",
+      "check": "Python 도구이지만 구현은 Rust입니다. 같은 저장소의 다른 도구 활동과 구분합니다.",
+      "language": "Rust",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "neovim--neovim",
+      "name": "Neovim",
+      "repo": "neovim/neovim",
+      "url": "https://github.com/neovim/neovim",
+      "group": "tools",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "실제로 사용하는 Lua 기능·오류 메시지·대응 테스트를 살펴봅니다.",
+      "check": "C 코어와 Vim upstream 소관을 구분합니다.",
+      "language": "Vim Script",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "flutter--flutter",
+      "name": "Flutter",
+      "repo": "flutter/flutter",
+      "url": "https://github.com/flutter/flutter",
+      "group": "mobile",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "widget·접근성·도구 오류의 작은 회귀 테스트를 살펴봅니다.",
+      "check": "Dart 프레임워크와 C++ 엔진, Android·iOS 검증을 구분합니다.",
+      "language": "Dart",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "expo--expo",
+      "name": "Expo",
+      "repo": "expo/expo",
+      "url": "https://github.com/expo/expo",
+      "group": "mobile",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "JS 패키지·설정 plugin·모듈 해석부터 살펴봅니다.",
+      "check": "한 네이티브 플랫폼과 필요한 SDK·기기를 먼저 정합니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "react--react-native",
+      "name": "React Native",
+      "repo": "react/react-native",
+      "url": "https://github.com/react/react-native",
+      "group": "mobile",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "RNTester로 재현하고 한 플랫폼의 component를 살펴봅니다.",
+      "check": "내부 소스 관리와 GitHub 동기화가 있어 Closed만으로 거절을 판단하지 않습니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "mrdoob--three.js",
+      "name": "Three.js",
+      "repo": "mrdoob/three.js",
+      "url": "https://github.com/mrdoob/three.js",
+      "group": "graphics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "math·loader·controls의 작은 입력과 자원 해제를 살펴봅니다.",
+      "check": "브라우저 실행과 GPU·WebGPU 검증의 비용은 다릅니다.",
+      "language": "JavaScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "godotengine--godot",
+      "name": "Godot",
+      "repo": "godotengine/godot",
+      "url": "https://github.com/godotengine/godot",
+      "group": "graphics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "재현 프로젝트가 있는 editor·scene 버그부터 살펴봅니다.",
+      "check": "GDScript 게임 제작과 C++ 엔진 기여를 구분하고 신규 기여자의 허용 범위를 확인합니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "bevyengine--bevy",
+      "name": "Bevy",
+      "repo": "bevyengine/bevy",
+      "url": "https://github.com/bevyengine/bevy",
+      "group": "graphics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "Rust ECS·계층 탐색·asset의 테스트부터 살펴봅니다.",
+      "check": "Rust 기초 학습과 GPU 렌더러 수정을 동시에 크게 벌리지 않습니다.",
+      "language": "Rust",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "babylonjs--babylon.js",
+      "name": "Babylon.js",
+      "repo": "BabylonJS/Babylon.js",
+      "url": "https://github.com/BabylonJS/Babylon.js",
+      "group": "graphics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "GUI·loader·입력 검증과 작은 장면 테스트를 살펴봅니다.",
+      "check": "NullEngine 단위 테스트와 실제 시각·GPU 검증은 다릅니다.",
+      "language": "TypeScript",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "scikit-learn--scikit-learn",
+      "name": "scikit-learn",
+      "repo": "scikit-learn/scikit-learn",
+      "url": "https://github.com/scikit-learn/scikit-learn",
+      "group": "ai",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "사용한 estimator·metric의 shape·dtype 경계를 살펴봅니다.",
+      "check": "통계적 기대 동작과 C/C++·Cython 빌드 비용을 확인합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "deepset-ai--haystack",
+      "name": "Haystack",
+      "repo": "deepset-ai/haystack",
+      "url": "https://github.com/deepset-ai/haystack",
+      "group": "ai",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "문서 변환·라우터·입력 불변성을 mock 테스트로 살펴봅니다.",
+      "check": "단위 테스트와 외부 서비스·모델을 쓰는 통합 테스트를 구분합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "opencv--opencv",
+      "name": "OpenCV",
+      "repo": "opencv/opencv",
+      "url": "https://github.com/opencv/opencv",
+      "group": "ai",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "작은 영상의 크기·타입·빈 입력을 CPU 테스트로 살펴봅니다.",
+      "check": "Python API와 C++ 구현, 보유하지 않은 GPU·ISA 검증을 구분합니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "vllm-project--vllm",
+      "name": "vLLM",
+      "repo": "vllm-project/vllm",
+      "url": "https://github.com/vllm-project/vllm",
+      "group": "ai",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "검증 가능한 frontend·logging·입출력의 한 경로를 살펴봅니다.",
+      "check": "GPU·모델·분산 실행 검증 경로가 없으면 kernel·성능 변경을 미룹니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "duckdb--duckdb",
+      "name": "DuckDB",
+      "repo": "duckdb/duckdb",
+      "url": "https://github.com/duckdb/duckdb",
+      "group": "data",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "작은 SQL로 NULL·타입·함수의 회귀를 살펴봅니다.",
+      "check": "SQL 사용과 C++ 엔진 빌드·내부 불변식의 이해를 구분합니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "pola-rs--polars",
+      "name": "Polars",
+      "repo": "pola-rs/polars",
+      "url": "https://github.com/pola-rs/polars",
+      "group": "data",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "Python API의 null·dtype·표현식 경계를 살펴봅니다.",
+      "check": "Rust 엔진과 Python 바인딩, 빌드 메모리와 신규 기여 조건을 확인합니다.",
+      "language": "Rust",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "apache--airflow",
+      "name": "Airflow",
+      "repo": "apache/airflow",
+      "url": "https://github.com/apache/airflow",
+      "group": "data",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "사용한 provider의 옵션·템플릿·입력 검증을 살펴봅니다.",
+      "check": "DB·비-DB 테스트와 비용이 드는 외부 시스템 테스트를 구분합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "apache--seatunnel",
+      "name": "SeaTunnel",
+      "repo": "apache/seatunnel",
+      "url": "https://github.com/apache/seatunnel",
+      "group": "data",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "사용한 connector·transform의 타입·스키마 경계를 살펴봅니다.",
+      "check": "엔진 전체와 기존 모듈을 구분하고 Docker·DB 기반 통합 검증을 확인합니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "apache--gravitino",
+      "name": "Gravitino",
+      "repo": "apache/gravitino",
+      "url": "https://github.com/apache/gravitino",
+      "group": "data",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "DTO·client·catalog의 입력과 왕복 변환을 살펴봅니다.",
+      "check": "메타데이터 관리와 데이터 전송 엔진은 다른 학습 대상입니다.",
+      "language": "Java",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "zaproxy--zap-extensions",
+      "name": "ZAP",
+      "repo": "zaproxy/zap-extensions",
+      "url": "https://github.com/zaproxy/zap-extensions",
+      "group": "security",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "공식 확장 모듈의 수동 규칙·합성 HTTP fixture를 살펴봅니다.",
+      "check": "코어와 확장 저장소를 구분하고 허가된 로컬 테스트만 사용합니다.",
+      "language": "HTML",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "mitmproxy--mitmproxy",
+      "name": "mitmproxy",
+      "repo": "mitmproxy/mitmproxy",
+      "url": "https://github.com/mitmproxy/mitmproxy",
+      "group": "security",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "합성 flow를 쓰는 addon·content view 테스트를 살펴봅니다.",
+      "check": "타인의 트래픽 캡처나 시스템 인증서 변경 없이 시작합니다.",
+      "language": "Python",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "aquasecurity--trivy",
+      "name": "Trivy",
+      "repo": "aquasecurity/trivy",
+      "url": "https://github.com/aquasecurity/trivy",
+      "group": "security",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "분석기 하나의 fixture·파싱·오류 처리를 살펴봅니다.",
+      "check": "로컬 입력과 외부 이미지·데이터베이스를 쓰는 통합 검증을 구분합니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "semgrep--semgrep",
+      "name": "Semgrep",
+      "repo": "semgrep/semgrep",
+      "url": "https://github.com/semgrep/semgrep",
+      "group": "security",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "Python CLI·출력·독립 rule 테스트를 살펴봅니다.",
+      "check": "OCaml 엔진과 상용 기능은 별도 범위입니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "curl--curl",
+      "name": "curl",
+      "repo": "curl/curl",
+      "url": "https://github.com/curl/curl",
+      "group": "systems",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "로컬 하네스의 입력 경계·오류 동작을 살펴봅니다.",
+      "check": "C 메모리·프로토콜 기초와 선택 TLS backend를 확인합니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "valkey-io--valkey",
+      "name": "Valkey",
+      "repo": "valkey-io/valkey",
+      "url": "https://github.com/valkey-io/valkey",
+      "group": "systems",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "Tcl 명령 테스트·만료·오류 경계부터 살펴봅니다.",
+      "check": "실제 운영 데이터는 쓰지 않고 복제·영속성 변경은 별도 논의합니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "envoyproxy--envoy",
+      "name": "Envoy",
+      "repo": "envoyproxy/envoy",
+      "url": "https://github.com/envoyproxy/envoy",
+      "group": "systems",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "특정 extension과 대응 테스트의 한 경로를 살펴봅니다.",
+      "check": "C++·Bazel 환경 비용과 계층 선택이 중요한 심화 후보입니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "cilium--cilium",
+      "name": "Cilium",
+      "repo": "cilium/cilium",
+      "url": "https://github.com/cilium/cilium",
+      "group": "systems",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "일반 Go 정책·주소 처리 테스트부터 살펴봅니다.",
+      "check": "커널·eBPF·Kubernetes 통합 검증은 별도 격리 환경이 필요합니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "esphome--esphome",
+      "name": "ESPHome",
+      "repo": "esphome/esphome",
+      "url": "https://github.com/esphome/esphome",
+      "group": "embedded",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "YAML 설정 검증·코드생성·한 컴포넌트의 회귀를 살펴봅니다.",
+      "check": "컴파일 성공을 실제 센서·통신·타이밍 검증으로 보지 않습니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "zephyrproject-rtos--zephyr",
+      "name": "Zephyr",
+      "repo": "zephyrproject-rtos/zephyr",
+      "url": "https://github.com/zephyrproject-rtos/zephyr",
+      "group": "embedded",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "한 라이브러리·테스트 도구를 native_sim 등에서 살펴봅니다.",
+      "check": "Kconfig·Devicetree·west를 구분하고 드라이버 변경에는 보드 증거를 확인합니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "riot-os--riot",
+      "name": "RIOT",
+      "repo": "RIOT-OS/RIOT",
+      "url": "https://github.com/RIOT-OS/RIOT",
+      "group": "embedded",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "한 모듈·프로토콜의 native 실행과 테스트를 살펴봅니다.",
+      "check": "C·Make·네트워크 환경과 선택 이슈의 기여 조건을 확인합니다.",
+      "language": "C",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "arduino--arduino-cli",
+      "name": "Arduino CLI",
+      "repo": "arduino/arduino-cli",
+      "url": "https://github.com/arduino/arduino-cli",
+      "group": "embedded",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "캐시·설정·파일 처리 등 Go 개발 도구를 살펴봅니다.",
+      "check": "펌웨어 본체가 아니며 전체 통합 테스트는 실물 보드가 필요할 수 있습니다.",
+      "language": "Go",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "ros-navigation--navigation2",
+      "name": "Nav2",
+      "repo": "ros-navigation/navigation2",
+      "url": "https://github.com/ros-navigation/navigation2",
+      "group": "robotics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "costmap·BT·파라미터 경계를 한 ROS 2 패키지에서 살펴봅니다.",
+      "check": "좌표계·TF·수명주기와 맞는 ROS 배포판을 확인합니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "gazebosim--gz-sim",
+      "name": "Gazebo gz-sim",
+      "repo": "gazebosim/gz-sim",
+      "url": "https://github.com/gazebosim/gz-sim",
+      "group": "robotics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "시스템 plugin·ECM·Python 바인딩의 한 동작을 살펴봅니다.",
+      "check": "현재 Gazebo를 대상으로 하며 headless·GUI·렌더링 검증을 구분합니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "moveit--moveit2",
+      "name": "MoveIt 2",
+      "repo": "moveit/moveit2",
+      "url": "https://github.com/moveit/moveit2",
+      "group": "robotics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "trajectory·요청 구성·가상 로봇의 작은 동작을 살펴봅니다.",
+      "check": "ROS 2·기구학·충돌과 source build 자원을 확인합니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    },
+    {
+      "id": "px4--px4-autopilot",
+      "name": "PX4",
+      "repo": "PX4/PX4-Autopilot",
+      "url": "https://github.com/PX4/PX4-Autopilot",
+      "group": "robotics",
+      "sources": [
+        "survey"
+      ],
+      "use_evidence": null,
+      "case_url": null,
+      "state": "candidate",
+      "what": "고립된 math·parser·수명주기 테스트나 SITL부터 살펴봅니다.",
+      "check": "시뮬레이션 통과는 실제 비행 안전의 보증이 아닙니다.",
+      "language": "C++",
+      "archived": false,
+      "code_label": "공식 코드",
+      "guide_url": null
+    }
+  ]
+}
