@@ -8,6 +8,7 @@
 <title>SSAFY 오픈소스 기여 지원 검토 자료</title>
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/navigation.css">
+<link rel="stylesheet" href="assets/cohort.css">
 <script src="assets/navigation.js" defer></script>
 </head>
 <body>
@@ -20,6 +21,7 @@
 <nav aria-label="문서 목차"><ul class="sidebar-links">
 <li><a href="#overview" data-section="overview" aria-current="location">검토 개요</a></li>
 <li><a href="#operations" data-section="operations">기여모임 운영 사례</a></li>
+<li><a href="#cohort-10" data-section="cohort-10">10기 기여 사례</a></li>
 <li><a href="#selection" data-section="selection">프로젝트 선정 기준</a></li>
 <li><a href="#contribution" data-section="contribution">기여 진행 절차</a></li>
 <li><a href="projects.html">프로젝트 검토 목록</a></li>
@@ -79,6 +81,20 @@
 </dl></div><aside class="commentary"><h3>교육생 지원 시 검토 항목</h3><p>문제, 재현 조건, 수정 범위, 검증 계획을 공통 항목으로 정리하면 개별 상담이 필요한 지점을 파악하는 데 도움이 됩니다.</p><p>자료 형식만으로 교육생의 이해도를 판단하기는 어렵습니다. 직접 확인한 내용과 추가 확인이 필요한 사항을 구분할 필요가 있습니다.</p></aside></div>
 <p class="note">모임의 운영 경험을 모든 프로젝트의 공통 규칙으로 적용하지 않습니다. 프로젝트의 공식 기여 안내가 우선합니다.</p>
 </section>
+<section class="section" id="cohort-10" aria-labelledby="cohort-10-title">
+<div class="section-heading"><div><p class="eyebrow">10기 · 확인된 기여 사례</p><h2 id="cohort-10-title">10기 참여자가 기여한<br>프로젝트와 반영 사례</h2></div><p>10기 활동 기록에서 프레임워크·라이브러리·도구 등 176개 공개 저장소에 대한 PR 제출 보고를 확인했습니다. 아래는 공개 PR에서 병합을 확인한 사례입니다.</p></div>
+<ul class="cohort-examples">
+<li><strong>Spring Security</strong><span>Javadoc 경고와 문서 참조 정리</span><a href="https://github.com/spring-projects/spring-security/pull/18473" target="_blank" rel="noopener noreferrer">병합 기록 ↗</a></li>
+<li><strong>TanStack Query</strong><span>캐시 콜백의 동기 실행 동작 수정</span><a href="https://github.com/TanStack/query/pull/10066" target="_blank" rel="noopener noreferrer">병합 기록 ↗</a></li>
+<li><strong>Apache Kafka</strong><span>간헐적으로 실패하던 테스트 수정</span><a href="https://github.com/apache/kafka/pull/21317" target="_blank" rel="noopener noreferrer">병합 기록 ↗</a></li>
+<li><strong>Argo CD</strong><span>CLI의 미지원 옵션 정리</span><a href="https://github.com/argoproj/argo-cd/pull/25977" target="_blank" rel="noopener noreferrer">병합 기록 ↗</a></li>
+<li><strong>Rust</strong><span>컴파일러의 불안정 기능에서 배열 상수 인자 지원</span><a href="https://github.com/rust-lang/rust/pull/150786" target="_blank" rel="noopener noreferrer">병합 기록 ↗</a></li>
+<li><strong>Swagger Core</strong><span>OpenAPI 3.1 스키마 처리 개선</span><a href="https://github.com/swagger-api/swagger-core/pull/5034" target="_blank" rel="noopener noreferrer">병합 기록 ↗</a></li>
+</ul>
+<p class="cohort-examples-caption">문서·테스트·동작 개선을 포함한 사례입니다. Linux Kernel에서는 메일 패치 제출 보고도 확인했으며, PR 병합 사례와 구분했습니다.</p>
+<p class="note"><strong>176개는 제출 대상 저장소 수입니다.</strong> 준비 활동과 종료 후 보고도 포함하며, 모두 병합되었다는 뜻은 아닙니다. 과거 기여 사례가 현재 작업 가능성을 보장하지는 않습니다.</p>
+<a class="text-link" href="cohort-10.html">10기 기여 대상 전체 목록과 확인 범위 →</a>
+</section>
 <section class="section" id="selection" aria-labelledby="selection-title">
 <div class="section-heading"><div><p class="eyebrow">02 · 프로젝트 선정 기준</p><h2 id="selection-title">사용 경험과 검증 가능성을<br>기준으로 한 후보 검토</h2></div><p>프로젝트의 인지도 외에 교육생의 실제 사용 경험도 검토 기준이 됩니다. 프레임워크뿐 아니라 라이브러리·SDK·빌드·테스트 도구도 후보에 포함됩니다.</p></div>
 <p class="section-lead">교육생이 문제를 설명하고 검증할 수 있는 범위가 중요합니다. 사용 경험이 내부 구현에 대한 이해를 보장하지는 않습니다. 초기 범위는 한 모듈의 작은 문제로 제한하는 방안을 검토할 수 있습니다.</p>
@@ -136,6 +152,7 @@
 <li><a href="https://medium.com/opensource-contributors/2db85bf736b8" target="_blank" rel="noopener noreferrer">기여모임 공개 가이드 ↗</a><span>이슈 분석, 최소 변경, 운영진 검토의 공개 참고 자료입니다.</span></li>
 <li><a href="https://medium.com/opensource-contributors/4a0282385831" target="_blank" rel="noopener noreferrer">기여모임 9기 후기 ↗</a> · <a href="https://medium.com/opensource-contributors/e95a8e528056" target="_blank" rel="noopener noreferrer">10기 안내 ↗</a><span>모임 운영을 이해하는 공개 자료입니다. 모집 안내는 과거 기록입니다.</span></li>
 <li><a href="https://www.ssafy.com/ksp/servlet/swp.content.controller.SwpContentServlet?p_process=select-content-view&amp;p_menu_cd=M0102&amp;p_content_cd=C0102" target="_blank" rel="noopener noreferrer">SSAFY 공식 교육 소개 ↗</a><span>교육 범위와 세부 패키지의 공개 사용 근거는 구분했습니다.</span></li>
+<li><a href="cohort-10.html#cohort-scope">10기 기여 기록의 집계 범위 →</a><span>작업 보고와 공개 PR을 대조했습니다. 비공개 메시지와 화면은 게시하지 않았습니다.</span></li>
 <li><a href="projects.html#research-scope">프로젝트 목록의 출처와 한계 →</a><span>두 조사 자료의 중복·보류·제외와 확인 범위를 정리했습니다.</span></li>
 </ul><div class="source-scope"><p>모임 운영 사례는 작성자의 10기 참여 경험을 기준으로 정리했습니다. 일반 기여 흐름과 프로젝트 선택 기준은 공개 자료를 바탕으로 정리한 안내입니다.</p><p>이 페이지에는 공개 GitHub 캡처만 실었습니다. 프로젝트 탐색 자료의 기준일은 2026년 10월 19일입니다. 모든 이슈의 현재 상태를 확인하거나 대상 프로젝트의 테스트를 실행한 것은 아닙니다.</p><p>교육생 공개 저장소는 사용 근거의 표본입니다. 모든 교육생의 필수 기술이나 사용률을 나타내지 않습니다.</p></div></div></section>
 </main>
