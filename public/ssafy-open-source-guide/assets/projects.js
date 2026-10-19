@@ -15,7 +15,11 @@
   const params = new URLSearchParams(window.location.search);
   search.value = params.get('q') || '';
   const initialSource = params.get('source');
-  if (['usage', 'survey'].includes(initialSource)) source.value = initialSource;
+  if (['usage', 'survey'].includes(initialSource)) {
+    source.value = initialSource;
+    const options = source.closest('details');
+    if (options) options.open = true;
+  }
 
   function update() {
     const terms = normalize(search.value.trim()).split(/\s+/u).filter(Boolean);
@@ -45,7 +49,8 @@
       if (filtering) group.open = matches.length > 0;
       else if (wasFiltering) group.open = originalOpen.get(group) || false;
     });
-    count.textContent = `탐색 후보 ${active}개 · 보류·제외 ${held}개${filtering ? '가 조건에 맞습니다.' : '. 분야별 세부 항목을 확인할 수 있습니다.'}`;
+    count.textContent = filtering ? `검색 결과 ${active + held}개${held ? ` · 보류·제외 ${held}개 포함` : ''}` : `${rows.length}개 조사 대상`;
+    form.querySelector('[type=reset]').hidden = !filtering;
     empty.hidden = active + held !== 0;
     wasFiltering = filtering;
   }

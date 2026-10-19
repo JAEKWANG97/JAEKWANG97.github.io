@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="description" content="교육생의 공개 사용 근거와 분야별 조사 자료를 바탕으로 프로젝트별 구현 언어, 검토 범위 및 유의사항을 정리한 목록입니다.">
-<title>프로젝트 검토 목록 · SSAFY 오픈소스 기여 지원</title>
+<title>프로젝트 찾기 · SSAFY 오픈소스 기여 가이드</title>
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/navigation.css">
-<script src="assets/projects.js" defer></script>
+<link rel="stylesheet" href="assets/ux.css">
+<script src="assets/projects.js?v=20261019-ux" defer></script>
 <script src="assets/navigation.js" defer></script>
 </head>
 <body>
@@ -17,28 +18,21 @@
 <aside class="site-sidebar" aria-label="문서 탐색">
 <a class="brand" href="index.html">SSAFY <br>오픈소스 기여 지원</a>
 <p class="sidebar-description">운영 사례 및 프로젝트 검토 자료</p>
-<details class="sidebar-menu" id="document-menu" open><summary>문서 목차</summary>
-<nav aria-label="문서 목차"><ul class="sidebar-links">
-<li><a href="index.html#overview">검토 개요</a></li>
-<li><a href="index.html#operations">기여모임 운영 사례</a></li>
-<li><a href="index.html#cohort-10">10기 기여 사례</a></li>
-<li><a href="index.html#selection">프로젝트 선정 기준</a></li>
-<li><a href="index.html#contribution">기여 진행 절차</a></li>
-<li><a href="projects.html" aria-current="page">프로젝트 검토 목록</a></li>
-<li><a href="index.html#sources">참고 자료 및 확인 범위</a></li>
-</ul><p class="sidebar-caption">목록 세부</p><ul class="sidebar-links sidebar-sublinks">
-<li><a href="#project-groups">분야별 후보</a></li>
-<li><a href="#research-scope">자료 해석 기준</a></li>
+<details class="sidebar-menu" id="document-menu" open><summary>메뉴</summary>
+<nav aria-label="주 메뉴"><ul class="sidebar-links">
+<li><a href="index.html">가이드</a></li>
+<li><a href="cohort-10.html">10기 기여 사례</a></li>
+<li><a href="projects.html" aria-current="page">프로젝트 찾기</a></li>
 </ul></nav></details>
 <p class="sidebar-meta">작성 유재광<br>조사 기준 2026.10.19</p>
 </aside>
 <div class="document-content">
 <main id="main" tabindex="-1">
 
-<section class="hero project-intro" aria-labelledby="finder-title"><p class="eyebrow">프로젝트 선정 참고 자료 · 분야별 비교</p><h1 id="finder-title">프로젝트 <span>검토 목록</span></h1><p class="hero-lead">83개 조사 대상의 사용 근거·구현 언어·검토 범위를 분야별로 정리했습니다. 개별 이슈의 현재 작업 가능성을 확정한 자료는 아닙니다.</p><p class="meta"><span>조사 기준일 2026.10.19</span><span>12개 탐색 분야</span><span>중복을 정리한 조사 대상 83개</span></p></section>
-<p class="scope-line"><strong>공개 사용 근거</strong>는 교육생 공개본의 의존성·설정에서 확인한 기술입니다. <strong>분야 탐색 자료</strong>는 추가 비교 후보이며, SSAFY에서 사용했다는 뜻은 아닙니다.</p>
-<form class="project-filters" role="search" hidden><div class="filter-field"><label for="project-search">프로젝트·언어·기능 검색</label><input type="search" id="project-search" name="q" placeholder="예: Kotlin, 테스트, Axios" autocomplete="off" aria-controls="project-groups"></div><div class="filter-field"><label for="project-source">자료 범위</label><select id="project-source" name="source"><option value="all">전체 자료</option><option value="usage">공개 사용 근거가 있는 기술</option><option value="survey">분야 탐색 자료에 있는 기술</option></select></div><button class="filter-reset" type="reset">조건 초기화</button></form>
-<p class="result-count" id="project-count" role="status" aria-live="polite">탐색 후보 79개 · 보류·제외 4개. 분야별 세부 항목을 확인할 수 있습니다.</p><noscript><p>검색 없이도 아래 분야를 펼쳐 모든 항목을 읽을 수 있습니다.</p></noscript>
+<section class="hero project-intro ux-hero" aria-labelledby="finder-title"><p class="eyebrow">프로젝트 선정 참고 자료</p><h1 id="finder-title">프로젝트 찾기</h1><p class="hero-lead">사용한 기술이나 관심 분야에서 기여 대상을 살펴보는 목록입니다.</p></section>
+<p class="quiet-note">과거 조사 목록이며, 현재 맡을 수 있는 이슈를 뜻하지는 않습니다.</p>
+<form class="project-filters ux-search" role="search" hidden><div class="filter-field"><label for="project-search">프로젝트 검색</label><input type="search" id="project-search" name="q" placeholder="이름·언어·기능으로 검색" autocomplete="off" aria-controls="project-groups"></div><button class="filter-reset" type="reset" hidden>검색 지우기</button><details class="search-options"><summary>자료 범위</summary><div class="filter-field"><label for="project-source">확인할 자료</label><select id="project-source" name="source"><option value="all">전체 자료</option><option value="usage">공개 사용 근거가 있는 기술</option><option value="survey">분야 탐색 자료에 있는 기술</option></select></div></details></form>
+<p class="result-count" id="project-count" role="status" aria-live="polite">83개 조사 대상</p><noscript><p>검색 없이도 아래 분야를 펼쳐 모든 항목을 읽을 수 있습니다.</p></noscript>
 <p id="project-empty" hidden>조건에 맞는 항목이 없습니다. 검색어 또는 자료 범위를 변경할 수 있습니다.</p>
 <section id="project-groups" aria-labelledby="groups-title"><h2 id="groups-title" style="font-size:23px;margin-bottom:20px">분야별 프로젝트</h2>
 <details class="project-group" data-project-group><summary>웹 프런트엔드<span class="group-count">10</span></summary><ul class="project-list"><li class="project" id="axios--axios" data-search="Axios axios/axios JavaScript 웹 프런트엔드 헤더·오류·취소 등 HTTP 클라이언트 동작과 테스트를 살펴봅니다. 런타임 동작과 TypeScript 선언이 같은 계약을 표현하는지 확인합니다." data-sources="usage" data-state="candidate"><h3>Axios</h3><div class="project-meta"><span>주 구현 언어: JavaScript</span><span class="source-label">공개 사용 근거</span></div><p>헤더·오류·취소 등 HTTP 클라이언트 동작과 테스트를 살펴봅니다.</p><p class="project-check">런타임 동작과 TypeScript 선언이 같은 계약을 표현하는지 확인합니다.</p><div class="project-links"><a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">공식 코드 ↗</a> <a href="https://github.com/seoyxxn11/woojuin_project/blob/44d1cdd4c3997cbc95e4e17a42319c1fe69d6d05/frontend/package.json" target="_blank" rel="noopener noreferrer">사용 근거 ↗</a> <a href="https://github.com/axios/axios/pull/11216" target="_blank" rel="noopener noreferrer">과거 검토 사례 ↗</a></div></li>
@@ -138,14 +132,14 @@
 <li class="project" id="hashicorp--terraform" data-search="Terraform hashicorp/terraform Go 클라우드·DevOps IaC 도구의 라이선스를 비교하는 자료로만 남겼습니다. 조사 자료의 현행 소스는 BSL 1.1이므로 OSI 오픈소스 후보 목록에서는 제외했습니다." data-sources="survey" data-state="excluded"><h3>Terraform · 제외</h3><div class="project-meta"><span>주 구현 언어: Go</span><span class="source-label">분야 탐색 자료</span></div><p>IaC 도구의 라이선스를 비교하는 자료로만 남겼습니다.</p><p class="project-check">조사 자료의 현행 소스는 BSL 1.1이므로 OSI 오픈소스 후보 목록에서는 제외했습니다.</p><div class="project-links"><a href="https://github.com/hashicorp/terraform" target="_blank" rel="noopener noreferrer">공식 코드 ↗</a></div></li>
 </ul></details>
 </section>
-<section class="catalog-notes" id="research-scope" aria-labelledby="scope-title"><h2 id="scope-title">자료 해석 기준 및 확인 범위</h2><ul>
+<details class="ux-disclosure ux-notes"><summary>목록의 기준과 주의사항</summary><div class="disclosure-body"><section class="catalog-notes" id="research-scope" aria-labelledby="scope-title"><h2 id="scope-title">자료 해석 기준 및 확인 범위</h2><p><strong>공개 사용 근거</strong>는 교육생 공개본의 의존성·설정에서 확인한 기술입니다. <strong>분야 탐색 자료</strong>는 추가 비교 후보이며, SSAFY에서 사용했다는 뜻은 아닙니다.</p><ul>
 <li>공개 사용 근거 조사 36개와 분야 비교 자료 56개를 합치고 중복 9개를 정리했습니다. 조사 대상 83개 중 Recoil·Terraform은 제외, Querydsl 원본·Phaser는 보류로 분리했습니다.</li>
 <li>사용 근거는 공개 저장소의 자기 소개와 의존성·설정에 근거합니다. 교육 당시 원본과 동일한지, 모든 교육생이 사용했는지까지 확인한 자료는 아닙니다.</li>
 <li>분야 탐색 항목은 제공된 비교 연구를 요약했습니다. 모든 항목의 정책·리뷰·현재 이슈 상태를 이번 정리에서 같은 깊이로 재검증하지는 않았습니다.</li>
 <li>사용 언어와 구현 언어, 저장소 전체와 하위 모듈을 구분합니다. 표기한 주 언어는 코드 통계이며 모든 구성요소의 언어를 뜻하지 않습니다.</li>
 <li>과거 PR은 검토 과정을 읽는 자료입니다. 이미 끝난 변경을 다시 제출할 과제로 추천하지 않습니다.</li>
 <li>실제 착수 전에는 공식 기여 안내, 최근 댓글과 연결된 변경의 확인이 필요합니다. 사전 승인·권리 동의·검증 환경도 검토 대상입니다.</li>
-</ul><a class="text-link" href="index.html#selection">프로젝트 선정 기준 →</a></section>
+</ul><a class="text-link" href="index.html#selection">프로젝트 선정 기준 →</a></section></div></details>
 </main>
 <footer class="footer"><p>유재광의 기여모임 10기 참여 경험과 공개 자료를 정리했습니다.<br>SSAFY 또는 기여모임의 공식 지침이 아닙니다.</p><a href="https://litt.ly/opensource" target="_blank" rel="noopener noreferrer">기여모임 안내 ↗</a></footer>
 </div>
