@@ -115,3 +115,11 @@
 @media (max-width: 760px) {
   #capture-evidence .capture-frame + figcaption::before { content: "이미지를 누르면 원본을 볼 수 있습니다."; }
 }
+
+.discord-evidence { margin-top: 32px; }
+.discord-evidence-item { margin: 26px 0; }
+#discord-evidence .capture-frame { overflow: hidden; }
+#discord-evidence .capture { width: 100%; min-width: 0; max-width: 100%; height: auto; }
+@media (max-width: 760px) {
+  #discord-evidence .capture-frame + figcaption::before { content: "이미지를 누르면 원본을 볼 수 있습니다."; }
+}
