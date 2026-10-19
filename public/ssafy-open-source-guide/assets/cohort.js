@@ -29,7 +29,7 @@
       tab.tabIndex = selected ? 0 : -1;
     });
     panel.setAttribute('aria-labelledby', active.id);
-    heading.textContent = category === 'all' ? '분야별 대표 사례' : `${active.textContent} 대표 사례`;
+    heading.textContent = category === 'all' ? '대표 사례' : `${active.textContent} 대표 사례`;
     examples.forEach((example) => { example.hidden = category !== 'all' && example.dataset.category !== category; });
     let matches = 0;
     let categoryTotal = 0;
