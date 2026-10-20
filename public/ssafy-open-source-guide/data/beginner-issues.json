@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-20T00:39:04+00:00",
+  "checked_at": "2026-10-20T09:59:03+09:00",
   "draft": false,
   "projects_surveyed": 245,
   "issues": [
@@ -557,6 +557,436 @@
       "discussion_url": "https://github.com/gradle/gradle/issues/39225#issuecomment-5887572627",
       "related_pr_urls": [],
       "checked_at": "2026-10-20T00:39:04+00:00"
+    },
+    {
+      "id": "spring-projects--spring-boot-52301",
+      "repo": "spring-projects/spring-boot",
+      "project": "Spring Boot",
+      "project_description": "자동 설정과 실행 환경을 제공해 Spring 애플리케이션 구성을 돕는 프레임워크.",
+      "issue_number": 52301,
+      "issue_url": "https://github.com/spring-projects/spring-boot/issues/52301",
+      "title": "Maven 테스트 AOT가 생성 리소스 전체를 복사하도록 수정",
+      "summary": "`process-test-aot`가 `META-INF/native-image`만 복사해 누락하는 일반 생성 리소스도 테스트 클래스 디렉터리로 복사하고 회귀 테스트를 추가합니다.",
+      "category": "backend",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Java·Gradle",
+      "kind": "작은 버그·통합 테스트",
+      "preparation": "JDK 25와 Gradle Wrapper. Maven 플러그인의 AOT 처리 흐름과 통합 테스트 픽스처를 먼저 확인합니다.",
+      "why_manageable": "원인이 `ProcessTestAotMojo`의 선택적 복사 코드로 특정돼 있고 기존 `AotTests`와 `aot-test` 픽스처를 확장할 수 있습니다.",
+      "suggested_test": "일반 생성 리소스와 기존 native-image 메타데이터가 모두 복사되는지 확인합니다.\n\n./gradlew :spring-boot-maven-plugin:intTest --tests org.springframework.boot.maven.AotTests\n./gradlew :spring-boot-maven-plugin:checkstyleMain :spring-boot-maven-plugin:checkstyleTest\n./gradlew format",
+      "files": [
+        {
+          "label": "ProcessTestAotMojo",
+          "url": "https://github.com/spring-projects/spring-boot/blob/main/build-plugin/spring-boot-maven-plugin/src/main/java/org/springframework/boot/maven/ProcessTestAotMojo.java"
+        },
+        {
+          "label": "AOT 통합 테스트",
+          "url": "https://github.com/spring-projects/spring-boot/blob/main/build-plugin/spring-boot-maven-plugin/src/intTest/java/org/springframework/boot/maven/AotTests.java"
+        }
+      ],
+      "proposal_role": "재현과 수정 위치가 명시된 이슈",
+      "role_evidence": "https://github.com/spring-projects/spring-boot/issues/52301",
+      "contribution_url": "https://github.com/spring-projects/spring-boot/blob/main/CONTRIBUTING.adoc",
+      "ownership_note": "담당자·작업 선언·해결 PR이 없습니다. 다만 `status: waiting-for-triage`이므로 구현 전에 수정 방향과 테스트 범위를 댓글로 확인하는 편이 안전합니다.",
+      "related_pr_note": "DCO `Signed-off-by` 트레일러가 필요합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "spring-projects--spring-security-8080",
+      "repo": "spring-projects/spring-security",
+      "project": "Spring Security",
+      "project_description": "Spring 애플리케이션의 인증·권한 검사와 웹 보안을 처리하는 프레임워크.",
+      "issue_number": 8080,
+      "issue_url": "https://github.com/spring-projects/spring-security/issues/8080",
+      "title": "WebFlux 사용자 정의 보안 헤더 작성기 등록 방법 문서화",
+      "summary": "`ServerHttpSecurity.HeaderSpec.writer(ServerHttpHeadersWriter)`를 사용하는 Java·Kotlin 설정 예제를 WebFlux 보안 헤더 문서에 추가합니다.",
+      "category": "security",
+      "secondary_categories": [
+        "backend"
+      ],
+      "language": "AsciiDoc·Java·Kotlin",
+      "kind": "문서·예제 보완",
+      "preparation": "Asciidoctor와 Spring Security 문서의 Java·Kotlin 탭 형식을 확인합니다.",
+      "why_manageable": "기능은 이미 구현되어 있고 변경 지점이 reactive 보안 헤더 문서 한 섹션으로 제한됩니다.",
+      "suggested_test": "기존 기본 헤더 변경 예제와 같은 탭·들여쓰기 형식을 따르고 Java·Kotlin 예제가 모두 렌더링되는지 확인합니다.\n\n./gradlew :spring-security-docs:antora\n./gradlew format",
+      "files": [
+        {
+          "label": "WebFlux 보안 헤더 문서",
+          "url": "https://github.com/spring-projects/spring-security/blob/main/docs/modules/ROOT/pages/reactive/exploits/headers.adoc"
+        }
+      ],
+      "proposal_role": "기능 사용법이 구체적인 문서 이슈",
+      "role_evidence": "https://github.com/spring-projects/spring-security/issues/8080",
+      "contribution_url": "https://github.com/spring-projects/spring-security/blob/main/CONTRIBUTING.adoc",
+      "ownership_note": "담당자·댓글·해결 PR이 없습니다. 중복 작업을 막기 위해 시작 전에 작업 의사를 남기는 편이 좋습니다.",
+      "related_pr_note": "DCO `Signed-off-by` 트레일러가 필요합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "spring-projects--spring-security-5112",
+      "repo": "spring-projects/spring-security",
+      "project": "Spring Security",
+      "project_description": "Spring 애플리케이션의 인증·권한 검사와 웹 보안을 처리하는 프레임워크.",
+      "issue_number": 5112,
+      "issue_url": "https://github.com/spring-projects/spring-security/issues/5112",
+      "title": "WebTestClient 보안 설정의 bindToServer 제한 문서화",
+      "summary": "Spring Security 테스트 구성자가 `bindToApplicationContext`용이며 실제 서버에 연결하는 `bindToServer`에는 적용되지 않는다는 제한을 문서에 명시합니다.",
+      "category": "security",
+      "secondary_categories": [
+        "backend"
+      ],
+      "language": "AsciiDoc",
+      "kind": "문서 주의사항",
+      "preparation": "`WebTestClient Security Setup` 페이지와 `springSecurity()` 적용 방식을 확인합니다.",
+      "why_manageable": "코드 변경 없이 한 문서 페이지에 제한과 대안을 짧게 추가하는 작업입니다.",
+      "suggested_test": "기존 Java·Kotlin 예제를 바꾸지 않고 제한이 적용되는 범위를 정확히 설명합니다.\n\n./gradlew :spring-security-docs:antora\n./gradlew format",
+      "files": [
+        {
+          "label": "Reactive 테스트 설정 문서",
+          "url": "https://github.com/spring-projects/spring-security/blob/main/docs/modules/ROOT/pages/reactive/test/web/setup.adoc"
+        }
+      ],
+      "proposal_role": "오래됐지만 현재 문서에도 남은 누락",
+      "role_evidence": "https://github.com/spring-projects/spring-security/issues/5112",
+      "contribution_url": "https://github.com/spring-projects/spring-security/blob/main/CONTRIBUTING.adoc",
+      "ownership_note": "담당자·댓글·해결 PR이 없습니다. 오래된 이슈이므로 현재도 같은 제한인지 먼저 확인 댓글을 남기는 편이 안전합니다.",
+      "related_pr_note": "DCO `Signed-off-by` 트레일러가 필요합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "sveltejs--svelte-8630",
+      "repo": "sveltejs/svelte",
+      "project": "Svelte",
+      "project_description": "컴포넌트를 실행 코드로 컴파일해 웹 인터페이스를 만드는 프레임워크.",
+      "issue_number": 8630,
+      "issue_url": "https://github.com/sveltejs/svelte/issues/8630",
+      "title": "ResizeObserver 기반 크기 바인딩 설명과 예제 보강",
+      "summary": "네 가지 크기 바인딩이 어떤 `ResizeObserverEntry` 값을 제공하는지 설명하고 실제 값을 읽는 짧은 Svelte 예제를 추가합니다.",
+      "category": "web",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Markdown·Svelte",
+      "kind": "문서·예제 보완",
+      "preparation": "MDN의 `ResizeObserverEntry` 필드와 이슈 댓글의 Playground 예제를 확인합니다.",
+      "why_manageable": "대상이 `12-bind.md`의 Dimensions 섹션 하나이며 댓글에 동작 예제가 이미 있습니다.",
+      "suggested_test": "각 값의 형태와 브라우저 지원 차이를 과장하지 않고 예제 문법과 문서 링크를 확인합니다.\n\npnpm exec prettier --check documentation/docs/03-template-syntax/12-bind.md\npnpm lint",
+      "files": [
+        {
+          "label": "bind 문서",
+          "url": "https://github.com/sveltejs/svelte/blob/main/documentation/docs/03-template-syntax/12-bind.md"
+        }
+      ],
+      "proposal_role": "검증 가능한 예제가 제공된 문서 이슈",
+      "role_evidence": "https://github.com/sveltejs/svelte/issues/8630",
+      "contribution_url": "https://github.com/sveltejs/svelte/blob/main/CONTRIBUTING.md",
+      "ownership_note": "담당자와 작업 선언이 없고 관련 해결 PR도 없습니다. 남은 범위를 값의 의미와 실제 사용 예제로 명확히 한정합니다.",
+      "related_pr_note": "문서 전용 변경에 changeset이 필요한지는 PR 전에 확인합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "vllm-project--vllm-62559",
+      "repo": "vllm-project/vllm",
+      "project": "vLLM",
+      "project_description": "대규모 언어 모델의 추론과 API 제공을 위한 실행 엔진.",
+      "issue_number": 62559,
+      "issue_url": "https://github.com/vllm-project/vllm/issues/62559",
+      "title": "Mooncake 예제 프록시의 upstream 오류 전달 수정",
+      "summary": "디코드 서비스가 실패했을 때 예제 프록시가 먼저 HTTP 200을 확정하지 않도록 상태 코드·Content-Type·오류 본문을 전달하고 응답을 닫습니다.",
+      "category": "ai",
+      "secondary_categories": [
+        "backend"
+      ],
+      "language": "Python·FastAPI",
+      "kind": "예제 오류 처리·회귀 테스트",
+      "preparation": "FastAPI·HTTPX의 스트리밍 응답 생명주기와 비동기 자원 종료를 이해해야 합니다. GPU나 Mooncake 클러스터는 필요하지 않습니다.",
+      "why_manageable": "핵심 변경이 Python 예제 프록시 한 파일에 한정되고 MockTransport로 500 응답을 재현할 수 있습니다.",
+      "suggested_test": "upstream 500의 상태·본문·Content-Type이 보존되고 성공 스트림과 실패 스트림 모두 `aclose()`되는지 확인합니다.\n\npython -m pytest -q <추가한 프록시 테스트 파일>\npre-commit run --files examples/disaggregated/mooncake_connector/mooncake_connector_proxy.py <테스트 파일>",
+      "files": [
+        {
+          "label": "Mooncake 예제 프록시",
+          "url": "https://github.com/vllm-project/vllm/blob/main/examples/disaggregated/mooncake_connector/mooncake_connector_proxy.py"
+        }
+      ],
+      "proposal_role": "CPU에서 재현 가능한 좁은 버그",
+      "role_evidence": "https://github.com/vllm-project/vllm/issues/62559",
+      "contribution_url": "https://github.com/vllm-project/vllm/blob/main/docs/contributing/README.md",
+      "ownership_note": "담당자·작업 선언·공개 해결 PR이 없습니다. 댓글은 현재 main에서의 독립 재현 결과입니다.",
+      "related_pr_note": "HTTP 취소와 자원 종료까지 회귀 테스트로 고정합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "pola-rs--polars-30022",
+      "repo": "pola-rs/polars",
+      "project": "Polars",
+      "project_description": "표 형태 데이터를 변환·집계하는 DataFrame 라이브러리.",
+      "issue_number": 30022,
+      "issue_url": "https://github.com/pola-rs/polars/issues/30022",
+      "title": "null 2차원 Array gather 뒤 unique 결과 수정",
+      "summary": "null을 포함한 고정 크기 2차원 Array를 gather한 뒤 `unique` 결과가 달라지는 문제를 고치고 Python 회귀 테스트를 추가합니다.",
+      "category": "data",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Rust·Python",
+      "kind": "좁은 버그·회귀 테스트",
+      "preparation": "Polars의 Array 표현, Arrow validity, Rust gather 경로를 읽어야 하므로 문서 작업보다 난도가 높습니다.",
+      "why_manageable": "재현 코드가 짧고 기대 결과가 고정돼 있으며 gather된 중첩 Array의 null 처리 경로로 범위를 좁힐 수 있습니다.",
+      "suggested_test": "gather 전후 concat 결과의 unique 길이가 같고 다른 중첩 Array 동작을 깨지 않는지 확인합니다.\n\npytest py-polars/tests/unit/operations/unique/test_unique.py -q\ncargo test -p polars-core --all-features\ncargo fmt --all --check",
+      "files": [
+        {
+          "label": "gather 구현",
+          "url": "https://github.com/pola-rs/polars/blob/main/crates/polars-core/src/chunked_array/ops/gather.rs"
+        },
+        {
+          "label": "unique 테스트",
+          "url": "https://github.com/pola-rs/polars/blob/main/py-polars/tests/unit/operations/unique/test_unique.py"
+        }
+      ],
+      "proposal_role": "짧은 재현 코드가 있는 이슈",
+      "role_evidence": "https://github.com/pola-rs/polars/issues/30022",
+      "contribution_url": "https://github.com/pola-rs/polars/blob/main/CONTRIBUTING.md",
+      "ownership_note": "담당자·댓글·해결 PR이 없습니다. `needs triage` 상태라 재현 결과와 예상 수정 방향을 먼저 댓글로 확인해야 합니다.",
+      "related_pr_note": "Rust 내부 자료구조를 읽어야 하는 도전형 소규모 후보입니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "argoproj--argo-cd-30243",
+      "repo": "argoproj/argo-cd",
+      "project": "Argo CD",
+      "project_description": "Git에 선언한 설정을 Kubernetes 배포 상태와 동기화하는 GitOps 도구.",
+      "issue_number": 30243,
+      "issue_url": "https://github.com/argoproj/argo-cd/issues/30243",
+      "title": "CronJob 상태 문서를 내장 헬스 체크와 일치시키기",
+      "summary": "CronJob 설명 세 곳을 현재 `health.lua` 동작과 맞추고 업그레이드 안내와 헬스 체크 제외·재정의 방법을 연결합니다.",
+      "category": "cloud",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Markdown·Lua 참고",
+      "kind": "문서 정확성",
+      "preparation": "현재 CronJob 헬스 체크의 Healthy·Progressing 판정과 문서 구조를 대조합니다.",
+      "why_manageable": "구현 변경 없이 `docs/operator-manual/health.md` 한 페이지를 고치는 작업입니다.",
+      "suggested_test": "문서가 현재 동작을 설명하도록 하고 헬스 체크 자체를 바꾸는 범위로 확대하지 않습니다.\n\nmake build-docs-local",
+      "files": [
+        {
+          "label": "헬스 상태 문서",
+          "url": "https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/health.md"
+        },
+        {
+          "label": "CronJob 헬스 체크 테스트",
+          "url": "https://github.com/argoproj/argo-cd/blob/master/resource_customizations/batch/CronJob/health_test.yaml"
+        }
+      ],
+      "proposal_role": "불일치 지점이 명시된 문서 이슈",
+      "role_evidence": "https://github.com/argoproj/argo-cd/issues/30243",
+      "contribution_url": "https://argo-cd.readthedocs.io/en/latest/developer-guide/code-contributions/",
+      "ownership_note": "담당자·작업 선언·해결 PR이 없습니다.",
+      "related_pr_note": "업그레이드 시 혼란을 줄이는 연결 문서까지 확인합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "gradle--gradle-39488",
+      "repo": "gradle/gradle",
+      "project": "Gradle",
+      "project_description": "의존성 관리와 코드 빌드·테스트 작업을 자동화하는 빌드 도구.",
+      "issue_number": 39488,
+      "issue_url": "https://github.com/gradle/gradle/issues/39488",
+      "title": "Plugin 인터페이스 구현 문서의 누락된 3번 설명 추가",
+      "summary": "예제의 `apply<SamplePlugin>() // <3>` 호출에 대응하는 콜아웃과 설명을 플러그인 구현 문서에 추가합니다.",
+      "category": "tools",
+      "secondary_categories": [
+        "backend"
+      ],
+      "language": "AsciiDoc·Kotlin·Groovy",
+      "kind": "누락 문서 설명",
+      "preparation": "기존 1·2번 콜아웃의 문체와 Kotlin·Groovy 예제 구조를 확인합니다.",
+      "why_manageable": "핵심 수정 대상이 단일 AsciiDoc 파일이고 예제에는 이미 `<3>` 표식이 있습니다.",
+      "suggested_test": "3번 설명을 기존 콜아웃과 같은 수준으로 제한하고 코드 예제와 번호가 맞는지 확인합니다.\n\n./gradlew :docs:docs\n./gradlew sanityCheck",
+      "files": [
+        {
+          "label": "플러그인 구현 문서",
+          "url": "https://github.com/gradle/gradle/blob/master/platforms/documentation/docs/src/docs/userguide/fundamentals/developing-plugins/binary_plugin_advanced.adoc"
+        }
+      ],
+      "proposal_role": "정확한 누락 위치가 확인된 이슈",
+      "role_evidence": "https://github.com/gradle/gradle/issues/39488",
+      "contribution_url": "https://github.com/gradle/gradle/blob/master/CONTRIBUTING.md",
+      "ownership_note": "담당자·댓글·해결 PR이 없습니다. `to-triage` 상태이므로 큰 설명 확장 없이 누락만 보완합니다.",
+      "related_pr_note": "문구 범위를 먼저 이슈에서 확인하면 안전합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "gradle--gradle-39374",
+      "repo": "gradle/gradle",
+      "project": "Gradle",
+      "project_description": "의존성 관리와 코드 빌드·테스트 작업을 자동화하는 빌드 도구.",
+      "issue_number": 39374,
+      "issue_url": "https://github.com/gradle/gradle/issues/39374",
+      "title": "Isolated Projects 통합 테스트 실행 안내 추가",
+      "summary": "Configuration Cache만 설명하는 기여자 테스트 문서에 Isolated Projects 통합 테스트 명령과 결과가 비어 있을 수 있는 조건을 추가합니다.",
+      "category": "tools",
+      "secondary_categories": [
+        "backend"
+      ],
+      "language": "Markdown·Gradle",
+      "kind": "테스트 안내 문서",
+      "preparation": "`isolatedProjectsIntegTest` 태스크와 Configuration Cache 전용 하위 프로젝트 구조를 확인합니다.",
+      "why_manageable": "코드 변경 없이 `.agents/testing.md`와 `contributing/Testing.md`의 안내를 맞추는 작업입니다.",
+      "suggested_test": "실제 태스크 이름과 테스트가 비는 특수 조건을 빌드 로직과 대조합니다.\n\n./gradlew sanityCheck",
+      "files": [
+        {
+          "label": "에이전트 테스트 안내",
+          "url": "https://github.com/gradle/gradle/blob/master/.agents/testing.md"
+        },
+        {
+          "label": "기여자 테스트 안내",
+          "url": "https://github.com/gradle/gradle/blob/master/contributing/Testing.md"
+        }
+      ],
+      "proposal_role": "태스크와 수정 문서가 명시된 이슈",
+      "role_evidence": "https://github.com/gradle/gradle/issues/39374",
+      "contribution_url": "https://github.com/gradle/gradle/blob/master/CONTRIBUTING.md",
+      "ownership_note": "담당자·작업 선언·해결 PR이 없습니다.",
+      "related_pr_note": "두 문서의 명령과 주석이 서로 어긋나지 않게 합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "astral-sh--ruff-29512",
+      "repo": "astral-sh/ruff",
+      "project": "Ruff",
+      "project_description": "Python 코드의 린트 검사와 포맷 정리를 수행하는 Rust 기반 도구.",
+      "issue_number": 29512,
+      "issue_url": "https://github.com/astral-sh/ruff/issues/29512",
+      "title": "doctest 출력의 Attributes: 섹션 오인 수정",
+      "summary": "NumPy 스타일 docstring의 doctest 출력에 있는 `Attributes:`를 실제 섹션 헤더로 오인하지 않도록 하고 fixture와 snapshot을 추가합니다.",
+      "category": "tools",
+      "secondary_categories": [],
+      "language": "Rust·Python fixture",
+      "kind": "린터 오탐·회귀 테스트",
+      "preparation": "pydocstyle 섹션 분석기와 Ruff의 fixture·Insta snapshot 갱신 흐름을 확인합니다.",
+      "why_manageable": "재현 예제가 짧고 변경 범위를 섹션 분석기와 해당 fixture·snapshot으로 좁힐 수 있습니다.",
+      "suggested_test": "Google·NumPy docstring의 기존 D4xx snapshot 변화가 의도한 범위인지 확인합니다.\n\nRUFF_UPDATE_SCHEMA=1 cargo test -p ruff_linter pydocstyle\nuv run --only-dev cargo insta review",
+      "files": [
+        {
+          "label": "섹션 분석기",
+          "url": "https://github.com/astral-sh/ruff/blob/main/crates/ruff_linter/src/rules/pydocstyle/rules/sections.rs"
+        }
+      ],
+      "proposal_role": "짧은 재현 예제가 있는 이슈",
+      "role_evidence": "https://github.com/astral-sh/ruff/issues/29512",
+      "contribution_url": "https://github.com/astral-sh/ruff/blob/main/CONTRIBUTING.md",
+      "ownership_note": "담당자·작업 선언·Ruff 해결 PR이 없습니다. 연결된 xarray PR은 문제를 발견한 외부 적용 PR입니다.",
+      "related_pr_note": "Rust 파서 로직을 읽어야 하는 도전형 소규모 후보입니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "kotlin--kotlinx.coroutines-4444",
+      "repo": "Kotlin/kotlinx.coroutines",
+      "project": "kotlinx.coroutines",
+      "project_description": "코루틴과 Flow로 Kotlin의 비동기 작업과 데이터 흐름을 다루는 라이브러리.",
+      "issue_number": 4444,
+      "issue_url": "https://github.com/Kotlin/kotlinx.coroutines/issues/4444",
+      "title": "suspendCancellableCoroutine의 block 실행 순서 문서화",
+      "summary": "공개 API KDoc에 block이 정확히 한 번 동기적으로 실행된 뒤 결과 단계에서 중단될 수 있다는 순서를 명시합니다.",
+      "category": "app",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Kotlin·KDoc",
+      "kind": "API 문서 보완",
+      "preparation": "`callsInPlace(EXACTLY_ONCE)` 계약과 block 호출 뒤 `getResult()`로 이어지는 구현을 확인합니다.",
+      "why_manageable": "수정 지점이 단일 공개 API KDoc으로 좁고 동작 변경이 필요 없습니다.",
+      "suggested_test": "동기 실행과 실제 suspension 시점을 혼동하지 않는 짧은 문구로 작성합니다.\n\n./gradlew :kotlinx-coroutines-core:jvmTest\n./gradlew build",
+      "files": [
+        {
+          "label": "CancellableContinuation API",
+          "url": "https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/CancellableContinuation.kt"
+        }
+      ],
+      "proposal_role": "구현 근거가 명확한 문서 이슈",
+      "role_evidence": "https://github.com/Kotlin/kotlinx.coroutines/issues/4444",
+      "contribution_url": "https://github.com/Kotlin/kotlinx.coroutines/blob/master/CONTRIBUTING.md",
+      "ownership_note": "담당자·댓글·해결 PR이 없습니다. 오래된 문서 이슈이므로 문구 초안을 먼저 확인받으면 안전합니다.",
+      "related_pr_note": "새 API나 동작 변경 없이 KDoc만 수정합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "kotlin--kotlinx.coroutines-4592",
+      "repo": "Kotlin/kotlinx.coroutines",
+      "project": "kotlinx.coroutines",
+      "project_description": "코루틴과 Flow로 Kotlin의 비동기 작업과 데이터 흐름을 다루는 라이브러리.",
+      "issue_number": 4592,
+      "issue_url": "https://github.com/Kotlin/kotlinx.coroutines/issues/4592",
+      "title": "UnconfinedTestDispatcher의 delay·가상 시간 설명 명확화",
+      "summary": "‘skips delays’가 delay 즉시 재개로 오해되지 않도록 KDoc 문구를 다듬고 가상 시간과 실행 순서를 보여 주는 짧은 예제를 추가합니다.",
+      "category": "app",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Kotlin·KDoc",
+      "kind": "API 문서·예제",
+      "preparation": "`StandardTestDispatcher`와 공유하는 delay skipping 의미와 기존 테스트 예제 스타일을 확인합니다.",
+      "why_manageable": "논점이 동작 수정이 아니라 용어와 예제의 명료성으로 제한됩니다.",
+      "suggested_test": "가상 시간이 자동 진행되는 시점과 dispatcher의 진입·실행 순서를 구분해 설명합니다.\n\n./gradlew :kotlinx-coroutines-test:jvmTest\n./gradlew build",
+      "files": [
+        {
+          "label": "TestCoroutineDispatchers KDoc",
+          "url": "https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/common/src/TestCoroutineDispatchers.kt"
+        }
+      ],
+      "proposal_role": "유지관리자가 의미를 확인한 문서 이슈",
+      "role_evidence": "https://github.com/Kotlin/kotlinx.coroutines/issues/4592",
+      "contribution_url": "https://github.com/Kotlin/kotlinx.coroutines/blob/master/CONTRIBUTING.md",
+      "ownership_note": "댓글 참여자는 있지만 작업 선언은 없고 해결 PR도 없습니다. 표현 선택은 먼저 제안 문구를 이슈에서 확인하면 좋습니다.",
+      "related_pr_note": "기존 동작과 다른 의미를 새로 주장하지 않습니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "arduino--arduino-cli-2832",
+      "repo": "arduino/arduino-cli",
+      "project": "Arduino CLI",
+      "project_description": "명령줄에서 보드·라이브러리를 관리하고 Arduino 코드를 빌드·업로드하는 도구.",
+      "issue_number": 2832,
+      "issue_url": "https://github.com/arduino/arduino-cli/issues/2832",
+      "title": "upload --input-file 플래그 설명 수정",
+      "summary": "`--input-file`이 임의 단일 바이너리를 그대로 올리는 옵션이 아니라 경로에서 빌드 정보와 프로젝트 이름을 유도한다는 점을 도움말에 명확히 적습니다.",
+      "category": "embedded",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Go·Cobra 문서",
+      "kind": "도움말·생성 문서",
+      "preparation": "`--input-dir`와의 차이, 플랫폼별 업로드 패턴, Cobra 문서 생성 과정을 확인합니다. Arduino CLA가 필요합니다.",
+      "why_manageable": "핵심 변경은 `upload.go`의 플래그 설명 한 곳과 생성 명령 문서 갱신입니다.",
+      "suggested_test": "짧은 문구만 바꾸기보다 여러 산출물을 요구하는 플랫폼에서도 의미가 정확한지 확인합니다.\n\ntask docs:generate\ntask general:format-prettier\ntask check",
+      "files": [
+        {
+          "label": "upload 명령 구현",
+          "url": "https://github.com/arduino/arduino-cli/blob/master/internal/cli/upload/upload.go"
+        }
+      ],
+      "proposal_role": "유지관리자가 오류를 확인한 문서 이슈",
+      "role_evidence": "https://github.com/arduino/arduino-cli/issues/2832",
+      "contribution_url": "https://github.com/arduino/arduino-cli/blob/master/docs/CONTRIBUTING.md",
+      "ownership_note": "담당자·작업 선언·열린 구현 PR이 없습니다.",
+      "related_pr_note": "PR은 master를 대상으로 작게 유지하고 Arduino CLA를 서명합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T09:59:03+09:00"
     }
   ]
 }
