@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-20T09:59:03+09:00",
+  "checked_at": "2026-10-20T10:48:14+09:00",
   "draft": false,
   "projects_surveyed": 245,
   "issues": [
@@ -901,7 +901,7 @@
       "issue_url": "https://github.com/Kotlin/kotlinx.coroutines/issues/4444",
       "title": "suspendCancellableCoroutine의 block 실행 순서 문서화",
       "summary": "공개 API KDoc에 block이 정확히 한 번 동기적으로 실행된 뒤 결과 단계에서 중단될 수 있다는 순서를 명시합니다.",
-      "category": "app",
+      "category": "mobile",
       "secondary_categories": [
         "tools"
       ],
@@ -933,7 +933,7 @@
       "issue_url": "https://github.com/Kotlin/kotlinx.coroutines/issues/4592",
       "title": "UnconfinedTestDispatcher의 delay·가상 시간 설명 명확화",
       "summary": "‘skips delays’가 delay 즉시 재개로 오해되지 않도록 KDoc 문구를 다듬고 가상 시간과 실행 순서를 보여 주는 짧은 예제를 추가합니다.",
-      "category": "app",
+      "category": "mobile",
       "secondary_categories": [
         "tools"
       ],
@@ -987,6 +987,450 @@
       "related_pr_note": "PR은 master를 대상으로 작게 유지하고 Arduino CLA를 서명합니다.",
       "related_pr_urls": [],
       "checked_at": "2026-10-20T09:59:03+09:00"
+    },
+    {
+      "id": "storybookjs--storybook-36843",
+      "repo": "storybookjs/storybook",
+      "project": "Storybook",
+      "project_description": "UI 컴포넌트를 독립적으로 개발·문서화·테스트하는 프론트엔드 도구.",
+      "issue_number": 36843,
+      "issue_url": "https://github.com/storybookjs/storybook/issues/36843",
+      "title": "Hide code 버튼의 포커스 링 잘림 수정",
+      "summary": "Docs 페이지에서 키보드로 `Hide code` 버튼에 초점을 이동할 때 포커스 링이 잘리는 문제를 CSS와 회귀 스토리로 수정합니다.",
+      "category": "web",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "TypeScript·CSS",
+      "kind": "접근성·UI 회귀",
+      "preparation": "Node.js 22와 Yarn 4. Docs Preview 액션 바 구조와 light/dark 테마의 키보드 포커스를 확인합니다.",
+      "why_manageable": "재현 절차가 있고 범위가 Preview 액션 바 스타일과 기존 스토리로 제한됩니다.",
+      "suggested_test": "light/dark 테마에서 Show code와 Hide code를 Tab으로 순회해 포커스 링이 잘리지 않는지 확인합니다.\n\nyarn test --project storybook-ui code/addons/docs/src/blocks/components/Preview.stories.tsx\nyarn fmt:check",
+      "files": [
+        {
+          "label": "Preview 컴포넌트",
+          "url": "https://github.com/storybookjs/storybook/blob/next/code/addons/docs/src/blocks/components/Preview.tsx"
+        },
+        {
+          "label": "Preview 스토리",
+          "url": "https://github.com/storybookjs/storybook/blob/next/code/addons/docs/src/blocks/components/Preview.stories.tsx"
+        }
+      ],
+      "proposal_role": "91,342★ 주요 프로젝트",
+      "role_evidence": "https://github.com/storybookjs/storybook",
+      "contribution_url": "https://github.com/storybookjs/storybook/blob/next/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "AI 보조를 썼다면 PR에 도구 사용을 공개하고 변경을 직접 검토해야 합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "storybookjs--storybook-36817",
+      "repo": "storybookjs/storybook",
+      "project": "Storybook",
+      "project_description": "UI 컴포넌트를 독립적으로 개발·문서화·테스트하는 프론트엔드 도구.",
+      "issue_number": 36817,
+      "issue_url": "https://github.com/storybookjs/storybook/issues/36817",
+      "title": "테마 변경 시 라디오 컨트롤 색상 수정",
+      "summary": "Storybook 테마와 운영체제 색상 선호가 다를 때 Playground의 네이티브 라디오 색상이 반대로 보이는 문제를 수정합니다.",
+      "category": "web",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "TypeScript·React",
+      "kind": "작은 UI 버그·스토리",
+      "preparation": "Node.js 22와 Yarn 4. Layout의 `colorScheme` 처리와 RadioOptions 스토리를 확인합니다.",
+      "why_manageable": "의심 코드가 LayoutContainer의 단일 colorScheme 선언으로 특정돼 있어 테마 전달과 스토리 보강으로 좁힐 수 있습니다.",
+      "suggested_test": "Chrome과 Firefox에서 light/dark 테마의 checked·unchecked 라디오 색상을 확인합니다.\n\nyarn test --project storybook-ui code/core/src/manager/components/layout/Layout.stories.tsx\nyarn fmt:check",
+      "files": [
+        {
+          "label": "Layout 컴포넌트",
+          "url": "https://github.com/storybookjs/storybook/blob/next/code/core/src/manager/components/layout/Layout.tsx"
+        },
+        {
+          "label": "Layout 스토리",
+          "url": "https://github.com/storybookjs/storybook/blob/next/code/core/src/manager/components/layout/Layout.stories.tsx"
+        }
+      ],
+      "proposal_role": "91,342★ 주요 프로젝트",
+      "role_evidence": "https://github.com/storybookjs/storybook",
+      "contribution_url": "https://github.com/storybookjs/storybook/blob/next/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "현재 Storybook 테마를 기준으로 바꾸되 운영체제 설정을 무조건 덮는 부작용이 없는지 확인합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "vuejs--eslint-plugin-vue-3166",
+      "repo": "vuejs/eslint-plugin-vue",
+      "project": "eslint-plugin-vue",
+      "project_description": "Vue 템플릿과 스크립트의 문제를 검사하는 공식 ESLint 플러그인.",
+      "issue_number": 3166,
+      "issue_url": "https://github.com/vuejs/eslint-plugin-vue/issues/3166",
+      "title": "문자열의 &를 보존하도록 no-useless-mustaches autofix 수정",
+      "summary": "`{{ 'Tom &amp; Jerry' }}`를 자동 수정할 때 HTML 엔티티 의미가 바뀌지 않도록 이스케이프 처리와 테스트를 보완합니다.",
+      "category": "web",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "TypeScript·ESLint",
+      "kind": "autofix 버그·단위 테스트",
+      "preparation": "Node.js LTS와 npm. Vue 템플릿 파서, ESLint RuleTester, 기존 `&lt;` 이스케이프 테스트를 확인합니다.",
+      "why_manageable": "원인 위치가 규칙 구현 한 줄과 대응 RuleTester 케이스로 좁혀져 있습니다.",
+      "suggested_test": "&와 기존 < 문자가 함께 있을 때 autofix 전후 렌더링 의미가 같은지 검사합니다.\n\nnpm test -- tests/lib/rules/no-useless-mustaches.test.ts\nnpm run lint\nnpm run tsc",
+      "files": [
+        {
+          "label": "규칙 구현",
+          "url": "https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/no-useless-mustaches.ts"
+        },
+        {
+          "label": "규칙 테스트",
+          "url": "https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/no-useless-mustaches.test.ts"
+        }
+      ],
+      "proposal_role": "Vue 공식 프로젝트·4,591★",
+      "role_evidence": "https://github.com/vuejs/eslint-plugin-vue",
+      "contribution_url": "https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/developer-guide/index.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "5천★ 미만이지만 Vue 공식 조직의 대표 ESLint 플러그인입니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "onnx--onnx-8577",
+      "repo": "onnx/onnx",
+      "project": "ONNX",
+      "project_description": "머신러닝 모델을 프레임워크 사이에서 교환하기 위한 공개 표준과 도구.",
+      "issue_number": 8577,
+      "issue_url": "https://github.com/onnx/onnx/issues/8577",
+      "title": "스키마 등록 테스트를 런타임 레지스트리 기준으로 개선",
+      "summary": "C++ 소스를 정규식으로 읽는 테스트 대신 `get_all_schemas_with_history()`의 실제 런타임 등록 결과와 정의 목록을 비교합니다.",
+      "category": "ai",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Python·C++ 빌드",
+      "kind": "테스트 정확성",
+      "preparation": "Pixi 환경과 CPU 네이티브 빌드가 필요합니다. ONNX schema registry와 opset 등록 구조를 확인합니다.",
+      "why_manageable": "변경 중심이 독립된 Python 테스트 한 파일이며 GPU와 모델 다운로드가 필요하지 않습니다.",
+      "suggested_test": "잘못된 opset 등록과 등록 함수에서 빠진 opset 클래스를 모두 검출하는지 확인합니다.\n\npixi run install\npixi run pytest tests/python/schema_registration_test.py",
+      "files": [
+        {
+          "label": "스키마 등록 테스트",
+          "url": "https://github.com/onnx/onnx/blob/main/tests/python/schema_registration_test.py"
+        }
+      ],
+      "proposal_role": "21,606★ 주요 프로젝트",
+      "role_evidence": "https://github.com/onnx/onnx",
+      "contribution_url": "https://github.com/onnx/onnx/blob/main/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당입니다. 댓글 1개는 가능 여부를 묻는 문의이며 구현 선언이나 열린 해결 PR은 없습니다.",
+      "related_pr_note": "구현 전에 런타임 레지스트리 비교 방식으로 진행한다고 짧게 확인받는 편이 안전합니다. DCO 서명이 필요합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "dart-lang--sdk-64408",
+      "repo": "dart-lang/sdk",
+      "project": "Dart SDK",
+      "project_description": "Dart 언어의 컴파일러·런타임·분석기와 표준 라이브러리를 제공하는 공식 SDK.",
+      "issue_number": 64408,
+      "issue_url": "https://github.com/dart-lang/sdk/issues/64408",
+      "title": "use_key_in_widget_constructors 설명과 예제 보강",
+      "summary": "부모가 위젯을 재정렬·삽입·삭제할 때 key를 전달할 선택지를 보존해야 하는 이유와 간단한 예제를 린트 문서에 추가합니다.",
+      "category": "mobile",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "YAML·Dart 생성물",
+      "kind": "린트 문서·예제",
+      "preparation": "Dart SDK의 linter 메시지와 생성 스크립트 구조를 확인합니다. 전체 개발 환경은 fetch와 gclient 방식이 필요합니다.",
+      "why_manageable": "원하는 설명과 예제가 이슈 본문에 구체적이고 변경 위치가 한 린트 규칙 문서와 생성물로 제한됩니다.",
+      "suggested_test": "documentation과 deprecatedDetails, 생성된 rules.json의 문구가 일치하는지 확인합니다.\n\ndart run pkg/linter/tool/machine.dart -w\ndart run pkg/linter/tool/generate_lints.dart\ndart run pkg/linter/test/all.dart",
+      "files": [
+        {
+          "label": "린트 메시지",
+          "url": "https://github.com/dart-lang/sdk/blob/main/pkg/linter/messages.yaml"
+        },
+        {
+          "label": "린트 작성 안내",
+          "url": "https://github.com/dart-lang/sdk/blob/main/pkg/linter/doc/writing-lints.md"
+        }
+      ],
+      "proposal_role": "11,312★ 공식 SDK",
+      "role_evidence": "https://github.com/dart-lang/sdk",
+      "contribution_url": "https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "GitHub PR은 Copybara를 통해 Gerrit CL로 변환됩니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "dart-lang--sdk-57877",
+      "repo": "dart-lang/sdk",
+      "project": "Dart SDK",
+      "project_description": "Dart 언어의 컴파일러·런타임·분석기와 표준 라이브러리를 제공하는 공식 SDK.",
+      "issue_number": 57877,
+      "issue_url": "https://github.com/dart-lang/sdk/issues/57877",
+      "title": "public_member_api_docs의 public API 정의 명확화",
+      "summary": "`lib/src`, `test`, `bin`, private 선언 내부의 public member 등이 검사 대상인지 린트 문서에 명확히 설명합니다.",
+      "category": "mobile",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "YAML·Dart 생성물",
+      "kind": "린트 문서 정확성",
+      "preparation": "2026년 10월 유지관리자가 좁힌 남은 범위와 실제 규칙 동작을 대조합니다.",
+      "why_manageable": "코드 동작을 바꾸지 않고 public API의 의미를 한 규칙 문서에 정의하는 작업입니다.",
+      "suggested_test": "현재 규칙이 보고하는 선언 범위와 문서의 각 예외가 일치하는지 확인합니다.\n\ndart run pkg/linter/tool/machine.dart -w\ndart run pkg/linter/tool/generate_lints.dart\ndart run pkg/linter/test/all.dart",
+      "files": [
+        {
+          "label": "린트 메시지",
+          "url": "https://github.com/dart-lang/sdk/blob/main/pkg/linter/messages.yaml"
+        },
+        {
+          "label": "린트 작성 안내",
+          "url": "https://github.com/dart-lang/sdk/blob/main/pkg/linter/doc/writing-lints.md"
+        }
+      ],
+      "proposal_role": "11,312★ 공식 SDK",
+      "role_evidence": "https://github.com/dart-lang/sdk",
+      "contribution_url": "https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md",
+      "ownership_note": "OPEN, contributions-welcome, 무담당입니다. 댓글은 범위 확인이며 작업 선언과 열린 해결 PR은 없습니다.",
+      "related_pr_note": "제거된 package_api_docs가 아니라 public_member_api_docs만 다룹니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "flutter--flutter-92041",
+      "repo": "flutter/flutter",
+      "project": "Flutter",
+      "project_description": "하나의 코드베이스로 모바일·웹·데스크톱 UI를 만드는 공식 애플리케이션 프레임워크.",
+      "issue_number": 92041,
+      "issue_url": "https://github.com/flutter/flutter/issues/92041",
+      "title": "localizationsDelegates의 비동기 테스트 특성 문서화",
+      "summary": "`pumpWidget` 직후 번역 리소스가 준비된다고 가정하지 말고 추가 pump나 비동기 완료를 기다려야 한다는 점을 API 문서에 명시합니다.",
+      "category": "mobile",
+      "secondary_categories": [],
+      "language": "Dart·API 문서",
+      "kind": "테스트 주의사항 문서",
+      "preparation": "Flutter 위젯 테스트의 pump 흐름과 WidgetsApp localizationsDelegates 문서를 확인합니다. 실기기는 필요하지 않습니다.",
+      "why_manageable": "동작 변경 없이 한 API 문서 템플릿에 비동기 특성을 설명하는 작업입니다.",
+      "suggested_test": "문서 예시가 테스트 바인딩의 실제 비동기 로딩 순서를 정확히 설명하는지 확인합니다.\n\nbin/flutter test packages/flutter/test/widgets/app_test.dart\nbin/flutter test packages/flutter/test/widgets/localizations_test.dart",
+      "files": [
+        {
+          "label": "WidgetsApp 구현과 문서",
+          "url": "https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/widgets/app.dart"
+        }
+      ],
+      "proposal_role": "180,297★ 주요 프로젝트",
+      "role_evidence": "https://github.com/flutter/flutter",
+      "contribution_url": "https://github.com/flutter/flutter/blob/master/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "AI를 사용했다면 결과를 직접 이해하고 PR 설명과 변경의 정확성을 검증해야 합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "micropython--micropython-19044",
+      "repo": "micropython/micropython",
+      "project": "MicroPython",
+      "project_description": "마이크로컨트롤러에서 실행하도록 최적화한 Python 구현체.",
+      "issue_number": 19044,
+      "issue_url": "https://github.com/micropython/micropython/issues/19044",
+      "title": "Python 3.13+에서 sys.settrace 테스트 실패 수정",
+      "summary": "CPython 3.13 이후 list comprehension 추적 출력 변화로 실패하는 `sys_settrace_features.py` 테스트를 버전 차이에 안정적으로 맞춥니다.",
+      "category": "embedded",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Python·C 테스트 환경",
+      "kind": "호환성 테스트",
+      "preparation": "MicroPython Unix coverage 빌드와 CPython 3.12·3.13의 tracing 출력 차이를 확인합니다. 하드웨어는 필요하지 않습니다.",
+      "why_manageable": "버전별 출력 차이와 실패 diff가 제공되고 영향 범위가 단일 테스트와 예상 출력 처리로 제한됩니다.",
+      "suggested_test": "3.12 이하의 기존 기대값을 깨지 않으면서 3.13+ 출력도 안정적으로 비교하는지 확인합니다.\n\nMICROPY_CPYTHON3=python3.13 make VARIANT=coverage test//settrace_features",
+      "files": [
+        {
+          "label": "settrace 기능 테스트",
+          "url": "https://github.com/micropython/micropython/blob/master/tests/misc/sys_settrace_features.py"
+        }
+      ],
+      "proposal_role": "22,136★ 주요 프로젝트",
+      "role_evidence": "https://github.com/micropython/micropython",
+      "contribution_url": "https://github.com/micropython/micropython/blob/master/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당입니다. 댓글은 CI 영향 설명이며 작업 선언과 열린 해결 PR은 없습니다.",
+      "related_pr_note": "단순 버전 분기보다 의미 있는 추적 이벤트를 안정적으로 비교하는 방식을 우선합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "home-assistant--core-187349",
+      "repo": "home-assistant/core",
+      "project": "Home Assistant Core",
+      "project_description": "다양한 가정용 기기를 로컬 중심으로 연결·자동화하는 스마트홈 플랫폼의 핵심 서버.",
+      "issue_number": 187349,
+      "issue_url": "https://github.com/home-assistant/core/issues/187349",
+      "title": "DSMR의 유효한 0 카운터가 unknown이 되는 문제 수정",
+      "summary": "전압 상승 횟수처럼 0이 정상값인 TOTAL_INCREASING 진단 카운터까지 `None`으로 바꾸는 조건을 에너지 센서에만 제한합니다.",
+      "category": "embedded",
+      "secondary_categories": [
+        "cloud"
+      ],
+      "language": "Python·pytest",
+      "kind": "센서 값 버그·회귀 테스트",
+      "preparation": "DSMR Telegram·CosemObject 모형과 에너지 센서의 0 억제 이유를 구분합니다. 실물 계량기는 필요하지 않습니다.",
+      "why_manageable": "원인 위치와 영향을 받는 OBIS 값이 특정돼 있고 한 integration의 센서 로직과 테스트로 범위를 제한할 수 있습니다.",
+      "suggested_test": "에너지 누적값의 기존 0 처리와 진단 카운터의 유효한 0 표시를 각각 회귀 테스트로 고정합니다.\n\npytest -q tests/components/dsmr/test_sensor.py",
+      "files": [
+        {
+          "label": "DSMR 센서 구현",
+          "url": "https://github.com/home-assistant/core/blob/dev/homeassistant/components/dsmr/sensor.py"
+        },
+        {
+          "label": "DSMR 센서 테스트",
+          "url": "https://github.com/home-assistant/core/blob/dev/tests/components/dsmr/test_sensor.py"
+        }
+      ],
+      "proposal_role": "91,606★ 주요 프로젝트",
+      "role_evidence": "https://github.com/home-assistant/core",
+      "contribution_url": "https://github.com/home-assistant/core/blob/dev/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당입니다. 댓글은 코드 소유자 호출 봇이며 작업 선언이나 열린 해결 PR은 없습니다.",
+      "related_pr_note": "AI는 보조 도구로만 허용됩니다. 기여자가 변경을 직접 이해·검토해야 하며 자율 에이전트의 PR 제출은 금지됩니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "pixijs--pixijs-com-202",
+      "repo": "pixijs/pixijs.com",
+      "project": "PixiJS Docs",
+      "project_description": "고성능 2D WebGL 렌더러 PixiJS의 공식 가이드와 API 문서 사이트.",
+      "issue_number": 202,
+      "issue_url": "https://github.com/pixijs/pixijs.com/issues/202",
+      "title": "잘못된 SVG 로딩 예제 수정",
+      "summary": "SVG를 GraphicsContext로 읽는 예제의 `Assets.load()` 인자를 `{ src, data: { parseAsGraphicsContext: true } }` 형태로 교정합니다.",
+      "category": "game",
+      "secondary_categories": [
+        "web"
+      ],
+      "language": "MDX·TypeScript 예제",
+      "kind": "공식 문서 예제",
+      "preparation": "PixiJS Assets API와 SVG parser 옵션을 확인하고 공식 문서 사이트 빌드를 준비합니다.",
+      "why_manageable": "수정 대상이 SVG 가이드의 코드 블록 몇 줄이며 이슈에 올바른 호출 형태가 명시돼 있습니다.",
+      "suggested_test": "문서 코드가 타입 검사와 사이트 빌드를 통과하고 실제 옵션 중첩 구조와 일치하는지 확인합니다.\n\nnpm ci\nnpm run types\nnpm run lint\nnpm run build",
+      "files": [
+        {
+          "label": "SVG 자산 가이드",
+          "url": "https://github.com/pixijs/pixijs.com/blob/main/docs/guides/components/assets/svg.mdx"
+        }
+      ],
+      "proposal_role": "PixiJS 본체 48,424★",
+      "role_evidence": "https://github.com/pixijs/pixijs.com",
+      "contribution_url": "https://github.com/pixijs/pixijs/blob/dev/.github/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "문서 저장소 자체는 59★지만 48,424★ PixiJS의 공식 문서 저장소입니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "godotengine--godot-docs-12459",
+      "repo": "godotengine/godot-docs",
+      "project": "Godot Docs",
+      "project_description": "Godot 게임 엔진의 공식 사용자 설명서와 튜토리얼.",
+      "issue_number": 12459,
+      "issue_url": "https://github.com/godotengine/godot-docs/issues/12459",
+      "title": "잘못된 GLSL 내장 함수 예제 수정",
+      "summary": "`min`과 `pow` 예제의 스칼라·벡터 타입 불일치와 정수 리터럴 문제를 float 리터럴과 올바른 벡터 인수로 교정합니다.",
+      "category": "game",
+      "secondary_categories": [],
+      "language": "reStructuredText·Shader 예제",
+      "kind": "공식 문서 코드 오류",
+      "preparation": "GDShader와 GLSL의 함수 오버로드 차이, Godot 문서의 RST 검사 도구를 확인합니다.",
+      "why_manageable": "대상이 shader_functions.rst의 몇 개 표 예제이며 댓글에서 정확한 타입 수정 방향이 논의됐습니다.",
+      "suggested_test": "모든 수정 예제가 GDShader 타입 규칙에 맞고 RST·Sphinx 경고 없이 빌드되는지 확인합니다.\n\nbash ./_tools/check-rst.sh\nmake SPHINXOPTS=\"--color -j 4 -W\" dummy",
+      "files": [
+        {
+          "label": "Shader functions 문서",
+          "url": "https://github.com/godotengine/godot-docs/blob/master/tutorials/shaders/shader_reference/shader_functions.rst"
+        }
+      ],
+      "proposal_role": "5,832★ 공식 문서",
+      "role_evidence": "https://github.com/godotengine/godot-docs",
+      "contribution_url": "https://github.com/godotengine/godot-docs/blob/master/README.md",
+      "ownership_note": "OPEN, 무담당입니다. 댓글은 수정 방식 논의이며 작업 선언과 열린 해결 PR은 없습니다.",
+      "related_pr_note": "Godot은 AI 생성 문서와 AI 에이전트의 대리 PR 제출을 금지합니다. 문구와 PR 커뮤니케이션은 사람이 직접 작성해야 합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "dagger--dagger-14720",
+      "repo": "dagger/dagger",
+      "project": "Dagger",
+      "project_description": "컨테이너 기반 빌드·테스트·배포 파이프라인을 코드로 구성하는 자동화 엔진.",
+      "issue_number": 14720,
+      "issue_url": "https://github.com/dagger/dagger/issues/14720",
+      "title": "dagger.toml ignore를 Workspace 탐색에 적용",
+      "summary": "설정에서 읽은 최상위 `ignore` 패턴이 Workspace의 하향 모듈 탐색에도 적용되도록 하고 통합 테스트를 추가합니다.",
+      "category": "cloud",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Go·통합 테스트",
+      "kind": "설정 적용 버그",
+      "preparation": "Dagger Workspace root 탐색과 dagger.toml 설정 전달 경로를 확인합니다. 클러스터는 필요하지 않습니다.",
+      "why_manageable": "문제 경로가 Workspace.findRoots와 descendantRoots로 특정돼 있으며 ignore 적용만 별도 PR로 제한할 수 있습니다.",
+      "suggested_test": "무시된 디렉터리의 모듈은 찾지 않되 기존 root 탐색과 명시적 모듈 접근은 깨지지 않는지 확인합니다.\n\ndagger api call engine-dev test --pkg=\"./core/integration\" --run=\"^TestWorkspace/TestWorkspaceFindRoots\"\ndagger check \"*:lint\"",
+      "files": [
+        {
+          "label": "Workspace 스키마",
+          "url": "https://github.com/dagger/dagger/blob/main/core/schema/workspace.go"
+        },
+        {
+          "label": "Workspace 탐색 테스트",
+          "url": "https://github.com/dagger/dagger/blob/main/core/integration/workspace_find_roots_test.go"
+        }
+      ],
+      "proposal_role": "16,352★ 주요 프로젝트",
+      "role_evidence": "https://github.com/dagger/dagger",
+      "contribution_url": "https://github.com/dagger/dagger/blob/main/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "이슈의 별도 CLI 배열 파싱 문제는 포함하지 않고 ignore 적용만 다룹니다. 시작 전 작업 의사를 댓글로 남겨야 합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
+    },
+    {
+      "id": "tektoncd--pipeline-9597",
+      "repo": "tektoncd/pipeline",
+      "project": "Tekton Pipelines",
+      "project_description": "Kubernetes 위에서 빌드·테스트·배포 작업을 파이프라인으로 실행하는 CNCF 프로젝트.",
+      "issue_number": 9597,
+      "issue_url": "https://github.com/tektoncd/pipeline/issues/9597",
+      "title": "Git resolver 테스트 간 LRU 캐시 오염 제거",
+      "summary": "table test의 Resolver가 이전 케이스의 LRU 캐시를 유지하지 않도록 각 케이스를 격리해 간헐적 상호 영향을 제거합니다.",
+      "category": "cloud",
+      "secondary_categories": [
+        "tools"
+      ],
+      "language": "Go·단위 테스트",
+      "kind": "테스트 격리 버그",
+      "preparation": "Git resolver Initialize와 테스트의 table-driven 구조, 캐시 생명주기를 확인합니다. Kubernetes 클러스터는 필요하지 않습니다.",
+      "why_manageable": "가장 좁은 해결책은 resolver_test.go에서 각 케이스마다 새 Resolver를 만드는 단위 테스트 수정입니다.",
+      "suggested_test": "반복 실행과 race 검사에서 테스트 케이스 순서와 무관하게 결과가 안정적인지 확인합니다.\n\ngo test ./pkg/remoteresolution/resolver/git -run \"^TestResolve$\" -count=10\ngo test -race ./pkg/remoteresolution/resolver/git -count=1",
+      "files": [
+        {
+          "label": "Git resolver 테스트",
+          "url": "https://github.com/tektoncd/pipeline/blob/main/pkg/remoteresolution/resolver/git/resolver_test.go"
+        },
+        {
+          "label": "Git resolver 구현",
+          "url": "https://github.com/tektoncd/pipeline/blob/main/pkg/remoteresolution/resolver/git/resolver.go"
+        }
+      ],
+      "proposal_role": "9,086★·CNCF",
+      "role_evidence": "https://github.com/tektoncd/pipeline",
+      "contribution_url": "https://github.com/tektoncd/pipeline/blob/main/CONTRIBUTING.md",
+      "ownership_note": "OPEN, 무담당, 댓글과 작업 선언이 없으며 열린 해결 PR도 확인되지 않았습니다.",
+      "related_pr_note": "Initialize 동작을 바꾸지 않고 테스트 격리 방식으로 진행한다고 먼저 확인받는 편이 안전합니다.",
+      "related_pr_urls": [],
+      "checked_at": "2026-10-20T10:48:14+09:00"
     }
   ]
 }
