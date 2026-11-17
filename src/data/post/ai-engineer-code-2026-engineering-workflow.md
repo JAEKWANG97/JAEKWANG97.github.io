@@ -24,6 +24,10 @@ AI Engineer CODE 2026의 공개 자료를 종합하면서 두 번째 질문에 �
 
 이 글은 발표를 순서대로 옮긴 전사본이 아닙니다. 여러 발표에서 반복된 문제를 하나의 개발 흐름으로 묶고, 백엔드 개발과 AI 코딩 도구 사용에 어떻게 적용할지 정리한 글입니다. **발표에서 확인한 내용과 아래의 적용 제안은 구분해서 읽으면 좋겠습니다.**
 
+![환경과 작업 기준, 작은 구현, 독립 검증, 배포 확인, 실패 반영으로 이어지는 AI 개발 루프](./_assets/ai-engineer-code-2026/verified-development-loop.svg)
+
+*그림 1. 발표들의 공통점을 개발 흐름으로 묶은 적용 제안입니다. 공식 발표 슬라이드가 아닙니다.*
+
 ### 먼저, 어디까지 확인했는가
 
 - 11월 11~12일 본행사의 메인 기술 발표 **32개**를 대상으로 정리했습니다.
@@ -110,6 +114,10 @@ Brian Kennedy의 발표는 판단 모델 역시 작업자의 그럴듯한 완료
 Ankit Mathur는 코드뿐 아니라 데이터, 컴퓨트, 권한, 대화와 메모리까지 분기하는 접근을 소개합니다. Fabian Hedin은 장시간 실행을 위해 프로세스, 영구 작업 이력, 모델에 전달하는 문맥을 분리합니다. 온라인의 Girish Konda 발표도 서브에이전트의 부분 완료와 재시도를 분산시스템 문제로 다룹니다.
 
 관련 자료: [Ankit Mathur](https://ai.engineer/code/2026/talks/ankit-mathur), [Fabian Hedin](https://ai.engineer/code/2026/talks/fabian-hedin), [Girish Konda](https://ai.engineer/code/2026/talks/online-subagent-distributed-systems).
+
+![두 에이전트의 worktree는 분리돼도 공유 DB와 외부 API의 상태는 남으므로 멱등성, 결과 조회, 권한과 복구를 설계해야 한다](./_assets/ai-engineer-code-2026/parallel-isolation-boundary.svg)
+
+*그림 2. 파일 격리와 외부 효과의 격리는 서로 다른 문제입니다.*
 
 Git worktree를 나누면 파일 충돌은 줄일 수 있습니다. 하지만 두 작업이 같은 DB나 외부 API를 사용한다면 공유 상태는 그대로 남아 있습니다.
 
