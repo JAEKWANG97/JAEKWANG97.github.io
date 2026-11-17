@@ -1,33 +1,112 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import { getBlogPermalink } from '~/utils/permalinks';
-
-const metadata = {
-  title: 'JAEKWANG97',
-  ignoreTitleTemplate: true,
-};
+import Grid from '~/components/blog/Grid.astro';
+import { fetchPosts } from '~/utils/blog';
+import { getPermalink } from '~/utils/permalinks';
+const posts = await fetchPosts();
+const tags = new Map<string, { title: string; count: number }>();
+for (const post of posts)
+  for (const tag of post.tags ?? [])
+    tags.set(tag.slug, { title: tag.title, count: (tags.get(tag.slug)?.count ?? 0) + 1 });
+const popularTags = [...tags.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5);
+const metadata = { title: 'JAEKWANG97', ignoreTitleTemplate: true };
 ---
 
 <Layout metadata={metadata}>
-  <HeroText
-    tagline="BACKEND · DATA · AI"
-    title="JAEKWANG97"
-    subtitle="백엔드와 데이터 엔지니어링을 공부하고, AI와 오픈소스를 활용하며 배운 것을 기록합니다."
-    callToAction={{ text: '전체 글 보기', href: getBlogPermalink(), icon: 'tabler:arrow-right' }}
-    callToAction2={{
-      text: 'GitHub',
-      href: 'https://github.com/jaekwang97',
-      target: '_blank',
-      icon: 'tabler:brand-github',
-    }}
-  />
-
-  <BlogLatestPosts
-    title="최근 글"
-    information="문제를 해결하며 이해한 구조와 판단의 근거를 정리합니다."
-    linkText="전체 글 보기"
-    count={6}
-  />
+  <section class="journal-home">
+    <header class="intro">
+      <p class="eyebrow">BACKEND / DATA / AI</p><h1>배우고, 만들고, 기록합니다.</h1><p class="description">
+        기술의 원리부터 직접 부딪힌 문제까지. 이해한 것과 판단의 근거를 남깁니다.
+      </p>
+    </header>
+    <div class="feed-bar"><h2>최근 글 <span>{posts.length}</span></h2><a href="/search/">글 검색 ↗</a></div>
+    <nav class="topic-nav" aria-label="주요 태그">
+      <span>주제</span>{popularTags.map(([slug, tag]) => <a href={getPermalink(slug, 'tag')}>{tag.title}</a>)}<a
+        href="/tags/">모두 보기 →</a
+      >
+    </nav>
+    <Grid posts={posts.slice(0, 16)} />
+    <a class="all-posts" href="/posts/">전체 글 보기 →</a>
+  </section>
 </Layout>
+<style>
+  .journal-home {
+    max-width: 1000px;
+    padding: 0 24px;
+    margin: auto;
+  }
+  .intro {
+    padding: 36px 0 29px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--aw-color-primary);
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.5;
+  }
+  .description {
+    font-size: 13px;
+    color: var(--aw-color-text-muted);
+    margin-top: 6px;
+    line-height: 1.7;
+  }
+  .feed-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--journal-line);
+    padding: 0 0 12px;
+  }
+  .feed-bar h2 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .feed-bar h2 span {
+    color: var(--aw-color-text-muted);
+    font-weight: 400;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .feed-bar > a {
+    font-size: 12px;
+    color: var(--aw-color-primary);
+  }
+  .topic-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 17px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--journal-line);
+    font-size: 12px;
+  }
+  .topic-nav span {
+    color: var(--aw-color-text-muted);
+  }
+  .topic-nav a:hover {
+    text-decoration: underline;
+  }
+  .all-posts {
+    display: inline-block;
+    margin-top: 25px;
+    font-size: 13px;
+    color: var(--aw-color-primary);
+  }
+  @media (max-width: 600px) {
+    .journal-home {
+      padding: 0 20px;
+    }
+    .intro {
+      padding: 25px 0;
+    }
+    h1 {
+      font-size: 21px;
+    }
+  }
+</style>

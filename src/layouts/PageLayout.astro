@@ -1,25 +1,56 @@
 ---
 import Layout from '~/layouts/Layout.astro';
-import Header from '~/components/widgets/Header.astro';
-import Footer from '~/components/widgets/Footer.astro';
-import { headerData, footerData } from '~/navigation';
+import JournalHeader from '~/components/blog/JournalHeader.astro';
 import type { MetaData } from '~/types';
-
 export interface Props {
   metadata?: MetaData;
 }
-
 const { metadata } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
-  <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
-  </slot>
-  <main>
-    <slot />
-  </main>
+  <slot name="header"><JournalHeader /></slot>
+  <main id="main-content"><slot /></main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <footer class="journal-footer">
+      <span>© {new Date().getFullYear()} JAEKWANG97</span><div>
+        <a href="/archives/">아카이브</a><a href="/rss.xml">RSS</a><a href="https://github.com/jaekwang97">GitHub ↗</a>
+      </div>
+    </footer>
   </slot>
 </Layout>
+<style>
+  main {
+    min-height: 70vh;
+  }
+  .journal-footer {
+    max-width: 952px;
+    margin: 36px auto 0;
+    padding: 24px 0 36px;
+    border-top: 1px solid var(--journal-line);
+    font-size: 12px;
+    color: var(--aw-color-text-muted);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .journal-footer div {
+    display: flex;
+    gap: 18px;
+  }
+  .journal-footer a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 1000px) {
+    .journal-footer {
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+  }
+  @media (max-width: 400px) {
+    .journal-footer {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

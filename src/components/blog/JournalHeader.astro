@@ -1,0 +1,105 @@
+---
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+const path = Astro.url.pathname;
+const links = [
+  { label: '전체 글', href: '/posts/' },
+  { label: '태그', href: '/tags/' },
+  { label: '검색', href: '/search/' },
+  { label: '소개', href: '/about/' },
+];
+---
+
+<a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+<header class="journal-header">
+  <div class="header-inner">
+    <a class="wordmark" href="/">JAEKWANG97<span class="wordmark-dot">.</span></a>
+    <nav aria-label="주 메뉴">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={path.startsWith(link.href) ? 'page' : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="header-tools">
+      <a class="github" href="https://github.com/jaekwang97">GitHub ↗</a><ToggleTheme
+        label="밝은 테마와 어두운 테마 전환"
+        iconClass="w-4 h-4"
+      />
+    </div>
+  </div>
+</header>
+<style>
+  .journal-header {
+    border-top: 3px solid var(--aw-color-primary);
+    border-bottom: 1px solid var(--journal-line);
+  }
+  .header-inner {
+    max-width: 1000px;
+    margin: auto;
+    padding: 13px 24px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .wordmark {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+  }
+  .wordmark-dot {
+    color: var(--aw-color-primary);
+  }
+  nav {
+    display: flex;
+    gap: 22px;
+    font-size: 14px;
+  }
+  nav a {
+    padding: 10px 0;
+    color: var(--aw-color-text-muted);
+  }
+  nav a[aria-current],
+  nav a:hover {
+    color: var(--aw-color-primary);
+  }
+  .header-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--aw-color-text-muted);
+  }
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    padding: 10px;
+    background: var(--aw-color-bg-page);
+    z-index: 100;
+  }
+  .skip-link:focus {
+    top: 8px;
+  }
+  @media (max-width: 600px) {
+    .header-inner {
+      padding: 10px 20px 6px;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    nav {
+      order: 3;
+      flex-basis: 100%;
+      gap: 24px;
+      margin-top: 4px;
+    }
+    .wordmark {
+      font-size: 19px;
+    }
+    .github {
+      display: none;
+    }
+  }
+</style>

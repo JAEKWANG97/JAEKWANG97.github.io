@@ -1,0 +1,68 @@
+---
+import type { Post } from '~/types';
+import { getPermalink } from '~/utils/permalinks';
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const date = post.publishDate.toISOString().slice(0, 10).replaceAll('-', '.');
+---
+
+<article class="compact-post">
+  <h2><a href={getPermalink(post.permalink, 'post')}>{post.title}</a></h2>
+  {post.excerpt && <p>{post.excerpt}</p>}
+  <div class="post-meta">
+    <time datetime={post.publishDate.toISOString()}>{date}</time>
+    {post.readingTime && <span>· {post.readingTime}분 읽기</span>}
+    {post.tags?.slice(0, 3).map((tag) => <a href={getPermalink(tag.slug, 'tag')}>#{tag.title}</a>)}
+  </div>
+</article>
+<style>
+  .compact-post {
+    padding: 19px 0 20px;
+    border-bottom: 1px solid var(--journal-line);
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 650;
+    line-height: 1.55;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+  }
+  h2 a:hover {
+    color: var(--aw-color-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  p {
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--aw-color-text-muted);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 9px;
+    margin-top: 8px;
+    color: var(--aw-color-text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .post-meta a:hover {
+    color: var(--aw-color-primary);
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    h2 {
+      font-size: 17px;
+    }
+    .compact-post {
+      padding: 17px 0;
+    }
+  }
+</style>
