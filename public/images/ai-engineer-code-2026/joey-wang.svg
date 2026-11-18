@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">같은 일인지와 지금 실행할 수 있는지는 다른 질문이다</title><desc id="desc">중복 요청은 기존 조사에 합치고 서로 다른 요청은 공정한 대기열에서 용량을 얻는다. 실행 뒤 검증 실패는 제한된 후속 실행으로 돌아가고 승인 뒤 병합은 별도 단계다. 영속 작업 기록이 전체를 연결한다.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#52647b" stroke-width="1.4"/></marker></defs>
+<rect width="1200" height="720" fill="#f4f7fb"/>
+<g font-family="Noto Sans CJK KR, sans-serif" fill="#15283e">
+<text x="48" y="60" font-size="29" font-weight="700">같은 일인가? 지금 실행해도 되는가?</text>
+<text x="48" y="94" font-size="18" fill="#52647b">두 과부하 사례에서 도출한 개념도 · Spectre의 실제 구현 명세 아님</text>
+<g stroke="#ccd6e3" stroke-width="2" fill="white">
+<rect x="48" y="150" width="205" height="100" rx="14"/>
+<rect x="315" y="150" width="230" height="100" rx="14"/>
+<rect x="620" y="150" width="245" height="100" rx="14"/>
+<rect x="925" y="150" width="225" height="100" rx="14"/>
+<rect x="315" y="304" width="230" height="85" rx="14" fill="#e5f4ef"/>
+<rect x="925" y="435" width="225" height="100" rx="14"/>
+<rect x="620" y="435" width="245" height="100" rx="14"/>
+<rect x="315" y="435" width="230" height="100" rx="14"/>
+<rect x="48" y="435" width="205" height="100" rx="14" fill="#fff1dd"/>
+</g>
+<g text-anchor="middle" font-size="21" font-weight="700">
+<text x="150" y="190">요청 접수</text><text x="430" y="190">중복 판단</text><text x="742" y="190">실행 대기열</text><text x="1037" y="190">작업 실행</text>
+<text x="430" y="340">기존 조사에 합류</text>
+<text x="1037" y="475">결과 검증</text><text x="742" y="475">사람의 승인</text><text x="430" y="475">병합 대기</text><text x="150" y="475">통합 완료</text>
+</g>
+<g text-anchor="middle" font-size="16" fill="#52647b">
+<text x="150" y="222">알림 · 사용자 · 자동화</text><text x="430" y="222">이미 조사 중인 일인가?</text><text x="742" y="222">공정 배분 · 대화형 우선</text><text x="1037" y="222">격리된 실행기</text>
+<text x="430" y="368">같은 일을 다시 시작하지 않음</text>
+<text x="1037" y="507">테스트와 결과물 확인</text><text x="742" y="507">권한이 필요한 결정</text><text x="430" y="507">최신 코드와 호환 확인</text><text x="150" y="507">PR 생성과 다른 상태</text>
+</g>
+<g fill="none" stroke="#52647b" stroke-width="2.5" marker-end="url(#arrow)">
+<path d="M253 200H310"/><path d="M545 200H615"/><path d="M865 200H920"/><path d="M430 250V299"/><path d="M1037 250V430"/>
+<path d="M925 485H870"/><path d="M620 485H550"/><path d="M315 485H258"/>
+<path d="M995 435V345H744V255" stroke-dasharray="7 5"/>
+</g>
+<g font-size="16" fill="#52647b"><text x="554" y="182">다른 일</text><text x="442" y="284">같은 일</text><text x="1049" y="350">산출물</text><text x="705" y="323">실패: 원인·예산을 확인한 후속 실행</text></g>
+<rect x="48" y="592" width="1102" height="78" rx="14" fill="#17344f"/>
+<text x="74" y="625" font-size="21" font-weight="700" fill="white">전체를 연결하는 영속 작업 기록</text>
+<text x="74" y="651" font-size="17" fill="#d5e4f0">목표 · 담당자 · 실행 이력 · 산출물 · 검증 근거 · 남은 결정</text>
+</g></svg>
