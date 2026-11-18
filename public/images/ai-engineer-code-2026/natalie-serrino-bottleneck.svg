@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">추론을 10배 빠르게 해도 전체는 3.57배 개선되는 가상 예제</title>
+<desc id="desc">같은 눈금에서 기존 100초는 추론 80초와 도구 20초, 개선 뒤 28초는 추론 8초와 도구 20초로 구성된다. 추론을 0초로 가정해도 도구 20초가 남는다. 실제 발표 측정값이 아닌 직렬 실행의 자체 계산이다.</desc>
+<rect width="1200" height="630" fill="#f7f7f2"/>
+<g font-family="Noto Sans CJK KR, Noto Sans, sans-serif" fill="#203d46">
+<text x="55" y="63" font-size="32" font-weight="700">빨라진 추론 뒤에, 도구의 대기가 남는다</text>
+<text x="55" y="103" font-size="20" fill="#62757c">자체 계산 예제 · 직렬 실행 · 전체 작업량과 도구 시간은 일정하다고 가정</text>
+<rect x="55" y="135" width="20" height="20" rx="3" fill="#207579"/><text x="86" y="152" font-size="18">추론</text>
+<rect x="170" y="135" width="20" height="20" rx="3" fill="#d58c4c"/><text x="201" y="152" font-size="18">도구</text>
+<g stroke="#d9e0dd" stroke-width="1">
+<path d="M260 190V475 M430 190V475 M600 190V475 M770 190V475 M940 190V475 M1110 190V475"/>
+</g>
+<text x="55" y="238" font-size="23" font-weight="700">기존</text>
+<rect x="260" y="200" width="680" height="60" fill="#207579"/>
+<rect x="940" y="200" width="170" height="60" fill="#d58c4c"/>
+<text x="540" y="239" fill="white" font-size="23">추론 80초</text><text x="966" y="239" fill="#2d2923" font-size="22">도구 20초</text>
+<text x="55" y="338" font-size="23" font-weight="700">추론 10배 개선</text>
+<rect x="260" y="300" width="68" height="60" fill="#207579"/>
+<rect x="328" y="300" width="170" height="60" fill="#d58c4c"/>
+<text x="271" y="338" fill="white" font-size="19">8초</text><text x="353" y="338" fill="#2d2923" font-size="22">도구 20초</text>
+<text x="525" y="338" font-size="24" font-weight="700">총 28초 → 약 3.57배 개선</text>
+<text x="55" y="438" font-size="23" font-weight="700">추론 0초 가정</text>
+<rect x="260" y="400" width="170" height="60" fill="#d58c4c"/>
+<text x="285" y="438" fill="#2d2923" font-size="22">도구 20초</text><text x="457" y="438" font-size="23">바꾸지 않은 부분이 만드는 상한: 5배</text>
+<g font-size="18" fill="#62757c" text-anchor="middle"><text x="260" y="501">0초</text><text x="430" y="501">20</text><text x="600" y="501">40</text><text x="770" y="501">60</text><text x="940" y="501">80</text><text x="1110" y="501">100</text></g>
+<path d="M55 535H1145" stroke="#cbd6d2"/>
+<text x="55" y="574" font-size="22">개선 뒤 도구의 비중은 20%에서 약 71.4%로 증가한다.</text>
+<text x="55" y="606" font-size="18" fill="#62757c">동시 실행·캐시·작업량 변화가 있는 실제 시스템에는 이 단순 합계를 그대로 적용하지 않는다.</text>
+</g></svg>
