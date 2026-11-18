@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1000" role="img" aria-labelledby="title desc">
+<title id="title">긴 작업을 이어 주는 두 가지 검증 경계</title>
+<desc id="desc">동시 협업에서는 작업 보고와 검증된 공동 결과를 구분한다. 세션 간 기억에서는 과거 메모를 원래 기록과 대조한 뒤 다음 판단에 사용한다. 발표에서 착안한 독자적 설명이다.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#326c67"/></marker></defs>
+<rect width="760" height="1000" rx="24" fill="#f7f4ed"/>
+<g font-family="sans-serif" fill="#203638">
+<text x="40" y="56" font-size="29" font-weight="700">긴 작업을 이어 주는 두 가지 경계</text>
+<text x="40" y="90" font-size="18">규모를 늘리기 전에, 다음 행동이 믿을 근거를 구분한다.</text>
+<rect x="32" y="122" width="696" height="360" rx="20" fill="#e5eeea"/>
+<text x="56" y="160" font-size="24" font-weight="700">① 동시에 일하기: 공동 상태의 검증</text>
+<rect x="56" y="190" width="175" height="110" rx="12" fill="white"/><text x="78" y="225" font-size="22">여러 작업자</text><text x="78" y="260" font-size="19">분할 · 수행 · 보고</text>
+<rect x="286" y="190" width="180" height="110" rx="12" fill="white"/><text x="309" y="225" font-size="22">공유 작업 상태</text><text x="309" y="260" font-size="19">배정 · 진행 · 결과</text>
+<rect x="520" y="190" width="184" height="110" rx="12" fill="white"/><text x="542" y="225" font-size="22">검사와 통합</text><text x="542" y="260" font-size="19">의존 가능한 결과</text>
+<g stroke="#326c67" stroke-width="3" marker-end="url(#a)"><path d="M232 245H279"/><path d="M467 245H513"/><path d="M611 301V328H145V307" fill="none"/></g>
+<text x="260" y="356" font-size="18">새 결과를 바탕으로 다음 작업을 재배치</text>
+<rect x="56" y="381" width="648" height="76" rx="12" fill="#fff7e5"/><text x="77" y="412" font-size="21" font-weight="700">완료했다는 보고 ≠ 검증된 공동 결과</text><text x="77" y="440" font-size="18">실험: Lean 검사 / 일반 개발: 요구사항에 맞는 별도 검증 필요</text>
+<rect x="32" y="508" width="696" height="360" rx="20" fill="#e8eaf3"/>
+<text x="56" y="548" font-size="24" font-weight="700">② 다음 세션으로: 기억의 재검토</text>
+<rect x="56" y="578" width="175" height="110" rx="12" fill="white"/><text x="78" y="613" font-size="22">원래 실행 기록</text><text x="78" y="648" font-size="19">관찰 · 행동 · 실패</text>
+<rect x="286" y="578" width="180" height="110" rx="12" fill="white"/><text x="309" y="613" font-size="22">메모와 대조</text><text x="309" y="648" font-size="19">오류 정정 · 재구성</text>
+<rect x="520" y="578" width="184" height="110" rx="12" fill="white"/><text x="542" y="613" font-size="22">다음 판단</text><text x="542" y="648" font-size="19">필요한 근거 활용</text>
+<g stroke="#326c67" stroke-width="3" marker-end="url(#a)"><path d="M232 633H279"/><path d="M467 633H513"/></g>
+<text x="80" y="731" font-size="20">틀린 메모를 짧게 줄여도, 여전히 틀린 메모다.</text>
+<rect x="56" y="767" width="648" height="76" rx="12" fill="#fff7e5"/><text x="77" y="799" font-size="21" font-weight="700">기록을 보존하기 ≠ 믿을 수 있는 지식 유지하기</text><text x="77" y="827" font-size="18">무엇을 기억하는지와, 왜 믿는지를 함께 살핀다.</text>
+<text x="40" y="917" font-size="20" font-weight="700">공통 질문: 다음 행동은 무엇을 근거로 시작하는가?</text>
+<text x="40" y="953" font-size="17">Lance Martin 발표에서 착안한 독자적 설명 도식</text><text x="40" y="979" font-size="17">실제 배치도나 원본 슬라이드가 아니며, 두 검증의 보장 수준도 다르다.</text>
+</g></svg>
